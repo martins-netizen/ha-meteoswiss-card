@@ -16,7 +16,7 @@ function keys(object, prefix = '') {
   return Object.entries(object).flatMap(([key, value]) => {
     const path = prefix ? `${prefix}.${key}` : key;
     return value && typeof value === 'object' ? keys(value, path) : [path];
-  }).sort();
+  }).sort((left, right) => left.localeCompare(right, 'en'));
 }
 assert.deepEqual(keys(english), keys(german), 'DE and EN translation keys must agree');
 console.log('Package, lock, HACS metadata and translation keys are consistent.');
