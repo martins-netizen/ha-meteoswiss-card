@@ -106,3 +106,10 @@ Automatic SonarQube Cloud analysis uses `.sonarcloud.properties`; the repository
 must also be imported into the owner's SonarQube Cloud organization. The file
 alone does not establish a configured or successful external analysis. HACS's
 repository-level checks also require Issues and repository topics to be enabled.
+
+Automatic analysis does not import coverage reports: the c8 coverage gate runs
+in CI and its percentages are not a SonarQube Cloud coverage result. SonarQube
+Cloud reads `.sonarcloud.properties` from the default branch, so the initial
+baseline can still contain generated-code findings until that configuration is
+present there and a new analysis has run. See the
+[automatic analysis documentation](https://docs.sonarsource.com/sonarqube-cloud/analyzing-source-code/automatic-analysis).
