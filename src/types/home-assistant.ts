@@ -1,4 +1,6 @@
 // Home Assistant types for 2025.8+
+import type { FrontendLocaleData } from 'custom-card-helpers';
+
 export interface HomeAssistant {
   states: { [entity_id: string]: HassEntity };
   config: HassConfig;
@@ -7,6 +9,7 @@ export interface HomeAssistant {
   panels: { [panel_id: string]: HassPanel };
   panelUrl: string;
   language: string;
+  locale?: FrontendLocaleData;
   selectedLanguage: string | null;
   resources: { [language: string]: { [category: string]: string } };
   localize: (key: string, ...args: any[]) => string;

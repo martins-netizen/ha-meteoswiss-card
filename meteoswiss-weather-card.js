@@ -1,21 +1,21 @@
-const qr = "2.4.8";
+const Vr = "2.4.8";
 /**
  * @license
  * Copyright 2019 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
  */
-const Ut = globalThis, Di = Ut.ShadowRoot && (Ut.ShadyCSS === void 0 || Ut.ShadyCSS.nativeShadow) && "adoptedStyleSheets" in Document.prototype && "replace" in CSSStyleSheet.prototype, Pi = Symbol(), hn = /* @__PURE__ */ new WeakMap();
-let Kn = class {
+const It = globalThis, Fi = It.ShadowRoot && (It.ShadyCSS === void 0 || It.ShadyCSS.nativeShadow) && "adoptedStyleSheets" in Document.prototype && "replace" in CSSStyleSheet.prototype, Ri = Symbol(), un = /* @__PURE__ */ new WeakMap();
+let Yn = class {
   constructor(e, t, i) {
-    if (this._$cssResult$ = !0, i !== Pi) throw Error("CSSResult is not constructable. Use `unsafeCSS` or `css` instead.");
+    if (this._$cssResult$ = !0, i !== Ri) throw Error("CSSResult is not constructable. Use `unsafeCSS` or `css` instead.");
     this.cssText = e, this.t = t;
   }
   get styleSheet() {
     let e = this.o;
     const t = this.t;
-    if (Di && e === void 0) {
+    if (Fi && e === void 0) {
       const i = t !== void 0 && t.length === 1;
-      i && (e = hn.get(t)), e === void 0 && ((this.o = e = new CSSStyleSheet()).replaceSync(this.cssText), i && hn.set(t, e));
+      i && (e = un.get(t)), e === void 0 && ((this.o = e = new CSSStyleSheet()).replaceSync(this.cssText), i && un.set(t, e));
     }
     return e;
   }
@@ -23,33 +23,33 @@ let Kn = class {
     return this.cssText;
   }
 };
-const Vr = (n) => new Kn(typeof n == "string" ? n : n + "", void 0, Pi), T = (n, ...e) => {
+const Zr = (n) => new Yn(typeof n == "string" ? n : n + "", void 0, Ri), T = (n, ...e) => {
   const t = n.length === 1 ? n[0] : e.reduce((i, r, s) => i + ((o) => {
     if (o._$cssResult$ === !0) return o.cssText;
     if (typeof o == "number") return o;
     throw Error("Value passed to 'css' function must be a 'css' function result: " + o + ". Use 'unsafeCSS' to pass non-literal values, but take care to ensure page security.");
   })(r) + n[s + 1], n[0]);
-  return new Kn(t, n, Pi);
-}, Zr = (n, e) => {
-  if (Di) n.adoptedStyleSheets = e.map((t) => t instanceof CSSStyleSheet ? t : t.styleSheet);
+  return new Yn(t, n, Ri);
+}, Kr = (n, e) => {
+  if (Fi) n.adoptedStyleSheets = e.map((t) => t instanceof CSSStyleSheet ? t : t.styleSheet);
   else for (const t of e) {
-    const i = document.createElement("style"), r = Ut.litNonce;
+    const i = document.createElement("style"), r = It.litNonce;
     r !== void 0 && i.setAttribute("nonce", r), i.textContent = t.cssText, n.appendChild(i);
   }
-}, pn = Di ? (n) => n : (n) => n instanceof CSSStyleSheet ? ((e) => {
+}, fn = Fi ? (n) => n : (n) => n instanceof CSSStyleSheet ? ((e) => {
   let t = "";
   for (const i of e.cssRules) t += i.cssText;
-  return Vr(t);
+  return Zr(t);
 })(n) : n;
 /**
  * @license
  * Copyright 2017 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
  */
-const { is: Kr, defineProperty: Yr, getOwnPropertyDescriptor: Qr, getOwnPropertyNames: Xr, getOwnPropertySymbols: Jr, getPrototypeOf: es } = Object, ri = globalThis, un = ri.trustedTypes, ts = un ? un.emptyScript : "", is = ri.reactiveElementPolyfillSupport, vt = (n, e) => n, Bt = { toAttribute(n, e) {
+const { is: Yr, defineProperty: Qr, getOwnPropertyDescriptor: Xr, getOwnPropertyNames: Jr, getOwnPropertySymbols: es, getPrototypeOf: ts } = Object, si = globalThis, gn = si.trustedTypes, is = gn ? gn.emptyScript : "", ns = si.reactiveElementPolyfillSupport, $t = (n, e) => n, jt = { toAttribute(n, e) {
   switch (e) {
     case Boolean:
-      n = n ? ts : null;
+      n = n ? is : null;
       break;
     case Object:
     case Array:
@@ -74,23 +74,23 @@ const { is: Kr, defineProperty: Yr, getOwnPropertyDescriptor: Qr, getOwnProperty
       }
   }
   return t;
-} }, Ri = (n, e) => !Kr(n, e), fn = { attribute: !0, type: String, converter: Bt, reflect: !1, useDefault: !1, hasChanged: Ri };
-Symbol.metadata ??= Symbol("metadata"), ri.litPropertyMetadata ??= /* @__PURE__ */ new WeakMap();
-let Ke = class extends HTMLElement {
+} }, Gi = (n, e) => !Yr(n, e), mn = { attribute: !0, type: String, converter: jt, reflect: !1, useDefault: !1, hasChanged: Gi };
+Symbol.metadata ??= Symbol("metadata"), si.litPropertyMetadata ??= /* @__PURE__ */ new WeakMap();
+let Ye = class extends HTMLElement {
   static addInitializer(e) {
     this._$Ei(), (this.l ??= []).push(e);
   }
   static get observedAttributes() {
     return this.finalize(), this._$Eh && [...this._$Eh.keys()];
   }
-  static createProperty(e, t = fn) {
+  static createProperty(e, t = mn) {
     if (t.state && (t.attribute = !1), this._$Ei(), this.prototype.hasOwnProperty(e) && ((t = Object.create(t)).wrapped = !0), this.elementProperties.set(e, t), !t.noAccessor) {
       const i = Symbol(), r = this.getPropertyDescriptor(e, i, t);
-      r !== void 0 && Yr(this.prototype, e, r);
+      r !== void 0 && Qr(this.prototype, e, r);
     }
   }
   static getPropertyDescriptor(e, t, i) {
-    const { get: r, set: s } = Qr(this.prototype, e) ?? { get() {
+    const { get: r, set: s } = Xr(this.prototype, e) ?? { get() {
       return this[t];
     }, set(o) {
       this[t] = o;
@@ -101,17 +101,17 @@ let Ke = class extends HTMLElement {
     }, configurable: !0, enumerable: !0 };
   }
   static getPropertyOptions(e) {
-    return this.elementProperties.get(e) ?? fn;
+    return this.elementProperties.get(e) ?? mn;
   }
   static _$Ei() {
-    if (this.hasOwnProperty(vt("elementProperties"))) return;
-    const e = es(this);
+    if (this.hasOwnProperty($t("elementProperties"))) return;
+    const e = ts(this);
     e.finalize(), e.l !== void 0 && (this.l = [...e.l]), this.elementProperties = new Map(e.elementProperties);
   }
   static finalize() {
-    if (this.hasOwnProperty(vt("finalized"))) return;
-    if (this.finalized = !0, this._$Ei(), this.hasOwnProperty(vt("properties"))) {
-      const t = this.properties, i = [...Xr(t), ...Jr(t)];
+    if (this.hasOwnProperty($t("finalized"))) return;
+    if (this.finalized = !0, this._$Ei(), this.hasOwnProperty($t("properties"))) {
+      const t = this.properties, i = [...Jr(t), ...es(t)];
       for (const r of i) this.createProperty(r, t[r]);
     }
     const e = this[Symbol.metadata];
@@ -130,8 +130,8 @@ let Ke = class extends HTMLElement {
     const t = [];
     if (Array.isArray(e)) {
       const i = new Set(e.flat(1 / 0).reverse());
-      for (const r of i) t.unshift(pn(r));
-    } else e !== void 0 && t.push(pn(e));
+      for (const r of i) t.unshift(fn(r));
+    } else e !== void 0 && t.push(fn(e));
     return t;
   }
   static _$Eu(e, t) {
@@ -157,7 +157,7 @@ let Ke = class extends HTMLElement {
   }
   createRenderRoot() {
     const e = this.shadowRoot ?? this.attachShadow(this.constructor.shadowRootOptions);
-    return Zr(e, this.constructor.elementStyles), e;
+    return Kr(e, this.constructor.elementStyles), e;
   }
   connectedCallback() {
     this.renderRoot ??= this.createRenderRoot(), this.enableUpdating(!0), this._$EO?.forEach((e) => e.hostConnected?.());
@@ -173,14 +173,14 @@ let Ke = class extends HTMLElement {
   _$ET(e, t) {
     const i = this.constructor.elementProperties.get(e), r = this.constructor._$Eu(e, i);
     if (r !== void 0 && i.reflect === !0) {
-      const s = (i.converter?.toAttribute !== void 0 ? i.converter : Bt).toAttribute(t, i.type);
+      const s = (i.converter?.toAttribute !== void 0 ? i.converter : jt).toAttribute(t, i.type);
       this._$Em = e, s == null ? this.removeAttribute(r) : this.setAttribute(r, s), this._$Em = null;
     }
   }
   _$AK(e, t) {
     const i = this.constructor, r = i._$Eh.get(e);
     if (r !== void 0 && this._$Em !== r) {
-      const s = i.getPropertyOptions(r), o = typeof s.converter == "function" ? { fromAttribute: s.converter } : s.converter?.fromAttribute !== void 0 ? s.converter : Bt;
+      const s = i.getPropertyOptions(r), o = typeof s.converter == "function" ? { fromAttribute: s.converter } : s.converter?.fromAttribute !== void 0 ? s.converter : jt;
       this._$Em = r;
       const l = o.fromAttribute(t, s.type);
       this[r] = l ?? this._$Ej?.get(r) ?? l, this._$Em = null;
@@ -189,7 +189,7 @@ let Ke = class extends HTMLElement {
   requestUpdate(e, t, i, r = !1, s) {
     if (e !== void 0) {
       const o = this.constructor;
-      if (r === !1 && (s = this[e]), i ??= o.getPropertyOptions(e), !((i.hasChanged ?? Ri)(s, t) || i.useDefault && i.reflect && s === this._$Ej?.get(e) && !this.hasAttribute(o._$Eu(e, i)))) return;
+      if (r === !1 && (s = this[e]), i ??= o.getPropertyOptions(e), !((i.hasChanged ?? Gi)(s, t) || i.useDefault && i.reflect && s === this._$Ej?.get(e) && !this.hasAttribute(o._$Eu(e, i)))) return;
       this.C(e, t, i);
     }
     this.isUpdatePending === !1 && (this._$ES = this._$EP());
@@ -257,56 +257,56 @@ let Ke = class extends HTMLElement {
   firstUpdated(e) {
   }
 };
-Ke.elementStyles = [], Ke.shadowRootOptions = { mode: "open" }, Ke[vt("elementProperties")] = /* @__PURE__ */ new Map(), Ke[vt("finalized")] = /* @__PURE__ */ new Map(), is?.({ ReactiveElement: Ke }), (ri.reactiveElementVersions ??= []).push("2.1.2");
+Ye.elementStyles = [], Ye.shadowRootOptions = { mode: "open" }, Ye[$t("elementProperties")] = /* @__PURE__ */ new Map(), Ye[$t("finalized")] = /* @__PURE__ */ new Map(), ns?.({ ReactiveElement: Ye }), (si.reactiveElementVersions ??= []).push("2.1.2");
 /**
  * @license
  * Copyright 2017 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
  */
-const Fi = globalThis, gn = (n) => n, jt = Fi.trustedTypes, mn = jt ? jt.createPolicy("lit-html", { createHTML: (n) => n }) : void 0, Yn = "$lit$", be = `lit$${Math.random().toFixed(9).slice(2)}$`, Qn = "?" + be, ns = `<${Qn}>`, Ge = document, Ct = () => Ge.createComment(""), At = (n) => n === null || typeof n != "object" && typeof n != "function", Gi = Array.isArray, rs = (n) => Gi(n) || typeof n?.[Symbol.iterator] == "function", xi = `[ 	
-\f\r]`, _t = /<(?:(!--|\/[^a-zA-Z])|(\/?[a-zA-Z][^>\s]*)|(\/?$))/g, yn = /-->/g, _n = />/g, De = RegExp(`>|${xi}(?:([^\\s"'>=/]+)(${xi}*=${xi}*(?:[^ 	
-\f\r"'\`<>=]|("|')|))|$)`, "g"), bn = /'/g, wn = /"/g, Xn = /^(?:script|style|textarea|title)$/i, Jn = (n) => (e, ...t) => ({ _$litType$: n, strings: e, values: t }), c = Jn(1), w = Jn(2), Xe = Symbol.for("lit-noChange"), G = Symbol.for("lit-nothing"), xn = /* @__PURE__ */ new WeakMap(), Re = Ge.createTreeWalker(Ge, 129);
-function er(n, e) {
-  if (!Gi(n) || !n.hasOwnProperty("raw")) throw Error("invalid template strings array");
-  return mn !== void 0 ? mn.createHTML(e) : e;
+const Wi = globalThis, yn = (n) => n, qt = Wi.trustedTypes, _n = qt ? qt.createPolicy("lit-html", { createHTML: (n) => n }) : void 0, Qn = "$lit$", be = `lit$${Math.random().toFixed(9).slice(2)}$`, Xn = "?" + be, rs = `<${Xn}>`, We = document, At = () => We.createComment(""), St = (n) => n === null || typeof n != "object" && typeof n != "function", Ui = Array.isArray, ss = (n) => Ui(n) || typeof n?.[Symbol.iterator] == "function", vi = `[ 	
+\f\r]`, bt = /<(?:(!--|\/[^a-zA-Z])|(\/?[a-zA-Z][^>\s]*)|(\/?$))/g, bn = /-->/g, wn = />/g, Pe = RegExp(`>|${vi}(?:([^\\s"'>=/]+)(${vi}*=${vi}*(?:[^ 	
+\f\r"'\`<>=]|("|')|))|$)`, "g"), xn = /'/g, vn = /"/g, Jn = /^(?:script|style|textarea|title)$/i, er = (n) => (e, ...t) => ({ _$litType$: n, strings: e, values: t }), c = er(1), w = er(2), Je = Symbol.for("lit-noChange"), G = Symbol.for("lit-nothing"), $n = /* @__PURE__ */ new WeakMap(), Re = We.createTreeWalker(We, 129);
+function tr(n, e) {
+  if (!Ui(n) || !n.hasOwnProperty("raw")) throw Error("invalid template strings array");
+  return _n !== void 0 ? _n.createHTML(e) : e;
 }
-const ss = (n, e) => {
+const os = (n, e) => {
   const t = n.length - 1, i = [];
-  let r, s = e === 2 ? "<svg>" : e === 3 ? "<math>" : "", o = _t;
+  let r, s = e === 2 ? "<svg>" : e === 3 ? "<math>" : "", o = bt;
   for (let l = 0; l < t; l++) {
     const a = n[l];
     let h, d, p = -1, f = 0;
-    for (; f < a.length && (o.lastIndex = f, d = o.exec(a), d !== null); ) f = o.lastIndex, o === _t ? d[1] === "!--" ? o = yn : d[1] !== void 0 ? o = _n : d[2] !== void 0 ? (Xn.test(d[2]) && (r = RegExp("</" + d[2], "g")), o = De) : d[3] !== void 0 && (o = De) : o === De ? d[0] === ">" ? (o = r ?? _t, p = -1) : d[1] === void 0 ? p = -2 : (p = o.lastIndex - d[2].length, h = d[1], o = d[3] === void 0 ? De : d[3] === '"' ? wn : bn) : o === wn || o === bn ? o = De : o === yn || o === _n ? o = _t : (o = De, r = void 0);
-    const g = o === De && n[l + 1].startsWith("/>") ? " " : "";
-    s += o === _t ? a + ns : p >= 0 ? (i.push(h), a.slice(0, p) + Yn + a.slice(p) + be + g) : a + be + (p === -2 ? l : g);
+    for (; f < a.length && (o.lastIndex = f, d = o.exec(a), d !== null); ) f = o.lastIndex, o === bt ? d[1] === "!--" ? o = bn : d[1] !== void 0 ? o = wn : d[2] !== void 0 ? (Jn.test(d[2]) && (r = RegExp("</" + d[2], "g")), o = Pe) : d[3] !== void 0 && (o = Pe) : o === Pe ? d[0] === ">" ? (o = r ?? bt, p = -1) : d[1] === void 0 ? p = -2 : (p = o.lastIndex - d[2].length, h = d[1], o = d[3] === void 0 ? Pe : d[3] === '"' ? vn : xn) : o === vn || o === xn ? o = Pe : o === bn || o === wn ? o = bt : (o = Pe, r = void 0);
+    const g = o === Pe && n[l + 1].startsWith("/>") ? " " : "";
+    s += o === bt ? a + rs : p >= 0 ? (i.push(h), a.slice(0, p) + Qn + a.slice(p) + be + g) : a + be + (p === -2 ? l : g);
   }
-  return [er(n, s + (n[t] || "<?>") + (e === 2 ? "</svg>" : e === 3 ? "</math>" : "")), i];
+  return [tr(n, s + (n[t] || "<?>") + (e === 2 ? "</svg>" : e === 3 ? "</math>" : "")), i];
 };
-let Mi = class tr {
+let zi = class ir {
   constructor({ strings: e, _$litType$: t }, i) {
     let r;
     this.parts = [];
     let s = 0, o = 0;
-    const l = e.length - 1, a = this.parts, [h, d] = ss(e, t);
-    if (this.el = tr.createElement(h, i), Re.currentNode = this.el.content, t === 2 || t === 3) {
+    const l = e.length - 1, a = this.parts, [h, d] = os(e, t);
+    if (this.el = ir.createElement(h, i), Re.currentNode = this.el.content, t === 2 || t === 3) {
       const p = this.el.content.firstChild;
       p.replaceWith(...p.childNodes);
     }
     for (; (r = Re.nextNode()) !== null && a.length < l; ) {
       if (r.nodeType === 1) {
-        if (r.hasAttributes()) for (const p of r.getAttributeNames()) if (p.endsWith(Yn)) {
+        if (r.hasAttributes()) for (const p of r.getAttributeNames()) if (p.endsWith(Qn)) {
           const f = d[o++], g = r.getAttribute(p).split(be), b = /([.?@])?(.*)/.exec(f);
-          a.push({ type: 1, index: s, name: b[2], strings: g, ctor: b[1] === "." ? as : b[1] === "?" ? ls : b[1] === "@" ? cs : si }), r.removeAttribute(p);
+          a.push({ type: 1, index: s, name: b[2], strings: g, ctor: b[1] === "." ? ls : b[1] === "?" ? cs : b[1] === "@" ? ds : oi }), r.removeAttribute(p);
         } else p.startsWith(be) && (a.push({ type: 6, index: s }), r.removeAttribute(p));
-        if (Xn.test(r.tagName)) {
+        if (Jn.test(r.tagName)) {
           const p = r.textContent.split(be), f = p.length - 1;
           if (f > 0) {
-            r.textContent = jt ? jt.emptyScript : "";
-            for (let g = 0; g < f; g++) r.append(p[g], Ct()), Re.nextNode(), a.push({ type: 2, index: ++s });
-            r.append(p[f], Ct());
+            r.textContent = qt ? qt.emptyScript : "";
+            for (let g = 0; g < f; g++) r.append(p[g], At()), Re.nextNode(), a.push({ type: 2, index: ++s });
+            r.append(p[f], At());
           }
         }
-      } else if (r.nodeType === 8) if (r.data === Qn) a.push({ type: 2, index: s });
+      } else if (r.nodeType === 8) if (r.data === Xn) a.push({ type: 2, index: s });
       else {
         let p = -1;
         for (; (p = r.data.indexOf(be, p + 1)) !== -1; ) a.push({ type: 7, index: s }), p += be.length - 1;
@@ -315,17 +315,17 @@ let Mi = class tr {
     }
   }
   static createElement(e, t) {
-    const i = Ge.createElement("template");
+    const i = We.createElement("template");
     return i.innerHTML = e, i;
   }
 };
-function Je(n, e, t = n, i) {
-  if (e === Xe) return e;
+function et(n, e, t = n, i) {
+  if (e === Je) return e;
   let r = i !== void 0 ? t._$Co?.[i] : t._$Cl;
-  const s = At(e) ? void 0 : e._$litDirective$;
-  return r?.constructor !== s && (r?._$AO?.(!1), s === void 0 ? r = void 0 : (r = new s(n), r._$AT(n, t, i)), i !== void 0 ? (t._$Co ??= [])[i] = r : t._$Cl = r), r !== void 0 && (e = Je(n, r._$AS(n, e.values), r, i)), e;
+  const s = St(e) ? void 0 : e._$litDirective$;
+  return r?.constructor !== s && (r?._$AO?.(!1), s === void 0 ? r = void 0 : (r = new s(n), r._$AT(n, t, i)), i !== void 0 ? (t._$Co ??= [])[i] = r : t._$Cl = r), r !== void 0 && (e = et(n, r._$AS(n, e.values), r, i)), e;
 }
-let os = class {
+let as = class {
   constructor(e, t) {
     this._$AV = [], this._$AN = void 0, this._$AD = e, this._$AM = t;
   }
@@ -336,23 +336,23 @@ let os = class {
     return this._$AM._$AU;
   }
   u(e) {
-    const { el: { content: t }, parts: i } = this._$AD, r = (e?.creationScope ?? Ge).importNode(t, !0);
+    const { el: { content: t }, parts: i } = this._$AD, r = (e?.creationScope ?? We).importNode(t, !0);
     Re.currentNode = r;
     let s = Re.nextNode(), o = 0, l = 0, a = i[0];
     for (; a !== void 0; ) {
       if (o === a.index) {
         let h;
-        a.type === 2 ? h = new Wi(s, s.nextSibling, this, e) : a.type === 1 ? h = new a.ctor(s, a.name, a.strings, this, e) : a.type === 6 && (h = new ds(s, this, e)), this._$AV.push(h), a = i[++l];
+        a.type === 2 ? h = new Ii(s, s.nextSibling, this, e) : a.type === 1 ? h = new a.ctor(s, a.name, a.strings, this, e) : a.type === 6 && (h = new hs(s, this, e)), this._$AV.push(h), a = i[++l];
       }
       o !== a?.index && (s = Re.nextNode(), o++);
     }
-    return Re.currentNode = Ge, r;
+    return Re.currentNode = We, r;
   }
   p(e) {
     let t = 0;
     for (const i of this._$AV) i !== void 0 && (i.strings !== void 0 ? (i._$AI(e, i, t), t += i.strings.length - 2) : i._$AI(e[t])), t++;
   }
-}, Wi = class ir {
+}, Ii = class nr {
   get _$AU() {
     return this._$AM?._$AU ?? this._$Cv;
   }
@@ -371,7 +371,7 @@ let os = class {
     return this._$AB;
   }
   _$AI(e, t = this) {
-    e = Je(this, e, t), At(e) ? e === G || e == null || e === "" ? (this._$AH !== G && this._$AR(), this._$AH = G) : e !== this._$AH && e !== Xe && this._(e) : e._$litType$ !== void 0 ? this.$(e) : e.nodeType !== void 0 ? this.T(e) : rs(e) ? this.k(e) : this._(e);
+    e = et(this, e, t), St(e) ? e === G || e == null || e === "" ? (this._$AH !== G && this._$AR(), this._$AH = G) : e !== this._$AH && e !== Je && this._(e) : e._$litType$ !== void 0 ? this.$(e) : e.nodeType !== void 0 ? this.T(e) : ss(e) ? this.k(e) : this._(e);
   }
   O(e) {
     return this._$AA.parentNode.insertBefore(e, this._$AB);
@@ -380,37 +380,37 @@ let os = class {
     this._$AH !== e && (this._$AR(), this._$AH = this.O(e));
   }
   _(e) {
-    this._$AH !== G && At(this._$AH) ? this._$AA.nextSibling.data = e : this.T(Ge.createTextNode(e)), this._$AH = e;
+    this._$AH !== G && St(this._$AH) ? this._$AA.nextSibling.data = e : this.T(We.createTextNode(e)), this._$AH = e;
   }
   $(e) {
-    const { values: t, _$litType$: i } = e, r = typeof i == "number" ? this._$AC(e) : (i.el === void 0 && (i.el = Mi.createElement(er(i.h, i.h[0]), this.options)), i);
+    const { values: t, _$litType$: i } = e, r = typeof i == "number" ? this._$AC(e) : (i.el === void 0 && (i.el = zi.createElement(tr(i.h, i.h[0]), this.options)), i);
     if (this._$AH?._$AD === r) this._$AH.p(t);
     else {
-      const s = new os(r, this), o = s.u(this.options);
+      const s = new as(r, this), o = s.u(this.options);
       s.p(t), this.T(o), this._$AH = s;
     }
   }
   _$AC(e) {
-    let t = xn.get(e.strings);
-    return t === void 0 && xn.set(e.strings, t = new Mi(e)), t;
+    let t = $n.get(e.strings);
+    return t === void 0 && $n.set(e.strings, t = new zi(e)), t;
   }
   k(e) {
-    Gi(this._$AH) || (this._$AH = [], this._$AR());
+    Ui(this._$AH) || (this._$AH = [], this._$AR());
     const t = this._$AH;
     let i, r = 0;
-    for (const s of e) r === t.length ? t.push(i = new ir(this.O(Ct()), this.O(Ct()), this, this.options)) : i = t[r], i._$AI(s), r++;
+    for (const s of e) r === t.length ? t.push(i = new nr(this.O(At()), this.O(At()), this, this.options)) : i = t[r], i._$AI(s), r++;
     r < t.length && (this._$AR(i && i._$AB.nextSibling, r), t.length = r);
   }
   _$AR(e = this._$AA.nextSibling, t) {
     for (this._$AP?.(!1, !0, t); e !== this._$AB; ) {
-      const i = gn(e).nextSibling;
-      gn(e).remove(), e = i;
+      const i = yn(e).nextSibling;
+      yn(e).remove(), e = i;
     }
   }
   setConnected(e) {
     this._$AM === void 0 && (this._$Cv = e, this._$AP?.(e));
   }
-}, si = class {
+}, oi = class {
   get tagName() {
     return this.element.tagName;
   }
@@ -423,44 +423,44 @@ let os = class {
   _$AI(e, t = this, i, r) {
     const s = this.strings;
     let o = !1;
-    if (s === void 0) e = Je(this, e, t, 0), o = !At(e) || e !== this._$AH && e !== Xe, o && (this._$AH = e);
+    if (s === void 0) e = et(this, e, t, 0), o = !St(e) || e !== this._$AH && e !== Je, o && (this._$AH = e);
     else {
       const l = e;
       let a, h;
-      for (e = s[0], a = 0; a < s.length - 1; a++) h = Je(this, l[i + a], t, a), h === Xe && (h = this._$AH[a]), o ||= !At(h) || h !== this._$AH[a], h === G ? e = G : e !== G && (e += (h ?? "") + s[a + 1]), this._$AH[a] = h;
+      for (e = s[0], a = 0; a < s.length - 1; a++) h = et(this, l[i + a], t, a), h === Je && (h = this._$AH[a]), o ||= !St(h) || h !== this._$AH[a], h === G ? e = G : e !== G && (e += (h ?? "") + s[a + 1]), this._$AH[a] = h;
     }
     o && !r && this.j(e);
   }
   j(e) {
     e === G ? this.element.removeAttribute(this.name) : this.element.setAttribute(this.name, e ?? "");
   }
-}, as = class extends si {
+}, ls = class extends oi {
   constructor() {
     super(...arguments), this.type = 3;
   }
   j(e) {
     this.element[this.name] = e === G ? void 0 : e;
   }
-}, ls = class extends si {
+}, cs = class extends oi {
   constructor() {
     super(...arguments), this.type = 4;
   }
   j(e) {
     this.element.toggleAttribute(this.name, !!e && e !== G);
   }
-}, cs = class extends si {
+}, ds = class extends oi {
   constructor(e, t, i, r, s) {
     super(e, t, i, r, s), this.type = 5;
   }
   _$AI(e, t = this) {
-    if ((e = Je(this, e, t, 0) ?? G) === Xe) return;
+    if ((e = et(this, e, t, 0) ?? G) === Je) return;
     const i = this._$AH, r = e === G && i !== G || e.capture !== i.capture || e.once !== i.once || e.passive !== i.passive, s = e !== G && (i === G || r);
     r && this.element.removeEventListener(this.name, this, i), s && this.element.addEventListener(this.name, this, e), this._$AH = e;
   }
   handleEvent(e) {
     typeof this._$AH == "function" ? this._$AH.call(this.options?.host ?? this.element, e) : this._$AH.handleEvent(e);
   }
-}, ds = class {
+}, hs = class {
   constructor(e, t, i) {
     this.element = e, this.type = 6, this._$AN = void 0, this._$AM = t, this.options = i;
   }
@@ -468,17 +468,17 @@ let os = class {
     return this._$AM._$AU;
   }
   _$AI(e) {
-    Je(this, e);
+    et(this, e);
   }
 };
-const hs = Fi.litHtmlPolyfillSupport;
-hs?.(Mi, Wi), (Fi.litHtmlVersions ??= []).push("3.3.3");
-const ps = (n, e, t) => {
+const ps = Wi.litHtmlPolyfillSupport;
+ps?.(zi, Ii), (Wi.litHtmlVersions ??= []).push("3.3.3");
+const us = (n, e, t) => {
   const i = t?.renderBefore ?? e;
   let r = i._$litPart$;
   if (r === void 0) {
     const s = t?.renderBefore ?? null;
-    i._$litPart$ = r = new Wi(e.insertBefore(Ct(), s), s, void 0, t ?? {});
+    i._$litPart$ = r = new Ii(e.insertBefore(At(), s), s, void 0, t ?? {});
   }
   return r._$AI(n), r;
 };
@@ -487,8 +487,8 @@ const ps = (n, e, t) => {
  * Copyright 2017 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
  */
-const Ui = globalThis;
-let N = class extends Ke {
+const Bi = globalThis;
+let E = class extends Ye {
   constructor() {
     super(...arguments), this.renderOptions = { host: this }, this._$Do = void 0;
   }
@@ -498,7 +498,7 @@ let N = class extends Ke {
   }
   update(e) {
     const t = this.render();
-    this.hasUpdated || (this.renderOptions.isConnected = this.isConnected), super.update(e), this._$Do = ps(t, this.renderRoot, this.renderOptions);
+    this.hasUpdated || (this.renderOptions.isConnected = this.isConnected), super.update(e), this._$Do = us(t, this.renderRoot, this.renderOptions);
   }
   connectedCallback() {
     super.connectedCallback(), this._$Do?.setConnected(!0);
@@ -507,13 +507,13 @@ let N = class extends Ke {
     super.disconnectedCallback(), this._$Do?.setConnected(!1);
   }
   render() {
-    return Xe;
+    return Je;
   }
 };
-N._$litElement$ = !0, N.finalized = !0, Ui.litElementHydrateSupport?.({ LitElement: N });
-const us = Ui.litElementPolyfillSupport;
-us?.({ LitElement: N });
-(Ui.litElementVersions ??= []).push("4.2.2");
+E._$litElement$ = !0, E.finalized = !0, Bi.litElementHydrateSupport?.({ LitElement: E });
+const fs = Bi.litElementPolyfillSupport;
+fs?.({ LitElement: E });
+(Bi.litElementVersions ??= []).push("4.2.2");
 /**
  * @license
  * Copyright 2017 Google LLC
@@ -529,7 +529,7 @@ const O = (n) => (e, t) => {
  * Copyright 2017 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
  */
-const fs = { attribute: !0, type: String, converter: Bt, reflect: !1, hasChanged: Ri }, gs = (n = fs, e, t) => {
+const gs = { attribute: !0, type: String, converter: jt, reflect: !1, hasChanged: Gi }, ms = (n = gs, e, t) => {
   const { kind: i, metadata: r } = t;
   let s = globalThis.litPropertyMetadata.get(r);
   if (s === void 0 && globalThis.litPropertyMetadata.set(r, s = /* @__PURE__ */ new Map()), i === "setter" && ((n = Object.create(n)).wrapped = !0), s.set(t.name, n), i === "accessor") {
@@ -551,7 +551,7 @@ const fs = { attribute: !0, type: String, converter: Bt, reflect: !1, hasChanged
   throw Error("Unsupported decorator location: " + i);
 };
 function m(n) {
-  return (e, t) => typeof t == "object" ? gs(n, e, t) : ((i, r, s) => {
+  return (e, t) => typeof t == "object" ? ms(n, e, t) : ((i, r, s) => {
     const o = r.hasOwnProperty(s);
     return r.constructor.createProperty(s, i), o ? Object.getOwnPropertyDescriptor(r, s) : void 0;
   })(n, e, t);
@@ -569,26 +569,26 @@ function Z(n) {
  * Copyright 2017 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
  */
-const ms = (n, e, t) => (t.configurable = !0, t.enumerable = !0, Reflect.decorate && typeof e != "object" && Object.defineProperty(n, e, t), t);
+const ys = (n, e, t) => (t.configurable = !0, t.enumerable = !0, Reflect.decorate && typeof e != "object" && Object.defineProperty(n, e, t), t);
 /**
  * @license
  * Copyright 2017 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
  */
-function ys(n, e) {
+function _s(n, e) {
   return (t, i, r) => {
     const s = (o) => o.renderRoot?.querySelector(n) ?? null;
-    return ms(t, i, { get() {
+    return ys(t, i, { get() {
       return s(this);
     } });
   };
 }
-var _s = Object.defineProperty, bs = Object.getOwnPropertyDescriptor, re = (n, e, t, i) => {
-  for (var r = i > 1 ? void 0 : i ? bs(e, t) : e, s = n.length - 1, o; s >= 0; s--)
+var bs = Object.defineProperty, ws = Object.getOwnPropertyDescriptor, re = (n, e, t, i) => {
+  for (var r = i > 1 ? void 0 : i ? ws(e, t) : e, s = n.length - 1, o; s >= 0; s--)
     (o = n[s]) && (r = (i ? o(e, t, r) : o(r)) || r);
-  return i && r && _s(e, t, r), r;
+  return i && r && bs(e, t, r), r;
 };
-let Y = class extends N {
+let Y = class extends E {
   constructor() {
     super(...arguments), this.forecast = [], this.forecastLoading = !1, this.show_forecast = !0, this.config = {}, this.compact = !1, this.startTomorrow = !1, this.maxDays = 7, this.alignRight = !1;
   }
@@ -852,12 +852,12 @@ re([
 Y = re([
   O("daily-forecast-chart")
 ], Y);
-var ws = Object.defineProperty, xs = Object.getOwnPropertyDescriptor, dt = (n, e, t, i) => {
-  for (var r = i > 1 ? void 0 : i ? xs(e, t) : e, s = n.length - 1, o; s >= 0; s--)
+var xs = Object.defineProperty, vs = Object.getOwnPropertyDescriptor, ht = (n, e, t, i) => {
+  for (var r = i > 1 ? void 0 : i ? vs(e, t) : e, s = n.length - 1, o; s >= 0; s--)
     (o = n[s]) && (r = (i ? o(e, t, r) : o(r)) || r);
-  return i && r && ws(e, t, r), r;
+  return i && r && xs(e, t, r), r;
 };
-let ke = class extends N {
+let Ce = class extends E {
   constructor() {
     super(...arguments), this.hourlyForecast = [], this.forecastHours = 12, this.show_temperature = !0, this._measuredWidth = 0, this._measuredHeight = 0;
   }
@@ -941,7 +941,7 @@ let ke = class extends N {
     `;
   }
 };
-ke.styles = T`
+Ce.styles = T`
     :host {
       display: block;
       width: 100%;
@@ -983,30 +983,30 @@ ke.styles = T`
       min-height: 100px;
     }
   `;
-dt([
+ht([
   m({ type: Array })
-], ke.prototype, "hourlyForecast", 2);
-dt([
+], Ce.prototype, "hourlyForecast", 2);
+ht([
   m({ type: Number })
-], ke.prototype, "forecastHours", 2);
-dt([
+], Ce.prototype, "forecastHours", 2);
+ht([
   m({ type: Boolean })
-], ke.prototype, "show_temperature", 2);
-dt([
+], Ce.prototype, "show_temperature", 2);
+ht([
   m({ type: Function })
-], ke.prototype, "_t", 2);
-dt([
+], Ce.prototype, "_t", 2);
+ht([
   m({ type: Function })
-], ke.prototype, "showHoursChartLabel", 2);
-ke = dt([
+], Ce.prototype, "showHoursChartLabel", 2);
+Ce = ht([
   O("forecast-temperature-chart")
-], ke);
-var vs = Object.defineProperty, $s = Object.getOwnPropertyDescriptor, ht = (n, e, t, i) => {
-  for (var r = i > 1 ? void 0 : i ? $s(e, t) : e, s = n.length - 1, o; s >= 0; s--)
+], Ce);
+var $s = Object.defineProperty, ks = Object.getOwnPropertyDescriptor, pt = (n, e, t, i) => {
+  for (var r = i > 1 ? void 0 : i ? ks(e, t) : e, s = n.length - 1, o; s >= 0; s--)
     (o = n[s]) && (r = (i ? o(e, t, r) : o(r)) || r);
-  return i && r && vs(e, t, r), r;
+  return i && r && $s(e, t, r), r;
 };
-let Ce = class extends N {
+let Ae = class extends E {
   constructor() {
     super(...arguments), this.hourlyForecast = [], this.forecastHours = 12, this.show_precipitation = !0, this._measuredWidth = 0, this._measuredHeight = 0;
   }
@@ -1085,12 +1085,12 @@ let Ce = class extends N {
       }
       const B = [], j = [], C = Math.max(2, k * 0.55);
       for (let v = 0; v < t; v++) {
-        const M = n[v], D = x(v) - C / 2, $ = typeof M.precipitation_probability == "number" && !isNaN(M.precipitation_probability) ? M.precipitation_probability : 0, F = typeof M.precipitation == "number" && !isNaN(M.precipitation) ? M.precipitation : 0, Q = $ / 100 * 5 / g * d;
+        const M = n[v], D = x(v) - C / 2, $ = typeof M.precipitation_probability == "number" && !isNaN(M.precipitation_probability) ? M.precipitation_probability : 0, R = typeof M.precipitation == "number" && !isNaN(M.precipitation) ? M.precipitation : 0, Q = $ / 100 * 5 / g * d;
         if ($ > 0 && B.push(w`
                   <rect x="${D}" y="${b(0) - Q}" width="${C}" height="${Q}"
                     fill="#87898e" opacity="0.35" rx="1.5"/>
-                `), F > 0) {
-          const ye = F / g * d;
+                `), R > 0) {
+          const ye = R / g * d;
           j.push(w`
                   <rect x="${D}" y="${b(0) - ye}" width="${C}" height="${ye}"
                     fill="url(#precip-grad)" opacity="1" rx="1.5"/>
@@ -1115,7 +1115,7 @@ let Ce = class extends N {
     `;
   }
 };
-Ce.styles = T`
+Ae.styles = T`
     :host {
       display: block;
       width: 100%;
@@ -1157,30 +1157,30 @@ Ce.styles = T`
       min-height: 100px;
     }
   `;
-ht([
+pt([
   m({ type: Array })
-], Ce.prototype, "hourlyForecast", 2);
-ht([
+], Ae.prototype, "hourlyForecast", 2);
+pt([
   m({ type: Number })
-], Ce.prototype, "forecastHours", 2);
-ht([
+], Ae.prototype, "forecastHours", 2);
+pt([
   m({ type: Boolean })
-], Ce.prototype, "show_precipitation", 2);
-ht([
+], Ae.prototype, "show_precipitation", 2);
+pt([
   m({ type: Function })
-], Ce.prototype, "_t", 2);
-ht([
+], Ae.prototype, "_t", 2);
+pt([
   m({ type: Function })
-], Ce.prototype, "showHoursChartLabel", 2);
-Ce = ht([
+], Ae.prototype, "showHoursChartLabel", 2);
+Ae = pt([
   O("precipitation-chart")
-], Ce);
-var ks = Object.defineProperty, Cs = Object.getOwnPropertyDescriptor, Le = (n, e, t, i) => {
-  for (var r = i > 1 ? void 0 : i ? Cs(e, t) : e, s = n.length - 1, o; s >= 0; s--)
+], Ae);
+var Cs = Object.defineProperty, As = Object.getOwnPropertyDescriptor, Ne = (n, e, t, i) => {
+  for (var r = i > 1 ? void 0 : i ? As(e, t) : e, s = n.length - 1, o; s >= 0; s--)
     (o = n[s]) && (r = (i ? o(e, t, r) : o(r)) || r);
-  return i && r && ks(e, t, r), r;
+  return i && r && Cs(e, t, r), r;
 };
-let le = class extends N {
+let le = class extends E {
   constructor() {
     super(...arguments), this.hourlyForecast = [], this.forecastHours = 12, this.show_sunshine = !0;
   }
@@ -1373,36 +1373,36 @@ le.styles = T`
       gap: 8px;
     }
   `;
-Le([
+Ne([
   m({ type: Array })
 ], le.prototype, "hourlyForecast", 2);
-Le([
+Ne([
   m({ type: Number })
 ], le.prototype, "forecastHours", 2);
-Le([
+Ne([
   m({ type: Boolean })
 ], le.prototype, "show_sunshine", 2);
-Le([
+Ne([
   m({ type: Object })
 ], le.prototype, "weatherEntity", 2);
-Le([
+Ne([
   m({ type: Object })
 ], le.prototype, "sun_entity", 2);
-Le([
+Ne([
   m({ type: Function })
 ], le.prototype, "_t", 2);
-Le([
+Ne([
   m({ type: Function })
 ], le.prototype, "showHoursChartLabel", 2);
-le = Le([
+le = Ne([
   O("sunshine-chart")
 ], le);
-var As = Object.defineProperty, Ss = Object.getOwnPropertyDescriptor, pt = (n, e, t, i) => {
-  for (var r = i > 1 ? void 0 : i ? Ss(e, t) : e, s = n.length - 1, o; s >= 0; s--)
+var Ss = Object.defineProperty, Ms = Object.getOwnPropertyDescriptor, ut = (n, e, t, i) => {
+  for (var r = i > 1 ? void 0 : i ? Ms(e, t) : e, s = n.length - 1, o; s >= 0; s--)
     (o = n[s]) && (r = (i ? o(e, t, r) : o(r)) || r);
-  return i && r && As(e, t, r), r;
+  return i && r && Ss(e, t, r), r;
 };
-let Ae = class extends N {
+let Se = class extends E {
   constructor() {
     super(...arguments), this.hourlyForecast = [], this.forecastHours = 12, this.show_wind = !0, this._measuredWidth = 0, this._measuredHeight = 0;
   }
@@ -1440,38 +1440,38 @@ let Ae = class extends N {
         ($) => typeof $.wind_speed == "number" && !isNaN($.wind_speed) ? $.wind_speed : null
       ), g = f.filter(($) => $ !== null), b = Math.max(10, Math.ceil(Math.max(...g) / 5) * 5), k = b, x = ($) => a + p - $ / k * p, L = d / (t - 1), P = ($) => o + $ * L, H = [];
       for (let $ = 0; $ <= b; $ += 5) {
-        const F = x($), q = $ % 10 === 0;
+        const R = x($), q = $ % 10 === 0;
         H.push(w`
-                <line x1="${o}" y1="${F}" x2="${i - l}" y2="${F}"
+                <line x1="${o}" y1="${R}" x2="${i - l}" y2="${R}"
                   stroke="#888" stroke-width="${q ? 1 : 0.6}"
                   stroke-dasharray="${q ? "4,3" : "2,3"}" opacity="0.6"/>
-                <text x="${o - 3}" y="${F}" text-anchor="end" dominant-baseline="middle"
+                <text x="${o - 3}" y="${R}" text-anchor="end" dominant-baseline="middle"
                   font-size="8" fill="#888" opacity="0.8">${$}</text>
               `);
       }
       const B = [];
       for (let $ = 0; $ < t; $++) {
-        const F = P($), q = n[$]?.datetime ? new Date(n[$].datetime) : null;
+        const R = P($), q = n[$]?.datetime ? new Date(n[$].datetime) : null;
         (q ? q.getHours() % 3 === 0 : t <= 8) && B.push(w`
-                  <line x1="${F}" y1="${a}" x2="${F}" y2="${a + p}"
+                  <line x1="${R}" y1="${a}" x2="${R}" y2="${a + p}"
                     stroke="#888" stroke-width="0.4" stroke-dasharray="2,3" opacity="0.3"/>
-                  <text x="${F}" y="${s - r - 2}" text-anchor="middle"
+                  <text x="${R}" y="${s - r - 2}" text-anchor="middle"
                     font-size="8" fill="#888" opacity="0.7">
                     ${q ? q.getHours() + "h" : ""}
                   </text>
                 `);
       }
-      const j = f.map(($, F) => $ !== null ? `${P(F)},${x($)}` : "").filter(Boolean).join(" "), C = f.map(
-        ($, F) => $ !== null ? w`<circle cx="${P(F)}" cy="${x($)}" r="2.5" fill="#44739e"/>` : null
-      ), v = s - r / 2 + 2, M = 7, D = n.map(($, F) => {
+      const j = f.map(($, R) => $ !== null ? `${P(R)},${x($)}` : "").filter(Boolean).join(" "), C = f.map(
+        ($, R) => $ !== null ? w`<circle cx="${P(R)}" cy="${x($)}" r="2.5" fill="#44739e"/>` : null
+      ), v = s - r / 2 + 2, M = 7, D = n.map(($, R) => {
         const q = typeof $.wind_bearing == "number" && !isNaN($.wind_bearing) ? $.wind_bearing : null;
         if (q === null) return null;
-        const Q = P(F), ye = v, Ve = (q - 90) * (Math.PI / 180), mi = Q + M * Math.cos(Ve), ae = ye + M * Math.sin(Ve), Te = Ve + Math.PI, yi = Q + (M - 2) * Math.cos(Te), _i = ye + (M - 2) * Math.sin(Te);
+        const Q = P(R), ye = v, Ze = (q - 90) * (Math.PI / 180), yi = Q + M * Math.cos(Ze), ae = ye + M * Math.sin(Ze), Oe = Ze + Math.PI, _i = Q + (M - 2) * Math.cos(Oe), bi = ye + (M - 2) * Math.sin(Oe);
         return w`
                 <circle cx="${Q}" cy="${ye}" r="${M}" fill="none" stroke="#44739e" stroke-width="0.8" opacity="0.5"/>
-                <line x1="${yi}" y1="${_i}" x2="${mi}" y2="${ae}"
+                <line x1="${_i}" y1="${bi}" x2="${yi}" y2="${ae}"
                   stroke="#44739e" stroke-width="1.5" stroke-linecap="round" opacity="0.85"/>
-                <circle cx="${mi}" cy="${ae}" r="1.5" fill="#44739e" opacity="0.85"/>
+                <circle cx="${yi}" cy="${ae}" r="1.5" fill="#44739e" opacity="0.85"/>
               `;
       });
       return w`<svg width="100%" height="100%" viewBox="0 0 ${i} ${s}" style="display:block;">
@@ -1488,7 +1488,7 @@ let Ae = class extends N {
     `;
   }
 };
-Ae.styles = T`
+Se.styles = T`
     :host {
       display: block;
       width: 100%;
@@ -1530,30 +1530,30 @@ Ae.styles = T`
       min-height: 122px;
     }
   `;
-pt([
+ut([
   m({ type: Array })
-], Ae.prototype, "hourlyForecast", 2);
-pt([
+], Se.prototype, "hourlyForecast", 2);
+ut([
   m({ type: Number })
-], Ae.prototype, "forecastHours", 2);
-pt([
+], Se.prototype, "forecastHours", 2);
+ut([
   m({ type: Boolean })
-], Ae.prototype, "show_wind", 2);
-pt([
+], Se.prototype, "show_wind", 2);
+ut([
   m({ type: Function })
-], Ae.prototype, "_t", 2);
-pt([
+], Se.prototype, "_t", 2);
+ut([
   m({ type: Function })
-], Ae.prototype, "showHoursChartLabel", 2);
-Ae = pt([
+], Se.prototype, "showHoursChartLabel", 2);
+Se = ut([
   O("wind-chart")
-], Ae);
-var Ms = Object.defineProperty, zs = Object.getOwnPropertyDescriptor, ut = (n, e, t, i) => {
-  for (var r = i > 1 ? void 0 : i ? zs(e, t) : e, s = n.length - 1, o; s >= 0; s--)
+], Se);
+var zs = Object.defineProperty, Ls = Object.getOwnPropertyDescriptor, ft = (n, e, t, i) => {
+  for (var r = i > 1 ? void 0 : i ? Ls(e, t) : e, s = n.length - 1, o; s >= 0; s--)
     (o = n[s]) && (r = (i ? o(e, t, r) : o(r)) || r);
-  return i && r && Ms(e, t, r), r;
+  return i && r && zs(e, t, r), r;
 };
-let Se = class extends N {
+let Me = class extends E {
   constructor() {
     super(...arguments), this.forecast = [], this.hourlyForecast = [], this.standalone = !1, this._measuredWidth = 0, this._measuredHeight = 0;
   }
@@ -1585,60 +1585,60 @@ let Se = class extends N {
     const l = o, a = s, h = 16, d = a - h * 2, p = 0, f = 0, g = h + p, b = l - h - f, x = Math.max(0, b - g) / t, H = Math.min(
       120,
       Math.max(80, d * 0.35)
-    ), B = Math.max(10, d * 0.05), j = d - H - B, C = Math.min(x * 0.7, H * 0.4), v = Math.max(9, Math.round(H * 0.075)), M = Math.max(11, Math.round(H * 0.11)), D = this.config?.diagram_labels ?? "compact", $ = Math.max(8, Math.min(10, Math.round(j * 0.05))), q = h + 10 + v, Q = q + 10, ye = Q + C + 10, Ve = h + H + B, ae = x / 24, Te = e.map((y) => typeof y.temperature == "number" ? y.temperature : null), yi = Math.min(...Te.filter((y) => y !== null)), _i = Math.max(...Te.filter((y) => y !== null)), _e = Ve, he = Ve + j, Fr = e.map((y) => {
+    ), B = Math.max(10, d * 0.05), j = d - H - B, C = Math.min(x * 0.7, H * 0.4), v = Math.max(9, Math.round(H * 0.075)), M = Math.max(11, Math.round(H * 0.11)), D = this.config?.diagram_labels ?? "compact", $ = Math.max(8, Math.min(10, Math.round(j * 0.05))), q = h + 10 + v, Q = q + 10, ye = Q + C + 10, Ze = h + H + B, ae = x / 24, Oe = e.map((y) => typeof y.temperature == "number" ? y.temperature : null), _i = Math.min(...Oe.filter((y) => y !== null)), bi = Math.max(...Oe.filter((y) => y !== null)), _e = Ze, he = Ze + j, Gr = e.map((y) => {
       const _ = y;
       return typeof _.precipitation == "number" ? _.precipitation : typeof _.rain == "number" ? _.rain : 0;
-    }), Gr = e.map((y) => {
+    }), Wr = e.map((y) => {
       const _ = y, A = typeof _.precipitation_probability == "number" ? _.precipitation_probability : typeof _.probability_of_precipitation == "number" ? _.probability_of_precipitation : typeof _.pop == "number" ? _.pop <= 1 ? _.pop * 100 : _.pop : 0, S = Number(A);
       return Number.isFinite(S) ? Math.max(0, Math.min(100, S)) : 0;
-    }), nn = {};
+    }), sn = {};
     n.forEach((y, _) => {
       const A = new Date(y.datetime), S = `${A.getFullYear()}-${A.getMonth()}-${A.getDate()}`;
-      nn[S] = _;
+      sn[S] = _;
     });
-    function Wr(y) {
-      const _ = `${y.getFullYear()}-${y.getMonth()}-${y.getDate()}`, A = nn[_], S = y.getHours();
+    function Ur(y) {
+      const _ = `${y.getFullYear()}-${y.getMonth()}-${y.getDate()}`, A = sn[_], S = y.getHours();
       return {
         dayIdx: A !== void 0 ? A : -1,
         hourInDay: S >= 0 && S < 24 ? S : -1
       };
     }
-    const gt = {};
+    const mt = {};
     for (let y = 0; y < t; y++)
       for (let _ = 0; _ < 24; _++) {
         const A = `${y}-${_}`;
-        gt[A] = null;
+        mt[A] = null;
       }
     e.forEach((y, _) => {
-      if (y.datetime && Te[_] !== null) {
-        const A = new Date(y.datetime), { dayIdx: S, hourInDay: K } = Wr(A), pe = `${S}-${K}`;
-        S >= 0 && S < t && K >= 0 && K < 24 && (gt[pe] = {
-          temp: Te[_],
-          precip: Fr[_],
-          precipProb: Gr[_],
+      if (y.datetime && Oe[_] !== null) {
+        const A = new Date(y.datetime), { dayIdx: S, hourInDay: K } = Ur(A), pe = `${S}-${K}`;
+        S >= 0 && S < t && K >= 0 && K < 24 && (mt[pe] = {
+          temp: Oe[_],
+          precip: Gr[_],
+          precipProb: Wr[_],
           originalIndex: _
         });
       }
     });
-    let Oe = Math.floor(yi / 5) * 5, He = Math.ceil(_i / 5) * 5;
-    Oe > 0 && (Oe = 0), He < 0 && (He = 0);
-    const bi = He - Oe, rn = [], wi = [];
+    let He = Math.floor(_i / 5) * 5, De = Math.ceil(bi / 5) * 5;
+    He > 0 && (He = 0), De < 0 && (De = 0);
+    const wi = De - He, on = [], xi = [];
     for (let y = 0; y < t; y++)
       for (let _ = 0; _ < 24; _++) {
-        const A = `${y}-${_}`, S = gt[A];
+        const A = `${y}-${_}`, S = mt[A];
         if (S && S.temp !== null) {
-          const K = g + y * x + _ * ae + ae / 2, pe = he - (S.temp - Oe) / bi * (he - _e);
-          wi.push(`${K},${pe}`);
+          const K = g + y * x + _ * ae + ae / 2, pe = he - (S.temp - He) / wi * (he - _e);
+          xi.push(`${K},${pe}`);
         }
       }
-    wi.length > 0 && rn.push(
+    xi.length > 0 && on.push(
       w`
           <!-- Main temperature line -->
-          <polyline points="${wi.join(" ")}" fill="none" stroke="#e74c3c" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+          <polyline points="${xi.join(" ")}" fill="none" stroke="#e74c3c" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
         `
     );
-    const Ze = Math.max(3, Math.floor(ae) - 2), sn = he, on = 5 / bi * (he - _e) / 5;
-    function Ur(y) {
+    const Ke = Math.max(3, Math.floor(ae) - 2), an = he, ln = 5 / wi * (he - _e) / 5;
+    function Ir(y) {
       if (y <= 0) return "transparent";
       const _ = [
         { val: 0, color: { r: 89, g: 148, b: 177 } },
@@ -1658,29 +1658,29 @@ let Se = class extends N {
           S = _[se], A = _[se - 1];
           break;
         }
-      const K = (y - A.val) / (S.val - A.val), pe = Math.round(A.color.r + (S.color.r - A.color.r) * K), mt = Math.round(A.color.g + (S.color.g - A.color.g) * K), yt = Math.round(A.color.b + (S.color.b - A.color.b) * K);
-      return `rgb(${pe},${mt},${yt})`;
+      const K = (y - A.val) / (S.val - A.val), pe = Math.round(A.color.r + (S.color.r - A.color.r) * K), yt = Math.round(A.color.g + (S.color.g - A.color.g) * K), _t = Math.round(A.color.b + (S.color.b - A.color.b) * K);
+      return `rgb(${pe},${yt},${_t})`;
     }
-    const Ir = 5, an = [];
+    const Br = 5, cn = [];
     for (let y = 0; y < t; y++)
       for (let _ = 0; _ < 24; _++) {
-        const A = `${y}-${_}`, S = gt[A];
+        const A = `${y}-${_}`, S = mt[A];
         if (S && S.precipProb > 0) {
-          const K = g + y * x + _ * ae + ae / 2 - Ze / 2, pe = g + y * x, mt = g + (y + 1) * x - Ze, yt = Math.max(pe, Math.min(mt, K)), se = S.precipProb / 100 * Ir * on;
-          an.push(
-            w`<rect x="${yt}" y="${sn - se}" width="${Ze}" height="${se}" fill="#988d8dff" opacity="0.4" rx="1.5"/>`
+          const K = g + y * x + _ * ae + ae / 2 - Ke / 2, pe = g + y * x, yt = g + (y + 1) * x - Ke, _t = Math.max(pe, Math.min(yt, K)), se = S.precipProb / 100 * Br * ln;
+          cn.push(
+            w`<rect x="${_t}" y="${an - se}" width="${Ke}" height="${se}" fill="#988d8dff" opacity="0.4" rx="1.5"/>`
           );
         }
       }
-    const ln = [];
+    const dn = [];
     for (let y = 0; y < t; y++)
       for (let _ = 0; _ < 24; _++) {
-        const A = `${y}-${_}`, S = gt[A];
+        const A = `${y}-${_}`, S = mt[A];
         if (S && S.precip > 0) {
-          const K = g + y * x + _ * ae + ae / 2 - Ze / 2, pe = g + y * x, mt = g + (y + 1) * x - Ze, yt = Math.max(pe, Math.min(mt, K)), se = S.precip * on, jr = Ur(S.precip);
-          ln.push(
-            w`<rect x="${yt}" y="${sn - se}" width="${Ze}" height="${se}"
-              fill="${jr}" opacity="1" rx="1.5"/>`
+          const K = g + y * x + _ * ae + ae / 2 - Ke / 2, pe = g + y * x, yt = g + (y + 1) * x - Ke, _t = Math.max(pe, Math.min(yt, K)), se = S.precip * ln, qr = Ir(S.precip);
+          dn.push(
+            w`<rect x="${_t}" y="${an - se}" width="${Ke}" height="${se}"
+              fill="${qr}" opacity="1" rx="1.5"/>`
           );
         }
       }
@@ -1696,11 +1696,11 @@ let Se = class extends N {
           w`<line x1="${_}" y1="${_e}" x2="${_}" y2="${he}" stroke="#ddd" stroke-width="0.5" stroke-dasharray="2,2" opacity="0.4"/>`
         );
       }
-    const cn = [];
+    const hn = [];
     if (t > 0)
       for (let y = 0; y < t; y++) {
         const _ = g + y * x + x / 2, A = typeof n[y].templow == "number" ? Math.round(n[y].templow || n[y].temperature - 5) : "", S = typeof n[y].temperature == "number" ? Math.round(n[y].temperature) : "";
-        cn.push(w`
+        hn.push(w`
         <g>
           <!-- Weekday -->
           <text x="${_}" y="${q}" text-anchor="middle" font-size="${v}" class="weather-day">
@@ -1715,22 +1715,22 @@ let Se = class extends N {
         </g>
       `);
       }
-    const dn = [], Ft = /* @__PURE__ */ new Set();
-    Ft.add(Oe), Oe < 0 && He > 0 && Ft.add(0), Ft.add(He);
-    for (let y = Oe; y <= He; y += 5)
+    const pn = [], Gt = /* @__PURE__ */ new Set();
+    Gt.add(He), He < 0 && De > 0 && Gt.add(0), Gt.add(De);
+    for (let y = He; y <= De; y += 5)
       if (y % 5 === 0) {
-        const _ = _e + (He - y) / bi * (he - _e);
+        const _ = _e + (De - y) / wi * (he - _e);
         if (_ >= _e && _ <= he) {
           const A = y % 10 === 0;
-          dn.push(w`
+          pn.push(w`
             <line x1="${g}" y1="${_}" x2="${b}" y2="${_}"
               stroke="#ddd" stroke-width="${A ? 1 : 0.5}"
               stroke-dasharray="${A ? "none" : "2,2"}" opacity="0.6"/>
-            ${D === "none" ? w`` : D === "full" ? A ? w`<text x="${g + 4}" y="${_}" font-size="${$}" fill="#888" opacity="0.9" text-anchor="start" dominant-baseline="middle">${y}°</text>` : w`` : Ft.has(y) ? w`<text x="${g + 4}" y="${_}" font-size="${$}" fill="#888" opacity="0.9" text-anchor="start" dominant-baseline="middle">${y}°</text>` : w``}
+            ${D === "none" ? w`` : D === "full" ? A ? w`<text x="${g + 4}" y="${_}" font-size="${$}" fill="#888" opacity="0.9" text-anchor="start" dominant-baseline="middle">${y}°</text>` : w`` : Gt.has(y) ? w`<text x="${g + 4}" y="${_}" font-size="${$}" fill="#888" opacity="0.9" text-anchor="start" dominant-baseline="middle">${y}°</text>` : w``}
           `);
         }
       }
-    const Br = w``;
+    const jr = w``;
     return c`
       <style>
         .chart {
@@ -1759,13 +1759,13 @@ let Se = class extends N {
             </filter>
           </defs>
           <!-- Background grid lines (behind everything) -->
-          ${dn} ${Rt}
+          ${pn} ${Rt}
           <!-- Day groups (labels and icons) -->
-          ${cn}
+          ${hn}
           <!-- Precipitation bars -->
-          ${an} ${ln}
+          ${cn} ${dn}
           <!-- Right-side labels for mm and % -->
-          ${Br}
+          ${jr}
         </svg>
 
         <!-- Temperature lines in completely separate SVG overlay (continuous line, always on top) -->
@@ -1781,14 +1781,14 @@ let Se = class extends N {
             </filter>
           </defs>
           <g filter="url(#temp-line-shadow)">
-            ${rn}
+            ${on}
           </g>
         </svg>
       </div>
     `;
   }
 };
-Se.styles = T`
+Me.styles = T`
     :host {
       display: block;
       width: 100%;
@@ -1840,27 +1840,27 @@ Se.styles = T`
       font-weight: 600;
     }
   `;
-ut([
+ft([
   m({ type: Array })
-], Se.prototype, "forecast", 2);
-ut([
+], Me.prototype, "forecast", 2);
+ft([
   m({ type: Array })
-], Se.prototype, "hourlyForecast", 2);
-ut([
+], Me.prototype, "hourlyForecast", 2);
+ft([
   m({ type: Object })
-], Se.prototype, "config", 2);
-ut([
+], Me.prototype, "config", 2);
+ft([
   m({ type: Function })
-], Se.prototype, "getWeatherIcon", 2);
-ut([
+], Me.prototype, "getWeatherIcon", 2);
+ft([
   m({ type: Boolean })
-], Se.prototype, "standalone", 2);
-Se = ut([
+], Me.prototype, "standalone", 2);
+Me = ft([
   O("daily-forecast-diagram")
-], Se);
-const zi = "langChanged";
-function Ls(n, e, t) {
-  return Object.entries(Li(e || {})).reduce((i, [r, s]) => i.replace(new RegExp(`{{[  ]*${r}[  ]*}}`, "gm"), String(Li(s))), n);
+], Me);
+const Li = "langChanged";
+function Ns(n, e, t) {
+  return Object.entries(Ni(e || {})).reduce((i, [r, s]) => i.replace(new RegExp(`{{[  ]*${r}[  ]*}}`, "gm"), String(Ni(s))), n);
 }
 function Es(n, e) {
   const t = n.split(".");
@@ -1869,50 +1869,50 @@ function Es(n, e) {
     i = i[t.shift()];
   return i != null ? i.toString() : null;
 }
-function Li(n) {
+function Ni(n) {
   return typeof n == "function" ? n() : n;
 }
-const Ns = () => ({
+const Ts = () => ({
   loader: () => Promise.resolve({}),
   empty: (n) => `[${n}]`,
   lookup: Es,
-  interpolate: Ls,
+  interpolate: Ns,
   translationCache: {}
 });
-let St = Ns();
+let Mt = Ts();
 function W(n) {
-  return St = Object.assign(Object.assign({}, St), n);
+  return Mt = Object.assign(Object.assign({}, Mt), n);
 }
-function Ts(n) {
-  window.dispatchEvent(new CustomEvent(zi, { detail: n }));
+function Os(n) {
+  window.dispatchEvent(new CustomEvent(Li, { detail: n }));
 }
-function Os(n, e, t = St) {
-  Ts({
+function Hs(n, e, t = Mt) {
+  Os({
     previousStrings: t.strings,
     previousLang: t.lang,
     lang: t.lang = n,
     strings: t.strings = e
   });
 }
-function Hs(n, e) {
+function Ds(n, e) {
   const t = (i) => n(i.detail);
-  return window.addEventListener(zi, t, e), () => window.removeEventListener(zi, t);
+  return window.addEventListener(Li, t, e), () => window.removeEventListener(Li, t);
 }
-async function ee(n, e = St) {
+async function ee(n, e = Mt) {
   const t = await e.loader(n, e);
-  e.translationCache = {}, Os(n, t, e);
+  e.translationCache = {}, Hs(n, t, e);
 }
-function u(n, e, t = St) {
+function u(n, e, t = Mt) {
   let i = t.translationCache[n] || (t.translationCache[n] = t.lookup(n, t) || t.empty(n, t));
-  return e = e != null ? Li(e) : null, e != null ? t.interpolate(i, e, t) : i;
+  return e = e != null ? Ni(e) : null, e != null ? t.interpolate(i, e, t) : i;
 }
 /**
  * @license
  * Copyright 2017 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
  */
-const nr = { CHILD: 2 }, Ds = (n) => (...e) => ({ _$litDirective$: n, values: e });
-let rr = class {
+const rr = { CHILD: 2 }, Ps = (n) => (...e) => ({ _$litDirective$: n, values: e });
+let sr = class {
   constructor(e) {
   }
   get _$AU() {
@@ -1933,37 +1933,37 @@ let rr = class {
  * Copyright 2017 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
  */
-var vi;
-const qt = window, et = qt.trustedTypes, vn = et ? et.createPolicy("lit-html", { createHTML: (n) => n }) : void 0, Ei = "$lit$", we = `lit$${(Math.random() + "").slice(9)}$`, sr = "?" + we, Ps = `<${sr}>`, We = document, Vt = () => We.createComment(""), Mt = (n) => n === null || typeof n != "object" && typeof n != "function", or = Array.isArray, Rs = (n) => or(n) || typeof n?.[Symbol.iterator] == "function", $i = `[ 	
-\f\r]`, bt = /<(?:(!--|\/[^a-zA-Z])|(\/?[a-zA-Z][^>\s]*)|(\/?$))/g, $n = /-->/g, kn = />/g, Pe = RegExp(`>|${$i}(?:([^\\s"'>=/]+)(${$i}*=${$i}*(?:[^ 	
-\f\r"'\`<>=]|("|')|))|$)`, "g"), Cn = /'/g, An = /"/g, ar = /^(?:script|style|textarea|title)$/i, tt = Symbol.for("lit-noChange"), R = Symbol.for("lit-nothing"), Sn = /* @__PURE__ */ new WeakMap(), Fe = We.createTreeWalker(We, 129, null, !1);
-function lr(n, e) {
+var $i;
+const Vt = window, tt = Vt.trustedTypes, kn = tt ? tt.createPolicy("lit-html", { createHTML: (n) => n }) : void 0, Ei = "$lit$", we = `lit$${(Math.random() + "").slice(9)}$`, or = "?" + we, Fs = `<${or}>`, Ue = document, Zt = () => Ue.createComment(""), zt = (n) => n === null || typeof n != "object" && typeof n != "function", ar = Array.isArray, Rs = (n) => ar(n) || typeof n?.[Symbol.iterator] == "function", ki = `[ 	
+\f\r]`, wt = /<(?:(!--|\/[^a-zA-Z])|(\/?[a-zA-Z][^>\s]*)|(\/?$))/g, Cn = /-->/g, An = />/g, Fe = RegExp(`>|${ki}(?:([^\\s"'>=/]+)(${ki}*=${ki}*(?:[^ 	
+\f\r"'\`<>=]|("|')|))|$)`, "g"), Sn = /'/g, Mn = /"/g, lr = /^(?:script|style|textarea|title)$/i, it = Symbol.for("lit-noChange"), F = Symbol.for("lit-nothing"), zn = /* @__PURE__ */ new WeakMap(), Ge = Ue.createTreeWalker(Ue, 129, null, !1);
+function cr(n, e) {
   if (!Array.isArray(n) || !n.hasOwnProperty("raw")) throw Error("invalid template strings array");
-  return vn !== void 0 ? vn.createHTML(e) : e;
+  return kn !== void 0 ? kn.createHTML(e) : e;
 }
-const Fs = (n, e) => {
+const Gs = (n, e) => {
   const t = n.length - 1, i = [];
-  let r, s = e === 2 ? "<svg>" : "", o = bt;
+  let r, s = e === 2 ? "<svg>" : "", o = wt;
   for (let l = 0; l < t; l++) {
     const a = n[l];
     let h, d, p = -1, f = 0;
-    for (; f < a.length && (o.lastIndex = f, d = o.exec(a), d !== null); ) f = o.lastIndex, o === bt ? d[1] === "!--" ? o = $n : d[1] !== void 0 ? o = kn : d[2] !== void 0 ? (ar.test(d[2]) && (r = RegExp("</" + d[2], "g")), o = Pe) : d[3] !== void 0 && (o = Pe) : o === Pe ? d[0] === ">" ? (o = r ?? bt, p = -1) : d[1] === void 0 ? p = -2 : (p = o.lastIndex - d[2].length, h = d[1], o = d[3] === void 0 ? Pe : d[3] === '"' ? An : Cn) : o === An || o === Cn ? o = Pe : o === $n || o === kn ? o = bt : (o = Pe, r = void 0);
-    const g = o === Pe && n[l + 1].startsWith("/>") ? " " : "";
-    s += o === bt ? a + Ps : p >= 0 ? (i.push(h), a.slice(0, p) + Ei + a.slice(p) + we + g) : a + we + (p === -2 ? (i.push(void 0), l) : g);
+    for (; f < a.length && (o.lastIndex = f, d = o.exec(a), d !== null); ) f = o.lastIndex, o === wt ? d[1] === "!--" ? o = Cn : d[1] !== void 0 ? o = An : d[2] !== void 0 ? (lr.test(d[2]) && (r = RegExp("</" + d[2], "g")), o = Fe) : d[3] !== void 0 && (o = Fe) : o === Fe ? d[0] === ">" ? (o = r ?? wt, p = -1) : d[1] === void 0 ? p = -2 : (p = o.lastIndex - d[2].length, h = d[1], o = d[3] === void 0 ? Fe : d[3] === '"' ? Mn : Sn) : o === Mn || o === Sn ? o = Fe : o === Cn || o === An ? o = wt : (o = Fe, r = void 0);
+    const g = o === Fe && n[l + 1].startsWith("/>") ? " " : "";
+    s += o === wt ? a + Fs : p >= 0 ? (i.push(h), a.slice(0, p) + Ei + a.slice(p) + we + g) : a + we + (p === -2 ? (i.push(void 0), l) : g);
   }
-  return [lr(n, s + (n[t] || "<?>") + (e === 2 ? "</svg>" : "")), i];
+  return [cr(n, s + (n[t] || "<?>") + (e === 2 ? "</svg>" : "")), i];
 };
-class zt {
+class Lt {
   constructor({ strings: e, _$litType$: t }, i) {
     let r;
     this.parts = [];
     let s = 0, o = 0;
-    const l = e.length - 1, a = this.parts, [h, d] = Fs(e, t);
-    if (this.el = zt.createElement(h, i), Fe.currentNode = this.el.content, t === 2) {
+    const l = e.length - 1, a = this.parts, [h, d] = Gs(e, t);
+    if (this.el = Lt.createElement(h, i), Ge.currentNode = this.el.content, t === 2) {
       const p = this.el.content, f = p.firstChild;
       f.remove(), p.append(...f.childNodes);
     }
-    for (; (r = Fe.nextNode()) !== null && a.length < l; ) {
+    for (; (r = Ge.nextNode()) !== null && a.length < l; ) {
       if (r.nodeType === 1) {
         if (r.hasAttributes()) {
           const p = [];
@@ -1971,20 +1971,20 @@ class zt {
             const g = d[o++];
             if (p.push(f), g !== void 0) {
               const b = r.getAttribute(g.toLowerCase() + Ei).split(we), k = /([.?@])?(.*)/.exec(g);
-              a.push({ type: 1, index: s, name: k[2], strings: b, ctor: k[1] === "." ? Ws : k[1] === "?" ? Is : k[1] === "@" ? Bs : ai });
+              a.push({ type: 1, index: s, name: k[2], strings: b, ctor: k[1] === "." ? Us : k[1] === "?" ? Bs : k[1] === "@" ? js : li });
             } else a.push({ type: 6, index: s });
           }
           for (const f of p) r.removeAttribute(f);
         }
-        if (ar.test(r.tagName)) {
+        if (lr.test(r.tagName)) {
           const p = r.textContent.split(we), f = p.length - 1;
           if (f > 0) {
-            r.textContent = et ? et.emptyScript : "";
-            for (let g = 0; g < f; g++) r.append(p[g], Vt()), Fe.nextNode(), a.push({ type: 2, index: ++s });
-            r.append(p[f], Vt());
+            r.textContent = tt ? tt.emptyScript : "";
+            for (let g = 0; g < f; g++) r.append(p[g], Zt()), Ge.nextNode(), a.push({ type: 2, index: ++s });
+            r.append(p[f], Zt());
           }
         }
-      } else if (r.nodeType === 8) if (r.data === sr) a.push({ type: 2, index: s });
+      } else if (r.nodeType === 8) if (r.data === or) a.push({ type: 2, index: s });
       else {
         let p = -1;
         for (; (p = r.data.indexOf(we, p + 1)) !== -1; ) a.push({ type: 7, index: s }), p += we.length - 1;
@@ -1993,18 +1993,18 @@ class zt {
     }
   }
   static createElement(e, t) {
-    const i = We.createElement("template");
+    const i = Ue.createElement("template");
     return i.innerHTML = e, i;
   }
 }
-function it(n, e, t = n, i) {
+function nt(n, e, t = n, i) {
   var r, s, o, l;
-  if (e === tt) return e;
+  if (e === it) return e;
   let a = i !== void 0 ? (r = t._$Co) === null || r === void 0 ? void 0 : r[i] : t._$Cl;
-  const h = Mt(e) ? void 0 : e._$litDirective$;
-  return a?.constructor !== h && ((s = a?._$AO) === null || s === void 0 || s.call(a, !1), h === void 0 ? a = void 0 : (a = new h(n), a._$AT(n, t, i)), i !== void 0 ? ((o = (l = t)._$Co) !== null && o !== void 0 ? o : l._$Co = [])[i] = a : t._$Cl = a), a !== void 0 && (e = it(n, a._$AS(n, e.values), a, i)), e;
+  const h = zt(e) ? void 0 : e._$litDirective$;
+  return a?.constructor !== h && ((s = a?._$AO) === null || s === void 0 || s.call(a, !1), h === void 0 ? a = void 0 : (a = new h(n), a._$AT(n, t, i)), i !== void 0 ? ((o = (l = t)._$Co) !== null && o !== void 0 ? o : l._$Co = [])[i] = a : t._$Cl = a), a !== void 0 && (e = nt(n, a._$AS(n, e.values), a, i)), e;
 }
-class Gs {
+class Ws {
   constructor(e, t) {
     this._$AV = [], this._$AN = void 0, this._$AD = e, this._$AM = t;
   }
@@ -2016,27 +2016,27 @@ class Gs {
   }
   u(e) {
     var t;
-    const { el: { content: i }, parts: r } = this._$AD, s = ((t = e?.creationScope) !== null && t !== void 0 ? t : We).importNode(i, !0);
-    Fe.currentNode = s;
-    let o = Fe.nextNode(), l = 0, a = 0, h = r[0];
+    const { el: { content: i }, parts: r } = this._$AD, s = ((t = e?.creationScope) !== null && t !== void 0 ? t : Ue).importNode(i, !0);
+    Ge.currentNode = s;
+    let o = Ge.nextNode(), l = 0, a = 0, h = r[0];
     for (; h !== void 0; ) {
       if (l === h.index) {
         let d;
-        h.type === 2 ? d = new oi(o, o.nextSibling, this, e) : h.type === 1 ? d = new h.ctor(o, h.name, h.strings, this, e) : h.type === 6 && (d = new js(o, this, e)), this._$AV.push(d), h = r[++a];
+        h.type === 2 ? d = new ai(o, o.nextSibling, this, e) : h.type === 1 ? d = new h.ctor(o, h.name, h.strings, this, e) : h.type === 6 && (d = new qs(o, this, e)), this._$AV.push(d), h = r[++a];
       }
-      l !== h?.index && (o = Fe.nextNode(), l++);
+      l !== h?.index && (o = Ge.nextNode(), l++);
     }
-    return Fe.currentNode = We, s;
+    return Ge.currentNode = Ue, s;
   }
   v(e) {
     let t = 0;
     for (const i of this._$AV) i !== void 0 && (i.strings !== void 0 ? (i._$AI(e, i, t), t += i.strings.length - 2) : i._$AI(e[t])), t++;
   }
 }
-class oi {
+class ai {
   constructor(e, t, i, r) {
     var s;
-    this.type = 2, this._$AH = R, this._$AN = void 0, this._$AA = e, this._$AB = t, this._$AM = i, this.options = r, this._$Cp = (s = r?.isConnected) === null || s === void 0 || s;
+    this.type = 2, this._$AH = F, this._$AN = void 0, this._$AA = e, this._$AB = t, this._$AM = i, this.options = r, this._$Cp = (s = r?.isConnected) === null || s === void 0 || s;
   }
   get _$AU() {
     var e, t;
@@ -2054,7 +2054,7 @@ class oi {
     return this._$AB;
   }
   _$AI(e, t = this) {
-    e = it(this, e, t), Mt(e) ? e === R || e == null || e === "" ? (this._$AH !== R && this._$AR(), this._$AH = R) : e !== this._$AH && e !== tt && this._(e) : e._$litType$ !== void 0 ? this.g(e) : e.nodeType !== void 0 ? this.$(e) : Rs(e) ? this.T(e) : this._(e);
+    e = nt(this, e, t), zt(e) ? e === F || e == null || e === "" ? (this._$AH !== F && this._$AR(), this._$AH = F) : e !== this._$AH && e !== it && this._(e) : e._$litType$ !== void 0 ? this.g(e) : e.nodeType !== void 0 ? this.$(e) : Rs(e) ? this.T(e) : this._(e);
   }
   k(e) {
     return this._$AA.parentNode.insertBefore(e, this._$AB);
@@ -2063,26 +2063,26 @@ class oi {
     this._$AH !== e && (this._$AR(), this._$AH = this.k(e));
   }
   _(e) {
-    this._$AH !== R && Mt(this._$AH) ? this._$AA.nextSibling.data = e : this.$(We.createTextNode(e)), this._$AH = e;
+    this._$AH !== F && zt(this._$AH) ? this._$AA.nextSibling.data = e : this.$(Ue.createTextNode(e)), this._$AH = e;
   }
   g(e) {
     var t;
-    const { values: i, _$litType$: r } = e, s = typeof r == "number" ? this._$AC(e) : (r.el === void 0 && (r.el = zt.createElement(lr(r.h, r.h[0]), this.options)), r);
+    const { values: i, _$litType$: r } = e, s = typeof r == "number" ? this._$AC(e) : (r.el === void 0 && (r.el = Lt.createElement(cr(r.h, r.h[0]), this.options)), r);
     if (((t = this._$AH) === null || t === void 0 ? void 0 : t._$AD) === s) this._$AH.v(i);
     else {
-      const o = new Gs(s, this), l = o.u(this.options);
+      const o = new Ws(s, this), l = o.u(this.options);
       o.v(i), this.$(l), this._$AH = o;
     }
   }
   _$AC(e) {
-    let t = Sn.get(e.strings);
-    return t === void 0 && Sn.set(e.strings, t = new zt(e)), t;
+    let t = zn.get(e.strings);
+    return t === void 0 && zn.set(e.strings, t = new Lt(e)), t;
   }
   T(e) {
-    or(this._$AH) || (this._$AH = [], this._$AR());
+    ar(this._$AH) || (this._$AH = [], this._$AR());
     const t = this._$AH;
     let i, r = 0;
-    for (const s of e) r === t.length ? t.push(i = new oi(this.k(Vt()), this.k(Vt()), this, this.options)) : i = t[r], i._$AI(s), r++;
+    for (const s of e) r === t.length ? t.push(i = new ai(this.k(Zt()), this.k(Zt()), this, this.options)) : i = t[r], i._$AI(s), r++;
     r < t.length && (this._$AR(i && i._$AB.nextSibling, r), t.length = r);
   }
   _$AR(e = this._$AA.nextSibling, t) {
@@ -2097,9 +2097,9 @@ class oi {
     this._$AM === void 0 && (this._$Cp = e, (t = this._$AP) === null || t === void 0 || t.call(this, e));
   }
 }
-class ai {
+class li {
   constructor(e, t, i, r, s) {
-    this.type = 1, this._$AH = R, this._$AN = void 0, this.element = e, this.name = t, this._$AM = r, this.options = s, i.length > 2 || i[0] !== "" || i[1] !== "" ? (this._$AH = Array(i.length - 1).fill(new String()), this.strings = i) : this._$AH = R;
+    this.type = 1, this._$AH = F, this._$AN = void 0, this.element = e, this.name = t, this._$AM = r, this.options = s, i.length > 2 || i[0] !== "" || i[1] !== "" ? (this._$AH = Array(i.length - 1).fill(new String()), this.strings = i) : this._$AH = F;
   }
   get tagName() {
     return this.element.tagName;
@@ -2110,43 +2110,43 @@ class ai {
   _$AI(e, t = this, i, r) {
     const s = this.strings;
     let o = !1;
-    if (s === void 0) e = it(this, e, t, 0), o = !Mt(e) || e !== this._$AH && e !== tt, o && (this._$AH = e);
+    if (s === void 0) e = nt(this, e, t, 0), o = !zt(e) || e !== this._$AH && e !== it, o && (this._$AH = e);
     else {
       const l = e;
       let a, h;
-      for (e = s[0], a = 0; a < s.length - 1; a++) h = it(this, l[i + a], t, a), h === tt && (h = this._$AH[a]), o || (o = !Mt(h) || h !== this._$AH[a]), h === R ? e = R : e !== R && (e += (h ?? "") + s[a + 1]), this._$AH[a] = h;
+      for (e = s[0], a = 0; a < s.length - 1; a++) h = nt(this, l[i + a], t, a), h === it && (h = this._$AH[a]), o || (o = !zt(h) || h !== this._$AH[a]), h === F ? e = F : e !== F && (e += (h ?? "") + s[a + 1]), this._$AH[a] = h;
     }
     o && !r && this.j(e);
   }
   j(e) {
-    e === R ? this.element.removeAttribute(this.name) : this.element.setAttribute(this.name, e ?? "");
+    e === F ? this.element.removeAttribute(this.name) : this.element.setAttribute(this.name, e ?? "");
   }
 }
-class Ws extends ai {
+class Us extends li {
   constructor() {
     super(...arguments), this.type = 3;
   }
   j(e) {
-    this.element[this.name] = e === R ? void 0 : e;
+    this.element[this.name] = e === F ? void 0 : e;
   }
 }
-const Us = et ? et.emptyScript : "";
-class Is extends ai {
+const Is = tt ? tt.emptyScript : "";
+class Bs extends li {
   constructor() {
     super(...arguments), this.type = 4;
   }
   j(e) {
-    e && e !== R ? this.element.setAttribute(this.name, Us) : this.element.removeAttribute(this.name);
+    e && e !== F ? this.element.setAttribute(this.name, Is) : this.element.removeAttribute(this.name);
   }
 }
-class Bs extends ai {
+class js extends li {
   constructor(e, t, i, r, s) {
     super(e, t, i, r, s), this.type = 5;
   }
   _$AI(e, t = this) {
     var i;
-    if ((e = (i = it(this, e, t, 0)) !== null && i !== void 0 ? i : R) === tt) return;
-    const r = this._$AH, s = e === R && r !== R || e.capture !== r.capture || e.once !== r.once || e.passive !== r.passive, o = e !== R && (r === R || s);
+    if ((e = (i = nt(this, e, t, 0)) !== null && i !== void 0 ? i : F) === it) return;
+    const r = this._$AH, s = e === F && r !== F || e.capture !== r.capture || e.once !== r.once || e.passive !== r.passive, o = e !== F && (r === F || s);
     s && this.element.removeEventListener(this.name, this, r), o && this.element.addEventListener(this.name, this, e), this._$AH = e;
   }
   handleEvent(e) {
@@ -2154,7 +2154,7 @@ class Bs extends ai {
     typeof this._$AH == "function" ? this._$AH.call((i = (t = this.options) === null || t === void 0 ? void 0 : t.host) !== null && i !== void 0 ? i : this.element, e) : this._$AH.handleEvent(e);
   }
 }
-class js {
+class qs {
   constructor(e, t, i) {
     this.element = e, this.type = 6, this._$AN = void 0, this._$AM = t, this.options = i;
   }
@@ -2162,68 +2162,68 @@ class js {
     return this._$AM._$AU;
   }
   _$AI(e) {
-    it(this, e);
+    nt(this, e);
   }
 }
-const Mn = qt.litHtmlPolyfillSupport;
-Mn?.(zt, oi), ((vi = qt.litHtmlVersions) !== null && vi !== void 0 ? vi : qt.litHtmlVersions = []).push("2.8.0");
+const Ln = Vt.litHtmlPolyfillSupport;
+Ln?.(Lt, ai), (($i = Vt.litHtmlVersions) !== null && $i !== void 0 ? $i : Vt.litHtmlVersions = []).push("2.8.0");
 /**
  * @license
  * Copyright 2020 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
  */
-const qs = (n) => n.strings === void 0;
+const Vs = (n) => n.strings === void 0;
 /**
  * @license
  * Copyright 2017 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
  */
-const $t = (n, e) => {
+const kt = (n, e) => {
   var t, i;
   const r = n._$AN;
   if (r === void 0) return !1;
-  for (const s of r) (i = (t = s)._$AO) === null || i === void 0 || i.call(t, e, !1), $t(s, e);
+  for (const s of r) (i = (t = s)._$AO) === null || i === void 0 || i.call(t, e, !1), kt(s, e);
   return !0;
-}, Zt = (n) => {
+}, Kt = (n) => {
   let e, t;
   do {
     if ((e = n._$AM) === void 0) break;
     t = e._$AN, t.delete(n), n = e;
   } while (t?.size === 0);
-}, cr = (n) => {
+}, dr = (n) => {
   for (let e; e = n._$AM; n = e) {
     let t = e._$AN;
     if (t === void 0) e._$AN = t = /* @__PURE__ */ new Set();
     else if (t.has(n)) break;
-    t.add(n), Ks(e);
+    t.add(n), Ys(e);
   }
 };
-function Vs(n) {
-  this._$AN !== void 0 ? (Zt(this), this._$AM = n, cr(this)) : this._$AM = n;
+function Zs(n) {
+  this._$AN !== void 0 ? (Kt(this), this._$AM = n, dr(this)) : this._$AM = n;
 }
-function Zs(n, e = !1, t = 0) {
+function Ks(n, e = !1, t = 0) {
   const i = this._$AH, r = this._$AN;
-  if (r !== void 0 && r.size !== 0) if (e) if (Array.isArray(i)) for (let s = t; s < i.length; s++) $t(i[s], !1), Zt(i[s]);
-  else i != null && ($t(i, !1), Zt(i));
-  else $t(this, n);
+  if (r !== void 0 && r.size !== 0) if (e) if (Array.isArray(i)) for (let s = t; s < i.length; s++) kt(i[s], !1), Kt(i[s]);
+  else i != null && (kt(i, !1), Kt(i));
+  else kt(this, n);
 }
-const Ks = (n) => {
+const Ys = (n) => {
   var e, t, i, r;
-  n.type == nr.CHILD && ((e = (i = n)._$AP) !== null && e !== void 0 || (i._$AP = Zs), (t = (r = n)._$AQ) !== null && t !== void 0 || (r._$AQ = Vs));
+  n.type == rr.CHILD && ((e = (i = n)._$AP) !== null && e !== void 0 || (i._$AP = Ks), (t = (r = n)._$AQ) !== null && t !== void 0 || (r._$AQ = Zs));
 };
-class Ys extends rr {
+class Qs extends sr {
   constructor() {
     super(...arguments), this._$AN = void 0;
   }
   _$AT(e, t, i) {
-    super._$AT(e, t, i), cr(this), this.isConnected = e._$AU;
+    super._$AT(e, t, i), dr(this), this.isConnected = e._$AU;
   }
   _$AO(e, t = !0) {
     var i, r;
-    e !== this.isConnected && (this.isConnected = e, e ? (i = this.reconnected) === null || i === void 0 || i.call(this) : (r = this.disconnected) === null || r === void 0 || r.call(this)), t && ($t(this, e), Zt(this));
+    e !== this.isConnected && (this.isConnected = e, e ? (i = this.reconnected) === null || i === void 0 || i.call(this) : (r = this.disconnected) === null || r === void 0 || r.call(this)), t && (kt(this, e), Kt(this));
   }
   setValue(e) {
-    if (qs(this._$Ct)) this._$Ct._$AI(e, this);
+    if (Vs(this._$Ct)) this._$Ct._$AI(e, this);
     else {
       const t = [...this._$Ct._$AH];
       t[this._$Ci] = e, this._$Ct._$AI(t, this, 0);
@@ -2234,7 +2234,7 @@ class Ys extends rr {
   reconnected() {
   }
 }
-class Qs extends Ys {
+class Xs extends Qs {
   constructor() {
     super(...arguments), this.langChangedSubscription = null, this.getValue = (() => "");
   }
@@ -2257,7 +2257,7 @@ class Qs extends Ys {
    * Subscribes to the lang changed event.
    */
   subscribe() {
-    this.langChangedSubscription == null && (this.langChangedSubscription = Hs(this.langChanged.bind(this)));
+    this.langChangedSubscription == null && (this.langChangedSubscription = Ds(this.langChanged.bind(this)));
   }
   /**
    * Unsubscribes from the lang changed event.
@@ -2278,24 +2278,24 @@ class Qs extends Ys {
     this.subscribe();
   }
 }
-class Xs extends Qs {
+class Js extends Xs {
   render(e, t, i) {
     return this.renderValue(() => u(e, t, i));
   }
 }
-const X = Ds(Xs);
+const X = Ps(Js);
 /**
  * @license
  * Copyright 2017 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
  */
-class zn extends rr {
+class Nn extends sr {
   constructor(e) {
-    if (super(e), this.et = R, e.type !== nr.CHILD) throw Error(this.constructor.directiveName + "() can only be used in child bindings");
+    if (super(e), this.et = F, e.type !== rr.CHILD) throw Error(this.constructor.directiveName + "() can only be used in child bindings");
   }
   render(e) {
-    if (e === R || e == null) return this.ft = void 0, this.et = e;
-    if (e === tt) return e;
+    if (e === F || e == null) return this.ft = void 0, this.et = e;
+    if (e === it) return e;
     if (typeof e != "string") throw Error(this.constructor.directiveName + "() called with a non-string value");
     if (e === this.et) return this.ft;
     this.et = e;
@@ -2303,16 +2303,52 @@ class zn extends rr {
     return t.raw = t, this.ft = { _$litType$: this.constructor.resultType, strings: t, values: [] };
   }
 }
-zn.directiveName = "unsafeHTML", zn.resultType = 1;
-var Ln;
+Nn.directiveName = "unsafeHTML", Nn.resultType = 1;
+var xe;
 (function(n) {
   n.language = "language", n.system = "system", n.comma_decimal = "comma_decimal", n.decimal_comma = "decimal_comma", n.space_comma = "space_comma", n.none = "none";
-})(Ln || (Ln = {}));
-var En;
+})(xe || (xe = {}));
+var Ti;
 (function(n) {
   n.language = "language", n.system = "system", n.am_pm = "12", n.twenty_four = "24";
-})(En || (En = {}));
-const oe = (n, e, t, i) => {
+})(Ti || (Ti = {}));
+const eo = (n) => {
+  switch (n.number_format) {
+    case xe.comma_decimal:
+      return ["en-US", "en"];
+    // Use United States with fallback to English formatting 1,234,567.89
+    case xe.decimal_comma:
+      return ["de", "es", "it"];
+    // Use German with fallback to Spanish then Italian formatting 1.234.567,89
+    case xe.space_comma:
+      return ["fr", "sv", "cs"];
+    // Use French with fallback to Swedish and Czech formatting 1 234 567,89
+    case xe.system:
+      return;
+    default:
+      return n.language;
+  }
+}, to = (n, e = 2) => Math.round(n * Math.pow(10, e)) / Math.pow(10, e), io = (n, e, t) => {
+  const i = e ? eo(e) : void 0;
+  if (Number.isNaN = Number.isNaN || function r(s) {
+    return typeof s == "number" && r(s);
+  }, e?.number_format !== xe.none && !Number.isNaN(Number(n)) && Intl)
+    try {
+      return new Intl.NumberFormat(i, En(n, t)).format(Number(n));
+    } catch (r) {
+      return console.error(r), new Intl.NumberFormat(void 0, En(n, t)).format(Number(n));
+    }
+  return typeof n == "string" ? n : `${to(n, t?.maximumFractionDigits).toString()}${t?.style === "currency" ? ` ${t.currency}` : ""}`;
+}, En = (n, e) => {
+  const t = Object.assign({ maximumFractionDigits: 2 }, e);
+  if (typeof n != "string")
+    return t;
+  if (!e || !e.minimumFractionDigits && !e.maximumFractionDigits) {
+    const i = n.indexOf(".") > -1 ? n.split(".")[1].length : 0;
+    t.minimumFractionDigits = i, t.maximumFractionDigits = i;
+  }
+  return t;
+}, oe = (n, e, t, i) => {
   i = i || {}, t = t ?? {};
   const r = new Event(e, {
     bubbles: i.bubbles === void 0 ? !0 : i.bubbles,
@@ -2320,37 +2356,37 @@ const oe = (n, e, t, i) => {
     composed: i.composed === void 0 ? !0 : i.composed
   });
   return r.detail = t, n.dispatchEvent(r), r;
-}, Js = { entity: "Wetter Entity *", location: "Standort", show_location: "Standort anzeigen", sun_entity: "Sonnen Entity für Sonnenaufgang und Sonnenuntergang", wind_entity: "Windgeschwindigkeit", wind_direction_entity: "Windrichtung", sunshine_entity: "Sonnenscheindauer", precipitation_entity: "Niederschlagsprognose", show_forecast: "Wettervorhersage anzeigen", show_temperature: "Temperaturdiagramm anzeigen", show_precipitation: "Niederschlagsdiagramm anzeigen", show_sunshine: "Sonnenscheindauerdiagramm anzeigen", show_wind: "Winddiagramm anzeigen", enable_animate_weather_icons: "Animierte Wetter-Icons aktivieren", forecast_hours: "Prognose Stunden (Standard: 6)", compact_mode: "Kompakter Modus", display_mode: "Anzeigemodus", display_mode_full: "Vollständig", display_mode_compact: "Kompakt", display_mode_auto: "Automatisch", group_general: "Allgemeineinstellungen", group_current: "Aktuelles Wetter", group_forecast: "Wettervorhersage", group_charts: "Diagramme", group_sensors: "Sensoren", group_display: "Anzeigeeinstellungen", group_chart_order: "Reihenfolge der Diagramme", chart_order: "Reihenfolge der Diagramme (z.B. temperature,precipitation,sunshine,wind)", chart_temperature: "Temperatur", chart_precipitation: "Niederschlag", chart_sunshine: "Sonnenschein", chart_wind: "Wind", chart_forecast: "Prognose-Diagramm", move_up: "Nach oben", move_down: "Nach unten", descr: { entity: "Die Wetter-Entity ist erforderlich und sollte von der Integration SwissWeather sein. Wenn eine andere Wetter Entity genutzt wird kann es passieren, das nicht alle Daten korrekt angezeigt werden.", location: "Zeigt diesen Namen als Standort an.", show_location: "Zeige den Standortnamen über dem aktuellen Wetter an", sun_entity: "Die Sonnen-Entity ist erforderlich, um Sonnenaufgangs- und Sonnenuntergangszeiten anzuzeigen.", wind_entity: "Die Wind-Entity wird benötigt, um die Windgeschwindigkeit anzuzeigen.", wind_direction_entity: "Die Windrichtungs-Entity wird benötigt, um die Windrichtung anzuzeigen.", sunshine_entity: "Die Sonnenscheindauer-Entity wird benötigt, um die Sonnenscheindauer anzuzeigen.", precipitation_entity: "Die Niederschlags-Entity wird benötigt, um die Niederschlagsprognose anzuzeigen.", show_forecast: "Blende den Wettervorhersage-Bereich ein oder aus. Die Vorhersage zeigt bis zu 7 Tage an, je nach dem was der Wetterdienst liefert.", show_temperature: "Zeige das Temperaturdiagramm an, mit den Vorhersage anhand der eingestellten Stunden", show_precipitation: "Zeige das Niederschlags an, mit den Vorhersage anhand der eingestellten Stunden", show_sunshine: "Zeige das Sonnenscheindauerdiagramm an, mit den Vorhersage anhand der eingestellten Stunden", show_wind: "Zeige das Winddiagramm an mit den Vorhersage anhand der eingestellten Stunden", enable_animate_weather_icons: "Zeige animierte Icons an. Wenn ausgeschaltet, werden statische Icons angezeigt.", compact_mode: "Im kompakten Modus werden weniger Details angezeigt für die Tagesvorhersage und den aktuellen Daten (z.B. Windrichtung)", display_mode: "Wähle wie viele Daten angezeigt werden: Vollständig (alle Sektionen), Kompakt (nur wesentliches), oder Auto (passt sich an Kartengrösse an)", forecast_hours: "Anzahl der Stunden für die Anzeige der stündlichen Vorhersage (Standard: 6, maximal 18)", auto_resolve_entities: "LNKtwo/ha-meteoswiss Sensoren automatisch erkennen (Empfohlen)", show_swiss: "Schweizer Werte anzeigen (Föhn, Schnee, 0°C-Grenze)", show_heating: "Heizgradtage anzeigen (SIA 381/3)", foehn_entity: "Föhn-Index Sensor (automatisch erkannt wenn auto_resolve aktiv)", snow_entity: "Schneehöhe Sensor (automatisch erkannt wenn auto_resolve aktiv)", freezing_level_entity: "Nullgradgrenze Sensor (automatisch erkannt wenn auto_resolve aktiv)", heating_degree_days_entity: "Heizgradtage Sensor (automatisch erkannt wenn auto_resolve aktiv)", season_heating_entity: "Saison-Heizgradtage Sensor (automatisch erkannt wenn auto_resolve aktiv)" } }, eo = { config: { show_warnings: "Wetterwarnungen anzeigen", warning_entity: "Wetterwarnungen (Legacy)", primary_warning_entity: "Primäre Wetterwarnung", secondary_warning_entity: "Sekundäre Wetterwarnung", tertiary_warning_entity: "Tertiäre Wetterwarnung", descr: { show_warnings: "Zeige Wetterwarnungen an, wenn die Wetterwarnung Entity gesetzt ist und aktuelle Warnungen existieren.", warning_entity: "Wetterwarnungen Entity (LNKtwo/ha-meteoswiss: binary_sensor.*_any_alert). Wird automatisch erkannt.", primary_warning_entity: "Primäre Wetterwarnung (*_primary_weather_warning) aus LNKtwo/ha-meteoswiss. Wenn gesetzt, wird das neue Ranked-Model aktiviert.", secondary_warning_entity: "Sekundäre Wetterwarnung (*_secondary_weather_warning) aus LNKtwo/ha-meteoswiss.", tertiary_warning_entity: "Tertiäre Wetterwarnung (*_tertiary_weather_warning) aus LNKtwo/ha-meteoswiss." } }, weather_warning: "Wetterwarnung aktiv", weather_warnings: "{{count}} Wetterwarnungen aktiv", warnings: "Wetterwarnungen", warnings_none: "Keine aktiven Wetterwarnungen", warnings_unavailable: "Warnungsdaten nicht verfügbar", warnings_additional: "+{{count}} weitere", valid_from: "Gültig ab", valid_to: "Gültig bis" }, to = { config: { entity: "Wetter Entity *", forecast_hours: "Prognose Stunden (Standard: 6)", sun_entity: "Sonnen Entity für Sonnenaufgang und Sonnenuntergang", sunshine_entity: "Sonnenscheindauer", descr: { entity: "Die Wetter-Entity ist erforderlich und sollte von der Integration SwissWeather sein.", forecast_hours: "Anzahl der Stunden für die Anzeige der stündlichen Vorhersage (Standard: 6, maximal 18)", sun_entity: "Die Sonnen-Entity wird für Sonnenaufgangs-/Untergangsmarkierungen im Diagramm benötigt.", sunshine_entity: "Die Sonnenscheindauer-Entity wird benötigt, um die Sonnenscheindauer anzuzeigen." } }, forecast_hours: "Prognose (nächste {{hours}}h)", temperature_chart: "Temperatur (nächste 6h)", temperature_hours: "Temperatur (nächste {{hours}}h)", temperature_none: "Keine Temperaturdaten vorhanden", precipitation_hours: "Niederschlag (nächste {{hours}}h)", precipitation_none: "Keine Niederschlagsdaten vorhanden", no_precipitation_data: "Keine Niederschlagsdaten vorhanden", sunshine_chart: "Sonnenschein (nächste 6h)", sunshine_hours: "Sonnenschein (nächste {{hours}}h)", sunshine_none: "Keine Sonnenscheindaten vorhanden", no_sunshine_data: "Keine Sonnenscheindaten vorhanden", wind_hours: "Wind (nächste {{hours}}h)", wind_compass: "Richtung", loading: "Lädt...", loading_forecast: "Vorhersagedaten werden geladen...", check_devtools: "Prüfen Sie die Developer Tools → Services → weather.get_forecasts", try_other_entity: "Versuchen Sie eine andere Wetter-Entity", no_forecast_data: "Keine Vorhersagedaten verfügbar", no_forecast_data_hint: "Prüfen Sie die Developer Tools → Services → weather.get_forecasts", forecast_none: "Keine Forecast-Daten verfügbar", forecast_none_hint: "Prüfen Sie die Developer Tools → Services → weather.get_forecasts", forecast_loading: "Lädt...", forecast_days: "{{count}}-Tage-Prognose", forecast_days_7: "7-Tage-Prognose", "7d_forecast": "7-Tage-Prognose", xd_forecast: "Tages Prognose", days_available: "Verfügbare Tage", now: "Jetzt", hour: "{{h}}h" }, io = { config: { entity: "Wetter Entity *", sun_entity: "Sonnen Entity für Sonnenaufgang und Sonnenuntergang", forecast_mode: "Vorhersage-Modus", photo_mode: "Fotorealistischer Hintergrund (PoC)", show_day_temps: "Tages-Min/Max anzeigen", show_sun_times: "Sonnenauf-/-untergang anzeigen", temperature_font_size: "Temperatur Schriftgröße (px)", group_general: "Allgemeineinstellungen", group_display: "Anzeigeeinstellungen", descr: { entity: "Die Wetter-Entity ist erforderlich und sollte von der Integration SwissWeather sein.", sun_entity: "Die Sonnen-Entity ist erforderlich, um Sonnenaufgangs- und Sonnenuntergangszeiten anzuzeigen.", forecast_mode: "Wähle, ob in der BG-Card die Tages- oder Stunden-Vorhersage (oder keine) angezeigt wird.", show_day_temps: "Blende die Tages-Min/Max-Anzeige ein oder aus.", show_sun_times: "Blende die Anzeige von Sonnenaufgang/-untergang ein oder aus.", photo_mode: "Experimenteller fotorealistischer Hintergrund mit atmosphärischen Overlays (PoC).", temperature_font_size: "Schriftgröße der Temperaturanzeige in Pixel. Standard: 36", scenery_image: "URL eines Landschaftsbilds (See, Berge, etc.). Wird unten angezeigt mit dynamischem Himmel darüber." }, scenery_image: "Landschaftsbild URL" }, forecast_mode: { daily: "Täglich", hourly: "Stündlich", none: "Keine" }, sunrise: "Sonnenaufgang", sunset: "Sonnenuntergang" }, no = { config: { entity: "Wetter Entity *", sun_entity: "Sonnen Entity für Sonnenaufgang und Sonnenuntergang", group_general: "Allgemeineinstellungen", group_sensors: "Sensoren", descr: { entity: "Die Wetter-Entity ist erforderlich und sollte von der Integration SwissWeather sein.", sun_entity: "Die Sonnen-Entity ist erforderlich, um Sonnenaufgangs- und Sonnenuntergangszeiten anzuzeigen." } } }, ro = "Schweiz", so = "Wind", oo = "Richtung", ao = "Luftfeuchtigkeit", lo = "Luftdruck", co = "Sonnenschein", ho = "Sicht", po = "Aktuelles Wetter", uo = "Unbekannt", fo = "Einklappen", go = "Ausklappen", mo = "Bewölkt", yo = "Aussergewöhnliches Wetter", _o = "Nebel", bo = "Hagel", wo = "Gewitter", xo = "Teilweise bewölkt", vo = "Strömender Regen", $o = "Regnerisch", ko = "Schneefall", Co = "Sonnig", Ao = "Windig", So = { title: "Pollenbelastung", no_data: "Keine Pollen-Typen aktiviert", not_configured: "Keine Pollen-Sensoren konfiguriert. Bitte Karte einrichten und Stufen-Sensoren aus LNKtwo/ha-meteoswiss zuweisen.", config: { level_sensor: "Stufen-Sensor", level_sensor_hint: "Pollen-Stufen-Sensor (SwissPollenLevelSensor aus LNKtwo/ha-meteoswiss). Mögliche Werte: NONE / LOW / MEDIUM / STRONG / VERY_STRONG", raw_sensor: "Rohwert-Sensor (optional)", raw_sensor_hint: "Optionaler Rohwert-Sensor in Partikel/m³" }, types: { birch: "Birke", grasses: "Gräser", alder: "Erle", hazel: "Hasel", beech: "Buche", ash: "Esche", oak: "Eiche" }, levels: { none: "Keine", low: "Gering", medium: "Mittel", strong: "Stark", very_strong: "Sehr stark" } }, Mo = {
-  config: Js,
-  warning: eo,
-  hourly_charts: to,
-  bg_card: io,
-  forecast_diagram: no,
-  location: ro,
-  wind: so,
-  direction: oo,
-  humidity: ao,
-  pressure: lo,
-  sunshine: co,
-  visibility: ho,
-  current_weather: po,
-  unknown: uo,
-  collapse: fo,
-  expand: go,
+}, no = { entity: "Wetter Entity *", location: "Standort", show_location: "Standort anzeigen", sun_entity: "Sonnen Entity für Sonnenaufgang und Sonnenuntergang", wind_entity: "Windgeschwindigkeit", wind_direction_entity: "Windrichtung", sunshine_entity: "Sonnenscheindauer", precipitation_entity: "Niederschlagsprognose", show_forecast: "Wettervorhersage anzeigen", show_temperature: "Temperaturdiagramm anzeigen", show_precipitation: "Niederschlagsdiagramm anzeigen", show_sunshine: "Sonnenscheindauerdiagramm anzeigen", show_wind: "Winddiagramm anzeigen", enable_animate_weather_icons: "Animierte Wetter-Icons aktivieren", forecast_hours: "Prognose Stunden (Standard: 6)", compact_mode: "Kompakter Modus", display_mode: "Anzeigemodus", display_mode_full: "Vollständig", display_mode_compact: "Kompakt", display_mode_auto: "Automatisch", group_general: "Allgemeineinstellungen", group_current: "Aktuelles Wetter", group_forecast: "Wettervorhersage", group_charts: "Diagramme", group_sensors: "Sensoren", group_display: "Anzeigeeinstellungen", group_chart_order: "Reihenfolge der Diagramme", chart_order: "Reihenfolge der Diagramme (z.B. temperature,precipitation,sunshine,wind)", chart_temperature: "Temperatur", chart_precipitation: "Niederschlag", chart_sunshine: "Sonnenschein", chart_wind: "Wind", chart_forecast: "Prognose-Diagramm", move_up: "Nach oben", move_down: "Nach unten", descr: { entity: "Die Wetter-Entity ist erforderlich und sollte von der Integration SwissWeather sein. Wenn eine andere Wetter Entity genutzt wird kann es passieren, das nicht alle Daten korrekt angezeigt werden.", location: "Zeigt diesen Namen als Standort an.", show_location: "Zeige den Standortnamen über dem aktuellen Wetter an", sun_entity: "Die Sonnen-Entity ist erforderlich, um Sonnenaufgangs- und Sonnenuntergangszeiten anzuzeigen.", wind_entity: "Die Wind-Entity wird benötigt, um die Windgeschwindigkeit anzuzeigen.", wind_direction_entity: "Die Windrichtungs-Entity wird benötigt, um die Windrichtung anzuzeigen.", sunshine_entity: "Die Sonnenscheindauer-Entity wird benötigt, um die Sonnenscheindauer anzuzeigen.", precipitation_entity: "Die Niederschlags-Entity wird benötigt, um die Niederschlagsprognose anzuzeigen.", show_forecast: "Blende den Wettervorhersage-Bereich ein oder aus. Die Vorhersage zeigt bis zu 7 Tage an, je nach dem was der Wetterdienst liefert.", show_temperature: "Zeige das Temperaturdiagramm an, mit den Vorhersage anhand der eingestellten Stunden", show_precipitation: "Zeige das Niederschlags an, mit den Vorhersage anhand der eingestellten Stunden", show_sunshine: "Zeige das Sonnenscheindauerdiagramm an, mit den Vorhersage anhand der eingestellten Stunden", show_wind: "Zeige das Winddiagramm an mit den Vorhersage anhand der eingestellten Stunden", enable_animate_weather_icons: "Zeige animierte Icons an. Wenn ausgeschaltet, werden statische Icons angezeigt.", compact_mode: "Im kompakten Modus werden weniger Details angezeigt für die Tagesvorhersage und den aktuellen Daten (z.B. Windrichtung)", display_mode: "Wähle wie viele Daten angezeigt werden: Vollständig (alle Sektionen), Kompakt (nur wesentliches), oder Auto (passt sich an Kartengrösse an)", forecast_hours: "Anzahl der Stunden für die Anzeige der stündlichen Vorhersage (Standard: 6, maximal 18)", auto_resolve_entities: "LNKtwo/ha-meteoswiss Sensoren automatisch erkennen (Empfohlen)", show_swiss: "Schweizer Werte anzeigen (Föhn, Schnee, 0°C-Grenze)", show_heating: "Heizgradtage anzeigen (SIA 381/3)", foehn_entity: "Föhn-Index Sensor (automatisch erkannt wenn auto_resolve aktiv)", snow_entity: "Schneehöhe Sensor (automatisch erkannt wenn auto_resolve aktiv)", freezing_level_entity: "Nullgradgrenze Sensor (automatisch erkannt wenn auto_resolve aktiv)", heating_degree_days_entity: "Heizgradtage Sensor (automatisch erkannt wenn auto_resolve aktiv)", season_heating_entity: "Saison-Heizgradtage Sensor (automatisch erkannt wenn auto_resolve aktiv)" } }, ro = { config: { show_warnings: "Wetterwarnungen anzeigen", warning_entity: "Wetterwarnungen (Legacy)", primary_warning_entity: "Primäre Wetterwarnung", secondary_warning_entity: "Sekundäre Wetterwarnung", tertiary_warning_entity: "Tertiäre Wetterwarnung", descr: { show_warnings: "Zeige Wetterwarnungen an, wenn die Wetterwarnung Entity gesetzt ist und aktuelle Warnungen existieren.", warning_entity: "Wetterwarnungen Entity (LNKtwo/ha-meteoswiss: binary_sensor.*_any_alert). Wird automatisch erkannt.", primary_warning_entity: "Primäre Wetterwarnung (*_primary_weather_warning) aus LNKtwo/ha-meteoswiss. Wenn gesetzt, wird das neue Ranked-Model aktiviert.", secondary_warning_entity: "Sekundäre Wetterwarnung (*_secondary_weather_warning) aus LNKtwo/ha-meteoswiss.", tertiary_warning_entity: "Tertiäre Wetterwarnung (*_tertiary_weather_warning) aus LNKtwo/ha-meteoswiss." } }, weather_warning: "Wetterwarnung aktiv", weather_warnings: "{{count}} Wetterwarnungen aktiv", warnings: "Wetterwarnungen", warnings_none: "Keine aktiven Wetterwarnungen", warnings_unavailable: "Warnungsdaten nicht verfügbar", warnings_additional: "+{{count}} weitere", valid_from: "Gültig ab", valid_to: "Gültig bis" }, so = { config: { entity: "Wetter Entity *", forecast_hours: "Prognose Stunden (Standard: 6)", sun_entity: "Sonnen Entity für Sonnenaufgang und Sonnenuntergang", sunshine_entity: "Sonnenscheindauer", descr: { entity: "Die Wetter-Entity ist erforderlich und sollte von der Integration SwissWeather sein.", forecast_hours: "Anzahl der Stunden für die Anzeige der stündlichen Vorhersage (Standard: 6, maximal 18)", sun_entity: "Die Sonnen-Entity wird für Sonnenaufgangs-/Untergangsmarkierungen im Diagramm benötigt.", sunshine_entity: "Die Sonnenscheindauer-Entity wird benötigt, um die Sonnenscheindauer anzuzeigen." } }, forecast_hours: "Prognose (nächste {{hours}}h)", temperature_chart: "Temperatur (nächste 6h)", temperature_hours: "Temperatur (nächste {{hours}}h)", temperature_none: "Keine Temperaturdaten vorhanden", precipitation_hours: "Niederschlag (nächste {{hours}}h)", precipitation_none: "Keine Niederschlagsdaten vorhanden", no_precipitation_data: "Keine Niederschlagsdaten vorhanden", sunshine_chart: "Sonnenschein (nächste 6h)", sunshine_hours: "Sonnenschein (nächste {{hours}}h)", sunshine_none: "Keine Sonnenscheindaten vorhanden", no_sunshine_data: "Keine Sonnenscheindaten vorhanden", wind_hours: "Wind (nächste {{hours}}h)", wind_compass: "Richtung", loading: "Lädt...", loading_forecast: "Vorhersagedaten werden geladen...", check_devtools: "Prüfen Sie die Developer Tools → Services → weather.get_forecasts", try_other_entity: "Versuchen Sie eine andere Wetter-Entity", no_forecast_data: "Keine Vorhersagedaten verfügbar", no_forecast_data_hint: "Prüfen Sie die Developer Tools → Services → weather.get_forecasts", forecast_none: "Keine Forecast-Daten verfügbar", forecast_none_hint: "Prüfen Sie die Developer Tools → Services → weather.get_forecasts", forecast_loading: "Lädt...", forecast_days: "{{count}}-Tage-Prognose", forecast_days_7: "7-Tage-Prognose", "7d_forecast": "7-Tage-Prognose", xd_forecast: "Tages Prognose", days_available: "Verfügbare Tage", now: "Jetzt", hour: "{{h}}h" }, oo = { config: { entity: "Wetter Entity *", sun_entity: "Sonnen Entity für Sonnenaufgang und Sonnenuntergang", forecast_mode: "Vorhersage-Modus", photo_mode: "Fotorealistischer Hintergrund (PoC)", show_day_temps: "Tages-Min/Max anzeigen", show_sun_times: "Sonnenauf-/-untergang anzeigen", temperature_font_size: "Temperatur Schriftgröße (px)", group_general: "Allgemeineinstellungen", group_display: "Anzeigeeinstellungen", descr: { entity: "Die Wetter-Entity ist erforderlich und sollte von der Integration SwissWeather sein.", sun_entity: "Die Sonnen-Entity ist erforderlich, um Sonnenaufgangs- und Sonnenuntergangszeiten anzuzeigen.", forecast_mode: "Wähle, ob in der BG-Card die Tages- oder Stunden-Vorhersage (oder keine) angezeigt wird.", show_day_temps: "Blende die Tages-Min/Max-Anzeige ein oder aus.", show_sun_times: "Blende die Anzeige von Sonnenaufgang/-untergang ein oder aus.", photo_mode: "Experimenteller fotorealistischer Hintergrund mit atmosphärischen Overlays (PoC).", temperature_font_size: "Schriftgröße der Temperaturanzeige in Pixel. Standard: 36", scenery_image: "URL eines Landschaftsbilds (See, Berge, etc.). Wird unten angezeigt mit dynamischem Himmel darüber." }, scenery_image: "Landschaftsbild URL" }, forecast_mode: { daily: "Täglich", hourly: "Stündlich", none: "Keine" }, sunrise: "Sonnenaufgang", sunset: "Sonnenuntergang" }, ao = { config: { entity: "Wetter Entity *", sun_entity: "Sonnen Entity für Sonnenaufgang und Sonnenuntergang", group_general: "Allgemeineinstellungen", group_sensors: "Sensoren", descr: { entity: "Die Wetter-Entity ist erforderlich und sollte von der Integration SwissWeather sein.", sun_entity: "Die Sonnen-Entity ist erforderlich, um Sonnenaufgangs- und Sonnenuntergangszeiten anzuzeigen." } } }, lo = "Schweiz", co = "Wind", ho = "Richtung", po = "Luftfeuchtigkeit", uo = "Luftdruck", fo = "Sonnenschein", go = "Sicht", mo = "Aktuelles Wetter", yo = "Unbekannt", _o = "Einklappen", bo = "Ausklappen", wo = "Bewölkt", xo = "Aussergewöhnliches Wetter", vo = "Nebel", $o = "Hagel", ko = "Gewitter", Co = "Teilweise bewölkt", Ao = "Strömender Regen", So = "Regnerisch", Mo = "Schneefall", zo = "Sonnig", Lo = "Windig", No = { title: "Pollenbelastung", no_data: "Keine Pollen-Typen aktiviert", not_configured: "Keine Pollen-Sensoren konfiguriert. Bitte Karte einrichten und Stufen-Sensoren aus LNKtwo/ha-meteoswiss zuweisen.", config: { level_sensor: "Stufen-Sensor", level_sensor_hint: "Pollen-Stufen-Sensor (SwissPollenLevelSensor aus LNKtwo/ha-meteoswiss). Mögliche Werte: NONE / LOW / MEDIUM / STRONG / VERY_STRONG", raw_sensor: "Rohwert-Sensor (optional)", raw_sensor_hint: "Optionaler Rohwert-Sensor in Partikel/m³" }, types: { birch: "Birke", grasses: "Gräser", alder: "Erle", hazel: "Hasel", beech: "Buche", ash: "Esche", oak: "Eiche" }, levels: { none: "Keine", low: "Gering", medium: "Mittel", strong: "Stark", very_strong: "Sehr stark" } }, Eo = {
+  config: no,
+  warning: ro,
+  hourly_charts: so,
+  bg_card: oo,
+  forecast_diagram: ao,
+  location: lo,
+  wind: co,
+  direction: ho,
+  humidity: po,
+  pressure: uo,
+  sunshine: fo,
+  visibility: go,
+  current_weather: mo,
+  unknown: yo,
+  collapse: _o,
+  expand: bo,
   "clear-night": "Klarer Himmel in der Nacht",
-  cloudy: mo,
-  exceptional: yo,
-  fog: _o,
-  hail: bo,
-  lightning: wo,
+  cloudy: wo,
+  exceptional: xo,
+  fog: vo,
+  hail: $o,
+  lightning: ko,
   "lightning-rainy": "Gewitter, regnerisch",
-  partlycloudy: xo,
-  pouring: vo,
-  rainy: $o,
-  snowy: ko,
+  partlycloudy: Co,
+  pouring: Ao,
+  rainy: So,
+  snowy: Mo,
   "snowy-rainy": "Schnee mit Regen",
-  sunny: Co,
-  windy: Ao,
+  sunny: zo,
+  windy: Lo,
   "windy-variant": "Windige Variante",
   "windy-variant-cloudy": "Windig mit Wolken",
   "windy-variant-partlycloudy": "Windig mit teilweiser Bewölkung",
@@ -2365,38 +2401,38 @@ const oe = (n, e, t, i) => {
   "windy-variant-lightning-rainy": "Windig mit Blitz und Regen",
   "windy-variant-pouring": "Windig mit starkem Regen",
   "windy-variant-exceptional": "Windig mit aussergewöhnlichem Wetter",
-  pollen: So
-}, zo = { entity: "Weather Entity *", location: "Location", show_location: "Show Location", sun_entity: "Sun Entity to display sunrise and sunset times", wind_entity: "Wind Speed", wind_direction_entity: "Wind Direction", sunshine_entity: "Sunshine Duration", precipitation_entity: "Precipitation Forecast", show_forecast: "Show Weather Forecast", show_temperature: "Show Temperature Chart", show_precipitation: "Show Precipitation Chart", show_sunshine: "Show Sunshine Duration Chart", show_wind: "Show Wind Chart", enable_animate_weather_icons: "Enable Animated Weather Icons", forecast_hours: "Forecast Hours (default: 6)", compact_mode: "Compact Mode", display_mode: "Display Mode", display_mode_full: "Full", display_mode_compact: "Compact", display_mode_auto: "Auto", group_general: "General Settings", group_current: "Current Weather", group_forecast: "Weather Forecast", group_charts: "Charts", group_sensors: "Sensors", group_display: "Display Settings", group_chart_order: "Chart Order", chart_order: "Chart order (e.g. temperature,precipitation,sunshine,wind)", chart_temperature: "Temperature", chart_precipitation: "Precipitation", chart_sunshine: "Sunshine", chart_wind: "Wind", chart_forecast: "Forecast Chart", move_up: "Move up", move_down: "Move down", descr: { entity: "The weather entity is required and should be from the SwissWeather integration. If another weather entity is used, not all data may be displayed correctly.", location: "Displays this name as location.", show_location: "Show the location name above the current weather", sun_entity: "The sun entity is required to display sunrise and sunset times.", wind_entity: "The wind entity is required to display wind speed.", wind_direction_entity: "The wind direction entity is required to display wind direction.", sunshine_entity: "The sunshine entity is required to display sunshine duration.", precipitation_entity: "The precipitation entity is required to display the precipitation forecast.", show_forecast: "Toggle the weather forecast section on or off. The forecast shows up to 7 days depending on what the weather service provides.", show_temperature: "Show the temperature chart with the forecast based on the set hours", show_precipitation: "Show the precipitation chart with the forecast based on the set hours", show_sunshine: "Show the sunshine duration chart with the forecast based on the set hours", show_wind: "Show the wind chart with the forecast based on the set hours", enable_animate_weather_icons: "Show animated icons. If disabled, static icons are displayed.", compact_mode: "In compact mode, fewer details are displayed for the daily forecast and current data (e.g. wind direction)", display_mode: "Choose how much data to show: Full (all sections), Compact (essentials only), or Auto (adapts to card width)", forecast_hours: "Number of hours to show in the hourly forecast (default: 6, maximum 18)", auto_resolve_entities: "Auto-resolve LNKtwo/ha-meteoswiss sensor entities (Recommended)", show_swiss: "Show Swiss-specific values (foehn, snow, freezing level)", show_heating: "Show heating degree days (SIA 381/3)", foehn_entity: "Foehn index sensor (auto-resolved if auto_resolve enabled)", snow_entity: "Snow depth sensor (auto-resolved if auto_resolve enabled)", freezing_level_entity: "Freezing level sensor (auto-resolved if auto_resolve enabled)", heating_degree_days_entity: "Heating degree days sensor (auto-resolved if auto_resolve enabled)", season_heating_entity: "Season heating degree days sensor (auto-resolved if auto_resolve enabled)" } }, Lo = { config: { show_warnings: "Show Weather Warnings", warning_entity: "Weather Warnings (Legacy)", primary_warning_entity: "Primary Weather Warning", secondary_warning_entity: "Secondary Weather Warning", tertiary_warning_entity: "Tertiary Weather Warning", descr: { show_warnings: "Show weather warnings if the weather warning entity is set and the actual warning exists.", warning_entity: "Weather warning entity (LNKtwo/ha-meteoswiss: binary_sensor.*_any_alert). Auto-detected from weather entity.", primary_warning_entity: "Primary weather warning entity (*_primary_weather_warning) from LNKtwo/ha-meteoswiss. When set, the new ranked model is activated.", secondary_warning_entity: "Secondary weather warning entity (*_secondary_weather_warning) from LNKtwo/ha-meteoswiss.", tertiary_warning_entity: "Tertiary weather warning entity (*_tertiary_weather_warning) from LNKtwo/ha-meteoswiss." } }, weather_warning: "Weather warning active", weather_warnings: "{{count}} weather warnings active", warnings: "Weather warnings", warnings_none: "No active weather warnings", warnings_unavailable: "Weather warning data unavailable", warnings_additional: "+{{count}} more", valid_from: "Valid from", valid_to: "Valid to" }, Eo = { config: { entity: "Weather Entity *", forecast_hours: "Forecast Hours (default: 6)", sun_entity: "Sun Entity to display sunrise and sunset times", sunshine_entity: "Sunshine Duration", descr: { entity: "The weather entity is required and should be from the SwissWeather integration.", forecast_hours: "Number of hours to show in the hourly forecast (default: 6, maximum 18)", sun_entity: "The sun entity is required for sunrise/sunset markers in the chart.", sunshine_entity: "The sunshine entity is required to display sunshine duration." } }, forecast_hours: "Forecast (next {{hours}}h)", temperature_chart: "Temperature (next 6h)", temperature_hours: "Temperature (next {{hours}}h)", temperature_none: "No temperature data available", precipitation_hours: "Precipitation (next {{hours}}h)", precipitation_none: "No precipitation data available", no_precipitation_data: "No precipitation data available", sunshine_chart: "Sunshine (next 6h)", sunshine_hours: "Sunshine (next {{hours}}h)", sunshine_none: "No sunshine data available", no_sunshine_data: "No sunshine data available", wind_hours: "Wind (next {{hours}}h)", wind_compass: "Direction", loading: "Loading...", loading_forecast: "Loading forecast data...", check_devtools: "Check Developer Tools → Services → weather.get_forecasts", try_other_entity: "Try a different weather entity", no_forecast_data: "No forecast data available", no_forecast_data_hint: "Check Developer Tools → Services → weather.get_forecasts", forecast_none: "No forecast data available", forecast_none_hint: "Check Developer Tools → Services → weather.get_forecasts", forecast_loading: "Loading...", forecast_days: "{{count}}-day forecast", forecast_days_7: "7-day forecast", "7d_forecast": "7-day forecast", xd_forecast: "Daily forecast", days_available: "Available Days", now: "Now", hour: "{{h}}h" }, No = { config: { entity: "Weather Entity *", sun_entity: "Sun Entity to display sunrise and sunset times", forecast_mode: "Forecast Mode", photo_mode: "Photorealistic Background (PoC)", show_day_temps: "Show Day Min/Max", show_sun_times: "Show Sunrise/Sunset", temperature_font_size: "Temperature font size (px)", group_general: "General Settings", group_display: "Display Settings", descr: { entity: "The weather entity is required and should be from the SwissWeather integration.", sun_entity: "The sun entity is required to display sunrise and sunset times.", forecast_mode: "Choose whether the BG card shows the daily or hourly forecast (or none).", show_day_temps: "Toggle the per-day min/max display on or off.", show_sun_times: "Toggle the sunrise/sunset display on or off.", photo_mode: "Photorealistic background with atmospheric overlays.", temperature_font_size: "Font size for the temperature label in pixels. Default: 36", scenery_image: "Background landscape image URL (lake, mountains, etc.). Shown at the bottom with dynamic sky on top." }, scenery_image: "Scenery Image URL" }, forecast_mode: { daily: "Daily", hourly: "Hourly", none: "None" }, sunrise: "Sunrise", sunset: "Sunset" }, To = { config: { entity: "Weather Entity *", sun_entity: "Sun Entity to display sunrise and sunset times", group_general: "General Settings", group_sensors: "Sensors", descr: { entity: "The weather entity is required and should be from the SwissWeather integration.", sun_entity: "The sun entity is required to display sunrise and sunset times." } } }, Oo = "Switzerland", Ho = "Wind", Do = "Direction", Po = "Humidity", Ro = "Pressure", Fo = "Sunshine", Go = "Visibility", Wo = "Current Weather", Uo = "Unknown", Io = "Collapse", Bo = "Expand", jo = "Cloudy", qo = "Exceptional weather", Vo = "Foggy", Zo = "Hail", Ko = "Lightning", Yo = "Partly cloudy", Qo = "Pouring rain", Xo = "Rainy", Jo = "Snowy", ea = "Sunny", ta = "Windy", ia = { title: "Pollen levels", no_data: "No pollen types enabled", not_configured: "No pollen sensors configured. Please edit the card and assign level sensors from LNKtwo/ha-meteoswiss.", config: { level_sensor: "Level sensor", level_sensor_hint: "Pollen level sensor (SwissPollenLevelSensor from LNKtwo/ha-meteoswiss). Values: NONE / LOW / MEDIUM / STRONG / VERY_STRONG", raw_sensor: "Raw value sensor (optional)", raw_sensor_hint: "Optional raw value sensor in particles/m³" }, types: { birch: "Birch", grasses: "Grasses", alder: "Alder", hazel: "Hazel", beech: "Beech", ash: "Ash", oak: "Oak" }, levels: { none: "None", low: "Low", medium: "Medium", strong: "Strong", very_strong: "Very strong" } }, na = {
-  config: zo,
-  warning: Lo,
-  hourly_charts: Eo,
-  bg_card: No,
-  forecast_diagram: To,
-  location: Oo,
-  wind: Ho,
-  direction: Do,
-  humidity: Po,
-  pressure: Ro,
-  sunshine: Fo,
-  visibility: Go,
-  current_weather: Wo,
-  unknown: Uo,
-  collapse: Io,
-  expand: Bo,
+  pollen: No
+}, To = { entity: "Weather Entity *", location: "Location", show_location: "Show Location", sun_entity: "Sun Entity to display sunrise and sunset times", wind_entity: "Wind Speed", wind_direction_entity: "Wind Direction", sunshine_entity: "Sunshine Duration", precipitation_entity: "Precipitation Forecast", show_forecast: "Show Weather Forecast", show_temperature: "Show Temperature Chart", show_precipitation: "Show Precipitation Chart", show_sunshine: "Show Sunshine Duration Chart", show_wind: "Show Wind Chart", enable_animate_weather_icons: "Enable Animated Weather Icons", forecast_hours: "Forecast Hours (default: 6)", compact_mode: "Compact Mode", display_mode: "Display Mode", display_mode_full: "Full", display_mode_compact: "Compact", display_mode_auto: "Auto", group_general: "General Settings", group_current: "Current Weather", group_forecast: "Weather Forecast", group_charts: "Charts", group_sensors: "Sensors", group_display: "Display Settings", group_chart_order: "Chart Order", chart_order: "Chart order (e.g. temperature,precipitation,sunshine,wind)", chart_temperature: "Temperature", chart_precipitation: "Precipitation", chart_sunshine: "Sunshine", chart_wind: "Wind", chart_forecast: "Forecast Chart", move_up: "Move up", move_down: "Move down", descr: { entity: "The weather entity is required and should be from the SwissWeather integration. If another weather entity is used, not all data may be displayed correctly.", location: "Displays this name as location.", show_location: "Show the location name above the current weather", sun_entity: "The sun entity is required to display sunrise and sunset times.", wind_entity: "The wind entity is required to display wind speed.", wind_direction_entity: "The wind direction entity is required to display wind direction.", sunshine_entity: "The sunshine entity is required to display sunshine duration.", precipitation_entity: "The precipitation entity is required to display the precipitation forecast.", show_forecast: "Toggle the weather forecast section on or off. The forecast shows up to 7 days depending on what the weather service provides.", show_temperature: "Show the temperature chart with the forecast based on the set hours", show_precipitation: "Show the precipitation chart with the forecast based on the set hours", show_sunshine: "Show the sunshine duration chart with the forecast based on the set hours", show_wind: "Show the wind chart with the forecast based on the set hours", enable_animate_weather_icons: "Show animated icons. If disabled, static icons are displayed.", compact_mode: "In compact mode, fewer details are displayed for the daily forecast and current data (e.g. wind direction)", display_mode: "Choose how much data to show: Full (all sections), Compact (essentials only), or Auto (adapts to card width)", forecast_hours: "Number of hours to show in the hourly forecast (default: 6, maximum 18)", auto_resolve_entities: "Auto-resolve LNKtwo/ha-meteoswiss sensor entities (Recommended)", show_swiss: "Show Swiss-specific values (foehn, snow, freezing level)", show_heating: "Show heating degree days (SIA 381/3)", foehn_entity: "Foehn index sensor (auto-resolved if auto_resolve enabled)", snow_entity: "Snow depth sensor (auto-resolved if auto_resolve enabled)", freezing_level_entity: "Freezing level sensor (auto-resolved if auto_resolve enabled)", heating_degree_days_entity: "Heating degree days sensor (auto-resolved if auto_resolve enabled)", season_heating_entity: "Season heating degree days sensor (auto-resolved if auto_resolve enabled)" } }, Oo = { config: { show_warnings: "Show Weather Warnings", warning_entity: "Weather Warnings (Legacy)", primary_warning_entity: "Primary Weather Warning", secondary_warning_entity: "Secondary Weather Warning", tertiary_warning_entity: "Tertiary Weather Warning", descr: { show_warnings: "Show weather warnings if the weather warning entity is set and the actual warning exists.", warning_entity: "Weather warning entity (LNKtwo/ha-meteoswiss: binary_sensor.*_any_alert). Auto-detected from weather entity.", primary_warning_entity: "Primary weather warning entity (*_primary_weather_warning) from LNKtwo/ha-meteoswiss. When set, the new ranked model is activated.", secondary_warning_entity: "Secondary weather warning entity (*_secondary_weather_warning) from LNKtwo/ha-meteoswiss.", tertiary_warning_entity: "Tertiary weather warning entity (*_tertiary_weather_warning) from LNKtwo/ha-meteoswiss." } }, weather_warning: "Weather warning active", weather_warnings: "{{count}} weather warnings active", warnings: "Weather warnings", warnings_none: "No active weather warnings", warnings_unavailable: "Weather warning data unavailable", warnings_additional: "+{{count}} more", valid_from: "Valid from", valid_to: "Valid to" }, Ho = { config: { entity: "Weather Entity *", forecast_hours: "Forecast Hours (default: 6)", sun_entity: "Sun Entity to display sunrise and sunset times", sunshine_entity: "Sunshine Duration", descr: { entity: "The weather entity is required and should be from the SwissWeather integration.", forecast_hours: "Number of hours to show in the hourly forecast (default: 6, maximum 18)", sun_entity: "The sun entity is required for sunrise/sunset markers in the chart.", sunshine_entity: "The sunshine entity is required to display sunshine duration." } }, forecast_hours: "Forecast (next {{hours}}h)", temperature_chart: "Temperature (next 6h)", temperature_hours: "Temperature (next {{hours}}h)", temperature_none: "No temperature data available", precipitation_hours: "Precipitation (next {{hours}}h)", precipitation_none: "No precipitation data available", no_precipitation_data: "No precipitation data available", sunshine_chart: "Sunshine (next 6h)", sunshine_hours: "Sunshine (next {{hours}}h)", sunshine_none: "No sunshine data available", no_sunshine_data: "No sunshine data available", wind_hours: "Wind (next {{hours}}h)", wind_compass: "Direction", loading: "Loading...", loading_forecast: "Loading forecast data...", check_devtools: "Check Developer Tools → Services → weather.get_forecasts", try_other_entity: "Try a different weather entity", no_forecast_data: "No forecast data available", no_forecast_data_hint: "Check Developer Tools → Services → weather.get_forecasts", forecast_none: "No forecast data available", forecast_none_hint: "Check Developer Tools → Services → weather.get_forecasts", forecast_loading: "Loading...", forecast_days: "{{count}}-day forecast", forecast_days_7: "7-day forecast", "7d_forecast": "7-day forecast", xd_forecast: "Daily forecast", days_available: "Available Days", now: "Now", hour: "{{h}}h" }, Do = { config: { entity: "Weather Entity *", sun_entity: "Sun Entity to display sunrise and sunset times", forecast_mode: "Forecast Mode", photo_mode: "Photorealistic Background (PoC)", show_day_temps: "Show Day Min/Max", show_sun_times: "Show Sunrise/Sunset", temperature_font_size: "Temperature font size (px)", group_general: "General Settings", group_display: "Display Settings", descr: { entity: "The weather entity is required and should be from the SwissWeather integration.", sun_entity: "The sun entity is required to display sunrise and sunset times.", forecast_mode: "Choose whether the BG card shows the daily or hourly forecast (or none).", show_day_temps: "Toggle the per-day min/max display on or off.", show_sun_times: "Toggle the sunrise/sunset display on or off.", photo_mode: "Photorealistic background with atmospheric overlays.", temperature_font_size: "Font size for the temperature label in pixels. Default: 36", scenery_image: "Background landscape image URL (lake, mountains, etc.). Shown at the bottom with dynamic sky on top." }, scenery_image: "Scenery Image URL" }, forecast_mode: { daily: "Daily", hourly: "Hourly", none: "None" }, sunrise: "Sunrise", sunset: "Sunset" }, Po = { config: { entity: "Weather Entity *", sun_entity: "Sun Entity to display sunrise and sunset times", group_general: "General Settings", group_sensors: "Sensors", descr: { entity: "The weather entity is required and should be from the SwissWeather integration.", sun_entity: "The sun entity is required to display sunrise and sunset times." } } }, Fo = "Switzerland", Ro = "Wind", Go = "Direction", Wo = "Humidity", Uo = "Pressure", Io = "Sunshine", Bo = "Visibility", jo = "Current Weather", qo = "Unknown", Vo = "Collapse", Zo = "Expand", Ko = "Cloudy", Yo = "Exceptional weather", Qo = "Foggy", Xo = "Hail", Jo = "Lightning", ea = "Partly cloudy", ta = "Pouring rain", ia = "Rainy", na = "Snowy", ra = "Sunny", sa = "Windy", oa = { title: "Pollen levels", no_data: "No pollen types enabled", not_configured: "No pollen sensors configured. Please edit the card and assign level sensors from LNKtwo/ha-meteoswiss.", config: { level_sensor: "Level sensor", level_sensor_hint: "Pollen level sensor (SwissPollenLevelSensor from LNKtwo/ha-meteoswiss). Values: NONE / LOW / MEDIUM / STRONG / VERY_STRONG", raw_sensor: "Raw value sensor (optional)", raw_sensor_hint: "Optional raw value sensor in particles/m³" }, types: { birch: "Birch", grasses: "Grasses", alder: "Alder", hazel: "Hazel", beech: "Beech", ash: "Ash", oak: "Oak" }, levels: { none: "None", low: "Low", medium: "Medium", strong: "Strong", very_strong: "Very strong" } }, aa = {
+  config: To,
+  warning: Oo,
+  hourly_charts: Ho,
+  bg_card: Do,
+  forecast_diagram: Po,
+  location: Fo,
+  wind: Ro,
+  direction: Go,
+  humidity: Wo,
+  pressure: Uo,
+  sunshine: Io,
+  visibility: Bo,
+  current_weather: jo,
+  unknown: qo,
+  collapse: Vo,
+  expand: Zo,
   "clear-night": "Clear night sky",
-  cloudy: jo,
-  exceptional: qo,
-  fog: Vo,
-  hail: Zo,
-  lightning: Ko,
+  cloudy: Ko,
+  exceptional: Yo,
+  fog: Qo,
+  hail: Xo,
+  lightning: Jo,
   "lightning-rainy": "Lightning with rain",
-  partlycloudy: Yo,
-  pouring: Qo,
-  rainy: Xo,
-  snowy: Jo,
+  partlycloudy: ea,
+  pouring: ta,
+  rainy: ia,
+  snowy: na,
   "snowy-rainy": "Snowy with rain",
-  sunny: ea,
-  windy: ta,
+  sunny: ra,
+  windy: sa,
   "windy-variant": "Windy variant",
   "windy-variant-cloudy": "Windy with clouds",
   "windy-variant-partlycloudy": "Windy with partial clouds",
@@ -2411,8 +2447,8 @@ const oe = (n, e, t, i) => {
   "windy-variant-lightning-rainy": "Windy with lightning and rain",
   "windy-variant-pouring": "Windy with pouring rain",
   "windy-variant-exceptional": "Windy with exceptional weather",
-  pollen: ia
-}, U = { de: Mo, en: na }, ge = "meteoswiss", xe = `${ge}-card`, dr = `${xe}-editor`, hr = [
+  pollen: oa
+}, U = { de: Eo, en: aa }, ge = "meteoswiss", ve = `${ge}-card`, hr = `${ve}-editor`, pr = [
   {
     name: "entity",
     required: !0,
@@ -2613,15 +2649,15 @@ const oe = (n, e, t, i) => {
     }
   }
 ];
-var ra = Object.defineProperty, sa = Object.getOwnPropertyDescriptor, li = (n, e, t, i) => {
-  for (var r = i > 1 ? void 0 : i ? sa(e, t) : e, s = n.length - 1, o; s >= 0; s--)
+var la = Object.defineProperty, ca = Object.getOwnPropertyDescriptor, ci = (n, e, t, i) => {
+  for (var r = i > 1 ? void 0 : i ? ca(e, t) : e, s = n.length - 1, o; s >= 0; s--)
     (o = n[s]) && (r = (i ? o(e, t, r) : o(r)) || r);
-  return i && r && ra(e, t, r), r;
+  return i && r && la(e, t, r), r;
 };
 W({
   loader: (n) => U[n]
 });
-let Lt = class extends N {
+let Nt = class extends E {
   constructor() {
     super(...arguments), this._computeLabel = (n) => ({
       entity: u("config.entity"),
@@ -2709,7 +2745,7 @@ let Lt = class extends N {
       enable_animate_weather_icons: this._config?.enable_animate_weather_icons ?? !0,
       compact_mode: this._config?.compact_mode ?? !1,
       display_mode: this._config?.display_mode ?? "full"
-    }, i = (r) => hr.find((s) => s.name === r);
+    }, i = (r) => pr.find((s) => s.name === r);
     return c`
       <div class="card-config">
         <div class="header">
@@ -2819,40 +2855,40 @@ let Lt = class extends N {
     i < 0 || i >= t.length || ([t[n], t[i]] = [t[i], t[n]], this._config = { ...this._config, chart_order: t }, oe(this, "config-changed", { config: this._config }), this.requestUpdate());
   }
   _renderConfigPreview() {
-    const n = { ...this._config, type: "custom:" + xe };
+    const n = { ...this._config, type: "custom:" + ve };
     return Object.keys(n).forEach((e) => {
       (n[e] === void 0 || n[e] === "") && delete n[e];
     }), Object.entries(n).map(([e, t]) => typeof t == "string" ? `${e}: "${t}"` : `${e}: ${t}`).join(`
 `);
   }
   _valueChanged(n) {
-    this._config || (this._config = { type: "custom:" + xe, entity: "" });
+    this._config || (this._config = { type: "custom:" + ve, entity: "" });
     const e = {};
     this._config.chart_order !== void 0 && (e.chart_order = this._config.chart_order);
     const t = {
       ...this._config,
       ...n.detail.value,
       ...e,
-      type: "custom:" + xe
+      type: "custom:" + ve
     };
     Object.keys(t).forEach((i) => {
       (t[i] === "" || t[i] === void 0) && delete t[i];
     }), this._config = t, oe(this, "config-changed", { config: this._config });
   }
 };
-li([
+ci([
   m({ attribute: !1 })
-], Lt.prototype, "hass", 2);
-li([
+], Nt.prototype, "hass", 2);
+ci([
   m({ attribute: !1 })
-], Lt.prototype, "lovelace", 2);
-li([
+], Nt.prototype, "lovelace", 2);
+ci([
   m({ attribute: !1 })
-], Lt.prototype, "_config", 2);
-Lt = li([
-  O(dr)
-], Lt);
-function Gt(n, e, t) {
+], Nt.prototype, "_config", 2);
+Nt = ci([
+  O(hr)
+], Nt);
+function Wt(n, e, t) {
   const i = /* @__PURE__ */ new Date();
   return c`
     <div class="chart-labels">
@@ -2869,37 +2905,37 @@ function Gt(n, e, t) {
     </div>
   `;
 }
-function oa(n) {
+function da(n) {
   const e = new Date(n);
   return ["So", "Mo", "Di", "Mi", "Do", "Fr", "Sa"][e.getDay()];
 }
-const aa = "data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3e%3cdefs%3e%3clinearGradient%20id='a'%20x1='21.92'%20x2='38.52'%20y1='18.75'%20y2='47.52'%20gradientUnits='userSpaceOnUse'%3e%3cstop%20offset='0'%20stop-color='%2386c3db'/%3e%3cstop%20offset='.45'%20stop-color='%2386c3db'/%3e%3cstop%20offset='1'%20stop-color='%235eafcf'/%3e%3canimateTransform%20attributeName='gradientTransform'%20dur='10s'%20repeatCount='indefinite'%20type='rotate'%20values='5%2032%2032;%20-15%2032%2032;%205%2032%2032'/%3e%3c/linearGradient%3e%3c/defs%3e%3cpath%20fill='url(%23a)'%20stroke='%2372b9d5'%20stroke-linecap='round'%20stroke-linejoin='round'%20stroke-width='.5'%20d='M46.66%2036.2a16.66%2016.66%200%2001-16.78-16.55%2016.29%2016.29%200%2001.55-4.15A16.56%2016.56%200%201048.5%2036.1c-.61.06-1.22.1-1.84.1z'%3e%3canimateTransform%20attributeName='transform'%20dur='10s'%20repeatCount='indefinite'%20type='rotate'%20values='-5%2032%2032;%2015%2032%2032;%20-5%2032%2032'/%3e%3c/path%3e%3c/svg%3e", la = "data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3e%3cdefs%3e%3clinearGradient%20id='a'%20x1='22.56'%20x2='39.2'%20y1='21.96'%20y2='50.8'%20gradientUnits='userSpaceOnUse'%3e%3cstop%20offset='0'%20stop-color='%23f3f7fe'/%3e%3cstop%20offset='.45'%20stop-color='%23f3f7fe'/%3e%3cstop%20offset='1'%20stop-color='%23deeafb'/%3e%3c/linearGradient%3e%3c/defs%3e%3cpath%20fill='url(%23a)'%20stroke='%23e6effc'%20stroke-miterlimit='10'%20stroke-width='.5'%20d='M46.5%2031.5h-.32a10.49%2010.49%200%2000-19.11-8%207%207%200%2000-10.57%206%207.21%207.21%200%2000.1%201.14A7.5%207.5%200%200018%2045.5a4.19%204.19%200%2000.5%200v0h28a7%207%200%20000-14z'%3e%3canimateTransform%20attributeName='transform'%20dur='7s'%20repeatCount='indefinite'%20type='translate'%20values='-3%200;%203%200;%20-3%200'/%3e%3c/path%3e%3c/svg%3e", ca = "data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3e%3cdefs%3e%3clinearGradient%20id='a'%20x1='16.5'%20x2='21.5'%20y1='19.67'%20y2='28.33'%20gradientUnits='userSpaceOnUse'%3e%3cstop%20offset='0'%20stop-color='%23fbbf24'/%3e%3cstop%20offset='.45'%20stop-color='%23fbbf24'/%3e%3cstop%20offset='1'%20stop-color='%23f59e0b'/%3e%3c/linearGradient%3e%3clinearGradient%20id='b'%20x1='22.56'%20x2='39.2'%20y1='21.96'%20y2='50.8'%20gradientUnits='userSpaceOnUse'%3e%3cstop%20offset='0'%20stop-color='%23f3f7fe'/%3e%3cstop%20offset='.45'%20stop-color='%23f3f7fe'/%3e%3cstop%20offset='1'%20stop-color='%23deeafb'/%3e%3c/linearGradient%3e%3c/defs%3e%3ccircle%20cx='19'%20cy='24'%20r='5'%20fill='url(%23a)'%20stroke='%23f8af18'%20stroke-miterlimit='10'%20stroke-width='.5'/%3e%3cpath%20fill='none'%20stroke='%23fbbf24'%20stroke-linecap='round'%20stroke-miterlimit='10'%20stroke-width='2'%20d='M19%2015.67V12.5m0%2023v-3.17m5.89-14.22l2.24-2.24M10.87%2032.13l2.24-2.24m0-11.78l-2.24-2.24m16.26%2016.26l-2.24-2.24M7.5%2024h3.17m19.83%200h-3.17'%3e%3canimateTransform%20attributeName='transform'%20dur='45s'%20repeatCount='indefinite'%20type='rotate'%20values='0%2019%2024;%20360%2019%2024'/%3e%3c/path%3e%3cpath%20fill='url(%23b)'%20stroke='%23e6effc'%20stroke-miterlimit='10'%20stroke-width='.5'%20d='M46.5%2031.5h-.32a10.49%2010.49%200%2000-19.11-8%207%207%200%2000-10.57%206%207.21%207.21%200%2000.1%201.14A7.5%207.5%200%200018%2045.5a4.19%204.19%200%2000.5%200v0h28a7%207%200%20000-14z'/%3e%3c/svg%3e", da = "data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3e%3cdefs%3e%3clinearGradient%20id='a'%20x1='13.58'%20x2='24.15'%20y1='15.57'%20y2='33.87'%20gradientUnits='userSpaceOnUse'%3e%3cstop%20offset='0'%20stop-color='%2386c3db'/%3e%3cstop%20offset='.45'%20stop-color='%2386c3db'/%3e%3cstop%20offset='1'%20stop-color='%235eafcf'/%3e%3canimateTransform%20attributeName='gradientTransform'%20dur='10s'%20repeatCount='indefinite'%20type='rotate'%20values='10%2019.22%2024.293;%20-10%2019.22%2024.293;%2010%2019.22%2024.293'/%3e%3c/linearGradient%3e%3clinearGradient%20id='b'%20x1='22.56'%20x2='39.2'%20y1='21.96'%20y2='50.8'%20gradientUnits='userSpaceOnUse'%3e%3cstop%20offset='0'%20stop-color='%23f3f7fe'/%3e%3cstop%20offset='.45'%20stop-color='%23f3f7fe'/%3e%3cstop%20offset='1'%20stop-color='%23deeafb'/%3e%3c/linearGradient%3e%3c/defs%3e%3cpath%20fill='url(%23a)'%20stroke='%2372b9d5'%20stroke-linecap='round'%20stroke-linejoin='round'%20stroke-width='.5'%20d='M29.33%2026.68a10.61%2010.61%200%2001-10.68-10.54A10.5%2010.5%200%200119%2013.5a10.54%2010.54%200%201011.5%2013.11%2011.48%2011.48%200%2001-1.17.07z'%3e%3canimateTransform%20attributeName='transform'%20dur='10s'%20repeatCount='indefinite'%20type='rotate'%20values='-10%2019.22%2024.293;%2010%2019.22%2024.293;%20-10%2019.22%2024.293'/%3e%3c/path%3e%3cpath%20fill='url(%23b)'%20stroke='%23e6effc'%20stroke-miterlimit='10'%20stroke-width='.5'%20d='M46.5%2031.5h-.32a10.49%2010.49%200%2000-19.11-8%207%207%200%2000-10.57%206%207.21%207.21%200%2000.1%201.14A7.5%207.5%200%200018%2045.5a4.19%204.19%200%2000.5%200v0h28a7%207%200%20000-14z'/%3e%3c/svg%3e", ha = "data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20xmlns:xlink='http://www.w3.org/1999/xlink'%20viewBox='0%200%2064%2064'%3e%3cdefs%3e%3clinearGradient%20id='b'%20x1='22.56'%20x2='39.2'%20y1='21.96'%20y2='50.8'%20gradientUnits='userSpaceOnUse'%3e%3cstop%20offset='0'%20stop-color='%23f3f7fe'/%3e%3cstop%20offset='.45'%20stop-color='%23f3f7fe'/%3e%3cstop%20offset='1'%20stop-color='%23deeafb'/%3e%3c/linearGradient%3e%3clinearGradient%20id='a'%20x1='27.5'%20x2='36.5'%20y1='50.21'%20y2='65.79'%20gradientUnits='userSpaceOnUse'%3e%3cstop%20offset='0'%20stop-color='%23d4d7dd'/%3e%3cstop%20offset='.45'%20stop-color='%23d4d7dd'/%3e%3cstop%20offset='1'%20stop-color='%23bec1c6'/%3e%3c/linearGradient%3e%3clinearGradient%20id='c'%20y1='44.21'%20y2='59.79'%20xlink:href='%23a'/%3e%3c/defs%3e%3cpath%20fill='url(%23b)'%20stroke='%23e6effc'%20stroke-miterlimit='10'%20stroke-width='.5'%20d='M46.5%2031.5h-.32a10.49%2010.49%200%2000-19.11-8%207%207%200%2000-10.57%206%207.21%207.21%200%2000.1%201.14A7.5%207.5%200%200018%2045.5a4.19%204.19%200%2000.5%200v0h28a7%207%200%20000-14z'/%3e%3cpath%20fill='none'%20stroke='url(%23a)'%20stroke-linecap='round'%20stroke-miterlimit='10'%20stroke-width='3'%20d='M17%2058h30'%3e%3canimateTransform%20attributeName='transform'%20begin='0s'%20dur='5s'%20repeatCount='indefinite'%20type='translate'%20values='-4%200;%204%200;%20-4%200'/%3e%3c/path%3e%3cpath%20fill='none'%20stroke='url(%23c)'%20stroke-linecap='round'%20stroke-miterlimit='10'%20stroke-width='3'%20d='M17%2052h30'%3e%3canimateTransform%20attributeName='transform'%20begin='-4s'%20dur='5s'%20repeatCount='indefinite'%20type='translate'%20values='-4%200;%204%200;%20-4%200'/%3e%3c/path%3e%3c/svg%3e", pa = "data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20xmlns:xlink='http://www.w3.org/1999/xlink'%20viewBox='0%200%2064%2064'%3e%3cdefs%3e%3clinearGradient%20id='b'%20x1='22.56'%20x2='39.2'%20y1='21.96'%20y2='50.8'%20gradientUnits='userSpaceOnUse'%3e%3cstop%20offset='0'%20stop-color='%23f3f7fe'/%3e%3cstop%20offset='.45'%20stop-color='%23f3f7fe'/%3e%3cstop%20offset='1'%20stop-color='%23deeafb'/%3e%3c/linearGradient%3e%3clinearGradient%20id='a'%20x1='23.25'%20x2='24.75'%20y1='43.7'%20y2='46.3'%20gradientUnits='userSpaceOnUse'%3e%3cstop%20offset='0'%20stop-color='%2386c3db'/%3e%3cstop%20offset='.45'%20stop-color='%2386c3db'/%3e%3cstop%20offset='1'%20stop-color='%235eafcf'/%3e%3c/linearGradient%3e%3clinearGradient%20id='c'%20x1='30.25'%20x2='31.75'%20y1='43.7'%20y2='46.3'%20xlink:href='%23a'/%3e%3clinearGradient%20id='d'%20x1='37.25'%20x2='38.75'%20y1='43.7'%20y2='46.3'%20xlink:href='%23a'/%3e%3c/defs%3e%3cpath%20fill='url(%23b)'%20stroke='%23e6effc'%20stroke-miterlimit='10'%20stroke-width='.5'%20d='M46.5%2031.5h-.32a10.49%2010.49%200%2000-19.11-8%207%207%200%2000-10.57%206%207.21%207.21%200%2000.1%201.14A7.5%207.5%200%200018%2045.5a4.19%204.19%200%2000.5%200v0h28a7%207%200%20000-14z'/%3e%3cpath%20fill='url(%23a)'%20d='M24%2043.5a1.5%201.5%200%20101.5%201.5%201.5%201.5%200%2000-1.5-1.5z'%3e%3canimateTransform%20attributeName='transform'%20dur='0.6s'%20repeatCount='indefinite'%20type='translate'%20values='1%20-5;%20-2%2018;%20-4%2014'/%3e%3canimate%20attributeName='opacity'%20dur='0.6s'%20repeatCount='indefinite'%20values='1;1;0'/%3e%3c/path%3e%3cpath%20fill='url(%23c)'%20d='M31%2043.5a1.5%201.5%200%20101.5%201.5%201.5%201.5%200%2000-1.5-1.5z'%3e%3canimateTransform%20attributeName='transform'%20begin='-0.4s'%20dur='0.6s'%20repeatCount='indefinite'%20type='translate'%20values='1%20-5;%20-2%2018;%20-4%2014'/%3e%3canimate%20attributeName='opacity'%20begin='-0.4s'%20dur='0.6s'%20repeatCount='indefinite'%20values='1;1;0'/%3e%3c/path%3e%3cpath%20fill='url(%23d)'%20d='M38%2043.5a1.5%201.5%200%20101.5%201.5%201.5%201.5%200%2000-1.5-1.5z'%3e%3canimateTransform%20attributeName='transform'%20begin='-0.2s'%20dur='0.6s'%20repeatCount='indefinite'%20type='translate'%20values='1%20-5;%20-2%2018;%20-4%2014'/%3e%3canimate%20attributeName='opacity'%20begin='-0.2s'%20dur='0.6s'%20repeatCount='indefinite'%20values='1;1;0'/%3e%3c/path%3e%3c/svg%3e", ua = "data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20xmlns:xlink='http://www.w3.org/1999/xlink'%20viewBox='0%200%2064%2064'%3e%3cdefs%3e%3clinearGradient%20id='b'%20x1='22.56'%20x2='39.2'%20y1='21.96'%20y2='50.8'%20gradientUnits='userSpaceOnUse'%3e%3cstop%20offset='0'%20stop-color='%23f3f7fe'/%3e%3cstop%20offset='.45'%20stop-color='%23f3f7fe'/%3e%3cstop%20offset='1'%20stop-color='%23deeafb'/%3e%3c/linearGradient%3e%3clinearGradient%20id='a'%20x1='22.53'%20x2='25.47'%20y1='42.95'%20y2='48.05'%20gradientUnits='userSpaceOnUse'%3e%3cstop%20offset='0'%20stop-color='%234286ee'/%3e%3cstop%20offset='.45'%20stop-color='%234286ee'/%3e%3cstop%20offset='1'%20stop-color='%230950bc'/%3e%3c/linearGradient%3e%3clinearGradient%20id='c'%20x1='29.53'%20x2='32.47'%20y1='42.95'%20y2='48.05'%20xlink:href='%23a'/%3e%3clinearGradient%20id='d'%20x1='36.53'%20x2='39.47'%20y1='42.95'%20y2='48.05'%20xlink:href='%23a'/%3e%3clinearGradient%20id='e'%20x1='26.74'%20x2='35.76'%20y1='37.88'%20y2='53.52'%20gradientUnits='userSpaceOnUse'%3e%3cstop%20offset='0'%20stop-color='%23f7b23b'/%3e%3cstop%20offset='.45'%20stop-color='%23f7b23b'/%3e%3cstop%20offset='1'%20stop-color='%23f59e0b'/%3e%3c/linearGradient%3e%3c/defs%3e%3cpath%20fill='url(%23b)'%20stroke='%23e6effc'%20stroke-miterlimit='10'%20stroke-width='.5'%20d='M46.5%2031.5h-.32a10.49%2010.49%200%2000-19.11-8%207%207%200%2000-10.57%206%207.21%207.21%200%2000.1%201.14A7.5%207.5%200%200018%2045.5a4.19%204.19%200%2000.5%200v0h28a7%207%200%20000-14z'/%3e%3cpath%20fill='none'%20stroke='url(%23a)'%20stroke-linecap='round'%20stroke-miterlimit='10'%20stroke-width='2'%20d='M24.39%2043.03l-.78%204.94'%3e%3canimateTransform%20attributeName='transform'%20dur='0.7s'%20repeatCount='indefinite'%20type='translate'%20values='1%20-5;%20-2%2010'/%3e%3canimate%20attributeName='opacity'%20dur='0.7s'%20repeatCount='indefinite'%20values='0;1;1;0'/%3e%3c/path%3e%3cpath%20fill='none'%20stroke='url(%23c)'%20stroke-linecap='round'%20stroke-miterlimit='10'%20stroke-width='2'%20d='M31.39%2043.03l-.78%204.94'%3e%3canimateTransform%20attributeName='transform'%20begin='-0.4s'%20dur='0.7s'%20repeatCount='indefinite'%20type='translate'%20values='1%20-5;%20-2%2010'/%3e%3canimate%20attributeName='opacity'%20begin='-0.4s'%20dur='0.7s'%20repeatCount='indefinite'%20values='0;1;1;0'/%3e%3c/path%3e%3cpath%20fill='none'%20stroke='url(%23d)'%20stroke-linecap='round'%20stroke-miterlimit='10'%20stroke-width='2'%20d='M38.39%2043.03l-.78%204.94'%3e%3canimateTransform%20attributeName='transform'%20begin='-0.2s'%20dur='0.7s'%20repeatCount='indefinite'%20type='translate'%20values='1%20-5;%20-2%2010'/%3e%3canimate%20attributeName='opacity'%20begin='-0.2s'%20dur='0.7s'%20repeatCount='indefinite'%20values='0;1;1;0'/%3e%3c/path%3e%3cpath%20fill='url(%23e)'%20stroke='%23f6a823'%20stroke-miterlimit='10'%20stroke-width='.5'%20d='M30%2036l-4%2012h4l-2%2010%2010-14h-6l4-8h-6z'%3e%3canimate%20attributeName='opacity'%20dur='2s'%20repeatCount='indefinite'%20values='1;%201;%201;%201;%201;%201;%200.1;%201;%200.1;%201;%201;%200.1;%201;%200.1;%201'/%3e%3c/path%3e%3c/svg%3e", fa = "data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3e%3cdefs%3e%3clinearGradient%20id='a'%20x1='22.56'%20x2='39.2'%20y1='21.96'%20y2='50.8'%20gradientUnits='userSpaceOnUse'%3e%3cstop%20offset='0'%20stop-color='%23f3f7fe'/%3e%3cstop%20offset='.45'%20stop-color='%23f3f7fe'/%3e%3cstop%20offset='1'%20stop-color='%23deeafb'/%3e%3c/linearGradient%3e%3clinearGradient%20id='b'%20x1='26.74'%20x2='35.76'%20y1='37.88'%20y2='53.52'%20gradientUnits='userSpaceOnUse'%3e%3cstop%20offset='0'%20stop-color='%23f7b23b'/%3e%3cstop%20offset='.45'%20stop-color='%23f7b23b'/%3e%3cstop%20offset='1'%20stop-color='%23f59e0b'/%3e%3c/linearGradient%3e%3c/defs%3e%3cpath%20fill='url(%23a)'%20stroke='%23e6effc'%20stroke-miterlimit='10'%20stroke-width='.5'%20d='M46.5%2031.5h-.32a10.49%2010.49%200%2000-19.11-8%207%207%200%2000-10.57%206%207.21%207.21%200%2000.1%201.14A7.5%207.5%200%200018%2045.5a4.19%204.19%200%2000.5%200v0h28a7%207%200%20000-14z'/%3e%3cpath%20fill='url(%23b)'%20stroke='%23f6a823'%20stroke-miterlimit='10'%20stroke-width='.5'%20d='M30%2036l-4%2012h4l-2%2010%2010-14h-6l4-8h-6z'%3e%3canimate%20attributeName='opacity'%20dur='2s'%20repeatCount='indefinite'%20values='1;%201;%201;%201;%201;%201;%200.1;%201;%200.1;%201;%201;%200.1;%201;%200.1;%201'/%3e%3c/path%3e%3c/svg%3e", ga = "data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20xmlns:xlink='http://www.w3.org/1999/xlink'%20viewBox='0%200%2064%2064'%3e%3cdefs%3e%3clinearGradient%20id='b'%20x1='22.56'%20x2='39.2'%20y1='21.96'%20y2='50.8'%20gradientUnits='userSpaceOnUse'%3e%3cstop%20offset='0'%20stop-color='%23f3f7fe'/%3e%3cstop%20offset='.45'%20stop-color='%23f3f7fe'/%3e%3cstop%20offset='1'%20stop-color='%23deeafb'/%3e%3c/linearGradient%3e%3clinearGradient%20id='a'%20x1='22.53'%20x2='25.47'%20y1='42.95'%20y2='48.05'%20gradientUnits='userSpaceOnUse'%3e%3cstop%20offset='0'%20stop-color='%234286ee'/%3e%3cstop%20offset='.45'%20stop-color='%234286ee'/%3e%3cstop%20offset='1'%20stop-color='%230950bc'/%3e%3c/linearGradient%3e%3clinearGradient%20id='c'%20x1='29.53'%20x2='32.47'%20y1='42.95'%20y2='48.05'%20xlink:href='%23a'/%3e%3clinearGradient%20id='d'%20x1='36.53'%20x2='39.47'%20y1='42.95'%20y2='48.05'%20xlink:href='%23a'/%3e%3c/defs%3e%3cpath%20fill='url(%23b)'%20stroke='%23e6effc'%20stroke-miterlimit='10'%20stroke-width='.5'%20d='M46.5%2031.5h-.32a10.49%2010.49%200%2000-19.11-8%207%207%200%2000-10.57%206%207.21%207.21%200%2000.1%201.14A7.5%207.5%200%200018%2045.5a4.19%204.19%200%2000.5%200v0h28a7%207%200%20000-14z'/%3e%3cpath%20fill='none'%20stroke='url(%23a)'%20stroke-linecap='round'%20stroke-miterlimit='10'%20stroke-width='2'%20d='M24.39%2043.03l-.78%204.94'%3e%3canimateTransform%20attributeName='transform'%20dur='0.7s'%20repeatCount='indefinite'%20type='translate'%20values='1%20-5;%20-2%2010'/%3e%3canimate%20attributeName='opacity'%20dur='0.7s'%20repeatCount='indefinite'%20values='0;1;1;0'/%3e%3c/path%3e%3cpath%20fill='none'%20stroke='url(%23c)'%20stroke-linecap='round'%20stroke-miterlimit='10'%20stroke-width='2'%20d='M31.39%2043.03l-.78%204.94'%3e%3canimateTransform%20attributeName='transform'%20begin='-0.4s'%20dur='0.7s'%20repeatCount='indefinite'%20type='translate'%20values='1%20-5;%20-2%2010'/%3e%3canimate%20attributeName='opacity'%20begin='-0.4s'%20dur='0.7s'%20repeatCount='indefinite'%20values='0;1;1;0'/%3e%3c/path%3e%3cpath%20fill='none'%20stroke='url(%23d)'%20stroke-linecap='round'%20stroke-miterlimit='10'%20stroke-width='2'%20d='M38.39%2043.03l-.78%204.94'%3e%3canimateTransform%20attributeName='transform'%20begin='-0.2s'%20dur='0.7s'%20repeatCount='indefinite'%20type='translate'%20values='1%20-5;%20-2%2010'/%3e%3canimate%20attributeName='opacity'%20begin='-0.2s'%20dur='0.7s'%20repeatCount='indefinite'%20values='0;1;1;0'/%3e%3c/path%3e%3c/svg%3e", ma = "data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20xmlns:xlink='http://www.w3.org/1999/xlink'%20viewBox='0%200%2064%2064'%3e%3cdefs%3e%3clinearGradient%20id='b'%20x1='22.56'%20x2='39.2'%20y1='21.96'%20y2='50.8'%20gradientUnits='userSpaceOnUse'%3e%3cstop%20offset='0'%20stop-color='%23f3f7fe'/%3e%3cstop%20offset='.45'%20stop-color='%23f3f7fe'/%3e%3cstop%20offset='1'%20stop-color='%23deeafb'/%3e%3c/linearGradient%3e%3clinearGradient%20id='a'%20x1='30.12'%20x2='31.88'%20y1='43.48'%20y2='46.52'%20gradientUnits='userSpaceOnUse'%3e%3cstop%20offset='0'%20stop-color='%2386c3db'/%3e%3cstop%20offset='.45'%20stop-color='%2386c3db'/%3e%3cstop%20offset='1'%20stop-color='%235eafcf'/%3e%3c/linearGradient%3e%3clinearGradient%20id='c'%20x1='29.67'%20x2='32.33'%20y1='42.69'%20y2='47.31'%20xlink:href='%23a'/%3e%3clinearGradient%20id='d'%20x1='23.12'%20x2='24.88'%20y1='43.48'%20y2='46.52'%20xlink:href='%23a'/%3e%3clinearGradient%20id='e'%20x1='22.67'%20x2='25.33'%20y1='42.69'%20y2='47.31'%20xlink:href='%23a'/%3e%3clinearGradient%20id='f'%20x1='37.12'%20x2='38.88'%20y1='43.48'%20y2='46.52'%20xlink:href='%23a'/%3e%3clinearGradient%20id='g'%20x1='36.67'%20x2='39.33'%20y1='42.69'%20y2='47.31'%20xlink:href='%23a'/%3e%3c/defs%3e%3cpath%20fill='url(%23b)'%20stroke='%23e6effc'%20stroke-miterlimit='10'%20stroke-width='.5'%20d='M46.5%2031.5h-.32a10.49%2010.49%200%2000-19.11-8%207%207%200%2000-10.57%206%207.21%207.21%200%2000.1%201.14A7.5%207.5%200%200018%2045.5a4.19%204.19%200%2000.5%200v0h28a7%207%200%20000-14z'/%3e%3cg%3e%3ccircle%20cx='31'%20cy='45'%20r='1.25'%20fill='none'%20stroke='url(%23a)'%20stroke-miterlimit='10'/%3e%3cpath%20fill='none'%20stroke='url(%23c)'%20stroke-linecap='round'%20stroke-miterlimit='10'%20d='M33.17%2046.25l-1.09-.63m-2.16-1.24l-1.09-.63M31%2042.5v1.25m0%203.75v-1.25m-1.08-.63l-1.09.63m4.34-2.5l-1.09.63'/%3e%3canimateTransform%20additive='sum'%20attributeName='transform'%20dur='4s'%20repeatCount='indefinite'%20type='translate'%20values='-1%20-6;%201%2012'/%3e%3canimateTransform%20additive='sum'%20attributeName='transform'%20dur='9s'%20repeatCount='indefinite'%20type='rotate'%20values='0%2031%2045;%20360%2031%2045'/%3e%3canimate%20attributeName='opacity'%20dur='4s'%20repeatCount='indefinite'%20values='0;1;1;1;0'/%3e%3c/g%3e%3cg%3e%3ccircle%20cx='24'%20cy='45'%20r='1.25'%20fill='none'%20stroke='url(%23d)'%20stroke-miterlimit='10'/%3e%3cpath%20fill='none'%20stroke='url(%23e)'%20stroke-linecap='round'%20stroke-miterlimit='10'%20d='M26.17%2046.25l-1.09-.63m-2.16-1.24l-1.09-.63M24%2042.5v1.25m0%203.75v-1.25m-1.08-.63l-1.09.63m4.34-2.5l-1.09.63'/%3e%3canimateTransform%20additive='sum'%20attributeName='transform'%20begin='-2s'%20dur='4s'%20repeatCount='indefinite'%20type='translate'%20values='1%20-6;%20-1%2012'/%3e%3canimateTransform%20additive='sum'%20attributeName='transform'%20dur='9s'%20repeatCount='indefinite'%20type='rotate'%20values='0%2024%2045;%20360%2024%2045'/%3e%3canimate%20attributeName='opacity'%20begin='-2s'%20dur='4s'%20repeatCount='indefinite'%20values='0;1;1;1;0'/%3e%3c/g%3e%3cg%3e%3ccircle%20cx='38'%20cy='45'%20r='1.25'%20fill='none'%20stroke='url(%23f)'%20stroke-miterlimit='10'/%3e%3cpath%20fill='none'%20stroke='url(%23g)'%20stroke-linecap='round'%20stroke-miterlimit='10'%20d='M40.17%2046.25l-1.09-.63m-2.16-1.24l-1.09-.63M38%2042.5v1.25m0%203.75v-1.25m-1.08-.63l-1.09.63m4.34-2.5l-1.09.63'/%3e%3canimateTransform%20additive='sum'%20attributeName='transform'%20begin='-1s'%20dur='4s'%20repeatCount='indefinite'%20type='translate'%20values='1%20-6;%20-1%2012'/%3e%3canimateTransform%20additive='sum'%20attributeName='transform'%20dur='9s'%20repeatCount='indefinite'%20type='rotate'%20values='0%2038%2045;%20360%2038%2045'/%3e%3canimate%20attributeName='opacity'%20begin='-1s'%20dur='4s'%20repeatCount='indefinite'%20values='0;1;1;1;0'/%3e%3c/g%3e%3c/svg%3e", ya = "data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20xmlns:xlink='http://www.w3.org/1999/xlink'%20viewBox='0%200%2064%2064'%3e%3cdefs%3e%3clinearGradient%20id='c'%20x1='22.56'%20x2='39.2'%20y1='21.96'%20y2='50.8'%20gradientUnits='userSpaceOnUse'%3e%3cstop%20offset='0'%20stop-color='%23f3f7fe'/%3e%3cstop%20offset='.45'%20stop-color='%23f3f7fe'/%3e%3cstop%20offset='1'%20stop-color='%23deeafb'/%3e%3c/linearGradient%3e%3clinearGradient%20id='a'%20x1='23.12'%20x2='24.88'%20y1='43.48'%20y2='46.52'%20gradientUnits='userSpaceOnUse'%3e%3cstop%20offset='0'%20stop-color='%2386c3db'/%3e%3cstop%20offset='.45'%20stop-color='%2386c3db'/%3e%3cstop%20offset='1'%20stop-color='%235eafcf'/%3e%3c/linearGradient%3e%3clinearGradient%20id='d'%20x1='22.67'%20x2='25.33'%20y1='42.69'%20y2='47.31'%20xlink:href='%23a'/%3e%3clinearGradient%20id='e'%20x1='37.12'%20x2='38.88'%20y1='43.48'%20y2='46.52'%20xlink:href='%23a'/%3e%3clinearGradient%20id='f'%20x1='36.67'%20x2='39.33'%20y1='42.69'%20y2='47.31'%20xlink:href='%23a'/%3e%3clinearGradient%20id='b'%20x1='23.31'%20x2='24.69'%20y1='44.3'%20y2='46.7'%20gradientUnits='userSpaceOnUse'%3e%3cstop%20offset='0'%20stop-color='%234286ee'/%3e%3cstop%20offset='.45'%20stop-color='%234286ee'/%3e%3cstop%20offset='1'%20stop-color='%230950bc'/%3e%3c/linearGradient%3e%3clinearGradient%20id='g'%20x1='30.31'%20x2='31.69'%20y1='44.3'%20y2='46.7'%20xlink:href='%23b'/%3e%3clinearGradient%20id='h'%20x1='37.31'%20x2='38.69'%20y1='44.3'%20y2='46.7'%20xlink:href='%23b'/%3e%3c/defs%3e%3cpath%20fill='url(%23c)'%20stroke='%23e6effc'%20stroke-miterlimit='10'%20stroke-width='.5'%20d='M46.5%2031.5h-.32a10.49%2010.49%200%2000-19.11-8%207%207%200%2000-10.57%206%207.21%207.21%200%2000.1%201.14A7.5%207.5%200%200018%2045.5a4.19%204.19%200%2000.5%200v0h28a7%207%200%20000-14z'/%3e%3cg%3e%3ccircle%20cx='24'%20cy='45'%20r='1.25'%20fill='none'%20stroke='url(%23a)'%20stroke-miterlimit='10'/%3e%3cpath%20fill='none'%20stroke='url(%23d)'%20stroke-linecap='round'%20stroke-miterlimit='10'%20d='M26.17%2046.25l-1.09-.63m-2.16-1.24l-1.09-.63M24%2042.5v1.25m0%203.75v-1.25m-1.08-.63l-1.09.63m4.34-2.5l-1.09.63'/%3e%3canimateTransform%20additive='sum'%20attributeName='transform'%20begin='-2s'%20dur='4s'%20repeatCount='indefinite'%20type='translate'%20values='1%20-6;%20-1%2012'/%3e%3canimateTransform%20additive='sum'%20attributeName='transform'%20dur='9s'%20repeatCount='indefinite'%20type='rotate'%20values='0%2024%2045;%20360%2024%2045'/%3e%3canimate%20attributeName='opacity'%20begin='-2s'%20dur='4s'%20repeatCount='indefinite'%20values='0;1;1;1;0'/%3e%3c/g%3e%3cg%3e%3ccircle%20cx='38'%20cy='45'%20r='1.25'%20fill='none'%20stroke='url(%23e)'%20stroke-miterlimit='10'/%3e%3cpath%20fill='none'%20stroke='url(%23f)'%20stroke-linecap='round'%20stroke-miterlimit='10'%20d='M40.17%2046.25l-1.09-.63m-2.16-1.24l-1.09-.63M38%2042.5v1.25m0%203.75v-1.25m-1.08-.63l-1.09.63m4.34-2.5l-1.09.63'/%3e%3canimateTransform%20additive='sum'%20attributeName='transform'%20begin='-1s'%20dur='4s'%20repeatCount='indefinite'%20type='translate'%20values='1%20-6;%20-1%2012'/%3e%3canimateTransform%20additive='sum'%20attributeName='transform'%20dur='9s'%20repeatCount='indefinite'%20type='rotate'%20values='0%2038%2045;%20360%2038%2045'/%3e%3canimate%20attributeName='opacity'%20begin='-1s'%20dur='4s'%20repeatCount='indefinite'%20values='0;1;1;1;0'/%3e%3c/g%3e%3cpath%20fill='none'%20stroke='url(%23b)'%20stroke-linecap='round'%20stroke-miterlimit='10'%20stroke-width='2'%20d='M24.08%2045.01l-.16.98'%3e%3canimateTransform%20attributeName='transform'%20dur='1.5s'%20repeatCount='indefinite'%20type='translate'%20values='1%20-5;%20-2%2010'/%3e%3canimate%20attributeName='opacity'%20dur='1.5s'%20repeatCount='indefinite'%20values='0;1;1;0'/%3e%3c/path%3e%3cpath%20fill='none'%20stroke='url(%23g)'%20stroke-linecap='round'%20stroke-miterlimit='10'%20stroke-width='2'%20d='M31.08%2045.01l-.16.98'%3e%3canimateTransform%20attributeName='transform'%20begin='-0.5s'%20dur='1.5s'%20repeatCount='indefinite'%20type='translate'%20values='1%20-5;%20-2%2010'/%3e%3canimate%20attributeName='opacity'%20begin='-0.5s'%20dur='1.5s'%20repeatCount='indefinite'%20values='0;1;1;0'/%3e%3c/path%3e%3cpath%20fill='none'%20stroke='url(%23h)'%20stroke-linecap='round'%20stroke-miterlimit='10'%20stroke-width='2'%20d='M38.08%2045.01l-.16.98'%3e%3canimateTransform%20attributeName='transform'%20begin='-1s'%20dur='1.5s'%20repeatCount='indefinite'%20type='translate'%20values='1%20-5;%20-2%2010'/%3e%3canimate%20attributeName='opacity'%20begin='-1s'%20dur='1.5s'%20repeatCount='indefinite'%20values='0;1;1;0'/%3e%3c/path%3e%3c/svg%3e", _a = "data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3e%3cdefs%3e%3clinearGradient%20id='a'%20x1='21.97'%20x2='42.03'%20y1='14.63'%20y2='49.37'%20gradientUnits='userSpaceOnUse'%3e%3cstop%20offset='0'%20stop-color='%23d4d7dd'/%3e%3cstop%20offset='.45'%20stop-color='%23d4d7dd'/%3e%3cstop%20offset='1'%20stop-color='%23bec1c6'/%3e%3canimateTransform%20attributeName='gradientTransform'%20dur='1s'%20repeatCount='indefinite'%20type='rotate'%20values='0%2032%2032;%20360%2032%2032'/%3e%3c/linearGradient%3e%3c/defs%3e%3cpath%20fill='none'%20stroke='url(%23a)'%20stroke-linecap='round'%20stroke-miterlimit='10'%20stroke-width='3'%20d='M43%2032a11%2011%200%2011-11-11%2011%2011%200%200111%2011zM25%2014.61l-.48%201a33.68%2033.68%200%2000-3.42%2017.82h0M39%2049.39l.48-1a33.68%2033.68%200%20003.42-17.82h0'%3e%3canimateTransform%20attributeName='transform'%20dur='1s'%20repeatCount='indefinite'%20type='rotate'%20values='360%2032%2032;%200%2032%2032'/%3e%3c/path%3e%3c/svg%3e", Nn = "data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20xmlns:xlink='http://www.w3.org/1999/xlink'%20viewBox='0%200%2064%2064'%3e%3cdefs%3e%3clinearGradient%20id='a'%20x1='27.56'%20x2='38.27'%20y1='17.64'%20y2='36.19'%20gradientUnits='userSpaceOnUse'%3e%3cstop%20offset='0'%20stop-color='%23d4d7dd'/%3e%3cstop%20offset='.45'%20stop-color='%23d4d7dd'/%3e%3cstop%20offset='1'%20stop-color='%23bec1c6'/%3e%3c/linearGradient%3e%3clinearGradient%20id='b'%20x1='19.96'%20x2='31.37'%20y1='29.03'%20y2='48.8'%20xlink:href='%23a'/%3e%3c/defs%3e%3cpath%20fill='none'%20stroke='url(%23a)'%20stroke-dasharray='35%2022'%20stroke-linecap='round'%20stroke-miterlimit='10'%20stroke-width='3'%20d='M43.64%2020a5%205%200%20113.61%208.46h-35.5'%3e%3canimate%20attributeName='stroke-dashoffset'%20dur='2s'%20repeatCount='indefinite'%20values='-57;%2057'/%3e%3c/path%3e%3cpath%20fill='none'%20stroke='url(%23b)'%20stroke-dasharray='24%2015'%20stroke-linecap='round'%20stroke-miterlimit='10'%20stroke-width='3'%20d='M29.14%2044a5%205%200%20103.61-8.46h-21'%3e%3canimate%20attributeName='stroke-dashoffset'%20begin='-1.5s'%20dur='2s'%20repeatCount='indefinite'%20values='-39;%2039'/%3e%3c/path%3e%3c/svg%3e", ki = "data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3e%3cdefs%3e%3clinearGradient%20id='a'%20x1='26.75'%20x2='37.25'%20y1='22.91'%20y2='41.09'%20gradientUnits='userSpaceOnUse'%3e%3cstop%20offset='0'%20stop-color='%23fbbf24'/%3e%3cstop%20offset='.45'%20stop-color='%23fbbf24'/%3e%3cstop%20offset='1'%20stop-color='%23f59e0b'/%3e%3c/linearGradient%3e%3c/defs%3e%3ccircle%20cx='32'%20cy='32'%20r='10.5'%20fill='url(%23a)'%20stroke='%23f8af18'%20stroke-miterlimit='10'%20stroke-width='.5'/%3e%3cpath%20fill='none'%20stroke='%23fbbf24'%20stroke-linecap='round'%20stroke-miterlimit='10'%20stroke-width='3'%20d='M32%2015.71V9.5m0%2045v-6.21m11.52-27.81l4.39-4.39M16.09%2047.91l4.39-4.39m0-23l-4.39-4.39m31.82%2031.78l-4.39-4.39M15.71%2032H9.5m45%200h-6.21'%3e%3canimateTransform%20attributeName='transform'%20dur='45s'%20repeatCount='indefinite'%20type='rotate'%20values='0%2032%2032;%20360%2032%2032'/%3e%3c/path%3e%3c/svg%3e", ba = "data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20xmlns:xlink='http://www.w3.org/1999/xlink'%20viewBox='0%200%20512%20512'%3e%3cdefs%3e%3clinearGradient%20id='a'%20x1='52.7'%20x2='133.4'%20y1='9.6'%20y2='149.3'%20gradientUnits='userSpaceOnUse'%3e%3cstop%20offset='0'%20stop-color='%239ca3af'/%3e%3cstop%20offset='.5'%20stop-color='%239ca3af'/%3e%3cstop%20offset='1'%20stop-color='%236b7280'/%3e%3c/linearGradient%3e%3clinearGradient%20id='b'%20x1='99.5'%20x2='232.6'%20y1='30.7'%20y2='261.4'%20gradientUnits='userSpaceOnUse'%3e%3cstop%20offset='0'%20stop-color='%236b7280'/%3e%3cstop%20offset='.5'%20stop-color='%236b7280'/%3e%3cstop%20offset='1'%20stop-color='%234b5563'/%3e%3c/linearGradient%3e%3clinearGradient%20id='c'%20x1='1381.3'%20x2='1399.5'%20y1='-1144.7'%20y2='-1097.4'%20gradientTransform='rotate(-9%208002.567%208233.063)'%20gradientUnits='userSpaceOnUse'%3e%3cstop%20offset='0'%20stop-color='%230b65ed'/%3e%3cstop%20offset='.5'%20stop-color='%230a5ad4'/%3e%3cstop%20offset='1'%20stop-color='%230950bc'/%3e%3c/linearGradient%3e%3clinearGradient%20xlink:href='%23c'%20id='d'%20x1='1436.7'%20x2='1454.9'%20y1='-1137'%20y2='-1089.7'%20gradientTransform='rotate(-9%208009.537%208233.037)'/%3e%3clinearGradient%20xlink:href='%23c'%20id='e'%20x1='1492.1'%20x2='1510.3'%20y1='-1129.3'%20y2='-1082.1'%20gradientTransform='rotate(-9%208016.566%208233.078)'/%3e%3csymbol%20id='g'%20viewBox='0%200%20200.3%20126.1'%3e%3cpath%20fill='url(%23a)'%20stroke='%23848b98'%20stroke-miterlimit='10'%20d='M.5%2093.2a32.4%2032.4%200%200032.4%2032.4h129.8v-.1l2.3.1a34.8%2034.8%200%20006.5-68.9%2032.4%2032.4%200%2000-48.5-33%2048.6%2048.6%200%2000-88.6%2037.1h-1.5A32.4%2032.4%200%2000.5%2093.1Z'/%3e%3c/symbol%3e%3csymbol%20id='h'%20viewBox='0%200%20350%20222'%3e%3cpath%20fill='url(%23b)'%20stroke='%235b6472'%20stroke-miterlimit='10'%20stroke-width='6'%20d='m291%20107-2.5.1A83.9%2083.9%200%2000135.6%2043%2056%2056%200%200051%2091a56.6%2056.6%200%2000.8%209A60%2060%200%200063%20219l4-.2v.2h224a56%2056%200%20000-112Z'/%3e%3c/symbol%3e%3csymbol%20id='f'%20overflow='visible'%20viewBox='0%200%20398%20222'%3e%3cuse%20xlink:href='%23g'%20width='200.3'%20height='126.1'%20transform='translate(198%2027)'%3e%3canimateTransform%20additive='sum'%20attributeName='transform'%20dur='6s'%20repeatCount='indefinite'%20type='translate'%20values='-9%200;%209%200;%20-9%200'/%3e%3c/use%3e%3cuse%20xlink:href='%23h'%20width='350'%20height='222'%3e%3canimateTransform%20additive='sum'%20attributeName='transform'%20dur='6s'%20repeatCount='indefinite'%20type='translate'%20values='-18%200;%2018%200;%20-18%200'/%3e%3c/use%3e%3c/symbol%3e%3csymbol%20id='i'%20overflow='visible'%20viewBox='0%200%20129%2057'%3e%3cpath%20fill='url(%23c)'%20stroke='%230a5ad4'%20stroke-miterlimit='10'%20d='M8.5%2056.5a8%208%200%2001-8-8v-40a8%208%200%200116%200v40a8%208%200%2001-8%208Z'%20opacity='0'%3e%3canimateTransform%20id='x1'%20additive='sum'%20attributeName='transform'%20begin='0s;%20x1.end+.33s'%20dur='.67s'%20type='translate'%20values='0%20-60;%200%2060'/%3e%3canimate%20id='y1'%20attributeName='opacity'%20begin='0s;%20y1.end+.33s'%20dur='.67s'%20keyTimes='0;%20.25;%201'%20values='0;%201;%200'/%3e%3c/path%3e%3cpath%20fill='url(%23d)'%20stroke='%230a5ad4'%20stroke-miterlimit='10'%20d='M64.5%2056.5a8%208%200%2001-8-8v-40a8%208%200%200116%200v40a8%208%200%2001-8%208Z'%20opacity='0'%3e%3canimateTransform%20id='x2'%20additive='sum'%20attributeName='transform'%20begin='.33s;%20x2.end+.33s'%20dur='.67s'%20type='translate'%20values='0%20-60;%200%2060'/%3e%3canimate%20id='y2'%20attributeName='opacity'%20begin='.33s;%20y2.end+.33s'%20dur='.67s'%20keyTimes='0;%20.25;%201'%20values='0;%201;%200'/%3e%3c/path%3e%3cpath%20fill='url(%23e)'%20stroke='%230a5ad4'%20stroke-miterlimit='10'%20d='M120.5%2056.5a8%208%200%2001-8-8v-40a8%208%200%200116%200v40a8%208%200%2001-8%208Z'%20opacity='0'%3e%3canimateTransform%20id='x3'%20additive='sum'%20attributeName='transform'%20begin='-.33s;%20x3.end+.33s'%20dur='.67s'%20type='translate'%20values='0%20-60;%200%2060'/%3e%3canimate%20id='y3'%20attributeName='opacity'%20begin='-.33s;%20y3.end+.33s'%20dur='.67s'%20keyTimes='0;%20.25;%201'%20values='0;%201;%200'/%3e%3c/path%3e%3c/symbol%3e%3c/defs%3e%3cuse%20xlink:href='%23f'%20width='398'%20height='222'%20transform='translate(68.84%20145)'/%3e%3cuse%20xlink:href='%23i'%20width='129'%20height='57'%20transform='translate(191.5%20343.5)'/%3e%3c/svg%3e";
-var wa = "M6,19A5,5 0 0,1 1,14A5,5 0 0,1 6,9C7,6.65 9.3,5 12,5C15.43,5 18.24,7.66 18.5,11.03L19,11A4,4 0 0,1 23,15A4,4 0 0,1 19,19H6M19,13H17V12A5,5 0 0,0 12,7C9.5,7 7.45,8.82 7.06,11.19C6.73,11.07 6.37,11 6,11A3,3 0 0,0 3,14A3,3 0 0,0 6,17H19A2,2 0 0,0 21,15A2,2 0 0,0 19,13Z", xa = "M3,15H13A1,1 0 0,1 14,16A1,1 0 0,1 13,17H3A1,1 0 0,1 2,16A1,1 0 0,1 3,15M16,15H21A1,1 0 0,1 22,16A1,1 0 0,1 21,17H16A1,1 0 0,1 15,16A1,1 0 0,1 16,15M1,12A5,5 0 0,1 6,7C7,4.65 9.3,3 12,3C15.43,3 18.24,5.66 18.5,9.03L19,9C21.19,9 22.97,10.76 23,13H21A2,2 0 0,0 19,11H17V10A5,5 0 0,0 12,5C9.5,5 7.45,6.82 7.06,9.19C6.73,9.07 6.37,9 6,9A3,3 0 0,0 3,12C3,12.35 3.06,12.69 3.17,13H1.1L1,12M3,19H5A1,1 0 0,1 6,20A1,1 0 0,1 5,21H3A1,1 0 0,1 2,20A1,1 0 0,1 3,19M8,19H21A1,1 0 0,1 22,20A1,1 0 0,1 21,21H8A1,1 0 0,1 7,20A1,1 0 0,1 8,19Z", va = "M6,14A1,1 0 0,1 7,15A1,1 0 0,1 6,16A5,5 0 0,1 1,11A5,5 0 0,1 6,6C7,3.65 9.3,2 12,2C15.43,2 18.24,4.66 18.5,8.03L19,8A4,4 0 0,1 23,12A4,4 0 0,1 19,16H18A1,1 0 0,1 17,15A1,1 0 0,1 18,14H19A2,2 0 0,0 21,12A2,2 0 0,0 19,10H17V9A5,5 0 0,0 12,4C9.5,4 7.45,5.82 7.06,8.19C6.73,8.07 6.37,8 6,8A3,3 0 0,0 3,11A3,3 0 0,0 6,14M10,18A2,2 0 0,1 12,20A2,2 0 0,1 10,22A2,2 0 0,1 8,20A2,2 0 0,1 10,18M14.5,16A1.5,1.5 0 0,1 16,17.5A1.5,1.5 0 0,1 14.5,19A1.5,1.5 0 0,1 13,17.5A1.5,1.5 0 0,1 14.5,16M10.5,12A1.5,1.5 0 0,1 12,13.5A1.5,1.5 0 0,1 10.5,15A1.5,1.5 0 0,1 9,13.5A1.5,1.5 0 0,1 10.5,12Z", $a = "M15,6.79C16.86,7.86 18,9.85 18,12C18,22 6,22 6,22C7.25,21.06 8.38,19.95 9.34,18.71C9.38,18.66 9.41,18.61 9.44,18.55C9.69,18.06 9.5,17.46 9,17.21C7.14,16.14 6,14.15 6,12C6,2 18,2 18,2C16.75,2.94 15.62,4.05 14.66,5.29C14.62,5.34 14.59,5.39 14.56,5.45C14.31,5.94 14.5,6.54 15,6.79M12,14A2,2 0 0,0 14,12A2,2 0 0,0 12,10A2,2 0 0,0 10,12A2,2 0 0,0 12,14Z", ka = "M6,16A5,5 0 0,1 1,11A5,5 0 0,1 6,6C7,3.65 9.3,2 12,2C15.43,2 18.24,4.66 18.5,8.03L19,8A4,4 0 0,1 23,12A4,4 0 0,1 19,16H18A1,1 0 0,1 17,15A1,1 0 0,1 18,14H19A2,2 0 0,0 21,12A2,2 0 0,0 19,10H17V9A5,5 0 0,0 12,4C9.5,4 7.45,5.82 7.06,8.19C6.73,8.07 6.37,8 6,8A3,3 0 0,0 3,11A3,3 0 0,0 6,14H7A1,1 0 0,1 8,15A1,1 0 0,1 7,16H6M12,11H15L13,15H15L11.25,22L12,17H9.5L12,11Z", Ca = "M4.5,13.59C5,13.87 5.14,14.5 4.87,14.96C4.59,15.44 4,15.6 3.5,15.33V15.33C2,14.47 1,12.85 1,11A5,5 0 0,1 6,6C7,3.65 9.3,2 12,2C15.43,2 18.24,4.66 18.5,8.03L19,8A4,4 0 0,1 23,12A4,4 0 0,1 19,16A1,1 0 0,1 18,15A1,1 0 0,1 19,14A2,2 0 0,0 21,12A2,2 0 0,0 19,10H17V9A5,5 0 0,0 12,4C9.5,4 7.45,5.82 7.06,8.19C6.73,8.07 6.37,8 6,8A3,3 0 0,0 3,11C3,12.11 3.6,13.08 4.5,13.6V13.59M9.5,11H12.5L10.5,15H12.5L8.75,22L9.5,17H7L9.5,11M17.5,18.67C17.5,19.96 16.5,21 15.25,21C14,21 13,19.96 13,18.67C13,17.12 15.25,14.5 15.25,14.5C15.25,14.5 17.5,17.12 17.5,18.67Z", Aa = "M17.75,4.09L15.22,6.03L16.13,9.09L13.5,7.28L10.87,9.09L11.78,6.03L9.25,4.09L12.44,4L13.5,1L14.56,4L17.75,4.09M21.25,11L19.61,12.25L20.2,14.23L18.5,13.06L16.8,14.23L17.39,12.25L15.75,11L17.81,10.95L18.5,9L19.19,10.95L21.25,11M18.97,15.95C19.8,15.87 20.69,17.05 20.16,17.8C19.84,18.25 19.5,18.67 19.08,19.07C15.17,23 8.84,23 4.94,19.07C1.03,15.17 1.03,8.83 4.94,4.93C5.34,4.53 5.76,4.17 6.21,3.85C6.96,3.32 8.14,4.21 8.06,5.04C7.79,7.9 8.75,10.87 10.95,13.06C13.14,15.26 16.1,16.22 18.97,15.95M17.33,17.97C14.5,17.81 11.7,16.64 9.53,14.5C7.36,12.31 6.2,9.5 6.04,6.68C3.23,9.82 3.34,14.64 6.35,17.66C9.37,20.67 14.19,20.78 17.33,17.97Z", Sa = "M12.74,5.47C15.1,6.5 16.35,9.03 15.92,11.46C17.19,12.56 18,14.19 18,16V16.17C18.31,16.06 18.65,16 19,16A3,3 0 0,1 22,19A3,3 0 0,1 19,22H6A4,4 0 0,1 2,18A4,4 0 0,1 6,14H6.27C5,12.45 4.6,10.24 5.5,8.26C6.72,5.5 9.97,4.24 12.74,5.47M11.93,7.3C10.16,6.5 8.09,7.31 7.31,9.07C6.85,10.09 6.93,11.22 7.41,12.13C8.5,10.83 10.16,10 12,10C12.7,10 13.38,10.12 14,10.34C13.94,9.06 13.18,7.86 11.93,7.3M13.55,3.64C13,3.4 12.45,3.23 11.88,3.12L14.37,1.82L15.27,4.71C14.76,4.29 14.19,3.93 13.55,3.64M6.09,4.44C5.6,4.79 5.17,5.19 4.8,5.63L4.91,2.82L7.87,3.5C7.25,3.71 6.65,4.03 6.09,4.44M18,9.71C17.91,9.12 17.78,8.55 17.59,8L19.97,9.5L17.92,11.73C18.03,11.08 18.05,10.4 18,9.71M3.04,11.3C3.11,11.9 3.24,12.47 3.43,13L1.06,11.5L3.1,9.28C3,9.93 2.97,10.61 3.04,11.3M19,18H16V16A4,4 0 0,0 12,12A4,4 0 0,0 8,16H6A2,2 0 0,0 4,18A2,2 0 0,0 6,20H19A1,1 0 0,0 20,19A1,1 0 0,0 19,18Z", Ma = "M9,12C9.53,12.14 9.85,12.69 9.71,13.22L8.41,18.05C8.27,18.59 7.72,18.9 7.19,18.76C6.65,18.62 6.34,18.07 6.5,17.54L7.78,12.71C7.92,12.17 8.47,11.86 9,12M13,12C13.53,12.14 13.85,12.69 13.71,13.22L11.64,20.95C11.5,21.5 10.95,21.8 10.41,21.66C9.88,21.5 9.56,20.97 9.7,20.43L11.78,12.71C11.92,12.17 12.47,11.86 13,12M17,12C17.53,12.14 17.85,12.69 17.71,13.22L16.41,18.05C16.27,18.59 15.72,18.9 15.19,18.76C14.65,18.62 14.34,18.07 14.5,17.54L15.78,12.71C15.92,12.17 16.47,11.86 17,12M17,10V9A5,5 0 0,0 12,4C9.5,4 7.45,5.82 7.06,8.19C6.73,8.07 6.37,8 6,8A3,3 0 0,0 3,11C3,12.11 3.6,13.08 4.5,13.6V13.59C5,13.87 5.14,14.5 4.87,14.96C4.59,15.43 4,15.6 3.5,15.32V15.33C2,14.47 1,12.85 1,11A5,5 0 0,1 6,6C7,3.65 9.3,2 12,2C15.43,2 18.24,4.66 18.5,8.03L19,8A4,4 0 0,1 23,12C23,13.5 22.2,14.77 21,15.46V15.46C20.5,15.73 19.91,15.57 19.63,15.09C19.36,14.61 19.5,14 20,13.72V13.73C20.6,13.39 21,12.74 21,12A2,2 0 0,0 19,10H17Z", za = "M6,14.03A1,1 0 0,1 7,15.03C7,15.58 6.55,16.03 6,16.03C3.24,16.03 1,13.79 1,11.03C1,8.27 3.24,6.03 6,6.03C7,3.68 9.3,2.03 12,2.03C15.43,2.03 18.24,4.69 18.5,8.06L19,8.03A4,4 0 0,1 23,12.03C23,14.23 21.21,16.03 19,16.03H18C17.45,16.03 17,15.58 17,15.03C17,14.47 17.45,14.03 18,14.03H19A2,2 0 0,0 21,12.03A2,2 0 0,0 19,10.03H17V9.03C17,6.27 14.76,4.03 12,4.03C9.5,4.03 7.45,5.84 7.06,8.21C6.73,8.09 6.37,8.03 6,8.03A3,3 0 0,0 3,11.03A3,3 0 0,0 6,14.03M12,14.15C12.18,14.39 12.37,14.66 12.56,14.94C13,15.56 14,17.03 14,18C14,19.11 13.1,20 12,20A2,2 0 0,1 10,18C10,17.03 11,15.56 11.44,14.94C11.63,14.66 11.82,14.4 12,14.15M12,11.03L11.5,11.59C11.5,11.59 10.65,12.55 9.79,13.81C8.93,15.06 8,16.56 8,18A4,4 0 0,0 12,22A4,4 0 0,0 16,18C16,16.56 15.07,15.06 14.21,13.81C13.35,12.55 12.5,11.59 12.5,11.59", La = "M6,14A1,1 0 0,1 7,15A1,1 0 0,1 6,16A5,5 0 0,1 1,11A5,5 0 0,1 6,6C7,3.65 9.3,2 12,2C15.43,2 18.24,4.66 18.5,8.03L19,8A4,4 0 0,1 23,12A4,4 0 0,1 19,16H18A1,1 0 0,1 17,15A1,1 0 0,1 18,14H19A2,2 0 0,0 21,12A2,2 0 0,0 19,10H17V9A5,5 0 0,0 12,4C9.5,4 7.45,5.82 7.06,8.19C6.73,8.07 6.37,8 6,8A3,3 0 0,0 3,11A3,3 0 0,0 6,14M7.88,18.07L10.07,17.5L8.46,15.88C8.07,15.5 8.07,14.86 8.46,14.46C8.85,14.07 9.5,14.07 9.88,14.46L11.5,16.07L12.07,13.88C12.21,13.34 12.76,13.03 13.29,13.17C13.83,13.31 14.14,13.86 14,14.4L13.41,16.59L15.6,16C16.14,15.86 16.69,16.17 16.83,16.71C16.97,17.24 16.66,17.79 16.12,17.93L13.93,18.5L15.54,20.12C15.93,20.5 15.93,21.15 15.54,21.54C15.15,21.93 14.5,21.93 14.12,21.54L12.5,19.93L11.93,22.12C11.79,22.66 11.24,22.97 10.71,22.83C10.17,22.69 9.86,22.14 10,21.6L10.59,19.41L8.4,20C7.86,20.14 7.31,19.83 7.17,19.29C7.03,18.76 7.34,18.21 7.88,18.07Z", Ea = "M18.5,18.67C18.5,19.96 17.5,21 16.25,21C15,21 14,19.96 14,18.67C14,17.12 16.25,14.5 16.25,14.5C16.25,14.5 18.5,17.12 18.5,18.67M4,17.36C3.86,16.82 4.18,16.25 4.73,16.11L7,15.5L5.33,13.86C4.93,13.46 4.93,12.81 5.33,12.4C5.73,12 6.4,12 6.79,12.4L8.45,14.05L9.04,11.8C9.18,11.24 9.75,10.92 10.29,11.07C10.85,11.21 11.17,11.78 11,12.33L10.42,14.58L12.67,14C13.22,13.83 13.79,14.15 13.93,14.71C14.08,15.25 13.76,15.82 13.2,15.96L10.95,16.55L12.6,18.21C13,18.6 13,19.27 12.6,19.67C12.2,20.07 11.54,20.07 11.15,19.67L9.5,18L8.89,20.27C8.75,20.83 8.18,21.14 7.64,21C7.08,20.86 6.77,20.29 6.91,19.74L7.5,17.5L5.26,18.09C4.71,18.23 4.14,17.92 4,17.36M1,11A5,5 0 0,1 6,6C7,3.65 9.3,2 12,2C15.43,2 18.24,4.66 18.5,8.03L19,8A4,4 0 0,1 23,12A4,4 0 0,1 19,16A1,1 0 0,1 18,15A1,1 0 0,1 19,14A2,2 0 0,0 21,12A2,2 0 0,0 19,10H17V9A5,5 0 0,0 12,4C9.5,4 7.45,5.82 7.06,8.19C6.73,8.07 6.37,8 6,8A3,3 0 0,0 3,11C3,11.85 3.35,12.61 3.91,13.16C4.27,13.55 4.26,14.16 3.88,14.54C3.5,14.93 2.85,14.93 2.47,14.54C1.56,13.63 1,12.38 1,11Z", pr = "M12,7A5,5 0 0,1 17,12A5,5 0 0,1 12,17A5,5 0 0,1 7,12A5,5 0 0,1 12,7M12,9A3,3 0 0,0 9,12A3,3 0 0,0 12,15A3,3 0 0,0 15,12A3,3 0 0,0 12,9M12,2L14.39,5.42C13.65,5.15 12.84,5 12,5C11.16,5 10.35,5.15 9.61,5.42L12,2M3.34,7L7.5,6.65C6.9,7.16 6.36,7.78 5.94,8.5C5.5,9.24 5.25,10 5.11,10.79L3.34,7M3.36,17L5.12,13.23C5.26,14 5.53,14.78 5.95,15.5C6.37,16.24 6.91,16.86 7.5,17.37L3.36,17M20.65,7L18.88,10.79C18.74,10 18.47,9.23 18.05,8.5C17.63,7.78 17.1,7.15 16.5,6.64L20.65,7M20.64,17L16.5,17.36C17.09,16.85 17.62,16.22 18.04,15.5C18.46,14.77 18.73,14 18.87,13.21L20.64,17M12,22L9.59,18.56C10.33,18.83 11.14,19 12,19C12.82,19 13.63,18.83 14.37,18.56L12,22Z", Na = "M4,10A1,1 0 0,1 3,9A1,1 0 0,1 4,8H12A2,2 0 0,0 14,6A2,2 0 0,0 12,4C11.45,4 10.95,4.22 10.59,4.59C10.2,5 9.56,5 9.17,4.59C8.78,4.2 8.78,3.56 9.17,3.17C9.9,2.45 10.9,2 12,2A4,4 0 0,1 16,6A4,4 0 0,1 12,10H4M19,12A1,1 0 0,0 20,11A1,1 0 0,0 19,10C18.72,10 18.47,10.11 18.29,10.29C17.9,10.68 17.27,10.68 16.88,10.29C16.5,9.9 16.5,9.27 16.88,8.88C17.42,8.34 18.17,8 19,8A3,3 0 0,1 22,11A3,3 0 0,1 19,14H5A1,1 0 0,1 4,13A1,1 0 0,1 5,12H19M18,18H4A1,1 0 0,1 3,17A1,1 0 0,1 4,16H18A3,3 0 0,1 21,19A3,3 0 0,1 18,22C17.17,22 16.42,21.66 15.88,21.12C15.5,20.73 15.5,20.1 15.88,19.71C16.27,19.32 16.9,19.32 17.29,19.71C17.47,19.89 17.72,20 18,20A1,1 0 0,0 19,19A1,1 0 0,0 18,18Z", Ta = "M6,6L6.69,6.06C7.32,3.72 9.46,2 12,2A5.5,5.5 0 0,1 17.5,7.5L17.42,8.45C17.88,8.16 18.42,8 19,8A3,3 0 0,1 22,11A3,3 0 0,1 19,14H6A4,4 0 0,1 2,10A4,4 0 0,1 6,6M6,8A2,2 0 0,0 4,10A2,2 0 0,0 6,12H19A1,1 0 0,0 20,11A1,1 0 0,0 19,10H15.5V7.5A3.5,3.5 0 0,0 12,4A3.5,3.5 0 0,0 8.5,7.5V8H6M18,18H4A1,1 0 0,1 3,17A1,1 0 0,1 4,16H18A3,3 0 0,1 21,19A3,3 0 0,1 18,22C17.17,22 16.42,21.66 15.88,21.12C15.5,20.73 15.5,20.1 15.88,19.71C16.27,19.32 16.9,19.32 17.29,19.71C17.47,19.89 17.72,20 18,20A1,1 0 0,0 19,19A1,1 0 0,0 18,18Z";
+const ha = "data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3e%3cdefs%3e%3clinearGradient%20id='a'%20x1='21.92'%20x2='38.52'%20y1='18.75'%20y2='47.52'%20gradientUnits='userSpaceOnUse'%3e%3cstop%20offset='0'%20stop-color='%2386c3db'/%3e%3cstop%20offset='.45'%20stop-color='%2386c3db'/%3e%3cstop%20offset='1'%20stop-color='%235eafcf'/%3e%3canimateTransform%20attributeName='gradientTransform'%20dur='10s'%20repeatCount='indefinite'%20type='rotate'%20values='5%2032%2032;%20-15%2032%2032;%205%2032%2032'/%3e%3c/linearGradient%3e%3c/defs%3e%3cpath%20fill='url(%23a)'%20stroke='%2372b9d5'%20stroke-linecap='round'%20stroke-linejoin='round'%20stroke-width='.5'%20d='M46.66%2036.2a16.66%2016.66%200%2001-16.78-16.55%2016.29%2016.29%200%2001.55-4.15A16.56%2016.56%200%201048.5%2036.1c-.61.06-1.22.1-1.84.1z'%3e%3canimateTransform%20attributeName='transform'%20dur='10s'%20repeatCount='indefinite'%20type='rotate'%20values='-5%2032%2032;%2015%2032%2032;%20-5%2032%2032'/%3e%3c/path%3e%3c/svg%3e", pa = "data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3e%3cdefs%3e%3clinearGradient%20id='a'%20x1='22.56'%20x2='39.2'%20y1='21.96'%20y2='50.8'%20gradientUnits='userSpaceOnUse'%3e%3cstop%20offset='0'%20stop-color='%23f3f7fe'/%3e%3cstop%20offset='.45'%20stop-color='%23f3f7fe'/%3e%3cstop%20offset='1'%20stop-color='%23deeafb'/%3e%3c/linearGradient%3e%3c/defs%3e%3cpath%20fill='url(%23a)'%20stroke='%23e6effc'%20stroke-miterlimit='10'%20stroke-width='.5'%20d='M46.5%2031.5h-.32a10.49%2010.49%200%2000-19.11-8%207%207%200%2000-10.57%206%207.21%207.21%200%2000.1%201.14A7.5%207.5%200%200018%2045.5a4.19%204.19%200%2000.5%200v0h28a7%207%200%20000-14z'%3e%3canimateTransform%20attributeName='transform'%20dur='7s'%20repeatCount='indefinite'%20type='translate'%20values='-3%200;%203%200;%20-3%200'/%3e%3c/path%3e%3c/svg%3e", ua = "data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3e%3cdefs%3e%3clinearGradient%20id='a'%20x1='16.5'%20x2='21.5'%20y1='19.67'%20y2='28.33'%20gradientUnits='userSpaceOnUse'%3e%3cstop%20offset='0'%20stop-color='%23fbbf24'/%3e%3cstop%20offset='.45'%20stop-color='%23fbbf24'/%3e%3cstop%20offset='1'%20stop-color='%23f59e0b'/%3e%3c/linearGradient%3e%3clinearGradient%20id='b'%20x1='22.56'%20x2='39.2'%20y1='21.96'%20y2='50.8'%20gradientUnits='userSpaceOnUse'%3e%3cstop%20offset='0'%20stop-color='%23f3f7fe'/%3e%3cstop%20offset='.45'%20stop-color='%23f3f7fe'/%3e%3cstop%20offset='1'%20stop-color='%23deeafb'/%3e%3c/linearGradient%3e%3c/defs%3e%3ccircle%20cx='19'%20cy='24'%20r='5'%20fill='url(%23a)'%20stroke='%23f8af18'%20stroke-miterlimit='10'%20stroke-width='.5'/%3e%3cpath%20fill='none'%20stroke='%23fbbf24'%20stroke-linecap='round'%20stroke-miterlimit='10'%20stroke-width='2'%20d='M19%2015.67V12.5m0%2023v-3.17m5.89-14.22l2.24-2.24M10.87%2032.13l2.24-2.24m0-11.78l-2.24-2.24m16.26%2016.26l-2.24-2.24M7.5%2024h3.17m19.83%200h-3.17'%3e%3canimateTransform%20attributeName='transform'%20dur='45s'%20repeatCount='indefinite'%20type='rotate'%20values='0%2019%2024;%20360%2019%2024'/%3e%3c/path%3e%3cpath%20fill='url(%23b)'%20stroke='%23e6effc'%20stroke-miterlimit='10'%20stroke-width='.5'%20d='M46.5%2031.5h-.32a10.49%2010.49%200%2000-19.11-8%207%207%200%2000-10.57%206%207.21%207.21%200%2000.1%201.14A7.5%207.5%200%200018%2045.5a4.19%204.19%200%2000.5%200v0h28a7%207%200%20000-14z'/%3e%3c/svg%3e", fa = "data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3e%3cdefs%3e%3clinearGradient%20id='a'%20x1='13.58'%20x2='24.15'%20y1='15.57'%20y2='33.87'%20gradientUnits='userSpaceOnUse'%3e%3cstop%20offset='0'%20stop-color='%2386c3db'/%3e%3cstop%20offset='.45'%20stop-color='%2386c3db'/%3e%3cstop%20offset='1'%20stop-color='%235eafcf'/%3e%3canimateTransform%20attributeName='gradientTransform'%20dur='10s'%20repeatCount='indefinite'%20type='rotate'%20values='10%2019.22%2024.293;%20-10%2019.22%2024.293;%2010%2019.22%2024.293'/%3e%3c/linearGradient%3e%3clinearGradient%20id='b'%20x1='22.56'%20x2='39.2'%20y1='21.96'%20y2='50.8'%20gradientUnits='userSpaceOnUse'%3e%3cstop%20offset='0'%20stop-color='%23f3f7fe'/%3e%3cstop%20offset='.45'%20stop-color='%23f3f7fe'/%3e%3cstop%20offset='1'%20stop-color='%23deeafb'/%3e%3c/linearGradient%3e%3c/defs%3e%3cpath%20fill='url(%23a)'%20stroke='%2372b9d5'%20stroke-linecap='round'%20stroke-linejoin='round'%20stroke-width='.5'%20d='M29.33%2026.68a10.61%2010.61%200%2001-10.68-10.54A10.5%2010.5%200%200119%2013.5a10.54%2010.54%200%201011.5%2013.11%2011.48%2011.48%200%2001-1.17.07z'%3e%3canimateTransform%20attributeName='transform'%20dur='10s'%20repeatCount='indefinite'%20type='rotate'%20values='-10%2019.22%2024.293;%2010%2019.22%2024.293;%20-10%2019.22%2024.293'/%3e%3c/path%3e%3cpath%20fill='url(%23b)'%20stroke='%23e6effc'%20stroke-miterlimit='10'%20stroke-width='.5'%20d='M46.5%2031.5h-.32a10.49%2010.49%200%2000-19.11-8%207%207%200%2000-10.57%206%207.21%207.21%200%2000.1%201.14A7.5%207.5%200%200018%2045.5a4.19%204.19%200%2000.5%200v0h28a7%207%200%20000-14z'/%3e%3c/svg%3e", ga = "data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20xmlns:xlink='http://www.w3.org/1999/xlink'%20viewBox='0%200%2064%2064'%3e%3cdefs%3e%3clinearGradient%20id='b'%20x1='22.56'%20x2='39.2'%20y1='21.96'%20y2='50.8'%20gradientUnits='userSpaceOnUse'%3e%3cstop%20offset='0'%20stop-color='%23f3f7fe'/%3e%3cstop%20offset='.45'%20stop-color='%23f3f7fe'/%3e%3cstop%20offset='1'%20stop-color='%23deeafb'/%3e%3c/linearGradient%3e%3clinearGradient%20id='a'%20x1='27.5'%20x2='36.5'%20y1='50.21'%20y2='65.79'%20gradientUnits='userSpaceOnUse'%3e%3cstop%20offset='0'%20stop-color='%23d4d7dd'/%3e%3cstop%20offset='.45'%20stop-color='%23d4d7dd'/%3e%3cstop%20offset='1'%20stop-color='%23bec1c6'/%3e%3c/linearGradient%3e%3clinearGradient%20id='c'%20y1='44.21'%20y2='59.79'%20xlink:href='%23a'/%3e%3c/defs%3e%3cpath%20fill='url(%23b)'%20stroke='%23e6effc'%20stroke-miterlimit='10'%20stroke-width='.5'%20d='M46.5%2031.5h-.32a10.49%2010.49%200%2000-19.11-8%207%207%200%2000-10.57%206%207.21%207.21%200%2000.1%201.14A7.5%207.5%200%200018%2045.5a4.19%204.19%200%2000.5%200v0h28a7%207%200%20000-14z'/%3e%3cpath%20fill='none'%20stroke='url(%23a)'%20stroke-linecap='round'%20stroke-miterlimit='10'%20stroke-width='3'%20d='M17%2058h30'%3e%3canimateTransform%20attributeName='transform'%20begin='0s'%20dur='5s'%20repeatCount='indefinite'%20type='translate'%20values='-4%200;%204%200;%20-4%200'/%3e%3c/path%3e%3cpath%20fill='none'%20stroke='url(%23c)'%20stroke-linecap='round'%20stroke-miterlimit='10'%20stroke-width='3'%20d='M17%2052h30'%3e%3canimateTransform%20attributeName='transform'%20begin='-4s'%20dur='5s'%20repeatCount='indefinite'%20type='translate'%20values='-4%200;%204%200;%20-4%200'/%3e%3c/path%3e%3c/svg%3e", ma = "data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20xmlns:xlink='http://www.w3.org/1999/xlink'%20viewBox='0%200%2064%2064'%3e%3cdefs%3e%3clinearGradient%20id='b'%20x1='22.56'%20x2='39.2'%20y1='21.96'%20y2='50.8'%20gradientUnits='userSpaceOnUse'%3e%3cstop%20offset='0'%20stop-color='%23f3f7fe'/%3e%3cstop%20offset='.45'%20stop-color='%23f3f7fe'/%3e%3cstop%20offset='1'%20stop-color='%23deeafb'/%3e%3c/linearGradient%3e%3clinearGradient%20id='a'%20x1='23.25'%20x2='24.75'%20y1='43.7'%20y2='46.3'%20gradientUnits='userSpaceOnUse'%3e%3cstop%20offset='0'%20stop-color='%2386c3db'/%3e%3cstop%20offset='.45'%20stop-color='%2386c3db'/%3e%3cstop%20offset='1'%20stop-color='%235eafcf'/%3e%3c/linearGradient%3e%3clinearGradient%20id='c'%20x1='30.25'%20x2='31.75'%20y1='43.7'%20y2='46.3'%20xlink:href='%23a'/%3e%3clinearGradient%20id='d'%20x1='37.25'%20x2='38.75'%20y1='43.7'%20y2='46.3'%20xlink:href='%23a'/%3e%3c/defs%3e%3cpath%20fill='url(%23b)'%20stroke='%23e6effc'%20stroke-miterlimit='10'%20stroke-width='.5'%20d='M46.5%2031.5h-.32a10.49%2010.49%200%2000-19.11-8%207%207%200%2000-10.57%206%207.21%207.21%200%2000.1%201.14A7.5%207.5%200%200018%2045.5a4.19%204.19%200%2000.5%200v0h28a7%207%200%20000-14z'/%3e%3cpath%20fill='url(%23a)'%20d='M24%2043.5a1.5%201.5%200%20101.5%201.5%201.5%201.5%200%2000-1.5-1.5z'%3e%3canimateTransform%20attributeName='transform'%20dur='0.6s'%20repeatCount='indefinite'%20type='translate'%20values='1%20-5;%20-2%2018;%20-4%2014'/%3e%3canimate%20attributeName='opacity'%20dur='0.6s'%20repeatCount='indefinite'%20values='1;1;0'/%3e%3c/path%3e%3cpath%20fill='url(%23c)'%20d='M31%2043.5a1.5%201.5%200%20101.5%201.5%201.5%201.5%200%2000-1.5-1.5z'%3e%3canimateTransform%20attributeName='transform'%20begin='-0.4s'%20dur='0.6s'%20repeatCount='indefinite'%20type='translate'%20values='1%20-5;%20-2%2018;%20-4%2014'/%3e%3canimate%20attributeName='opacity'%20begin='-0.4s'%20dur='0.6s'%20repeatCount='indefinite'%20values='1;1;0'/%3e%3c/path%3e%3cpath%20fill='url(%23d)'%20d='M38%2043.5a1.5%201.5%200%20101.5%201.5%201.5%201.5%200%2000-1.5-1.5z'%3e%3canimateTransform%20attributeName='transform'%20begin='-0.2s'%20dur='0.6s'%20repeatCount='indefinite'%20type='translate'%20values='1%20-5;%20-2%2018;%20-4%2014'/%3e%3canimate%20attributeName='opacity'%20begin='-0.2s'%20dur='0.6s'%20repeatCount='indefinite'%20values='1;1;0'/%3e%3c/path%3e%3c/svg%3e", ya = "data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20xmlns:xlink='http://www.w3.org/1999/xlink'%20viewBox='0%200%2064%2064'%3e%3cdefs%3e%3clinearGradient%20id='b'%20x1='22.56'%20x2='39.2'%20y1='21.96'%20y2='50.8'%20gradientUnits='userSpaceOnUse'%3e%3cstop%20offset='0'%20stop-color='%23f3f7fe'/%3e%3cstop%20offset='.45'%20stop-color='%23f3f7fe'/%3e%3cstop%20offset='1'%20stop-color='%23deeafb'/%3e%3c/linearGradient%3e%3clinearGradient%20id='a'%20x1='22.53'%20x2='25.47'%20y1='42.95'%20y2='48.05'%20gradientUnits='userSpaceOnUse'%3e%3cstop%20offset='0'%20stop-color='%234286ee'/%3e%3cstop%20offset='.45'%20stop-color='%234286ee'/%3e%3cstop%20offset='1'%20stop-color='%230950bc'/%3e%3c/linearGradient%3e%3clinearGradient%20id='c'%20x1='29.53'%20x2='32.47'%20y1='42.95'%20y2='48.05'%20xlink:href='%23a'/%3e%3clinearGradient%20id='d'%20x1='36.53'%20x2='39.47'%20y1='42.95'%20y2='48.05'%20xlink:href='%23a'/%3e%3clinearGradient%20id='e'%20x1='26.74'%20x2='35.76'%20y1='37.88'%20y2='53.52'%20gradientUnits='userSpaceOnUse'%3e%3cstop%20offset='0'%20stop-color='%23f7b23b'/%3e%3cstop%20offset='.45'%20stop-color='%23f7b23b'/%3e%3cstop%20offset='1'%20stop-color='%23f59e0b'/%3e%3c/linearGradient%3e%3c/defs%3e%3cpath%20fill='url(%23b)'%20stroke='%23e6effc'%20stroke-miterlimit='10'%20stroke-width='.5'%20d='M46.5%2031.5h-.32a10.49%2010.49%200%2000-19.11-8%207%207%200%2000-10.57%206%207.21%207.21%200%2000.1%201.14A7.5%207.5%200%200018%2045.5a4.19%204.19%200%2000.5%200v0h28a7%207%200%20000-14z'/%3e%3cpath%20fill='none'%20stroke='url(%23a)'%20stroke-linecap='round'%20stroke-miterlimit='10'%20stroke-width='2'%20d='M24.39%2043.03l-.78%204.94'%3e%3canimateTransform%20attributeName='transform'%20dur='0.7s'%20repeatCount='indefinite'%20type='translate'%20values='1%20-5;%20-2%2010'/%3e%3canimate%20attributeName='opacity'%20dur='0.7s'%20repeatCount='indefinite'%20values='0;1;1;0'/%3e%3c/path%3e%3cpath%20fill='none'%20stroke='url(%23c)'%20stroke-linecap='round'%20stroke-miterlimit='10'%20stroke-width='2'%20d='M31.39%2043.03l-.78%204.94'%3e%3canimateTransform%20attributeName='transform'%20begin='-0.4s'%20dur='0.7s'%20repeatCount='indefinite'%20type='translate'%20values='1%20-5;%20-2%2010'/%3e%3canimate%20attributeName='opacity'%20begin='-0.4s'%20dur='0.7s'%20repeatCount='indefinite'%20values='0;1;1;0'/%3e%3c/path%3e%3cpath%20fill='none'%20stroke='url(%23d)'%20stroke-linecap='round'%20stroke-miterlimit='10'%20stroke-width='2'%20d='M38.39%2043.03l-.78%204.94'%3e%3canimateTransform%20attributeName='transform'%20begin='-0.2s'%20dur='0.7s'%20repeatCount='indefinite'%20type='translate'%20values='1%20-5;%20-2%2010'/%3e%3canimate%20attributeName='opacity'%20begin='-0.2s'%20dur='0.7s'%20repeatCount='indefinite'%20values='0;1;1;0'/%3e%3c/path%3e%3cpath%20fill='url(%23e)'%20stroke='%23f6a823'%20stroke-miterlimit='10'%20stroke-width='.5'%20d='M30%2036l-4%2012h4l-2%2010%2010-14h-6l4-8h-6z'%3e%3canimate%20attributeName='opacity'%20dur='2s'%20repeatCount='indefinite'%20values='1;%201;%201;%201;%201;%201;%200.1;%201;%200.1;%201;%201;%200.1;%201;%200.1;%201'/%3e%3c/path%3e%3c/svg%3e", _a = "data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3e%3cdefs%3e%3clinearGradient%20id='a'%20x1='22.56'%20x2='39.2'%20y1='21.96'%20y2='50.8'%20gradientUnits='userSpaceOnUse'%3e%3cstop%20offset='0'%20stop-color='%23f3f7fe'/%3e%3cstop%20offset='.45'%20stop-color='%23f3f7fe'/%3e%3cstop%20offset='1'%20stop-color='%23deeafb'/%3e%3c/linearGradient%3e%3clinearGradient%20id='b'%20x1='26.74'%20x2='35.76'%20y1='37.88'%20y2='53.52'%20gradientUnits='userSpaceOnUse'%3e%3cstop%20offset='0'%20stop-color='%23f7b23b'/%3e%3cstop%20offset='.45'%20stop-color='%23f7b23b'/%3e%3cstop%20offset='1'%20stop-color='%23f59e0b'/%3e%3c/linearGradient%3e%3c/defs%3e%3cpath%20fill='url(%23a)'%20stroke='%23e6effc'%20stroke-miterlimit='10'%20stroke-width='.5'%20d='M46.5%2031.5h-.32a10.49%2010.49%200%2000-19.11-8%207%207%200%2000-10.57%206%207.21%207.21%200%2000.1%201.14A7.5%207.5%200%200018%2045.5a4.19%204.19%200%2000.5%200v0h28a7%207%200%20000-14z'/%3e%3cpath%20fill='url(%23b)'%20stroke='%23f6a823'%20stroke-miterlimit='10'%20stroke-width='.5'%20d='M30%2036l-4%2012h4l-2%2010%2010-14h-6l4-8h-6z'%3e%3canimate%20attributeName='opacity'%20dur='2s'%20repeatCount='indefinite'%20values='1;%201;%201;%201;%201;%201;%200.1;%201;%200.1;%201;%201;%200.1;%201;%200.1;%201'/%3e%3c/path%3e%3c/svg%3e", ba = "data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20xmlns:xlink='http://www.w3.org/1999/xlink'%20viewBox='0%200%2064%2064'%3e%3cdefs%3e%3clinearGradient%20id='b'%20x1='22.56'%20x2='39.2'%20y1='21.96'%20y2='50.8'%20gradientUnits='userSpaceOnUse'%3e%3cstop%20offset='0'%20stop-color='%23f3f7fe'/%3e%3cstop%20offset='.45'%20stop-color='%23f3f7fe'/%3e%3cstop%20offset='1'%20stop-color='%23deeafb'/%3e%3c/linearGradient%3e%3clinearGradient%20id='a'%20x1='22.53'%20x2='25.47'%20y1='42.95'%20y2='48.05'%20gradientUnits='userSpaceOnUse'%3e%3cstop%20offset='0'%20stop-color='%234286ee'/%3e%3cstop%20offset='.45'%20stop-color='%234286ee'/%3e%3cstop%20offset='1'%20stop-color='%230950bc'/%3e%3c/linearGradient%3e%3clinearGradient%20id='c'%20x1='29.53'%20x2='32.47'%20y1='42.95'%20y2='48.05'%20xlink:href='%23a'/%3e%3clinearGradient%20id='d'%20x1='36.53'%20x2='39.47'%20y1='42.95'%20y2='48.05'%20xlink:href='%23a'/%3e%3c/defs%3e%3cpath%20fill='url(%23b)'%20stroke='%23e6effc'%20stroke-miterlimit='10'%20stroke-width='.5'%20d='M46.5%2031.5h-.32a10.49%2010.49%200%2000-19.11-8%207%207%200%2000-10.57%206%207.21%207.21%200%2000.1%201.14A7.5%207.5%200%200018%2045.5a4.19%204.19%200%2000.5%200v0h28a7%207%200%20000-14z'/%3e%3cpath%20fill='none'%20stroke='url(%23a)'%20stroke-linecap='round'%20stroke-miterlimit='10'%20stroke-width='2'%20d='M24.39%2043.03l-.78%204.94'%3e%3canimateTransform%20attributeName='transform'%20dur='0.7s'%20repeatCount='indefinite'%20type='translate'%20values='1%20-5;%20-2%2010'/%3e%3canimate%20attributeName='opacity'%20dur='0.7s'%20repeatCount='indefinite'%20values='0;1;1;0'/%3e%3c/path%3e%3cpath%20fill='none'%20stroke='url(%23c)'%20stroke-linecap='round'%20stroke-miterlimit='10'%20stroke-width='2'%20d='M31.39%2043.03l-.78%204.94'%3e%3canimateTransform%20attributeName='transform'%20begin='-0.4s'%20dur='0.7s'%20repeatCount='indefinite'%20type='translate'%20values='1%20-5;%20-2%2010'/%3e%3canimate%20attributeName='opacity'%20begin='-0.4s'%20dur='0.7s'%20repeatCount='indefinite'%20values='0;1;1;0'/%3e%3c/path%3e%3cpath%20fill='none'%20stroke='url(%23d)'%20stroke-linecap='round'%20stroke-miterlimit='10'%20stroke-width='2'%20d='M38.39%2043.03l-.78%204.94'%3e%3canimateTransform%20attributeName='transform'%20begin='-0.2s'%20dur='0.7s'%20repeatCount='indefinite'%20type='translate'%20values='1%20-5;%20-2%2010'/%3e%3canimate%20attributeName='opacity'%20begin='-0.2s'%20dur='0.7s'%20repeatCount='indefinite'%20values='0;1;1;0'/%3e%3c/path%3e%3c/svg%3e", wa = "data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20xmlns:xlink='http://www.w3.org/1999/xlink'%20viewBox='0%200%2064%2064'%3e%3cdefs%3e%3clinearGradient%20id='b'%20x1='22.56'%20x2='39.2'%20y1='21.96'%20y2='50.8'%20gradientUnits='userSpaceOnUse'%3e%3cstop%20offset='0'%20stop-color='%23f3f7fe'/%3e%3cstop%20offset='.45'%20stop-color='%23f3f7fe'/%3e%3cstop%20offset='1'%20stop-color='%23deeafb'/%3e%3c/linearGradient%3e%3clinearGradient%20id='a'%20x1='30.12'%20x2='31.88'%20y1='43.48'%20y2='46.52'%20gradientUnits='userSpaceOnUse'%3e%3cstop%20offset='0'%20stop-color='%2386c3db'/%3e%3cstop%20offset='.45'%20stop-color='%2386c3db'/%3e%3cstop%20offset='1'%20stop-color='%235eafcf'/%3e%3c/linearGradient%3e%3clinearGradient%20id='c'%20x1='29.67'%20x2='32.33'%20y1='42.69'%20y2='47.31'%20xlink:href='%23a'/%3e%3clinearGradient%20id='d'%20x1='23.12'%20x2='24.88'%20y1='43.48'%20y2='46.52'%20xlink:href='%23a'/%3e%3clinearGradient%20id='e'%20x1='22.67'%20x2='25.33'%20y1='42.69'%20y2='47.31'%20xlink:href='%23a'/%3e%3clinearGradient%20id='f'%20x1='37.12'%20x2='38.88'%20y1='43.48'%20y2='46.52'%20xlink:href='%23a'/%3e%3clinearGradient%20id='g'%20x1='36.67'%20x2='39.33'%20y1='42.69'%20y2='47.31'%20xlink:href='%23a'/%3e%3c/defs%3e%3cpath%20fill='url(%23b)'%20stroke='%23e6effc'%20stroke-miterlimit='10'%20stroke-width='.5'%20d='M46.5%2031.5h-.32a10.49%2010.49%200%2000-19.11-8%207%207%200%2000-10.57%206%207.21%207.21%200%2000.1%201.14A7.5%207.5%200%200018%2045.5a4.19%204.19%200%2000.5%200v0h28a7%207%200%20000-14z'/%3e%3cg%3e%3ccircle%20cx='31'%20cy='45'%20r='1.25'%20fill='none'%20stroke='url(%23a)'%20stroke-miterlimit='10'/%3e%3cpath%20fill='none'%20stroke='url(%23c)'%20stroke-linecap='round'%20stroke-miterlimit='10'%20d='M33.17%2046.25l-1.09-.63m-2.16-1.24l-1.09-.63M31%2042.5v1.25m0%203.75v-1.25m-1.08-.63l-1.09.63m4.34-2.5l-1.09.63'/%3e%3canimateTransform%20additive='sum'%20attributeName='transform'%20dur='4s'%20repeatCount='indefinite'%20type='translate'%20values='-1%20-6;%201%2012'/%3e%3canimateTransform%20additive='sum'%20attributeName='transform'%20dur='9s'%20repeatCount='indefinite'%20type='rotate'%20values='0%2031%2045;%20360%2031%2045'/%3e%3canimate%20attributeName='opacity'%20dur='4s'%20repeatCount='indefinite'%20values='0;1;1;1;0'/%3e%3c/g%3e%3cg%3e%3ccircle%20cx='24'%20cy='45'%20r='1.25'%20fill='none'%20stroke='url(%23d)'%20stroke-miterlimit='10'/%3e%3cpath%20fill='none'%20stroke='url(%23e)'%20stroke-linecap='round'%20stroke-miterlimit='10'%20d='M26.17%2046.25l-1.09-.63m-2.16-1.24l-1.09-.63M24%2042.5v1.25m0%203.75v-1.25m-1.08-.63l-1.09.63m4.34-2.5l-1.09.63'/%3e%3canimateTransform%20additive='sum'%20attributeName='transform'%20begin='-2s'%20dur='4s'%20repeatCount='indefinite'%20type='translate'%20values='1%20-6;%20-1%2012'/%3e%3canimateTransform%20additive='sum'%20attributeName='transform'%20dur='9s'%20repeatCount='indefinite'%20type='rotate'%20values='0%2024%2045;%20360%2024%2045'/%3e%3canimate%20attributeName='opacity'%20begin='-2s'%20dur='4s'%20repeatCount='indefinite'%20values='0;1;1;1;0'/%3e%3c/g%3e%3cg%3e%3ccircle%20cx='38'%20cy='45'%20r='1.25'%20fill='none'%20stroke='url(%23f)'%20stroke-miterlimit='10'/%3e%3cpath%20fill='none'%20stroke='url(%23g)'%20stroke-linecap='round'%20stroke-miterlimit='10'%20d='M40.17%2046.25l-1.09-.63m-2.16-1.24l-1.09-.63M38%2042.5v1.25m0%203.75v-1.25m-1.08-.63l-1.09.63m4.34-2.5l-1.09.63'/%3e%3canimateTransform%20additive='sum'%20attributeName='transform'%20begin='-1s'%20dur='4s'%20repeatCount='indefinite'%20type='translate'%20values='1%20-6;%20-1%2012'/%3e%3canimateTransform%20additive='sum'%20attributeName='transform'%20dur='9s'%20repeatCount='indefinite'%20type='rotate'%20values='0%2038%2045;%20360%2038%2045'/%3e%3canimate%20attributeName='opacity'%20begin='-1s'%20dur='4s'%20repeatCount='indefinite'%20values='0;1;1;1;0'/%3e%3c/g%3e%3c/svg%3e", xa = "data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20xmlns:xlink='http://www.w3.org/1999/xlink'%20viewBox='0%200%2064%2064'%3e%3cdefs%3e%3clinearGradient%20id='c'%20x1='22.56'%20x2='39.2'%20y1='21.96'%20y2='50.8'%20gradientUnits='userSpaceOnUse'%3e%3cstop%20offset='0'%20stop-color='%23f3f7fe'/%3e%3cstop%20offset='.45'%20stop-color='%23f3f7fe'/%3e%3cstop%20offset='1'%20stop-color='%23deeafb'/%3e%3c/linearGradient%3e%3clinearGradient%20id='a'%20x1='23.12'%20x2='24.88'%20y1='43.48'%20y2='46.52'%20gradientUnits='userSpaceOnUse'%3e%3cstop%20offset='0'%20stop-color='%2386c3db'/%3e%3cstop%20offset='.45'%20stop-color='%2386c3db'/%3e%3cstop%20offset='1'%20stop-color='%235eafcf'/%3e%3c/linearGradient%3e%3clinearGradient%20id='d'%20x1='22.67'%20x2='25.33'%20y1='42.69'%20y2='47.31'%20xlink:href='%23a'/%3e%3clinearGradient%20id='e'%20x1='37.12'%20x2='38.88'%20y1='43.48'%20y2='46.52'%20xlink:href='%23a'/%3e%3clinearGradient%20id='f'%20x1='36.67'%20x2='39.33'%20y1='42.69'%20y2='47.31'%20xlink:href='%23a'/%3e%3clinearGradient%20id='b'%20x1='23.31'%20x2='24.69'%20y1='44.3'%20y2='46.7'%20gradientUnits='userSpaceOnUse'%3e%3cstop%20offset='0'%20stop-color='%234286ee'/%3e%3cstop%20offset='.45'%20stop-color='%234286ee'/%3e%3cstop%20offset='1'%20stop-color='%230950bc'/%3e%3c/linearGradient%3e%3clinearGradient%20id='g'%20x1='30.31'%20x2='31.69'%20y1='44.3'%20y2='46.7'%20xlink:href='%23b'/%3e%3clinearGradient%20id='h'%20x1='37.31'%20x2='38.69'%20y1='44.3'%20y2='46.7'%20xlink:href='%23b'/%3e%3c/defs%3e%3cpath%20fill='url(%23c)'%20stroke='%23e6effc'%20stroke-miterlimit='10'%20stroke-width='.5'%20d='M46.5%2031.5h-.32a10.49%2010.49%200%2000-19.11-8%207%207%200%2000-10.57%206%207.21%207.21%200%2000.1%201.14A7.5%207.5%200%200018%2045.5a4.19%204.19%200%2000.5%200v0h28a7%207%200%20000-14z'/%3e%3cg%3e%3ccircle%20cx='24'%20cy='45'%20r='1.25'%20fill='none'%20stroke='url(%23a)'%20stroke-miterlimit='10'/%3e%3cpath%20fill='none'%20stroke='url(%23d)'%20stroke-linecap='round'%20stroke-miterlimit='10'%20d='M26.17%2046.25l-1.09-.63m-2.16-1.24l-1.09-.63M24%2042.5v1.25m0%203.75v-1.25m-1.08-.63l-1.09.63m4.34-2.5l-1.09.63'/%3e%3canimateTransform%20additive='sum'%20attributeName='transform'%20begin='-2s'%20dur='4s'%20repeatCount='indefinite'%20type='translate'%20values='1%20-6;%20-1%2012'/%3e%3canimateTransform%20additive='sum'%20attributeName='transform'%20dur='9s'%20repeatCount='indefinite'%20type='rotate'%20values='0%2024%2045;%20360%2024%2045'/%3e%3canimate%20attributeName='opacity'%20begin='-2s'%20dur='4s'%20repeatCount='indefinite'%20values='0;1;1;1;0'/%3e%3c/g%3e%3cg%3e%3ccircle%20cx='38'%20cy='45'%20r='1.25'%20fill='none'%20stroke='url(%23e)'%20stroke-miterlimit='10'/%3e%3cpath%20fill='none'%20stroke='url(%23f)'%20stroke-linecap='round'%20stroke-miterlimit='10'%20d='M40.17%2046.25l-1.09-.63m-2.16-1.24l-1.09-.63M38%2042.5v1.25m0%203.75v-1.25m-1.08-.63l-1.09.63m4.34-2.5l-1.09.63'/%3e%3canimateTransform%20additive='sum'%20attributeName='transform'%20begin='-1s'%20dur='4s'%20repeatCount='indefinite'%20type='translate'%20values='1%20-6;%20-1%2012'/%3e%3canimateTransform%20additive='sum'%20attributeName='transform'%20dur='9s'%20repeatCount='indefinite'%20type='rotate'%20values='0%2038%2045;%20360%2038%2045'/%3e%3canimate%20attributeName='opacity'%20begin='-1s'%20dur='4s'%20repeatCount='indefinite'%20values='0;1;1;1;0'/%3e%3c/g%3e%3cpath%20fill='none'%20stroke='url(%23b)'%20stroke-linecap='round'%20stroke-miterlimit='10'%20stroke-width='2'%20d='M24.08%2045.01l-.16.98'%3e%3canimateTransform%20attributeName='transform'%20dur='1.5s'%20repeatCount='indefinite'%20type='translate'%20values='1%20-5;%20-2%2010'/%3e%3canimate%20attributeName='opacity'%20dur='1.5s'%20repeatCount='indefinite'%20values='0;1;1;0'/%3e%3c/path%3e%3cpath%20fill='none'%20stroke='url(%23g)'%20stroke-linecap='round'%20stroke-miterlimit='10'%20stroke-width='2'%20d='M31.08%2045.01l-.16.98'%3e%3canimateTransform%20attributeName='transform'%20begin='-0.5s'%20dur='1.5s'%20repeatCount='indefinite'%20type='translate'%20values='1%20-5;%20-2%2010'/%3e%3canimate%20attributeName='opacity'%20begin='-0.5s'%20dur='1.5s'%20repeatCount='indefinite'%20values='0;1;1;0'/%3e%3c/path%3e%3cpath%20fill='none'%20stroke='url(%23h)'%20stroke-linecap='round'%20stroke-miterlimit='10'%20stroke-width='2'%20d='M38.08%2045.01l-.16.98'%3e%3canimateTransform%20attributeName='transform'%20begin='-1s'%20dur='1.5s'%20repeatCount='indefinite'%20type='translate'%20values='1%20-5;%20-2%2010'/%3e%3canimate%20attributeName='opacity'%20begin='-1s'%20dur='1.5s'%20repeatCount='indefinite'%20values='0;1;1;0'/%3e%3c/path%3e%3c/svg%3e", va = "data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3e%3cdefs%3e%3clinearGradient%20id='a'%20x1='21.97'%20x2='42.03'%20y1='14.63'%20y2='49.37'%20gradientUnits='userSpaceOnUse'%3e%3cstop%20offset='0'%20stop-color='%23d4d7dd'/%3e%3cstop%20offset='.45'%20stop-color='%23d4d7dd'/%3e%3cstop%20offset='1'%20stop-color='%23bec1c6'/%3e%3canimateTransform%20attributeName='gradientTransform'%20dur='1s'%20repeatCount='indefinite'%20type='rotate'%20values='0%2032%2032;%20360%2032%2032'/%3e%3c/linearGradient%3e%3c/defs%3e%3cpath%20fill='none'%20stroke='url(%23a)'%20stroke-linecap='round'%20stroke-miterlimit='10'%20stroke-width='3'%20d='M43%2032a11%2011%200%2011-11-11%2011%2011%200%200111%2011zM25%2014.61l-.48%201a33.68%2033.68%200%2000-3.42%2017.82h0M39%2049.39l.48-1a33.68%2033.68%200%20003.42-17.82h0'%3e%3canimateTransform%20attributeName='transform'%20dur='1s'%20repeatCount='indefinite'%20type='rotate'%20values='360%2032%2032;%200%2032%2032'/%3e%3c/path%3e%3c/svg%3e", Tn = "data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20xmlns:xlink='http://www.w3.org/1999/xlink'%20viewBox='0%200%2064%2064'%3e%3cdefs%3e%3clinearGradient%20id='a'%20x1='27.56'%20x2='38.27'%20y1='17.64'%20y2='36.19'%20gradientUnits='userSpaceOnUse'%3e%3cstop%20offset='0'%20stop-color='%23d4d7dd'/%3e%3cstop%20offset='.45'%20stop-color='%23d4d7dd'/%3e%3cstop%20offset='1'%20stop-color='%23bec1c6'/%3e%3c/linearGradient%3e%3clinearGradient%20id='b'%20x1='19.96'%20x2='31.37'%20y1='29.03'%20y2='48.8'%20xlink:href='%23a'/%3e%3c/defs%3e%3cpath%20fill='none'%20stroke='url(%23a)'%20stroke-dasharray='35%2022'%20stroke-linecap='round'%20stroke-miterlimit='10'%20stroke-width='3'%20d='M43.64%2020a5%205%200%20113.61%208.46h-35.5'%3e%3canimate%20attributeName='stroke-dashoffset'%20dur='2s'%20repeatCount='indefinite'%20values='-57;%2057'/%3e%3c/path%3e%3cpath%20fill='none'%20stroke='url(%23b)'%20stroke-dasharray='24%2015'%20stroke-linecap='round'%20stroke-miterlimit='10'%20stroke-width='3'%20d='M29.14%2044a5%205%200%20103.61-8.46h-21'%3e%3canimate%20attributeName='stroke-dashoffset'%20begin='-1.5s'%20dur='2s'%20repeatCount='indefinite'%20values='-39;%2039'/%3e%3c/path%3e%3c/svg%3e", Ci = "data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3e%3cdefs%3e%3clinearGradient%20id='a'%20x1='26.75'%20x2='37.25'%20y1='22.91'%20y2='41.09'%20gradientUnits='userSpaceOnUse'%3e%3cstop%20offset='0'%20stop-color='%23fbbf24'/%3e%3cstop%20offset='.45'%20stop-color='%23fbbf24'/%3e%3cstop%20offset='1'%20stop-color='%23f59e0b'/%3e%3c/linearGradient%3e%3c/defs%3e%3ccircle%20cx='32'%20cy='32'%20r='10.5'%20fill='url(%23a)'%20stroke='%23f8af18'%20stroke-miterlimit='10'%20stroke-width='.5'/%3e%3cpath%20fill='none'%20stroke='%23fbbf24'%20stroke-linecap='round'%20stroke-miterlimit='10'%20stroke-width='3'%20d='M32%2015.71V9.5m0%2045v-6.21m11.52-27.81l4.39-4.39M16.09%2047.91l4.39-4.39m0-23l-4.39-4.39m31.82%2031.78l-4.39-4.39M15.71%2032H9.5m45%200h-6.21'%3e%3canimateTransform%20attributeName='transform'%20dur='45s'%20repeatCount='indefinite'%20type='rotate'%20values='0%2032%2032;%20360%2032%2032'/%3e%3c/path%3e%3c/svg%3e", $a = "data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20xmlns:xlink='http://www.w3.org/1999/xlink'%20viewBox='0%200%20512%20512'%3e%3cdefs%3e%3clinearGradient%20id='a'%20x1='52.7'%20x2='133.4'%20y1='9.6'%20y2='149.3'%20gradientUnits='userSpaceOnUse'%3e%3cstop%20offset='0'%20stop-color='%239ca3af'/%3e%3cstop%20offset='.5'%20stop-color='%239ca3af'/%3e%3cstop%20offset='1'%20stop-color='%236b7280'/%3e%3c/linearGradient%3e%3clinearGradient%20id='b'%20x1='99.5'%20x2='232.6'%20y1='30.7'%20y2='261.4'%20gradientUnits='userSpaceOnUse'%3e%3cstop%20offset='0'%20stop-color='%236b7280'/%3e%3cstop%20offset='.5'%20stop-color='%236b7280'/%3e%3cstop%20offset='1'%20stop-color='%234b5563'/%3e%3c/linearGradient%3e%3clinearGradient%20id='c'%20x1='1381.3'%20x2='1399.5'%20y1='-1144.7'%20y2='-1097.4'%20gradientTransform='rotate(-9%208002.567%208233.063)'%20gradientUnits='userSpaceOnUse'%3e%3cstop%20offset='0'%20stop-color='%230b65ed'/%3e%3cstop%20offset='.5'%20stop-color='%230a5ad4'/%3e%3cstop%20offset='1'%20stop-color='%230950bc'/%3e%3c/linearGradient%3e%3clinearGradient%20xlink:href='%23c'%20id='d'%20x1='1436.7'%20x2='1454.9'%20y1='-1137'%20y2='-1089.7'%20gradientTransform='rotate(-9%208009.537%208233.037)'/%3e%3clinearGradient%20xlink:href='%23c'%20id='e'%20x1='1492.1'%20x2='1510.3'%20y1='-1129.3'%20y2='-1082.1'%20gradientTransform='rotate(-9%208016.566%208233.078)'/%3e%3csymbol%20id='g'%20viewBox='0%200%20200.3%20126.1'%3e%3cpath%20fill='url(%23a)'%20stroke='%23848b98'%20stroke-miterlimit='10'%20d='M.5%2093.2a32.4%2032.4%200%200032.4%2032.4h129.8v-.1l2.3.1a34.8%2034.8%200%20006.5-68.9%2032.4%2032.4%200%2000-48.5-33%2048.6%2048.6%200%2000-88.6%2037.1h-1.5A32.4%2032.4%200%2000.5%2093.1Z'/%3e%3c/symbol%3e%3csymbol%20id='h'%20viewBox='0%200%20350%20222'%3e%3cpath%20fill='url(%23b)'%20stroke='%235b6472'%20stroke-miterlimit='10'%20stroke-width='6'%20d='m291%20107-2.5.1A83.9%2083.9%200%2000135.6%2043%2056%2056%200%200051%2091a56.6%2056.6%200%2000.8%209A60%2060%200%200063%20219l4-.2v.2h224a56%2056%200%20000-112Z'/%3e%3c/symbol%3e%3csymbol%20id='f'%20overflow='visible'%20viewBox='0%200%20398%20222'%3e%3cuse%20xlink:href='%23g'%20width='200.3'%20height='126.1'%20transform='translate(198%2027)'%3e%3canimateTransform%20additive='sum'%20attributeName='transform'%20dur='6s'%20repeatCount='indefinite'%20type='translate'%20values='-9%200;%209%200;%20-9%200'/%3e%3c/use%3e%3cuse%20xlink:href='%23h'%20width='350'%20height='222'%3e%3canimateTransform%20additive='sum'%20attributeName='transform'%20dur='6s'%20repeatCount='indefinite'%20type='translate'%20values='-18%200;%2018%200;%20-18%200'/%3e%3c/use%3e%3c/symbol%3e%3csymbol%20id='i'%20overflow='visible'%20viewBox='0%200%20129%2057'%3e%3cpath%20fill='url(%23c)'%20stroke='%230a5ad4'%20stroke-miterlimit='10'%20d='M8.5%2056.5a8%208%200%2001-8-8v-40a8%208%200%200116%200v40a8%208%200%2001-8%208Z'%20opacity='0'%3e%3canimateTransform%20id='x1'%20additive='sum'%20attributeName='transform'%20begin='0s;%20x1.end+.33s'%20dur='.67s'%20type='translate'%20values='0%20-60;%200%2060'/%3e%3canimate%20id='y1'%20attributeName='opacity'%20begin='0s;%20y1.end+.33s'%20dur='.67s'%20keyTimes='0;%20.25;%201'%20values='0;%201;%200'/%3e%3c/path%3e%3cpath%20fill='url(%23d)'%20stroke='%230a5ad4'%20stroke-miterlimit='10'%20d='M64.5%2056.5a8%208%200%2001-8-8v-40a8%208%200%200116%200v40a8%208%200%2001-8%208Z'%20opacity='0'%3e%3canimateTransform%20id='x2'%20additive='sum'%20attributeName='transform'%20begin='.33s;%20x2.end+.33s'%20dur='.67s'%20type='translate'%20values='0%20-60;%200%2060'/%3e%3canimate%20id='y2'%20attributeName='opacity'%20begin='.33s;%20y2.end+.33s'%20dur='.67s'%20keyTimes='0;%20.25;%201'%20values='0;%201;%200'/%3e%3c/path%3e%3cpath%20fill='url(%23e)'%20stroke='%230a5ad4'%20stroke-miterlimit='10'%20d='M120.5%2056.5a8%208%200%2001-8-8v-40a8%208%200%200116%200v40a8%208%200%2001-8%208Z'%20opacity='0'%3e%3canimateTransform%20id='x3'%20additive='sum'%20attributeName='transform'%20begin='-.33s;%20x3.end+.33s'%20dur='.67s'%20type='translate'%20values='0%20-60;%200%2060'/%3e%3canimate%20id='y3'%20attributeName='opacity'%20begin='-.33s;%20y3.end+.33s'%20dur='.67s'%20keyTimes='0;%20.25;%201'%20values='0;%201;%200'/%3e%3c/path%3e%3c/symbol%3e%3c/defs%3e%3cuse%20xlink:href='%23f'%20width='398'%20height='222'%20transform='translate(68.84%20145)'/%3e%3cuse%20xlink:href='%23i'%20width='129'%20height='57'%20transform='translate(191.5%20343.5)'/%3e%3c/svg%3e";
+var ka = "M6,19A5,5 0 0,1 1,14A5,5 0 0,1 6,9C7,6.65 9.3,5 12,5C15.43,5 18.24,7.66 18.5,11.03L19,11A4,4 0 0,1 23,15A4,4 0 0,1 19,19H6M19,13H17V12A5,5 0 0,0 12,7C9.5,7 7.45,8.82 7.06,11.19C6.73,11.07 6.37,11 6,11A3,3 0 0,0 3,14A3,3 0 0,0 6,17H19A2,2 0 0,0 21,15A2,2 0 0,0 19,13Z", Ca = "M3,15H13A1,1 0 0,1 14,16A1,1 0 0,1 13,17H3A1,1 0 0,1 2,16A1,1 0 0,1 3,15M16,15H21A1,1 0 0,1 22,16A1,1 0 0,1 21,17H16A1,1 0 0,1 15,16A1,1 0 0,1 16,15M1,12A5,5 0 0,1 6,7C7,4.65 9.3,3 12,3C15.43,3 18.24,5.66 18.5,9.03L19,9C21.19,9 22.97,10.76 23,13H21A2,2 0 0,0 19,11H17V10A5,5 0 0,0 12,5C9.5,5 7.45,6.82 7.06,9.19C6.73,9.07 6.37,9 6,9A3,3 0 0,0 3,12C3,12.35 3.06,12.69 3.17,13H1.1L1,12M3,19H5A1,1 0 0,1 6,20A1,1 0 0,1 5,21H3A1,1 0 0,1 2,20A1,1 0 0,1 3,19M8,19H21A1,1 0 0,1 22,20A1,1 0 0,1 21,21H8A1,1 0 0,1 7,20A1,1 0 0,1 8,19Z", Aa = "M6,14A1,1 0 0,1 7,15A1,1 0 0,1 6,16A5,5 0 0,1 1,11A5,5 0 0,1 6,6C7,3.65 9.3,2 12,2C15.43,2 18.24,4.66 18.5,8.03L19,8A4,4 0 0,1 23,12A4,4 0 0,1 19,16H18A1,1 0 0,1 17,15A1,1 0 0,1 18,14H19A2,2 0 0,0 21,12A2,2 0 0,0 19,10H17V9A5,5 0 0,0 12,4C9.5,4 7.45,5.82 7.06,8.19C6.73,8.07 6.37,8 6,8A3,3 0 0,0 3,11A3,3 0 0,0 6,14M10,18A2,2 0 0,1 12,20A2,2 0 0,1 10,22A2,2 0 0,1 8,20A2,2 0 0,1 10,18M14.5,16A1.5,1.5 0 0,1 16,17.5A1.5,1.5 0 0,1 14.5,19A1.5,1.5 0 0,1 13,17.5A1.5,1.5 0 0,1 14.5,16M10.5,12A1.5,1.5 0 0,1 12,13.5A1.5,1.5 0 0,1 10.5,15A1.5,1.5 0 0,1 9,13.5A1.5,1.5 0 0,1 10.5,12Z", Sa = "M15,6.79C16.86,7.86 18,9.85 18,12C18,22 6,22 6,22C7.25,21.06 8.38,19.95 9.34,18.71C9.38,18.66 9.41,18.61 9.44,18.55C9.69,18.06 9.5,17.46 9,17.21C7.14,16.14 6,14.15 6,12C6,2 18,2 18,2C16.75,2.94 15.62,4.05 14.66,5.29C14.62,5.34 14.59,5.39 14.56,5.45C14.31,5.94 14.5,6.54 15,6.79M12,14A2,2 0 0,0 14,12A2,2 0 0,0 12,10A2,2 0 0,0 10,12A2,2 0 0,0 12,14Z", Ma = "M6,16A5,5 0 0,1 1,11A5,5 0 0,1 6,6C7,3.65 9.3,2 12,2C15.43,2 18.24,4.66 18.5,8.03L19,8A4,4 0 0,1 23,12A4,4 0 0,1 19,16H18A1,1 0 0,1 17,15A1,1 0 0,1 18,14H19A2,2 0 0,0 21,12A2,2 0 0,0 19,10H17V9A5,5 0 0,0 12,4C9.5,4 7.45,5.82 7.06,8.19C6.73,8.07 6.37,8 6,8A3,3 0 0,0 3,11A3,3 0 0,0 6,14H7A1,1 0 0,1 8,15A1,1 0 0,1 7,16H6M12,11H15L13,15H15L11.25,22L12,17H9.5L12,11Z", za = "M4.5,13.59C5,13.87 5.14,14.5 4.87,14.96C4.59,15.44 4,15.6 3.5,15.33V15.33C2,14.47 1,12.85 1,11A5,5 0 0,1 6,6C7,3.65 9.3,2 12,2C15.43,2 18.24,4.66 18.5,8.03L19,8A4,4 0 0,1 23,12A4,4 0 0,1 19,16A1,1 0 0,1 18,15A1,1 0 0,1 19,14A2,2 0 0,0 21,12A2,2 0 0,0 19,10H17V9A5,5 0 0,0 12,4C9.5,4 7.45,5.82 7.06,8.19C6.73,8.07 6.37,8 6,8A3,3 0 0,0 3,11C3,12.11 3.6,13.08 4.5,13.6V13.59M9.5,11H12.5L10.5,15H12.5L8.75,22L9.5,17H7L9.5,11M17.5,18.67C17.5,19.96 16.5,21 15.25,21C14,21 13,19.96 13,18.67C13,17.12 15.25,14.5 15.25,14.5C15.25,14.5 17.5,17.12 17.5,18.67Z", La = "M17.75,4.09L15.22,6.03L16.13,9.09L13.5,7.28L10.87,9.09L11.78,6.03L9.25,4.09L12.44,4L13.5,1L14.56,4L17.75,4.09M21.25,11L19.61,12.25L20.2,14.23L18.5,13.06L16.8,14.23L17.39,12.25L15.75,11L17.81,10.95L18.5,9L19.19,10.95L21.25,11M18.97,15.95C19.8,15.87 20.69,17.05 20.16,17.8C19.84,18.25 19.5,18.67 19.08,19.07C15.17,23 8.84,23 4.94,19.07C1.03,15.17 1.03,8.83 4.94,4.93C5.34,4.53 5.76,4.17 6.21,3.85C6.96,3.32 8.14,4.21 8.06,5.04C7.79,7.9 8.75,10.87 10.95,13.06C13.14,15.26 16.1,16.22 18.97,15.95M17.33,17.97C14.5,17.81 11.7,16.64 9.53,14.5C7.36,12.31 6.2,9.5 6.04,6.68C3.23,9.82 3.34,14.64 6.35,17.66C9.37,20.67 14.19,20.78 17.33,17.97Z", Na = "M12.74,5.47C15.1,6.5 16.35,9.03 15.92,11.46C17.19,12.56 18,14.19 18,16V16.17C18.31,16.06 18.65,16 19,16A3,3 0 0,1 22,19A3,3 0 0,1 19,22H6A4,4 0 0,1 2,18A4,4 0 0,1 6,14H6.27C5,12.45 4.6,10.24 5.5,8.26C6.72,5.5 9.97,4.24 12.74,5.47M11.93,7.3C10.16,6.5 8.09,7.31 7.31,9.07C6.85,10.09 6.93,11.22 7.41,12.13C8.5,10.83 10.16,10 12,10C12.7,10 13.38,10.12 14,10.34C13.94,9.06 13.18,7.86 11.93,7.3M13.55,3.64C13,3.4 12.45,3.23 11.88,3.12L14.37,1.82L15.27,4.71C14.76,4.29 14.19,3.93 13.55,3.64M6.09,4.44C5.6,4.79 5.17,5.19 4.8,5.63L4.91,2.82L7.87,3.5C7.25,3.71 6.65,4.03 6.09,4.44M18,9.71C17.91,9.12 17.78,8.55 17.59,8L19.97,9.5L17.92,11.73C18.03,11.08 18.05,10.4 18,9.71M3.04,11.3C3.11,11.9 3.24,12.47 3.43,13L1.06,11.5L3.1,9.28C3,9.93 2.97,10.61 3.04,11.3M19,18H16V16A4,4 0 0,0 12,12A4,4 0 0,0 8,16H6A2,2 0 0,0 4,18A2,2 0 0,0 6,20H19A1,1 0 0,0 20,19A1,1 0 0,0 19,18Z", Ea = "M9,12C9.53,12.14 9.85,12.69 9.71,13.22L8.41,18.05C8.27,18.59 7.72,18.9 7.19,18.76C6.65,18.62 6.34,18.07 6.5,17.54L7.78,12.71C7.92,12.17 8.47,11.86 9,12M13,12C13.53,12.14 13.85,12.69 13.71,13.22L11.64,20.95C11.5,21.5 10.95,21.8 10.41,21.66C9.88,21.5 9.56,20.97 9.7,20.43L11.78,12.71C11.92,12.17 12.47,11.86 13,12M17,12C17.53,12.14 17.85,12.69 17.71,13.22L16.41,18.05C16.27,18.59 15.72,18.9 15.19,18.76C14.65,18.62 14.34,18.07 14.5,17.54L15.78,12.71C15.92,12.17 16.47,11.86 17,12M17,10V9A5,5 0 0,0 12,4C9.5,4 7.45,5.82 7.06,8.19C6.73,8.07 6.37,8 6,8A3,3 0 0,0 3,11C3,12.11 3.6,13.08 4.5,13.6V13.59C5,13.87 5.14,14.5 4.87,14.96C4.59,15.43 4,15.6 3.5,15.32V15.33C2,14.47 1,12.85 1,11A5,5 0 0,1 6,6C7,3.65 9.3,2 12,2C15.43,2 18.24,4.66 18.5,8.03L19,8A4,4 0 0,1 23,12C23,13.5 22.2,14.77 21,15.46V15.46C20.5,15.73 19.91,15.57 19.63,15.09C19.36,14.61 19.5,14 20,13.72V13.73C20.6,13.39 21,12.74 21,12A2,2 0 0,0 19,10H17Z", Ta = "M6,14.03A1,1 0 0,1 7,15.03C7,15.58 6.55,16.03 6,16.03C3.24,16.03 1,13.79 1,11.03C1,8.27 3.24,6.03 6,6.03C7,3.68 9.3,2.03 12,2.03C15.43,2.03 18.24,4.69 18.5,8.06L19,8.03A4,4 0 0,1 23,12.03C23,14.23 21.21,16.03 19,16.03H18C17.45,16.03 17,15.58 17,15.03C17,14.47 17.45,14.03 18,14.03H19A2,2 0 0,0 21,12.03A2,2 0 0,0 19,10.03H17V9.03C17,6.27 14.76,4.03 12,4.03C9.5,4.03 7.45,5.84 7.06,8.21C6.73,8.09 6.37,8.03 6,8.03A3,3 0 0,0 3,11.03A3,3 0 0,0 6,14.03M12,14.15C12.18,14.39 12.37,14.66 12.56,14.94C13,15.56 14,17.03 14,18C14,19.11 13.1,20 12,20A2,2 0 0,1 10,18C10,17.03 11,15.56 11.44,14.94C11.63,14.66 11.82,14.4 12,14.15M12,11.03L11.5,11.59C11.5,11.59 10.65,12.55 9.79,13.81C8.93,15.06 8,16.56 8,18A4,4 0 0,0 12,22A4,4 0 0,0 16,18C16,16.56 15.07,15.06 14.21,13.81C13.35,12.55 12.5,11.59 12.5,11.59", Oa = "M6,14A1,1 0 0,1 7,15A1,1 0 0,1 6,16A5,5 0 0,1 1,11A5,5 0 0,1 6,6C7,3.65 9.3,2 12,2C15.43,2 18.24,4.66 18.5,8.03L19,8A4,4 0 0,1 23,12A4,4 0 0,1 19,16H18A1,1 0 0,1 17,15A1,1 0 0,1 18,14H19A2,2 0 0,0 21,12A2,2 0 0,0 19,10H17V9A5,5 0 0,0 12,4C9.5,4 7.45,5.82 7.06,8.19C6.73,8.07 6.37,8 6,8A3,3 0 0,0 3,11A3,3 0 0,0 6,14M7.88,18.07L10.07,17.5L8.46,15.88C8.07,15.5 8.07,14.86 8.46,14.46C8.85,14.07 9.5,14.07 9.88,14.46L11.5,16.07L12.07,13.88C12.21,13.34 12.76,13.03 13.29,13.17C13.83,13.31 14.14,13.86 14,14.4L13.41,16.59L15.6,16C16.14,15.86 16.69,16.17 16.83,16.71C16.97,17.24 16.66,17.79 16.12,17.93L13.93,18.5L15.54,20.12C15.93,20.5 15.93,21.15 15.54,21.54C15.15,21.93 14.5,21.93 14.12,21.54L12.5,19.93L11.93,22.12C11.79,22.66 11.24,22.97 10.71,22.83C10.17,22.69 9.86,22.14 10,21.6L10.59,19.41L8.4,20C7.86,20.14 7.31,19.83 7.17,19.29C7.03,18.76 7.34,18.21 7.88,18.07Z", Ha = "M18.5,18.67C18.5,19.96 17.5,21 16.25,21C15,21 14,19.96 14,18.67C14,17.12 16.25,14.5 16.25,14.5C16.25,14.5 18.5,17.12 18.5,18.67M4,17.36C3.86,16.82 4.18,16.25 4.73,16.11L7,15.5L5.33,13.86C4.93,13.46 4.93,12.81 5.33,12.4C5.73,12 6.4,12 6.79,12.4L8.45,14.05L9.04,11.8C9.18,11.24 9.75,10.92 10.29,11.07C10.85,11.21 11.17,11.78 11,12.33L10.42,14.58L12.67,14C13.22,13.83 13.79,14.15 13.93,14.71C14.08,15.25 13.76,15.82 13.2,15.96L10.95,16.55L12.6,18.21C13,18.6 13,19.27 12.6,19.67C12.2,20.07 11.54,20.07 11.15,19.67L9.5,18L8.89,20.27C8.75,20.83 8.18,21.14 7.64,21C7.08,20.86 6.77,20.29 6.91,19.74L7.5,17.5L5.26,18.09C4.71,18.23 4.14,17.92 4,17.36M1,11A5,5 0 0,1 6,6C7,3.65 9.3,2 12,2C15.43,2 18.24,4.66 18.5,8.03L19,8A4,4 0 0,1 23,12A4,4 0 0,1 19,16A1,1 0 0,1 18,15A1,1 0 0,1 19,14A2,2 0 0,0 21,12A2,2 0 0,0 19,10H17V9A5,5 0 0,0 12,4C9.5,4 7.45,5.82 7.06,8.19C6.73,8.07 6.37,8 6,8A3,3 0 0,0 3,11C3,11.85 3.35,12.61 3.91,13.16C4.27,13.55 4.26,14.16 3.88,14.54C3.5,14.93 2.85,14.93 2.47,14.54C1.56,13.63 1,12.38 1,11Z", ur = "M12,7A5,5 0 0,1 17,12A5,5 0 0,1 12,17A5,5 0 0,1 7,12A5,5 0 0,1 12,7M12,9A3,3 0 0,0 9,12A3,3 0 0,0 12,15A3,3 0 0,0 15,12A3,3 0 0,0 12,9M12,2L14.39,5.42C13.65,5.15 12.84,5 12,5C11.16,5 10.35,5.15 9.61,5.42L12,2M3.34,7L7.5,6.65C6.9,7.16 6.36,7.78 5.94,8.5C5.5,9.24 5.25,10 5.11,10.79L3.34,7M3.36,17L5.12,13.23C5.26,14 5.53,14.78 5.95,15.5C6.37,16.24 6.91,16.86 7.5,17.37L3.36,17M20.65,7L18.88,10.79C18.74,10 18.47,9.23 18.05,8.5C17.63,7.78 17.1,7.15 16.5,6.64L20.65,7M20.64,17L16.5,17.36C17.09,16.85 17.62,16.22 18.04,15.5C18.46,14.77 18.73,14 18.87,13.21L20.64,17M12,22L9.59,18.56C10.33,18.83 11.14,19 12,19C12.82,19 13.63,18.83 14.37,18.56L12,22Z", Da = "M4,10A1,1 0 0,1 3,9A1,1 0 0,1 4,8H12A2,2 0 0,0 14,6A2,2 0 0,0 12,4C11.45,4 10.95,4.22 10.59,4.59C10.2,5 9.56,5 9.17,4.59C8.78,4.2 8.78,3.56 9.17,3.17C9.9,2.45 10.9,2 12,2A4,4 0 0,1 16,6A4,4 0 0,1 12,10H4M19,12A1,1 0 0,0 20,11A1,1 0 0,0 19,10C18.72,10 18.47,10.11 18.29,10.29C17.9,10.68 17.27,10.68 16.88,10.29C16.5,9.9 16.5,9.27 16.88,8.88C17.42,8.34 18.17,8 19,8A3,3 0 0,1 22,11A3,3 0 0,1 19,14H5A1,1 0 0,1 4,13A1,1 0 0,1 5,12H19M18,18H4A1,1 0 0,1 3,17A1,1 0 0,1 4,16H18A3,3 0 0,1 21,19A3,3 0 0,1 18,22C17.17,22 16.42,21.66 15.88,21.12C15.5,20.73 15.5,20.1 15.88,19.71C16.27,19.32 16.9,19.32 17.29,19.71C17.47,19.89 17.72,20 18,20A1,1 0 0,0 19,19A1,1 0 0,0 18,18Z", Pa = "M6,6L6.69,6.06C7.32,3.72 9.46,2 12,2A5.5,5.5 0 0,1 17.5,7.5L17.42,8.45C17.88,8.16 18.42,8 19,8A3,3 0 0,1 22,11A3,3 0 0,1 19,14H6A4,4 0 0,1 2,10A4,4 0 0,1 6,6M6,8A2,2 0 0,0 4,10A2,2 0 0,0 6,12H19A1,1 0 0,0 20,11A1,1 0 0,0 19,10H15.5V7.5A3.5,3.5 0 0,0 12,4A3.5,3.5 0 0,0 8.5,7.5V8H6M18,18H4A1,1 0 0,1 3,17A1,1 0 0,1 4,16H18A3,3 0 0,1 21,19A3,3 0 0,1 18,22C17.17,22 16.42,21.66 15.88,21.12C15.5,20.73 15.5,20.1 15.88,19.71C16.27,19.32 16.9,19.32 17.29,19.71C17.47,19.89 17.72,20 18,20A1,1 0 0,0 19,19A1,1 0 0,0 18,18Z";
 const I = (n, e) => n ? (e || (e = "24px"), c`<ha-icon
     .icon="${n}"
     style="font-size:${e}; width: ${e}; height: ${e}"
   />`) : c`<ha-icon
       icon="mdi:weather-sunny"
       style="font-size:${e}; width: ${e}; height: ${e}"
-    />`, V = (n, e) => n ? (e || (e = "24px"), w`<svg height=${e} width=${e} viewport="0 0 48 48"><path d="${n}" /></svg>`) : w`<svg height=${e} width=${e} viewport="0 0 48 48"><path d="${pr}" /></svg>`, Et = (n, e, t, i) => {
+    />`, V = (n, e) => n ? (e || (e = "24px"), w`<svg height=${e} width=${e} viewport="0 0 48 48"><path d="${n}" /></svg>`) : w`<svg height=${e} width=${e} viewport="0 0 48 48"><path d="${ur}" /></svg>`, Et = (n, e, t, i) => {
   if (!n)
     return I("mdi:weather-sunny", t);
   const r = String(n).trim().toLowerCase(), s = {
-    "clear-night": V(Aa, t),
-    cloudy: V(wa, t),
-    fog: V(xa, t),
-    hail: V(va, t),
-    lightning: V(ka, t),
-    "lightning-rainy": V(Ca, t),
-    partlycloudy: V(Sa, t),
-    pouring: V(Ma, t),
-    rainy: V(za, t),
-    snowy: V(La, t),
-    "snowy-rainy": V(Ea, t),
-    sunny: V(pr, t),
-    windy: V(Na, t),
-    "windy-variant": V(Ta, t),
-    exceptional: V($a, t)
+    "clear-night": V(La, t),
+    cloudy: V(ka, t),
+    fog: V(Ca, t),
+    hail: V(Aa, t),
+    lightning: V(Ma, t),
+    "lightning-rainy": V(za, t),
+    partlycloudy: V(Na, t),
+    pouring: V(Ea, t),
+    rainy: V(Ta, t),
+    snowy: V(Oa, t),
+    "snowy-rainy": V(Ha, t),
+    sunny: V(ur, t),
+    windy: V(Da, t),
+    "windy-variant": V(Pa, t),
+    exceptional: V(Sa, t)
   }, o = {
     "clear-night": I("mdi:weather-night", t),
     cloudy: I("mdi:weather-cloudy", t),
@@ -2917,28 +2953,28 @@ const I = (n, e) => n ? (e || (e = "24px"), c`<ha-icon
     "windy-variant": I("mdi:weather-windy-variant", t),
     exceptional: I("mdi:weather-hurricane", t)
   }, l = {
-    "clear-night": c`<img src="${aa}" style="font-size:${t}" />`,
-    cloudy: c`<img src="${la}" style="font-size:${t}" />`,
-    fog: c`<img src="${ha}" style="font-size:${t}" />`,
-    hail: c`<img src="${pa}" style="font-size:${t}" />`,
-    lightning: c`<img src="${fa}" style="font-size:${t}" />`,
-    "lightning-rainy": c`<img src="${ua}" style="font-size:${t}" />`,
+    "clear-night": c`<img src="${ha}" style="font-size:${t}" />`,
+    cloudy: c`<img src="${pa}" style="font-size:${t}" />`,
+    fog: c`<img src="${ga}" style="font-size:${t}" />`,
+    hail: c`<img src="${ma}" style="font-size:${t}" />`,
+    lightning: c`<img src="${_a}" style="font-size:${t}" />`,
+    "lightning-rainy": c`<img src="${ya}" style="font-size:${t}" />`,
     partlycloudy: c`<img
-      src="${i ? ca : da}"
+      src="${i ? ua : fa}"
       style="font-size:${t}"
     />`,
-    pouring: c`<img src="${ba}" style="font-size:${t}" />`,
-    rainy: c`<img src="${ga}" style="font-size:${t}" />`,
-    snowy: c`<img src="${ma}" style="font-size:${t}" />`,
-    "snowy-rainy": c`<img src="${ya}" style="font-size:${t}" />`,
-    sunny: c`<img src="${ki}" style="font-size:${t}" />`,
-    windy: c`<img src="${Nn}" style="font-size:${t}" />`,
-    "windy-variant": c`<img src="${Nn}" style="font-size:${t}" />`,
-    exceptional: c`<img src="${_a}" style="font-size:${t}" />`
+    pouring: c`<img src="${$a}" style="font-size:${t}" />`,
+    rainy: c`<img src="${ba}" style="font-size:${t}" />`,
+    snowy: c`<img src="${wa}" style="font-size:${t}" />`,
+    "snowy-rainy": c`<img src="${xa}" style="font-size:${t}" />`,
+    sunny: c`<img src="${Ci}" style="font-size:${t}" />`,
+    windy: c`<img src="${Tn}" style="font-size:${t}" />`,
+    "windy-variant": c`<img src="${Tn}" style="font-size:${t}" />`,
+    exceptional: c`<img src="${va}" style="font-size:${t}" />`
   };
-  return e === "mdi" ? o[r] || I("mdi:weather-sunny", t) : e === "mdiAsSVG" ? s[r] || c`<img src="${ki}" />` : l[r] || c`<img src="${ki}" />`;
+  return e === "mdi" ? o[r] || I("mdi:weather-sunny", t) : e === "mdiAsSVG" ? s[r] || c`<img src="${Ci}" />` : l[r] || c`<img src="${Ci}" />`;
 };
-function Ii() {
+function ji() {
   return {
     async: !1,
     breaks: !1,
@@ -2952,39 +2988,39 @@ function Ii() {
     walkTokens: null
   };
 }
-let Be = Ii();
-function ur(n) {
-  Be = n;
+let je = ji();
+function fr(n) {
+  je = n;
 }
-const fr = /[&<>"']/, Oa = new RegExp(fr.source, "g"), gr = /[<>"']|&(?!(#\d{1,7}|#[Xx][a-fA-F0-9]{1,6}|\w+);)/, Ha = new RegExp(gr.source, "g"), Da = {
+const gr = /[&<>"']/, Fa = new RegExp(gr.source, "g"), mr = /[<>"']|&(?!(#\d{1,7}|#[Xx][a-fA-F0-9]{1,6}|\w+);)/, Ra = new RegExp(mr.source, "g"), Ga = {
   "&": "&amp;",
   "<": "&lt;",
   ">": "&gt;",
   '"': "&quot;",
   "'": "&#39;"
-}, Tn = (n) => Da[n];
+}, On = (n) => Ga[n];
 function J(n, e) {
   if (e) {
-    if (fr.test(n))
-      return n.replace(Oa, Tn);
-  } else if (gr.test(n))
-    return n.replace(Ha, Tn);
+    if (gr.test(n))
+      return n.replace(Fa, On);
+  } else if (mr.test(n))
+    return n.replace(Ra, On);
   return n;
 }
-const Pa = /(^|[^\[])\^/g;
-function E(n, e) {
+const Wa = /(^|[^\[])\^/g;
+function N(n, e) {
   let t = typeof n == "string" ? n : n.source;
   e = e || "";
   const i = {
     replace: (r, s) => {
       let o = typeof s == "string" ? s : s.source;
-      return o = o.replace(Pa, "$1"), t = t.replace(r, o), i;
+      return o = o.replace(Wa, "$1"), t = t.replace(r, o), i;
     },
     getRegex: () => new RegExp(t, e)
   };
   return i;
 }
-function On(n) {
+function Hn(n) {
   try {
     n = encodeURI(n).replace(/%25/g, "%");
   } catch {
@@ -2992,8 +3028,8 @@ function On(n) {
   }
   return n;
 }
-const kt = { exec: () => null };
-function Hn(n, e) {
+const Ct = { exec: () => null };
+function Dn(n, e) {
   const t = n.replace(/\|/g, (s, o, l) => {
     let a = !1, h = o;
     for (; --h >= 0 && l[h] === "\\"; )
@@ -3011,7 +3047,7 @@ function Hn(n, e) {
     i[r] = i[r].trim().replace(/\\\|/g, "|");
   return i;
 }
-function wt(n, e, t) {
+function xt(n, e, t) {
   const i = n.length;
   if (i === 0)
     return "";
@@ -3020,7 +3056,7 @@ function wt(n, e, t) {
     r++;
   return n.slice(0, i - r);
 }
-function Ra(n, e) {
+function Ua(n, e) {
   if (n.indexOf(e[1]) === -1)
     return -1;
   let t = 0;
@@ -3033,7 +3069,7 @@ function Ra(n, e) {
       return i;
   return -1;
 }
-function Dn(n, e, t, i) {
+function Pn(n, e, t, i) {
   const r = e.href, s = e.title ? J(e.title) : null, o = n[1].replace(/\\([\[\]])/g, "$1");
   if (n[0].charAt(0) !== "!") {
     i.state.inLink = !0;
@@ -3055,7 +3091,7 @@ function Dn(n, e, t, i) {
     text: J(o)
   };
 }
-function Fa(n, e) {
+function Ia(n, e) {
   const t = n.match(/^(\s+)(?:```)/);
   if (t === null)
     return e;
@@ -3070,14 +3106,14 @@ function Fa(n, e) {
   }).join(`
 `);
 }
-class Kt {
+class Yt {
   options;
   rules;
   // set by the lexer
   lexer;
   // set by the lexer
   constructor(e) {
-    this.options = e || Be;
+    this.options = e || je;
   }
   space(e) {
     const t = this.rules.block.newline.exec(e);
@@ -3095,7 +3131,7 @@ class Kt {
         type: "code",
         raw: t[0],
         codeBlockStyle: "indented",
-        text: this.options.pedantic ? i : wt(i, `
+        text: this.options.pedantic ? i : xt(i, `
 `)
       };
     }
@@ -3103,7 +3139,7 @@ class Kt {
   fences(e) {
     const t = this.rules.block.fences.exec(e);
     if (t) {
-      const i = t[0], r = Fa(i, t[3] || "");
+      const i = t[0], r = Ia(i, t[3] || "");
       return {
         type: "code",
         raw: i,
@@ -3117,7 +3153,7 @@ class Kt {
     if (t) {
       let i = t[2].trim();
       if (/#$/.test(i)) {
-        const r = wt(i, "#");
+        const r = xt(i, "#");
         (this.options.pedantic || !r || / $/.test(r)) && (i = r.trim());
       }
       return {
@@ -3134,14 +3170,14 @@ class Kt {
     if (t)
       return {
         type: "hr",
-        raw: wt(t[0], `
+        raw: xt(t[0], `
 `)
       };
   }
   blockquote(e) {
     const t = this.rules.block.blockquote.exec(e);
     if (t) {
-      let i = wt(t[0], `
+      let i = xt(t[0], `
 `).split(`
 `), r = "", s = "";
       const o = [];
@@ -3289,7 +3325,7 @@ ${p}` : p;
     const t = this.rules.block.table.exec(e);
     if (!t || !/[:|]/.test(t[2]))
       return;
-    const i = Hn(t[1]), r = t[2].replace(/^\||\| *$/g, "").split("|"), s = t[3] && t[3].trim() ? t[3].replace(/\n[ \t]*$/, "").split(`
+    const i = Dn(t[1]), r = t[2].replace(/^\||\| *$/g, "").split("|"), s = t[3] && t[3].trim() ? t[3].replace(/\n[ \t]*$/, "").split(`
 `) : [], o = {
       type: "table",
       raw: t[0],
@@ -3308,7 +3344,7 @@ ${p}` : p;
           align: o.align[l]
         });
       for (const l of s)
-        o.rows.push(Hn(l, o.header.length).map((a, h) => ({
+        o.rows.push(Dn(l, o.header.length).map((a, h) => ({
           text: a,
           tokens: this.lexer.inline(a),
           header: !1,
@@ -3379,11 +3415,11 @@ ${p}` : p;
       if (!this.options.pedantic && /^</.test(i)) {
         if (!/>$/.test(i))
           return;
-        const o = wt(i.slice(0, -1), "\\");
+        const o = xt(i.slice(0, -1), "\\");
         if ((i.length - o.length) % 2 === 0)
           return;
       } else {
-        const o = Ra(t[2], "()");
+        const o = Ua(t[2], "()");
         if (o > -1) {
           const a = (t[0].indexOf("!") === 0 ? 5 : 4) + t[1].length + o;
           t[2] = t[2].substring(0, o), t[0] = t[0].substring(0, a).trim(), t[3] = "";
@@ -3395,7 +3431,7 @@ ${p}` : p;
         o && (r = o[1], s = o[3]);
       } else
         s = t[3] ? t[3].slice(1, -1) : "";
-      return r = r.trim(), /^</.test(r) && (this.options.pedantic && !/>$/.test(i) ? r = r.slice(1) : r = r.slice(1, -1)), Dn(t, {
+      return r = r.trim(), /^</.test(r) && (this.options.pedantic && !/>$/.test(i) ? r = r.slice(1) : r = r.slice(1, -1)), Pn(t, {
         href: r && r.replace(this.rules.inline.anyPunctuation, "$1"),
         title: s && s.replace(this.rules.inline.anyPunctuation, "$1")
       }, t[0], this.lexer);
@@ -3413,7 +3449,7 @@ ${p}` : p;
           text: o
         };
       }
-      return Dn(i, s, i[0], this.lexer);
+      return Pn(i, s, i[0], this.lexer);
     }
   }
   emStrong(e, t, i = "") {
@@ -3546,79 +3582,79 @@ ${p}` : p;
     }
   }
 }
-const Ga = /^(?:[ \t]*(?:\n|$))+/, Wa = /^((?: {4}| {0,3}\t)[^\n]+(?:\n(?:[ \t]*(?:\n|$))*)?)+/, Ua = /^ {0,3}(`{3,}(?=[^`\n]*(?:\n|$))|~{3,})([^\n]*)(?:\n|$)(?:|([\s\S]*?)(?:\n|$))(?: {0,3}\1[~`]* *(?=\n|$)|$)/, Dt = /^ {0,3}((?:-[\t ]*){3,}|(?:_[ \t]*){3,}|(?:\*[ \t]*){3,})(?:\n+|$)/, Ia = /^ {0,3}(#{1,6})(?=\s|$)(.*)(?:\n+|$)/, mr = /(?:[*+-]|\d{1,9}[.)])/, yr = E(/^(?!bull |blockCode|fences|blockquote|heading|html)((?:.|\n(?!\s*?\n|bull |blockCode|fences|blockquote|heading|html))+?)\n {0,3}(=+|-+) *(?:\n+|$)/).replace(/bull/g, mr).replace(/blockCode/g, /(?: {4}| {0,3}\t)/).replace(/fences/g, / {0,3}(?:`{3,}|~{3,})/).replace(/blockquote/g, / {0,3}>/).replace(/heading/g, / {0,3}#{1,6}/).replace(/html/g, / {0,3}<[^\n>]+>\n/).getRegex(), Bi = /^([^\n]+(?:\n(?!hr|heading|lheading|blockquote|fences|list|html|table| +\n)[^\n]+)*)/, Ba = /^[^\n]+/, ji = /(?!\s*\])(?:\\.|[^\[\]\\])+/, ja = E(/^ {0,3}\[(label)\]: *(?:\n[ \t]*)?([^<\s][^\s]*|<.*?>)(?:(?: +(?:\n[ \t]*)?| *\n[ \t]*)(title))? *(?:\n+|$)/).replace("label", ji).replace("title", /(?:"(?:\\"?|[^"\\])*"|'[^'\n]*(?:\n[^'\n]+)*\n?'|\([^()]*\))/).getRegex(), qa = E(/^( {0,3}bull)([ \t][^\n]+?)?(?:\n|$)/).replace(/bull/g, mr).getRegex(), ci = "address|article|aside|base|basefont|blockquote|body|caption|center|col|colgroup|dd|details|dialog|dir|div|dl|dt|fieldset|figcaption|figure|footer|form|frame|frameset|h[1-6]|head|header|hr|html|iframe|legend|li|link|main|menu|menuitem|meta|nav|noframes|ol|optgroup|option|p|param|search|section|summary|table|tbody|td|tfoot|th|thead|title|tr|track|ul", qi = /<!--(?:-?>|[\s\S]*?(?:-->|$))/, Va = E("^ {0,3}(?:<(script|pre|style|textarea)[\\s>][\\s\\S]*?(?:</\\1>[^\\n]*\\n+|$)|comment[^\\n]*(\\n+|$)|<\\?[\\s\\S]*?(?:\\?>\\n*|$)|<![A-Z][\\s\\S]*?(?:>\\n*|$)|<!\\[CDATA\\[[\\s\\S]*?(?:\\]\\]>\\n*|$)|</?(tag)(?: +|\\n|/?>)[\\s\\S]*?(?:(?:\\n[ 	]*)+\\n|$)|<(?!script|pre|style|textarea)([a-z][\\w-]*)(?:attribute)*? */?>(?=[ \\t]*(?:\\n|$))[\\s\\S]*?(?:(?:\\n[ 	]*)+\\n|$)|</(?!script|pre|style|textarea)[a-z][\\w-]*\\s*>(?=[ \\t]*(?:\\n|$))[\\s\\S]*?(?:(?:\\n[ 	]*)+\\n|$))", "i").replace("comment", qi).replace("tag", ci).replace("attribute", / +[a-zA-Z:_][\w.:-]*(?: *= *"[^"\n]*"| *= *'[^'\n]*'| *= *[^\s"'=<>`]+)?/).getRegex(), _r = E(Bi).replace("hr", Dt).replace("heading", " {0,3}#{1,6}(?:\\s|$)").replace("|lheading", "").replace("|table", "").replace("blockquote", " {0,3}>").replace("fences", " {0,3}(?:`{3,}(?=[^`\\n]*\\n)|~{3,})[^\\n]*\\n").replace("list", " {0,3}(?:[*+-]|1[.)]) ").replace("html", "</?(?:tag)(?: +|\\n|/?>)|<(?:script|pre|style|textarea|!--)").replace("tag", ci).getRegex(), Za = E(/^( {0,3}> ?(paragraph|[^\n]*)(?:\n|$))+/).replace("paragraph", _r).getRegex(), Vi = {
-  blockquote: Za,
-  code: Wa,
-  def: ja,
-  fences: Ua,
-  heading: Ia,
-  hr: Dt,
-  html: Va,
-  lheading: yr,
-  list: qa,
-  newline: Ga,
-  paragraph: _r,
-  table: kt,
-  text: Ba
-}, Pn = E("^ *([^\\n ].*)\\n {0,3}((?:\\| *)?:?-+:? *(?:\\| *:?-+:? *)*(?:\\| *)?)(?:\\n((?:(?! *\\n|hr|heading|blockquote|code|fences|list|html).*(?:\\n|$))*)\\n*|$)").replace("hr", Dt).replace("heading", " {0,3}#{1,6}(?:\\s|$)").replace("blockquote", " {0,3}>").replace("code", "(?: {4}| {0,3}	)[^\\n]").replace("fences", " {0,3}(?:`{3,}(?=[^`\\n]*\\n)|~{3,})[^\\n]*\\n").replace("list", " {0,3}(?:[*+-]|1[.)]) ").replace("html", "</?(?:tag)(?: +|\\n|/?>)|<(?:script|pre|style|textarea|!--)").replace("tag", ci).getRegex(), Ka = {
-  ...Vi,
-  table: Pn,
-  paragraph: E(Bi).replace("hr", Dt).replace("heading", " {0,3}#{1,6}(?:\\s|$)").replace("|lheading", "").replace("table", Pn).replace("blockquote", " {0,3}>").replace("fences", " {0,3}(?:`{3,}(?=[^`\\n]*\\n)|~{3,})[^\\n]*\\n").replace("list", " {0,3}(?:[*+-]|1[.)]) ").replace("html", "</?(?:tag)(?: +|\\n|/?>)|<(?:script|pre|style|textarea|!--)").replace("tag", ci).getRegex()
-}, Ya = {
-  ...Vi,
-  html: E(`^ *(?:comment *(?:\\n|\\s*$)|<(tag)[\\s\\S]+?</\\1> *(?:\\n{2,}|\\s*$)|<tag(?:"[^"]*"|'[^']*'|\\s[^'"/>\\s]*)*?/?> *(?:\\n{2,}|\\s*$))`).replace("comment", qi).replace(/tag/g, "(?!(?:a|em|strong|small|s|cite|q|dfn|abbr|data|time|code|var|samp|kbd|sub|sup|i|b|u|mark|ruby|rt|rp|bdi|bdo|span|br|wbr|ins|del|img)\\b)\\w+(?!:|[^\\w\\s@]*@)\\b").getRegex(),
+const Ba = /^(?:[ \t]*(?:\n|$))+/, ja = /^((?: {4}| {0,3}\t)[^\n]+(?:\n(?:[ \t]*(?:\n|$))*)?)+/, qa = /^ {0,3}(`{3,}(?=[^`\n]*(?:\n|$))|~{3,})([^\n]*)(?:\n|$)(?:|([\s\S]*?)(?:\n|$))(?: {0,3}\1[~`]* *(?=\n|$)|$)/, Pt = /^ {0,3}((?:-[\t ]*){3,}|(?:_[ \t]*){3,}|(?:\*[ \t]*){3,})(?:\n+|$)/, Va = /^ {0,3}(#{1,6})(?=\s|$)(.*)(?:\n+|$)/, yr = /(?:[*+-]|\d{1,9}[.)])/, _r = N(/^(?!bull |blockCode|fences|blockquote|heading|html)((?:.|\n(?!\s*?\n|bull |blockCode|fences|blockquote|heading|html))+?)\n {0,3}(=+|-+) *(?:\n+|$)/).replace(/bull/g, yr).replace(/blockCode/g, /(?: {4}| {0,3}\t)/).replace(/fences/g, / {0,3}(?:`{3,}|~{3,})/).replace(/blockquote/g, / {0,3}>/).replace(/heading/g, / {0,3}#{1,6}/).replace(/html/g, / {0,3}<[^\n>]+>\n/).getRegex(), qi = /^([^\n]+(?:\n(?!hr|heading|lheading|blockquote|fences|list|html|table| +\n)[^\n]+)*)/, Za = /^[^\n]+/, Vi = /(?!\s*\])(?:\\.|[^\[\]\\])+/, Ka = N(/^ {0,3}\[(label)\]: *(?:\n[ \t]*)?([^<\s][^\s]*|<.*?>)(?:(?: +(?:\n[ \t]*)?| *\n[ \t]*)(title))? *(?:\n+|$)/).replace("label", Vi).replace("title", /(?:"(?:\\"?|[^"\\])*"|'[^'\n]*(?:\n[^'\n]+)*\n?'|\([^()]*\))/).getRegex(), Ya = N(/^( {0,3}bull)([ \t][^\n]+?)?(?:\n|$)/).replace(/bull/g, yr).getRegex(), di = "address|article|aside|base|basefont|blockquote|body|caption|center|col|colgroup|dd|details|dialog|dir|div|dl|dt|fieldset|figcaption|figure|footer|form|frame|frameset|h[1-6]|head|header|hr|html|iframe|legend|li|link|main|menu|menuitem|meta|nav|noframes|ol|optgroup|option|p|param|search|section|summary|table|tbody|td|tfoot|th|thead|title|tr|track|ul", Zi = /<!--(?:-?>|[\s\S]*?(?:-->|$))/, Qa = N("^ {0,3}(?:<(script|pre|style|textarea)[\\s>][\\s\\S]*?(?:</\\1>[^\\n]*\\n+|$)|comment[^\\n]*(\\n+|$)|<\\?[\\s\\S]*?(?:\\?>\\n*|$)|<![A-Z][\\s\\S]*?(?:>\\n*|$)|<!\\[CDATA\\[[\\s\\S]*?(?:\\]\\]>\\n*|$)|</?(tag)(?: +|\\n|/?>)[\\s\\S]*?(?:(?:\\n[ 	]*)+\\n|$)|<(?!script|pre|style|textarea)([a-z][\\w-]*)(?:attribute)*? */?>(?=[ \\t]*(?:\\n|$))[\\s\\S]*?(?:(?:\\n[ 	]*)+\\n|$)|</(?!script|pre|style|textarea)[a-z][\\w-]*\\s*>(?=[ \\t]*(?:\\n|$))[\\s\\S]*?(?:(?:\\n[ 	]*)+\\n|$))", "i").replace("comment", Zi).replace("tag", di).replace("attribute", / +[a-zA-Z:_][\w.:-]*(?: *= *"[^"\n]*"| *= *'[^'\n]*'| *= *[^\s"'=<>`]+)?/).getRegex(), br = N(qi).replace("hr", Pt).replace("heading", " {0,3}#{1,6}(?:\\s|$)").replace("|lheading", "").replace("|table", "").replace("blockquote", " {0,3}>").replace("fences", " {0,3}(?:`{3,}(?=[^`\\n]*\\n)|~{3,})[^\\n]*\\n").replace("list", " {0,3}(?:[*+-]|1[.)]) ").replace("html", "</?(?:tag)(?: +|\\n|/?>)|<(?:script|pre|style|textarea|!--)").replace("tag", di).getRegex(), Xa = N(/^( {0,3}> ?(paragraph|[^\n]*)(?:\n|$))+/).replace("paragraph", br).getRegex(), Ki = {
+  blockquote: Xa,
+  code: ja,
+  def: Ka,
+  fences: qa,
+  heading: Va,
+  hr: Pt,
+  html: Qa,
+  lheading: _r,
+  list: Ya,
+  newline: Ba,
+  paragraph: br,
+  table: Ct,
+  text: Za
+}, Fn = N("^ *([^\\n ].*)\\n {0,3}((?:\\| *)?:?-+:? *(?:\\| *:?-+:? *)*(?:\\| *)?)(?:\\n((?:(?! *\\n|hr|heading|blockquote|code|fences|list|html).*(?:\\n|$))*)\\n*|$)").replace("hr", Pt).replace("heading", " {0,3}#{1,6}(?:\\s|$)").replace("blockquote", " {0,3}>").replace("code", "(?: {4}| {0,3}	)[^\\n]").replace("fences", " {0,3}(?:`{3,}(?=[^`\\n]*\\n)|~{3,})[^\\n]*\\n").replace("list", " {0,3}(?:[*+-]|1[.)]) ").replace("html", "</?(?:tag)(?: +|\\n|/?>)|<(?:script|pre|style|textarea|!--)").replace("tag", di).getRegex(), Ja = {
+  ...Ki,
+  table: Fn,
+  paragraph: N(qi).replace("hr", Pt).replace("heading", " {0,3}#{1,6}(?:\\s|$)").replace("|lheading", "").replace("table", Fn).replace("blockquote", " {0,3}>").replace("fences", " {0,3}(?:`{3,}(?=[^`\\n]*\\n)|~{3,})[^\\n]*\\n").replace("list", " {0,3}(?:[*+-]|1[.)]) ").replace("html", "</?(?:tag)(?: +|\\n|/?>)|<(?:script|pre|style|textarea|!--)").replace("tag", di).getRegex()
+}, el = {
+  ...Ki,
+  html: N(`^ *(?:comment *(?:\\n|\\s*$)|<(tag)[\\s\\S]+?</\\1> *(?:\\n{2,}|\\s*$)|<tag(?:"[^"]*"|'[^']*'|\\s[^'"/>\\s]*)*?/?> *(?:\\n{2,}|\\s*$))`).replace("comment", Zi).replace(/tag/g, "(?!(?:a|em|strong|small|s|cite|q|dfn|abbr|data|time|code|var|samp|kbd|sub|sup|i|b|u|mark|ruby|rt|rp|bdi|bdo|span|br|wbr|ins|del|img)\\b)\\w+(?!:|[^\\w\\s@]*@)\\b").getRegex(),
   def: /^ *\[([^\]]+)\]: *<?([^\s>]+)>?(?: +(["(][^\n]+[")]))? *(?:\n+|$)/,
   heading: /^(#{1,6})(.*)(?:\n+|$)/,
-  fences: kt,
+  fences: Ct,
   // fences not supported
   lheading: /^(.+?)\n {0,3}(=+|-+) *(?:\n+|$)/,
-  paragraph: E(Bi).replace("hr", Dt).replace("heading", ` *#{1,6} *[^
-]`).replace("lheading", yr).replace("|table", "").replace("blockquote", " {0,3}>").replace("|fences", "").replace("|list", "").replace("|html", "").replace("|tag", "").getRegex()
-}, br = /^\\([!"#$%&'()*+,\-./:;<=>?@\[\]\\^_`{|}~])/, Qa = /^(`+)([^`]|[^`][\s\S]*?[^`])\1(?!`)/, wr = /^( {2,}|\\)\n(?!\s*$)/, Xa = /^(`+|[^`])(?:(?= {2,}\n)|[\s\S]*?(?:(?=[\\<!\[`*_]|\b_|$)|[^ ](?= {2,}\n)))/, Pt = "\\p{P}\\p{S}", Ja = E(/^((?![*_])[\spunctuation])/, "u").replace(/punctuation/g, Pt).getRegex(), el = /\[[^[\]]*?\]\((?:\\.|[^\\\(\)]|\((?:\\.|[^\\\(\)])*\))*\)|`[^`]*?`|<[^<>]*?>/g, tl = E(/^(?:\*+(?:((?!\*)[punct])|[^\s*]))|^_+(?:((?!_)[punct])|([^\s_]))/, "u").replace(/punct/g, Pt).getRegex(), il = E("^[^_*]*?__[^_*]*?\\*[^_*]*?(?=__)|[^*]+(?=[^*])|(?!\\*)[punct](\\*+)(?=[\\s]|$)|[^punct\\s](\\*+)(?!\\*)(?=[punct\\s]|$)|(?!\\*)[punct\\s](\\*+)(?=[^punct\\s])|[\\s](\\*+)(?!\\*)(?=[punct])|(?!\\*)[punct](\\*+)(?!\\*)(?=[punct])|[^punct\\s](\\*+)(?=[^punct\\s])", "gu").replace(/punct/g, Pt).getRegex(), nl = E("^[^_*]*?\\*\\*[^_*]*?_[^_*]*?(?=\\*\\*)|[^_]+(?=[^_])|(?!_)[punct](_+)(?=[\\s]|$)|[^punct\\s](_+)(?!_)(?=[punct\\s]|$)|(?!_)[punct\\s](_+)(?=[^punct\\s])|[\\s](_+)(?!_)(?=[punct])|(?!_)[punct](_+)(?!_)(?=[punct])", "gu").replace(/punct/g, Pt).getRegex(), rl = E(/\\([punct])/, "gu").replace(/punct/g, Pt).getRegex(), sl = E(/^<(scheme:[^\s\x00-\x1f<>]*|email)>/).replace("scheme", /[a-zA-Z][a-zA-Z0-9+.-]{1,31}/).replace("email", /[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+(@)[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+(?![-_])/).getRegex(), ol = E(qi).replace("(?:-->|$)", "-->").getRegex(), al = E("^comment|^</[a-zA-Z][\\w:-]*\\s*>|^<[a-zA-Z][\\w-]*(?:attribute)*?\\s*/?>|^<\\?[\\s\\S]*?\\?>|^<![a-zA-Z]+\\s[\\s\\S]*?>|^<!\\[CDATA\\[[\\s\\S]*?\\]\\]>").replace("comment", ol).replace("attribute", /\s+[a-zA-Z:_][\w.:-]*(?:\s*=\s*"[^"]*"|\s*=\s*'[^']*'|\s*=\s*[^\s"'=<>`]+)?/).getRegex(), Yt = /(?:\[(?:\\.|[^\[\]\\])*\]|\\.|`[^`]*`|[^\[\]\\`])*?/, ll = E(/^!?\[(label)\]\(\s*(href)(?:\s+(title))?\s*\)/).replace("label", Yt).replace("href", /<(?:\\.|[^\n<>\\])+>|[^\s\x00-\x1f]*/).replace("title", /"(?:\\"?|[^"\\])*"|'(?:\\'?|[^'\\])*'|\((?:\\\)?|[^)\\])*\)/).getRegex(), xr = E(/^!?\[(label)\]\[(ref)\]/).replace("label", Yt).replace("ref", ji).getRegex(), vr = E(/^!?\[(ref)\](?:\[\])?/).replace("ref", ji).getRegex(), cl = E("reflink|nolink(?!\\()", "g").replace("reflink", xr).replace("nolink", vr).getRegex(), Zi = {
-  _backpedal: kt,
+  paragraph: N(qi).replace("hr", Pt).replace("heading", ` *#{1,6} *[^
+]`).replace("lheading", _r).replace("|table", "").replace("blockquote", " {0,3}>").replace("|fences", "").replace("|list", "").replace("|html", "").replace("|tag", "").getRegex()
+}, wr = /^\\([!"#$%&'()*+,\-./:;<=>?@\[\]\\^_`{|}~])/, tl = /^(`+)([^`]|[^`][\s\S]*?[^`])\1(?!`)/, xr = /^( {2,}|\\)\n(?!\s*$)/, il = /^(`+|[^`])(?:(?= {2,}\n)|[\s\S]*?(?:(?=[\\<!\[`*_]|\b_|$)|[^ ](?= {2,}\n)))/, Ft = "\\p{P}\\p{S}", nl = N(/^((?![*_])[\spunctuation])/, "u").replace(/punctuation/g, Ft).getRegex(), rl = /\[[^[\]]*?\]\((?:\\.|[^\\\(\)]|\((?:\\.|[^\\\(\)])*\))*\)|`[^`]*?`|<[^<>]*?>/g, sl = N(/^(?:\*+(?:((?!\*)[punct])|[^\s*]))|^_+(?:((?!_)[punct])|([^\s_]))/, "u").replace(/punct/g, Ft).getRegex(), ol = N("^[^_*]*?__[^_*]*?\\*[^_*]*?(?=__)|[^*]+(?=[^*])|(?!\\*)[punct](\\*+)(?=[\\s]|$)|[^punct\\s](\\*+)(?!\\*)(?=[punct\\s]|$)|(?!\\*)[punct\\s](\\*+)(?=[^punct\\s])|[\\s](\\*+)(?!\\*)(?=[punct])|(?!\\*)[punct](\\*+)(?!\\*)(?=[punct])|[^punct\\s](\\*+)(?=[^punct\\s])", "gu").replace(/punct/g, Ft).getRegex(), al = N("^[^_*]*?\\*\\*[^_*]*?_[^_*]*?(?=\\*\\*)|[^_]+(?=[^_])|(?!_)[punct](_+)(?=[\\s]|$)|[^punct\\s](_+)(?!_)(?=[punct\\s]|$)|(?!_)[punct\\s](_+)(?=[^punct\\s])|[\\s](_+)(?!_)(?=[punct])|(?!_)[punct](_+)(?!_)(?=[punct])", "gu").replace(/punct/g, Ft).getRegex(), ll = N(/\\([punct])/, "gu").replace(/punct/g, Ft).getRegex(), cl = N(/^<(scheme:[^\s\x00-\x1f<>]*|email)>/).replace("scheme", /[a-zA-Z][a-zA-Z0-9+.-]{1,31}/).replace("email", /[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+(@)[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+(?![-_])/).getRegex(), dl = N(Zi).replace("(?:-->|$)", "-->").getRegex(), hl = N("^comment|^</[a-zA-Z][\\w:-]*\\s*>|^<[a-zA-Z][\\w-]*(?:attribute)*?\\s*/?>|^<\\?[\\s\\S]*?\\?>|^<![a-zA-Z]+\\s[\\s\\S]*?>|^<!\\[CDATA\\[[\\s\\S]*?\\]\\]>").replace("comment", dl).replace("attribute", /\s+[a-zA-Z:_][\w.:-]*(?:\s*=\s*"[^"]*"|\s*=\s*'[^']*'|\s*=\s*[^\s"'=<>`]+)?/).getRegex(), Qt = /(?:\[(?:\\.|[^\[\]\\])*\]|\\.|`[^`]*`|[^\[\]\\`])*?/, pl = N(/^!?\[(label)\]\(\s*(href)(?:\s+(title))?\s*\)/).replace("label", Qt).replace("href", /<(?:\\.|[^\n<>\\])+>|[^\s\x00-\x1f]*/).replace("title", /"(?:\\"?|[^"\\])*"|'(?:\\'?|[^'\\])*'|\((?:\\\)?|[^)\\])*\)/).getRegex(), vr = N(/^!?\[(label)\]\[(ref)\]/).replace("label", Qt).replace("ref", Vi).getRegex(), $r = N(/^!?\[(ref)\](?:\[\])?/).replace("ref", Vi).getRegex(), ul = N("reflink|nolink(?!\\()", "g").replace("reflink", vr).replace("nolink", $r).getRegex(), Yi = {
+  _backpedal: Ct,
   // only used for GFM url
-  anyPunctuation: rl,
-  autolink: sl,
-  blockSkip: el,
-  br: wr,
-  code: Qa,
-  del: kt,
-  emStrongLDelim: tl,
-  emStrongRDelimAst: il,
-  emStrongRDelimUnd: nl,
-  escape: br,
-  link: ll,
-  nolink: vr,
-  punctuation: Ja,
-  reflink: xr,
-  reflinkSearch: cl,
-  tag: al,
-  text: Xa,
-  url: kt
-}, dl = {
-  ...Zi,
-  link: E(/^!?\[(label)\]\((.*?)\)/).replace("label", Yt).getRegex(),
-  reflink: E(/^!?\[(label)\]\s*\[([^\]]*)\]/).replace("label", Yt).getRegex()
-}, Ni = {
-  ...Zi,
-  escape: E(br).replace("])", "~|])").getRegex(),
-  url: E(/^((?:ftp|https?):\/\/|www\.)(?:[a-zA-Z0-9\-]+\.?)+[^\s<]*|^email/, "i").replace("email", /[A-Za-z0-9._+-]+(@)[a-zA-Z0-9-_]+(?:\.[a-zA-Z0-9-_]*[a-zA-Z0-9])+(?![-_])/).getRegex(),
+  anyPunctuation: ll,
+  autolink: cl,
+  blockSkip: rl,
+  br: xr,
+  code: tl,
+  del: Ct,
+  emStrongLDelim: sl,
+  emStrongRDelimAst: ol,
+  emStrongRDelimUnd: al,
+  escape: wr,
+  link: pl,
+  nolink: $r,
+  punctuation: nl,
+  reflink: vr,
+  reflinkSearch: ul,
+  tag: hl,
+  text: il,
+  url: Ct
+}, fl = {
+  ...Yi,
+  link: N(/^!?\[(label)\]\((.*?)\)/).replace("label", Qt).getRegex(),
+  reflink: N(/^!?\[(label)\]\s*\[([^\]]*)\]/).replace("label", Qt).getRegex()
+}, Oi = {
+  ...Yi,
+  escape: N(wr).replace("])", "~|])").getRegex(),
+  url: N(/^((?:ftp|https?):\/\/|www\.)(?:[a-zA-Z0-9\-]+\.?)+[^\s<]*|^email/, "i").replace("email", /[A-Za-z0-9._+-]+(@)[a-zA-Z0-9-_]+(?:\.[a-zA-Z0-9-_]*[a-zA-Z0-9])+(?![-_])/).getRegex(),
   _backpedal: /(?:[^?!.,:;*_'"~()&]+|\([^)]*\)|&(?![a-zA-Z0-9]+;$)|[?!.,:;*_'"~)]+(?!$))+/,
   del: /^(~~?)(?=[^\s~])((?:\\.|[^\\])*?(?:\\.|[^\s~\\]))\1(?=[^~]|$)/,
   text: /^([`~]+|[^`~])(?:(?= {2,}\n)|(?=[a-zA-Z0-9.!#$%&'*+\/=?_`{\|}~-]+@)|[\s\S]*?(?:(?=[\\<!\[`*~_]|\b_|https?:\/\/|ftp:\/\/|www\.|$)|[^ ](?= {2,}\n)|[^a-zA-Z0-9.!#$%&'*+\/=?_`{\|}~-](?=[a-zA-Z0-9.!#$%&'*+\/=?_`{\|}~-]+@)))/
-}, hl = {
-  ...Ni,
-  br: E(wr).replace("{2,}", "*").getRegex(),
-  text: E(Ni.text).replace("\\b_", "\\b_| {2,}\\n").replace(/\{2,\}/g, "*").getRegex()
-}, Wt = {
-  normal: Vi,
-  gfm: Ka,
-  pedantic: Ya
-}, xt = {
-  normal: Zi,
-  gfm: Ni,
-  breaks: hl,
-  pedantic: dl
+}, gl = {
+  ...Oi,
+  br: N(xr).replace("{2,}", "*").getRegex(),
+  text: N(Oi.text).replace("\\b_", "\\b_| {2,}\\n").replace(/\{2,\}/g, "*").getRegex()
+}, Ut = {
+  normal: Ki,
+  gfm: Ja,
+  pedantic: el
+}, vt = {
+  normal: Yi,
+  gfm: Oi,
+  breaks: gl,
+  pedantic: fl
 };
 class te {
   tokens;
@@ -3627,24 +3663,24 @@ class te {
   tokenizer;
   inlineQueue;
   constructor(e) {
-    this.tokens = [], this.tokens.links = /* @__PURE__ */ Object.create(null), this.options = e || Be, this.options.tokenizer = this.options.tokenizer || new Kt(), this.tokenizer = this.options.tokenizer, this.tokenizer.options = this.options, this.tokenizer.lexer = this, this.inlineQueue = [], this.state = {
+    this.tokens = [], this.tokens.links = /* @__PURE__ */ Object.create(null), this.options = e || je, this.options.tokenizer = this.options.tokenizer || new Yt(), this.tokenizer = this.options.tokenizer, this.tokenizer.options = this.options, this.tokenizer.lexer = this, this.inlineQueue = [], this.state = {
       inLink: !1,
       inRawBlock: !1,
       top: !0
     };
     const t = {
-      block: Wt.normal,
-      inline: xt.normal
+      block: Ut.normal,
+      inline: vt.normal
     };
-    this.options.pedantic ? (t.block = Wt.pedantic, t.inline = xt.pedantic) : this.options.gfm && (t.block = Wt.gfm, this.options.breaks ? t.inline = xt.breaks : t.inline = xt.gfm), this.tokenizer.rules = t;
+    this.options.pedantic ? (t.block = Ut.pedantic, t.inline = vt.pedantic) : this.options.gfm && (t.block = Ut.gfm, this.options.breaks ? t.inline = vt.breaks : t.inline = vt.gfm), this.tokenizer.rules = t;
   }
   /**
    * Expose Rules
    */
   static get rules() {
     return {
-      block: Wt,
-      inline: xt
+      block: Ut,
+      inline: vt
     };
   }
   /**
@@ -3843,12 +3879,12 @@ class te {
     return t;
   }
 }
-class Qt {
+class Xt {
   options;
   parser;
   // set by the parser
   constructor(e) {
-    this.options = e || Be;
+    this.options = e || je;
   }
   space(e) {
     return "";
@@ -3956,7 +3992,7 @@ ${e}</tr>
     return `<del>${this.parser.parseInline(e)}</del>`;
   }
   link({ href: e, title: t, tokens: i }) {
-    const r = this.parser.parseInline(i), s = On(e);
+    const r = this.parser.parseInline(i), s = Hn(e);
     if (s === null)
       return r;
     e = s;
@@ -3964,7 +4000,7 @@ ${e}</tr>
     return t && (o += ' title="' + t + '"'), o += ">" + r + "</a>", o;
   }
   image({ href: e, title: t, text: i }) {
-    const r = On(e);
+    const r = Hn(e);
     if (r === null)
       return i;
     e = r;
@@ -3975,7 +4011,7 @@ ${e}</tr>
     return "tokens" in e && e.tokens ? this.parser.parseInline(e.tokens) : e.text;
   }
 }
-class Ki {
+class Qi {
   // no need for block level renderers
   strong({ text: e }) {
     return e;
@@ -4010,7 +4046,7 @@ class ie {
   renderer;
   textRenderer;
   constructor(e) {
-    this.options = e || Be, this.options.renderer = this.options.renderer || new Qt(), this.renderer = this.options.renderer, this.renderer.options = this.options, this.renderer.parser = this, this.textRenderer = new Ki();
+    this.options = e || je, this.options.renderer = this.options.renderer || new Xt(), this.renderer = this.options.renderer, this.renderer.options = this.options, this.renderer.parser = this, this.textRenderer = new Qi();
   }
   /**
    * Static Parse Method
@@ -4167,11 +4203,11 @@ class ie {
     return i;
   }
 }
-class It {
+class Bt {
   options;
   block;
   constructor(e) {
-    this.options = e || Be;
+    this.options = e || je;
   }
   static passThroughHooks = /* @__PURE__ */ new Set([
     "preprocess",
@@ -4209,17 +4245,17 @@ class It {
     return this.block ? ie.parse : ie.parseInline;
   }
 }
-class pl {
-  defaults = Ii();
+class ml {
+  defaults = ji();
   options = this.setOptions;
   parse = this.parseMarkdown(!0);
   parseInline = this.parseMarkdown(!1);
   Parser = ie;
-  Renderer = Qt;
-  TextRenderer = Ki;
+  Renderer = Xt;
+  TextRenderer = Qi;
   Lexer = te;
-  Tokenizer = Kt;
-  Hooks = It;
+  Tokenizer = Yt;
+  Hooks = Bt;
   constructor(...e) {
     this.use(...e);
   }
@@ -4276,7 +4312,7 @@ class pl {
         }
         "childTokens" in s && s.childTokens && (t.childTokens[s.name] = s.childTokens);
       }), r.extensions = t), i.renderer) {
-        const s = this.defaults.renderer || new Qt(this.defaults);
+        const s = this.defaults.renderer || new Xt(this.defaults);
         for (const o in i.renderer) {
           if (!(o in s))
             throw new Error(`renderer '${o}' does not exist`);
@@ -4291,7 +4327,7 @@ class pl {
         r.renderer = s;
       }
       if (i.tokenizer) {
-        const s = this.defaults.tokenizer || new Kt(this.defaults);
+        const s = this.defaults.tokenizer || new Yt(this.defaults);
         for (const o in i.tokenizer) {
           if (!(o in s))
             throw new Error(`tokenizer '${o}' does not exist`);
@@ -4306,14 +4342,14 @@ class pl {
         r.tokenizer = s;
       }
       if (i.hooks) {
-        const s = this.defaults.hooks || new It();
+        const s = this.defaults.hooks || new Bt();
         for (const o in i.hooks) {
           if (!(o in s))
             throw new Error(`hook '${o}' does not exist`);
           if (["options", "block"].includes(o))
             continue;
           const l = o, a = i.hooks[l], h = s[l];
-          It.passThroughHooks.has(o) ? s[l] = (d) => {
+          Bt.passThroughHooks.has(o) ? s[l] = (d) => {
             if (this.defaults.async)
               return Promise.resolve(a.call(s, d)).then((f) => h.call(s, f));
             const p = a.call(s, d);
@@ -4381,30 +4417,30 @@ Please report this to https://github.com/markedjs/marked.`, e) {
     };
   }
 }
-const Ue = new pl();
+const Ie = new ml();
 function z(n, e) {
-  return Ue.parse(n, e);
+  return Ie.parse(n, e);
 }
 z.options = z.setOptions = function(n) {
-  return Ue.setOptions(n), z.defaults = Ue.defaults, ur(z.defaults), z;
+  return Ie.setOptions(n), z.defaults = Ie.defaults, fr(z.defaults), z;
 };
-z.getDefaults = Ii;
-z.defaults = Be;
+z.getDefaults = ji;
+z.defaults = je;
 z.use = function(...n) {
-  return Ue.use(...n), z.defaults = Ue.defaults, ur(z.defaults), z;
+  return Ie.use(...n), z.defaults = Ie.defaults, fr(z.defaults), z;
 };
 z.walkTokens = function(n, e) {
-  return Ue.walkTokens(n, e);
+  return Ie.walkTokens(n, e);
 };
-z.parseInline = Ue.parseInline;
+z.parseInline = Ie.parseInline;
 z.Parser = ie;
 z.parser = ie.parse;
-z.Renderer = Qt;
-z.TextRenderer = Ki;
+z.Renderer = Xt;
+z.TextRenderer = Qi;
 z.Lexer = te;
 z.lexer = te.lex;
-z.Tokenizer = Kt;
-z.Hooks = It;
+z.Tokenizer = Yt;
+z.Hooks = Bt;
 z.parse = z;
 z.options;
 z.setOptions;
@@ -4432,46 +4468,46 @@ const Rn = {
   avalanche: { de: "Lawinen", en: "Avalanches", icon: "mdi:snowflake-alert" },
   earthquake: { de: "Erdbeben", en: "Earthquakes", icon: "mdi:pulse" },
   drought: { de: "Trockenheit", en: "Drought", icon: "mdi:water-off" }
-}, Fn = {
+}, Gn = {
   thunderstorms: "thunderstorm",
   snowfall: "snow",
   forest_fires: "forest_fire",
   floods: "flood",
   avalanches: "avalanche",
   earthquakes: "earthquake"
-}, Gn = {
+}, Wn = {
   1: { de: "Keine oder geringe Gefahr", en: "Level 1 - No/minor danger" },
   2: { de: "Mässige Gefahr", en: "Level 2 - Moderate danger" },
   3: { de: "Markante Gefahr", en: "Level 3 - Significant danger" },
   4: { de: "Grosse Gefahr", en: "Level 4 - High danger" },
   5: { de: "Sehr grosse Gefahr", en: "Level 5 - Very high danger" }
 };
-function Qe(n) {
+function Xe(n) {
   return typeof n == "string" && n.trim() ? n : void 0;
 }
-function Wn(n) {
-  const e = n?.trim().toLowerCase().replace(/[\s-]+/g, "_") ?? "", t = Object.hasOwn(Fn, e) ? Fn[e] : e;
+function Un(n) {
+  const e = n?.trim().toLowerCase().replace(/[\s-]+/g, "_") ?? "", t = Object.hasOwn(Gn, e) ? Gn[e] : e;
   return Object.hasOwn(Rn, t) ? Rn[t] : void 0;
 }
-function Ci(n, e, t, i) {
+function Ai(n, e, t, i) {
   if (typeof i != "number" || !Number.isInteger(i)) return;
   const r = n.warning_labels?.[e]?.[t];
   if (!(!r || typeof r != "object" || Array.isArray(r)))
-    return Qe(r[String(i)]);
+    return Xe(r[String(i)]);
 }
-function $r(n) {
-  return Qe(n?.selectedLanguage) || Qe(n?.language) || "en";
+function kr(n) {
+  return Xe(n?.selectedLanguage) || Xe(n?.language) || "en";
 }
-function ul(n, e, t) {
-  const i = $r(t).toLowerCase().split(/[-_]/)[0], r = i === "de" ? "de" : "en", s = Qe(n.warn_type_name), o = Ci(e, i, "types", n.warn_type), l = Ci(e, "en", "types", n.warn_type), a = Wn(l || s), h = typeof n.warn_type == "number" && Number.isInteger(n.warn_type) ? ` (${n.warn_type})` : "", d = o || (l ? a?.[r] || l : Wn(s)?.[r] || s) || Qe(n.title) || `${i === "de" ? "Unbekannte Warnungsart" : "Unknown warning type"}${h}`, p = n.warn_level ?? n.level, f = typeof p == "number" && Number.isInteger(p) && p >= 1 && p <= 5 ? p : null, g = Ci(e, i, "levels", f) || (f !== null && i === "de" ? Gn[f].de : void 0) || Qe(n.warn_level_name) || (f !== null ? Gn[f].en : i === "de" ? "Unbekannte Gefahrenstufe" : "Unknown danger level"), b = o && !l ? "mdi:alert" : a?.icon || "mdi:alert";
+function yl(n, e, t) {
+  const i = kr(t).toLowerCase().split(/[-_]/)[0], r = i === "de" ? "de" : "en", s = Xe(n.warn_type_name), o = Ai(e, i, "types", n.warn_type), l = Ai(e, "en", "types", n.warn_type), a = Un(l || s), h = typeof n.warn_type == "number" && Number.isInteger(n.warn_type) ? ` (${n.warn_type})` : "", d = o || (l ? a?.[r] || l : Un(s)?.[r] || s) || Xe(n.title) || `${i === "de" ? "Unbekannte Warnungsart" : "Unknown warning type"}${h}`, p = n.warn_level ?? n.level, f = typeof p == "number" && Number.isInteger(p) && p >= 1 && p <= 5 ? p : null, g = Ai(e, i, "levels", f) || (f !== null && i === "de" ? Wn[f].de : void 0) || Xe(n.warn_level_name) || (f !== null ? Wn[f].en : i === "de" ? "Unbekannte Gefahrenstufe" : "Unknown danger level"), b = o && !l ? "mdi:alert" : a?.icon || "mdi:alert";
   return { typeName: d, levelName: g, icon: b, level: f };
 }
-function Un(n, e) {
+function In(n, e) {
   if (typeof n != "string" && typeof n != "number" || n === "None") return "";
   const t = new Date(n);
   if (!Number.isFinite(t.getTime())) return "";
   try {
-    return t.toLocaleString($r(e), {
+    return t.toLocaleString(kr(e), {
       day: "numeric",
       month: "short",
       hour: "2-digit",
@@ -4482,7 +4518,7 @@ function Un(n, e) {
     return t.toISOString();
   }
 }
-function kr(n) {
+function Cr(n) {
   const e = document.createElement("template");
   e.innerHTML = n, e.content.querySelectorAll("script,style,iframe,object,embed,form,meta,base").forEach((i) => i.remove()), e.content.querySelectorAll("*").forEach((i) => {
     if (Array.from(i.attributes).forEach((r) => {
@@ -4495,7 +4531,7 @@ function kr(n) {
   const t = document.createElement("div");
   return t.appendChild(e.content), t.innerHTML;
 }
-function fl(n) {
+function _l(n) {
   return {
     yellow: "#f6c90e",
     orange: "#e17055",
@@ -4504,10 +4540,10 @@ function fl(n) {
     gray: "var(--disabled-text-color, #9e9e9e)"
   }[n?.toLowerCase()] ?? "var(--primary-text-color, #fff)";
 }
-function Ai(n, e, t, i, r = 0) {
+function Si(n, e, t, i, r = 0) {
   const s = n.attributes;
   if (!s.has_warning) return null;
-  const o = fl(s.icon_color), l = s.icon || "mdi:alert", a = s.warning_type || s.level_name || n.state, h = !!t[e], d = !!(s.html_text || s.text || s.links?.length);
+  const o = _l(s.icon_color), l = s.icon || "mdi:alert", a = s.warning_type || s.level_name || n.state, h = !!t[e], d = !!(s.html_text || s.text || s.links?.length);
   return c`
     <li style="margin-bottom: 12px;">
       <div style="display: flex; align-items: center; gap: 8px;">
@@ -4549,7 +4585,7 @@ function Ai(n, e, t, i, r = 0) {
                       ` : ""}
                 ${s.html_text ? c`<div
                         style="line-height: 1.4; margin-bottom: 4px;"
-                        .innerHTML="${kr(s.html_text)}"
+                        .innerHTML="${Cr(s.html_text)}"
                       ></div>` : s.text ? c`<div style="line-height: 1.4; margin-bottom: 4px;">${s.text}</div>` : ""}
                 ${s.links?.length ? c`
                         <div style="display: flex; flex-direction: column; gap: 2px;">
@@ -4573,7 +4609,7 @@ function Ai(n, e, t, i, r = 0) {
     </li>
   `;
 }
-function gl(n, e, t, i, r) {
+function bl(n, e, t, i, r) {
   const s = n.attributes;
   if (!s.has_warning) return null;
   const o = {
@@ -4585,9 +4621,9 @@ function gl(n, e, t, i, r) {
     h - (l ? 1 : 0) - (a ? 1 : 0),
     0
   ), p = 1 + h, f = p === 1 ? u("warning.weather_warning") : u("warning.weather_warnings", { count: p }), g = [
-    Ai(n, "primary", i, r, d),
-    e ? Ai(e, "secondary", i, r) : null,
-    t ? Ai(t, "tertiary", i, r) : null
+    Si(n, "primary", i, r, d),
+    e ? Si(e, "secondary", i, r) : null,
+    t ? Si(t, "tertiary", i, r) : null
   ].filter(Boolean);
   return c`
     <div class="warning-section ${o}">
@@ -4598,7 +4634,7 @@ function gl(n, e, t, i, r) {
     </div>
   `;
 }
-function ml(n, e, t) {
+function wl(n, e, t) {
   const i = [];
   if (n.attributes.warning_levels && Array.isArray(n.attributes.warning_levels))
     for (let a = 0; a < n.attributes.warning_levels.length; a++)
@@ -4678,7 +4714,7 @@ function ml(n, e, t) {
                       </div>
                       <div
                         style="font-size: 14px; line-height: 1.4; margin-top: 4px;"
-                        .innerHTML="${kr(String(z.parse(a.description || "")))}"
+                        .innerHTML="${Cr(String(z.parse(a.description || "")))}"
                       ></div>
                     ` : ""}
             </li>
@@ -4688,30 +4724,30 @@ function ml(n, e, t) {
     </div>
   `;
 }
-function nt() {
+function rt() {
   return c`<div class="no-warnings" role="status">${u("warning.warnings_unavailable")}</div>`;
 }
-function In(n) {
+function Bn(n) {
   return n.state === "unavailable" || n.state === "unknown" || n.attributes?.data_status === "unavailable" || n.attributes?.data_status === "unknown";
 }
-function Cr(n, e, t, i, r, s, o) {
-  return e && In(e) ? nt() : e && e.attributes?.has_warning !== void 0 ? gl(
+function Ar(n, e, t, i, r, s, o) {
+  return e && Bn(e) ? rt() : e && e.attributes?.has_warning !== void 0 ? bl(
     e,
     t,
     i,
     r,
     s
-  ) : n && In(n) ? nt() : n && n.attributes?.warning_levels ? ml(n, r, s) : n && (n.state === "on" || n.attributes?.alerts !== void 0) ? yl(n, r, s, o) : null;
+  ) : n && Bn(n) ? rt() : n && n.attributes?.warning_levels ? wl(n, r, s) : n && (n.state === "on" || n.attributes?.alerts !== void 0) ? xl(n, r, s, o) : null;
 }
-function yl(n, e, t, i) {
+function xl(n, e, t, i) {
   const r = n.attributes, s = r.alerts ?? [];
   if (!Array.isArray(s) || s.some((a) => !a || typeof a != "object" || Array.isArray(a)))
-    return nt();
+    return rt();
   if (n.state === "off") return null;
   const o = s.filter((a) => !a.outlook);
   if (o.length === 0) {
     if (s.length > 0) return null;
-    if (n.state !== "on") return nt();
+    if (n.state !== "on") return rt();
     const a = typeof r.active_alerts_count == "number" && Number.isInteger(r.active_alerts_count) && r.active_alerts_count > 0 ? r.active_alerts_count : 0;
     return c`
       <div class="ms-section" style="margin: 10px 16px;">
@@ -4732,7 +4768,7 @@ function yl(n, e, t, i) {
   return c`
     <div style="margin: 10px 16px;">
       ${o.map((a, h) => {
-    const d = `ms_alert_${h}`, { typeName: p, levelName: f, icon: g, level: b } = ul(a, r, i), k = b !== null ? l[b] : "#9e9e9e", x = typeof a.description == "string" ? a.description : "", L = !!e[d], P = Un(a.valid_from ?? a.start, i), H = Un(a.valid_to === "None" ? a.end : a.valid_to ?? a.end, i);
+    const d = `ms_alert_${h}`, { typeName: p, levelName: f, icon: g, level: b } = yl(a, r, i), k = b !== null ? l[b] : "#9e9e9e", x = typeof a.description == "string" ? a.description : "", L = !!e[d], P = In(a.valid_from ?? a.start, i), H = In(a.valid_to === "None" ? a.end : a.valid_to ?? a.end, i);
     return c`
           <div style="
             display: flex; align-items: flex-start; gap: 10px;
@@ -4769,7 +4805,7 @@ function yl(n, e, t, i) {
     </div>
   `;
 }
-const _l = [
+const vl = [
   // Temperature — must NOT match bodentemperatur/lufttemperatur_in_X
   { key: "temperature", patterns: ["_temperatur", "_temperature"], exclude: ["boden", "soil", "luft"] },
   { key: "humidity", patterns: ["luftfeuchtigkeit", "humidity", "feuchtigkeit"] },
@@ -4807,13 +4843,13 @@ const _l = [
   { key: "heating_degree_days", patterns: ["heizgradtage"] },
   { key: "season_heating_degree_days", patterns: ["heizgradtage_saison", "season_hgt"] }
 ];
-function Ar(n, e) {
+function Sr(n, e) {
   const t = {};
   if (!n?.states) return t;
   const i = Object.keys(n.states), r = e.match(/^weather\.meteoswiss_(.+)$/);
   let s = r ? r[1] : "";
   s = s.replace(/_\d+$/, "");
-  for (const { key: o, patterns: l, exclude: a } of _l) {
+  for (const { key: o, patterns: l, exclude: a } of vl) {
     let h;
     for (const d of i) {
       const p = d.toLowerCase();
@@ -4835,14 +4871,14 @@ function Ar(n, e) {
   }
   return n.states[e] && (t.weather = e), t;
 }
-function Ye(n, e) {
+function Qe(n, e) {
   if (!e || !n.states[e]) return null;
   const t = n.states[e].state;
   if (t === "unavailable" || t === "unknown") return null;
   const i = parseFloat(t);
   return isNaN(i) ? null : i;
 }
-function bl(n) {
+function $l(n) {
   const e = [
     { label: "Kein Föhn", color: "#4CAF50" },
     { label: "Stationär", color: "#8BC34A" },
@@ -4853,15 +4889,15 @@ function bl(n) {
   ];
   return e[n] || e[0];
 }
-var wl = Object.defineProperty, xl = Object.getOwnPropertyDescriptor, Ee = (n, e, t, i) => {
-  for (var r = i > 1 ? void 0 : i ? xl(e, t) : e, s = n.length - 1, o; s >= 0; s--)
+var kl = Object.defineProperty, Cl = Object.getOwnPropertyDescriptor, Ee = (n, e, t, i) => {
+  for (var r = i > 1 ? void 0 : i ? Cl(e, t) : e, s = n.length - 1, o; s >= 0; s--)
     (o = n[s]) && (r = (i ? o(e, t, r) : o(r)) || r);
-  return i && r && wl(e, t, r), r;
+  return i && r && kl(e, t, r), r;
 };
 W({
   loader: (n) => U[n]
 });
-let fe = class extends N {
+let fe = class extends E {
   constructor() {
     super(...arguments), this._forecast = [], this._hourlyForecast = [], this._forecastLoading = !1, this._openWarnings = {}, this._resolvedEntities = null, this._resizeObserver = null, this._toggleWarning = (n) => {
       this._openWarnings = { ...this._openWarnings, [n]: !this._openWarnings[n] }, this.requestUpdate();
@@ -4871,7 +4907,7 @@ let fe = class extends N {
     if (super.updated(n), this.hass && this.config && this.config.entity) {
       const e = this._lastEntityId !== this.config.entity, t = n.has("hass");
       if (e && (this._lastEntityId = this.config.entity), (e || t) && this.config.auto_resolve_entities !== !1) {
-        const i = Ar(this.hass, this.config.entity), r = Object.values(i).filter((o) => o).length, s = this._resolvedEntities ? Object.values(this._resolvedEntities).filter((o) => o).length : 0;
+        const i = Sr(this.hass, this.config.entity), r = Object.values(i).filter((o) => o).length, s = this._resolvedEntities ? Object.values(this._resolvedEntities).filter((o) => o).length : 0;
         (e || r > s) && (this._resolvedEntities = i);
       }
       e && this._loadForecast();
@@ -5160,7 +5196,7 @@ let fe = class extends N {
   }
   static getStubConfig() {
     return {
-      type: "custom:" + xe,
+      type: "custom:" + ve,
       entity: "",
       show_location: !0,
       location: "Schweiz",
@@ -5181,10 +5217,10 @@ let fe = class extends N {
     };
   }
   static getConfigElement() {
-    return document.createElement(dr);
+    return document.createElement(hr);
   }
   static getConfigSchema() {
-    return hr;
+    return pr;
   }
   _getEntityState(n) {
     return this.hass?.states[n];
@@ -5198,14 +5234,25 @@ let fe = class extends N {
   _formatWindDirection(n) {
     return ["N", "NNO", "NO", "ONO", "O", "OSO", "SO", "SSO", "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW"][Math.round(n / 22.5) % 16];
   }
+  _formatTemperature(n) {
+    const e = this.hass.locale ?? {
+      language: this.hass.selectedLanguage || this.hass.language || "en",
+      number_format: xe.language,
+      time_format: Ti.language
+    };
+    return io(Number(n).toFixed(1), e, {
+      minimumFractionDigits: 1,
+      maximumFractionDigits: 1
+    });
+  }
   // ═══════════════════════════════════════════════════════════════
   // RENDER — iOS Weather Layout
   // ═══════════════════════════════════════════════════════════════
   render() {
     if (!this.hass || !this.config) return c``;
     const n = this.config.display_mode || (this.config.compact_mode ? "compact" : "full");
-    this.setAttribute("data-display", n), n === "auto" && !this._resizeObserver ? (this._resizeObserver = new ResizeObserver((F) => {
-      const Q = (F[0]?.contentRect?.width ?? 400) < 350 ? "compact" : "full";
+    this.setAttribute("data-display", n), n === "auto" && !this._resizeObserver ? (this._resizeObserver = new ResizeObserver((R) => {
+      const Q = (R[0]?.contentRect?.width ?? 400) < 350 ? "compact" : "full";
       this.getAttribute("data-display-effective") !== Q && (this.setAttribute("data-display-effective", Q), this.requestUpdate());
     }), this._resizeObserver.observe(this)) : n !== "auto" && this._resizeObserver && (this._resizeObserver.disconnect(), this._resizeObserver = null, this.removeAttribute("data-display-effective"));
     const t = (n === "auto" ? this.getAttribute("data-display-effective") || "full" : n) === "compact", i = (this.hass.selectedLanguage || this.hass.language || "en").substring(0, 2);
@@ -5221,14 +5268,14 @@ let fe = class extends N {
             <div class="ms-weather-icon">
               ${Et(s, this.config.enable_animate_weather_icons !== !1 ? "animated" : "mdi", void 0, s !== "clear-night")}
             </div>
-            <div class="ms-temp">${Math.round(d)}<span class="ms-temp-unit">°</span></div>
+            <div class="ms-temp">${this._formatTemperature(d)}<span class="ms-temp-unit">°</span></div>
           </div>
           <div class="ms-condition">${X(s)}</div>
-          <div class="ms-hl">H:${Math.round(L)}° T:${Math.round(P)}°</div>
+          <div class="ms-hl">H:${this._formatTemperature(L)}° T:${this._formatTemperature(P)}°</div>
         </div>
       ` : ""}
 
-      ${this.config.show_warnings !== !1 ? $ ? nt() : Cr(D, C, v, M, this._openWarnings, this._toggleWarning, this.hass) : ""}
+      ${this.config.show_warnings !== !1 ? $ ? rt() : Ar(D, C, v, M, this._openWarnings, this._toggleWarning, this.hass) : ""}
 
       ${this._renderMetricsSection(f, g, b, k, a)}
 
@@ -5274,9 +5321,9 @@ let fe = class extends N {
   // ── Swiss section ───────────────────────────────────────────────
   _renderSwissSection() {
     if (!this.hass) return c``;
-    const n = this.config.foehn_entity || this._resolvedEntities?.foehn_index, e = this.config.snow_entity || this._resolvedEntities?.snow_depth, t = this.config.freezing_level_entity || this._resolvedEntities?.freezing_level, i = n ? Ye(this.hass, n) : null, r = e ? Ye(this.hass, e) : null, s = t ? Ye(this.hass, t) : null;
+    const n = this.config.foehn_entity || this._resolvedEntities?.foehn_index, e = this.config.snow_entity || this._resolvedEntities?.snow_depth, t = this.config.freezing_level_entity || this._resolvedEntities?.freezing_level, i = n ? Qe(this.hass, n) : null, r = e ? Qe(this.hass, e) : null, s = t ? Qe(this.hass, t) : null;
     if (i === null && r === null && s === null) return c``;
-    const o = i !== null ? bl(i) : null;
+    const o = i !== null ? $l(i) : null;
     return c`
       <div class="ms-section ms-swiss-section">
         <div class="ms-section-label"><ha-icon icon="mdi:flag-variant"></ha-icon> Schweizer Werte</div>
@@ -5303,7 +5350,7 @@ let fe = class extends N {
   // ── Heating section ─────────────────────────────────────────────
   _renderHeatingSection() {
     if (!this.hass) return c``;
-    const n = this.config.heating_degree_days_entity || this._resolvedEntities?.heating_degree_days, e = this.config.season_heating_entity || this._resolvedEntities?.season_heating_degree_days, t = n ? Ye(this.hass, n) : null, i = e ? Ye(this.hass, e) : null;
+    const n = this.config.heating_degree_days_entity || this._resolvedEntities?.heating_degree_days, e = this.config.season_heating_entity || this._resolvedEntities?.season_heating_degree_days, t = n ? Qe(this.hass, n) : null, i = e ? Qe(this.hass, e) : null;
     if (t === null && i === null) return c``;
     const r = (/* @__PURE__ */ new Date()).getMonth() + 1;
     return r < 10 && r > 4 && t === 0 && i === 0 ? c`` : c`
@@ -5331,7 +5378,7 @@ let fe = class extends N {
               .forecastHours=${e}
               .show_temperature=${!0}
               ._t=${X}
-              .showHoursChartLabel=${(o) => Gt(o)}
+              .showHoursChartLabel=${(o) => Wt(o)}
             ></forecast-temperature-chart>`);
             break;
           case "precipitation":
@@ -5340,7 +5387,7 @@ let fe = class extends N {
               .forecastHours=${e}
               .show_precipitation=${!0}
               ._t=${X}
-              .showHoursChartLabel=${(o) => Gt(o)}
+              .showHoursChartLabel=${(o) => Wt(o)}
             ></precipitation-chart>`);
             break;
           case "sunshine":
@@ -5351,7 +5398,7 @@ let fe = class extends N {
               .weatherEntity=${r}
               .sun_entity=${i}
               ._t=${X}
-              .showHoursChartLabel=${(o) => Gt(o)}
+              .showHoursChartLabel=${(o) => Wt(o)}
             ></sunshine-chart>`);
             break;
           case "wind":
@@ -5360,7 +5407,7 @@ let fe = class extends N {
               .forecastHours=${e}
               .show_wind=${!0}
               ._t=${X}
-              .showHoursChartLabel=${(o) => Gt(o)}
+              .showHoursChartLabel=${(o) => Wt(o)}
             ></wind-chart>`);
             break;
         }
@@ -5384,8 +5431,8 @@ let fe = class extends N {
                   ${Et(l, this.config.enable_animate_weather_icons !== !1 ? "animated" : "mdi", "32px", !0)}
                 </div>
                 <div class="ms-forecast-temps">
-                  <div class="ms-forecast-high">${Math.round(t.temperature ?? 0)}°</div>
-                  <div class="ms-forecast-low">${Math.round(t.templow ?? 0)}°</div>
+                  <div class="ms-forecast-high">${this._formatTemperature(t.temperature ?? 0)}°</div>
+                  <div class="ms-forecast-low">${this._formatTemperature(t.templow ?? 0)}°</div>
                   ${t.precipitation_probability && t.precipitation_probability > 0 ? c`<div class="ms-forecast-precip">${t.precipitation_probability}%</div>` : ""}
                 </div>
               </div>
@@ -5418,9 +5465,9 @@ Ee([
   Z()
 ], fe.prototype, "_resolvedEntities", 2);
 fe = Ee([
-  O(xe)
+  O(ve)
 ], fe);
-const ve = `${ge}-forecast-diagram-card`, Sr = `${ve}-editor`, Ti = [
+const $e = `${ge}-forecast-diagram-card`, Mr = `${$e}-editor`, Hi = [
   {
     name: "entity",
     required: !0,
@@ -5428,16 +5475,16 @@ const ve = `${ge}-forecast-diagram-card`, Sr = `${ve}-editor`, Ti = [
     description: "forecast_diagram.config.descr.entity"
   }
 ];
-var vl = Object.defineProperty, $l = Object.getOwnPropertyDescriptor, di = (n, e, t, i) => {
-  for (var r = i > 1 ? void 0 : i ? $l(e, t) : e, s = n.length - 1, o; s >= 0; s--)
+var Al = Object.defineProperty, Sl = Object.getOwnPropertyDescriptor, hi = (n, e, t, i) => {
+  for (var r = i > 1 ? void 0 : i ? Sl(e, t) : e, s = n.length - 1, o; s >= 0; s--)
     (o = n[s]) && (r = (i ? o(e, t, r) : o(r)) || r);
-  return i && r && vl(e, t, r), r;
+  return i && r && Al(e, t, r), r;
 };
 W({
   // Loads the language by returning a JSON structure for a given language
   loader: (n) => U[n]
 });
-let Nt = class extends N {
+let Tt = class extends E {
   constructor() {
     super(), this._computeLabel = (n) => ({
       entity: u("forecast_diagram.config.entity"),
@@ -5606,7 +5653,7 @@ let Nt = class extends N {
           <ha-form
             .hass=${this.hass}
             .data=${n}
-            .schema=${[Ti.find((e) => e.name === "entity")].filter(Boolean)}
+            .schema=${[Hi.find((e) => e.name === "entity")].filter(Boolean)}
             .computeLabel=${this._computeLabel}
             .computeHelper=${this._computeHelper}
             @value-changed=${this._valueChanged}
@@ -5619,7 +5666,7 @@ let Nt = class extends N {
           <ha-form
             .hass=${this.hass}
             .data=${n}
-            .schema=${[Ti.find((e) => e.name === "sun_entity")].filter(Boolean)}
+            .schema=${[Hi.find((e) => e.name === "sun_entity")].filter(Boolean)}
             .computeLabel=${this._computeLabel}
             .computeHelper=${this._computeHelper}
             @value-changed=${this._valueChanged}
@@ -5638,14 +5685,14 @@ let Nt = class extends N {
   }
   _renderConfigPreview() {
     const n = { ...this._config };
-    return n.type || (n.type = "custom:" + ve), Object.keys(n).forEach((e) => {
+    return n.type || (n.type = "custom:" + $e), Object.keys(n).forEach((e) => {
       (n[e] === void 0 || n[e] === "") && delete n[e];
     }), Object.entries(n).map(([e, t]) => typeof t == "string" ? `${e}: "${t}"` : `${e}: ${t}`).join(`
 `);
   }
   _valueChanged(n) {
     if (this._config || (this._config = {
-      type: `custom:${ve}`,
+      type: `custom:${$e}`,
       entity: "",
       sun_entity: ""
     }), n.type === "value-changed") {
@@ -5653,7 +5700,7 @@ let Nt = class extends N {
         ...this._config,
         ...t,
         ...e,
-        type: "custom:" + ve
+        type: "custom:" + $e
       };
       Object.keys(i).forEach((r) => {
         (i[r] === "" || i[r] === void 0) && delete i[r];
@@ -5661,20 +5708,20 @@ let Nt = class extends N {
     }
   }
 };
-di([
+hi([
   m({ attribute: !1 })
-], Nt.prototype, "hass", 2);
-di([
+], Tt.prototype, "hass", 2);
+hi([
   m({ attribute: !1 })
-], Nt.prototype, "lovelace", 2);
-di([
+], Tt.prototype, "lovelace", 2);
+hi([
   m({ attribute: !1 })
-], Nt.prototype, "_config", 2);
-Nt = di([
-  O(Sr)
-], Nt);
-const Me = (n, e) => n?.states[e], kl = (n, e) => {
-  const t = /* @__PURE__ */ new Date(), i = Me(n, e.entity), r = Me(n, e.sun_entity || "sun.sun");
+], Tt.prototype, "_config", 2);
+Tt = hi([
+  O(Mr)
+], Tt);
+const ze = (n, e) => n?.states[e], Ml = (n, e) => {
+  const t = /* @__PURE__ */ new Date(), i = ze(n, e.entity), r = ze(n, e.sun_entity || "sun.sun");
   if (r?.state === "above_horizon") return !0;
   if (r?.state === "below_horizon") return !1;
   let s = null, o = null;
@@ -5697,16 +5744,16 @@ function me(n) {
     // documentationURL: `
   });
 }
-var Cl = Object.defineProperty, Al = Object.getOwnPropertyDescriptor, ft = (n, e, t, i) => {
-  for (var r = i > 1 ? void 0 : i ? Al(e, t) : e, s = n.length - 1, o; s >= 0; s--)
+var zl = Object.defineProperty, Ll = Object.getOwnPropertyDescriptor, gt = (n, e, t, i) => {
+  for (var r = i > 1 ? void 0 : i ? Ll(e, t) : e, s = n.length - 1, o; s >= 0; s--)
     (o = n[s]) && (r = (i ? o(e, t, r) : o(r)) || r);
-  return i && r && Cl(e, t, r), r;
+  return i && r && zl(e, t, r), r;
 };
 W({
   // Loads the language by returning a JSON structure for a given language
   loader: (n) => U[n]
 });
-let Ie = class extends N {
+let Be = class extends E {
   constructor() {
     super(), this._forecast = [], this._hourlyForecast = [], this._forecastLoading = !1;
   }
@@ -5804,16 +5851,16 @@ let Ie = class extends N {
   }
   static getStubConfig() {
     return {
-      type: `custom:${ve}`,
+      type: `custom:${$e}`,
       entity: ""
     };
   }
   static getConfigElement() {
-    return document.createElement(Sr);
+    return document.createElement(Mr);
   }
   // Schema for the visual editor
   static getConfigSchema() {
-    return Ti;
+    return Hi;
   }
   getCardSize() {
     return this.config?.grid_options?.rows ?? 3;
@@ -5830,7 +5877,7 @@ let Ie = class extends N {
     };
   }
   render() {
-    const n = Me(this.hass, this.config.entity), e = this.config?.grid_options?.rows ?? 3;
+    const n = ze(this.hass, this.config.entity), e = this.config?.grid_options?.rows ?? 3;
     return this.style.setProperty("--card-grid-rows", e.toString()), n ? !this._forecast || this._forecast.length === 0 ? c`<div>Loading forecast...</div>` : !this._hourlyForecast || this._hourlyForecast.length === 0 ? c`<div>Loading hourly forecast...</div>` : this._forecast.length > 0 && this._hourlyForecast.length > 0 ? c`<daily-forecast-diagram
           .config=${{ ...this.config, enable_animate_weather_icons: !0 }}
           .forecast=${[...this._forecast?.slice(0, 7) ?? []]}
@@ -5841,25 +5888,25 @@ let Ie = class extends N {
         ></daily-forecast-diagram>` : c`` : c`<div>Entity not found: ${this.config.entity}</div>`;
   }
 };
-ft([
+gt([
   m({ attribute: !1 })
-], Ie.prototype, "hass", 2);
-ft([
+], Be.prototype, "hass", 2);
+gt([
   m({ attribute: !1 })
-], Ie.prototype, "config", 2);
-ft([
+], Be.prototype, "config", 2);
+gt([
   Z()
-], Ie.prototype, "_forecast", 2);
-ft([
+], Be.prototype, "_forecast", 2);
+gt([
   Z()
-], Ie.prototype, "_hourlyForecast", 2);
-ft([
+], Be.prototype, "_hourlyForecast", 2);
+gt([
   Z()
-], Ie.prototype, "_forecastLoading", 2);
-Ie = ft([
-  O(ve)
-], Ie);
-const Mr = () => w`
+], Be.prototype, "_forecastLoading", 2);
+Be = gt([
+  O($e)
+], Be);
+const zr = () => w`
   <defs>
     <radialGradient id="lwStormFlashGradient" cx="50%" cy="20%" r="90%">
       <stop offset="0%" style="stop-color:#ffff88;stop-opacity:1" />
@@ -5898,28 +5945,28 @@ const Mr = () => w`
   <use href="#lwLightningFlicker"/>
   <use href="#lwStormFlash"/>
   <use href="#lwThunderRumble"/>
-`, Sl = (n, e, t) => {
+`, Nl = (n, e, t) => {
   if (!n)
     return c``;
   const i = {
-    "clear-night": Ml(t),
-    cloudy: Ll(t),
-    fog: El(t),
-    hail: Nl(t),
-    lightning: Hl(t),
-    "lightning-rainy": Dl(t),
-    partlycloudy: e ? Fl(t) : Gl(t),
-    pouring: Ol(t),
-    rainy: Tl(t),
-    snowy: Rl(t),
-    "snowy-rainy": Pl(t),
-    sunny: zl(),
-    windy: Bn(t),
-    "windy-variant": Bn(t),
-    exceptional: Wl(t)
+    "clear-night": El(t),
+    cloudy: Ol(t),
+    fog: Hl(t),
+    hail: Dl(t),
+    lightning: Rl(t),
+    "lightning-rainy": Gl(t),
+    partlycloudy: e ? Il(t) : Bl(t),
+    pouring: Fl(t),
+    rainy: Pl(t),
+    snowy: Ul(t),
+    "snowy-rainy": Wl(t),
+    sunny: Tl(),
+    windy: jn(t),
+    "windy-variant": jn(t),
+    exceptional: jl(t)
   };
   return n ? i[n] : c``;
-}, Ml = (n) => w`
+}, El = (n) => w`
   <defs>
     <linearGradient id="moonGradient" x1="21.92" x2="38.52" y1="18.75" y2="47.52" gradientUnits="userSpaceOnUse">
       <stop offset="0" stop-color="#86c3db"/>
@@ -5956,7 +6003,7 @@ const Mr = () => w`
     `;
 })}
   </g>
-`, zl = () => w`
+`, Tl = () => w`
   <defs>
     <linearGradient id="sunshineBlueGradient" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0%" stop-color="#4fc3f7" />
@@ -5978,7 +6025,7 @@ const Mr = () => w`
       <animateTransform attributeName="transform" dur="45s" repeatCount="indefinite" type="rotate" values="0 32 32; 360 32 32"/>
     </path>
   </g>
-`, Ll = (n) => w`
+`, Ol = (n) => w`
   <defs>
     <linearGradient id="background" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0%" stop-color="#a3bdc9ff" />
@@ -5997,7 +6044,7 @@ const Mr = () => w`
   <!-- background -->
   <rect width="100%" height="80%" fill="url(#background)" />
   ${ce(n)}
-  `, El = (n) => w`
+  `, Hl = (n) => w`
   <defs>
     <linearGradient id="background" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0%" stop-color="#a3bdc9ff" />
@@ -6026,7 +6073,7 @@ const Mr = () => w`
   <!-- background -->
   <rect width="100%" height="80%" fill="url(#background)" />
   ${ce(n)}
-  `, Nl = (n) => w`
+  `, Dl = (n) => w`
   <defs>
     <linearGradient id="hailBackground" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0%" stop-color="#9eb7c6" />
@@ -6068,7 +6115,7 @@ const Mr = () => w`
   </g>
   `;
 })}
-  `, Tl = (n) => w`
+  `, Pl = (n) => w`
   <defs>
     <linearGradient id="background" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0%" stop-color="#3580a39c" />
@@ -6108,7 +6155,7 @@ const Mr = () => w`
   
   `;
 w`<g transform="translate(168,-30) scale(3)"><path fill="#f3f7fe" stroke="#e6effc" stroke-miterlimit="10" stroke-width=".5" d="M46.5 31.5h-.32a10.49 10.49 0 00-19.11-8 7 7 0 00-10.57 6 7.21 7.21 0 00.1 1.14A7.5 7.5 0 0018 45.5a4.19 4.19 0 00.5 0v0h28a7 7 0 000-14z"/><circle cx="24" cy="50" r="2.2" fill="#9ac9e4"/><circle cx="32" cy="52" r="2.4" fill="#9ac9e4"/><circle cx="40" cy="50" r="2.2" fill="#9ac9e4"/></g>`;
-const Ol = (n) => w`
+const Fl = (n) => w`
   <defs>
     <linearGradient id="extremeRainGradient" x1="22.56" x2="39.2" y1="21.96" y2="50.8" gradientUnits="userSpaceOnUse">
       <stop offset="0" stop-color="#f3f7fe"/>
@@ -6142,7 +6189,7 @@ const Ol = (n) => w`
     </line>
     `;
 })}
-  `, Bn = (n) => w`
+  `, jn = (n) => w`
   <defs>
     <linearGradient id="windGradient" x1="22.56" x2="39.2" y1="21.96" y2="50.8" gradientUnits="userSpaceOnUse">
       <stop offset="0" stop-color="#f3f7fe"/>
@@ -6177,7 +6224,7 @@ const Ol = (n) => w`
     </line>
     `;
 })}
-  `, Hl = (n) => w`
+  `, Rl = (n) => w`
   <defs>
     <linearGradient id="background" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0%" stop-color="#2e414aff" />
@@ -6209,8 +6256,8 @@ const Ol = (n) => w`
    ${ce(n)}
    
   <!-- Lightning flash effect that illuminates the entire background (full-size overlay) -->
-  ${Mr()}
-  `, Dl = (n) => w`
+  ${zr()}
+  `, Gl = (n) => w`
   <defs>
     <linearGradient id="b" x1="22.56" x2="39.2" y1="21.96" y2="50.8" gradientUnits="userSpaceOnUse">
       <stop offset="0" stop-color="#f3f7fe"/>
@@ -6248,7 +6295,7 @@ const Ol = (n) => w`
   ${ce(n)}
   
   <!-- Lightning flash effect for rainy thunderstorms -->
-  ${Mr()}
+  ${zr()}
   `, ce = (n) => w`
 ${Array.from({ length: Math.ceil(n / 10) }, (e, t) => t).map((e) => {
   const t = Math.floor(Math.random() * 100), i = Math.floor(Math.random() * 10), r = (t - 50) / 5 + e * Math.floor(Math.random() * 25), s = e * 100 + i, o = Math.floor(Math.random() * 2) + 1, l = 1 + Math.random() * 1, a = 44 + Math.floor(Math.random() * 90);
@@ -6261,7 +6308,7 @@ ${Array.from({ length: Math.ceil(n / 10) }, (e, t) => t).map((e) => {
     </g>
     `;
 })}
-  `, Pl = (n) => w`
+  `, Wl = (n) => w`
   <defs>
     <linearGradient id="sleetGradient" x1="22.56" x2="39.2" y1="21.96" y2="50.8" gradientUnits="userSpaceOnUse">
       <stop offset="0" stop-color="#f3f7fe"/>
@@ -6282,7 +6329,7 @@ ${Array.from({ length: Math.ceil(n / 10) }, (e, t) => t).map((e) => {
   </defs>
   
   ${ce(n)}
-  `, Rl = (n) => w`
+  `, Ul = (n) => w`
   <defs>
     <linearGradient id="snowGradient" x1="22.56" x2="39.2" y1="21.96" y2="50.8" gradientUnits="userSpaceOnUse">
       <stop offset="0" stop-color="#f3f7fe"/>
@@ -6315,7 +6362,7 @@ ${Array.from({ length: Math.ceil(n / 10) }, (e, t) => t).map((e) => {
   </defs>
   
   ${ce(n)}
-  `, Fl = (n) => w`
+  `, Il = (n) => w`
   <defs>
     <linearGradient id="sunshineBlueGradient" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0%" stop-color="#4fc3f7" />
@@ -6353,7 +6400,7 @@ ${Array.from({ length: Math.ceil(n / 10) }, (e, t) => t).map((e) => {
     <use href="#sunIcon" x="200" y="50" width="100" height="100" opacity="0.9"/>
   </g>
   ${ce(n)}
-  `, Gl = (n) => w`
+  `, Bl = (n) => w`
   <defs>
     <linearGradient id="partlyCloudyNightGradient" x1="22.56" x2="39.2" y1="21.96" y2="50.8" gradientUnits="userSpaceOnUse">
       <stop offset="0" stop-color="#f3f7fe"/>
@@ -6374,7 +6421,7 @@ ${Array.from({ length: Math.ceil(n / 10) }, (e, t) => t).map((e) => {
     <use href="#moonIcon" x="200" y="50" width="100" height="100" opacity="0.9"/>
   </g>
   ${ce(n)}
-  `, Wl = (n) => w`
+  `, jl = (n) => w`
   <defs>
     <linearGradient id="hurricaneGradient" x1="22.56" x2="39.2" y1="21.96" y2="50.8" gradientUnits="userSpaceOnUse">
       <stop offset="0" stop-color="#f3f7fe"/>
@@ -6390,7 +6437,7 @@ ${Array.from({ length: Math.ceil(n / 10) }, (e, t) => t).map((e) => {
   </defs>
   
   ${ce(n)}
-  `, $e = `${ge}-animated-background-card`, zr = `${$e}-editor`, ue = [
+  `, ke = `${ge}-animated-background-card`, Lr = `${ke}-editor`, ue = [
   {
     name: "scenery_image",
     required: !1,
@@ -6449,12 +6496,12 @@ ${Array.from({ length: Math.ceil(n / 10) }, (e, t) => t).map((e) => {
     description: "bg_card.config.descr.photo_mode"
   }
 ];
-var Ul = Object.defineProperty, Il = Object.getOwnPropertyDescriptor, de = (n, e, t, i) => {
-  for (var r = i > 1 ? void 0 : i ? Il(e, t) : e, s = n.length - 1, o; s >= 0; s--)
+var ql = Object.defineProperty, Vl = Object.getOwnPropertyDescriptor, de = (n, e, t, i) => {
+  for (var r = i > 1 ? void 0 : i ? Vl(e, t) : e, s = n.length - 1, o; s >= 0; s--)
     (o = n[s]) && (r = (i ? o(e, t, r) : o(r)) || r);
-  return i && r && Ul(e, t, r), r;
+  return i && r && ql(e, t, r), r;
 };
-let ne = class extends N {
+let ne = class extends E {
   constructor() {
     super(...arguments), this.hourlyForecast = [], this.forecastLoading = !1, this.show_forecast = !0, this.config = {}, this.compact = !0, this.maxHours = 6, this.alignRight = !0;
   }
@@ -6601,16 +6648,16 @@ de([
 ne = de([
   O("hourly-forecast-chart")
 ], ne);
-var Bl = Object.defineProperty, jl = Object.getOwnPropertyDescriptor, je = (n, e, t, i) => {
-  for (var r = i > 1 ? void 0 : i ? jl(e, t) : e, s = n.length - 1, o; s >= 0; s--)
+var Zl = Object.defineProperty, Kl = Object.getOwnPropertyDescriptor, qe = (n, e, t, i) => {
+  for (var r = i > 1 ? void 0 : i ? Kl(e, t) : e, s = n.length - 1, o; s >= 0; s--)
     (o = n[s]) && (r = (i ? o(e, t, r) : o(r)) || r);
-  return i && r && Bl(e, t, r), r;
+  return i && r && Zl(e, t, r), r;
 };
 W({
   // Loads the language by returning a JSON structure for a given language
   loader: (n) => U[n]
 });
-let ze = class extends N {
+let Le = class extends E {
   constructor() {
     super(...arguments), this._forecast = [], this._hourly = [], this._resolvedEntities = null, this._forecastLoading = !1, this._hourlyLoading = !1;
   }
@@ -7864,13 +7911,13 @@ let ze = class extends N {
   }
   static getStubConfig() {
     return {
-      type: `custom:${$e}`,
+      type: `custom:${ke}`,
       entity: "",
       scenery_image: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Vierwaldst%C3%A4ttersee_with_Mountain_Panorama.jpg/1280px-Vierwaldst%C3%A4ttersee_with_Mountain_Panorama.jpg"
     };
   }
   static getConfigElement() {
-    return document.createElement(zr);
+    return document.createElement(Lr);
   }
   // Schema for the visual editor
   static getConfigSchema() {
@@ -7890,14 +7937,14 @@ let ze = class extends N {
     if (ee((this.hass.selectedLanguage || this.hass.language || "en").substring(0, 2)), !this.hass || !this.config)
       return c``;
     const n = this.config?.grid_options?.rows ?? 4;
-    this.style.setProperty("--card-grid-rows", n.toString()), (!this._resolvedEntities || this._lastEntityId !== this.config.entity) && (this._resolvedEntities = Ar(this.hass, this.config.entity));
-    const e = Me(this.hass, this.config.entity);
+    this.style.setProperty("--card-grid-rows", n.toString()), (!this._resolvedEntities || this._lastEntityId !== this.config.entity) && (this._resolvedEntities = Sr(this.hass, this.config.entity));
+    const e = ze(this.hass, this.config.entity);
     if (!e || !e.attributes)
       return c`<div class="bg-card-root"><div style="padding:20px;text-align:center;color:var(--secondary-text-color);">Entity not found: ${this.config.entity}</div></div>`;
     const t = e.attributes.temperature;
     let i = NaN;
-    typeof t == "number" ? i = t : typeof t == "string" && (i = parseFloat(t)), isNaN(i) && this._resolvedEntities?.temperature && (i = Ye(this.hass, this._resolvedEntities.temperature) ?? NaN);
-    const r = e.state, s = kl(this.hass, this.config), o = this.clientWidth || 300, l = n * 64 - 8, a = this.config?.temperature_font_size, h = typeof a == "number" && a > 0 ? `${a}px` : "36px";
+    typeof t == "number" ? i = t : typeof t == "string" && (i = parseFloat(t)), isNaN(i) && this._resolvedEntities?.temperature && (i = Qe(this.hass, this._resolvedEntities.temperature) ?? NaN);
+    const r = e.state, s = Ml(this.hass, this.config), o = this.clientWidth || 300, l = n * 64 - 8, a = this.config?.temperature_font_size, h = typeof a == "number" && a > 0 ? `${a}px` : "36px";
     this.style.setProperty("--bg-temp-font-size", h), this.style.setProperty("--bg-temp-img-top", `calc(${h})`);
     const d = this._forecast && this._forecast.length > 0 ? this._forecast[0] : e.attributes.forecast ? e.attributes.forecast[0] : null, p = this.config.sun_entity, f = p ? this.hass.states[p] : void 0, g = f?.attributes?.next_rising ? new Date(f.attributes.next_rising) : void 0, b = f?.attributes?.next_setting ? new Date(f.attributes.next_setting) : void 0, k = (this.hass.selectedLanguage || this.hass.language || "en").replace("_", "-"), x = (L) => L ? L.toLocaleTimeString(k, { hour: "2-digit", minute: "2-digit" }) : "--:--";
     return c`
@@ -7913,7 +7960,7 @@ let ze = class extends N {
                           xmlns:xlink="http://www.w3.org/1999/xlink"
                           preserveAspectRatio="xMidYMid slice"
                         >
-                          ${o > 0 ? Sl(r, s, o) : w``}
+                          ${o > 0 ? Nl(r, s, o) : w``}
                         </svg>
                       </div>`}
                 ${d && this.config.show_day_temps !== !1 ? c`
@@ -7952,7 +7999,7 @@ let ze = class extends N {
                             .alignRight=${!0}
                             ._t=${X}
                             .getWeatherIcon=${Et}
-                            .formatDate=${oa}
+                            .formatDate=${da}
                           ></daily-forecast-chart>
                         </div>
                       ` : c``}
@@ -8166,37 +8213,37 @@ let ze = class extends N {
     }
   }
 };
-je([
+qe([
   m({ attribute: !1 })
-], ze.prototype, "hass", 2);
-je([
+], Le.prototype, "hass", 2);
+qe([
   m({ attribute: !1 })
-], ze.prototype, "config", 2);
-je([
-  ys(".temperature")
-], ze.prototype, "_tempEl", 2);
-je([
+], Le.prototype, "config", 2);
+qe([
+  _s(".temperature")
+], Le.prototype, "_tempEl", 2);
+qe([
   Z()
-], ze.prototype, "_forecast", 2);
-je([
+], Le.prototype, "_forecast", 2);
+qe([
   Z()
-], ze.prototype, "_hourly", 2);
-je([
+], Le.prototype, "_hourly", 2);
+qe([
   Z()
-], ze.prototype, "_resolvedEntities", 2);
-ze = je([
-  O($e)
-], ze);
-var ql = Object.defineProperty, Vl = Object.getOwnPropertyDescriptor, hi = (n, e, t, i) => {
-  for (var r = i > 1 ? void 0 : i ? Vl(e, t) : e, s = n.length - 1, o; s >= 0; s--)
+], Le.prototype, "_resolvedEntities", 2);
+Le = qe([
+  O(ke)
+], Le);
+var Yl = Object.defineProperty, Ql = Object.getOwnPropertyDescriptor, pi = (n, e, t, i) => {
+  for (var r = i > 1 ? void 0 : i ? Ql(e, t) : e, s = n.length - 1, o; s >= 0; s--)
     (o = n[s]) && (r = (i ? o(e, t, r) : o(r)) || r);
-  return i && r && ql(e, t, r), r;
+  return i && r && Yl(e, t, r), r;
 };
 W({
   // Loads the language by returning a JSON structure for a given language
   loader: (n) => U[n]
 });
-let Tt = class extends N {
+let Ot = class extends E {
   constructor() {
     super(), this._computeLabel = (n) => ({
       entity: u("bg_card.config.entity"),
@@ -8432,21 +8479,21 @@ let Tt = class extends N {
   }
   _renderConfigPreview() {
     const n = { ...this._config };
-    return n.type || (n.type = `custom:${$e}`), Object.keys(n).forEach((e) => {
+    return n.type || (n.type = `custom:${ke}`), Object.keys(n).forEach((e) => {
       (n[e] === void 0 || n[e] === "") && delete n[e];
     }), Object.entries(n).map(([e, t]) => typeof t == "string" ? `${e}: "${t}"` : `${e}: ${t}`).join(`
 `);
   }
   _valueChanged(n) {
     if (this._config || (this._config = {
-      type: `custom:${$e}`,
+      type: `custom:${ke}`,
       entity: ""
     }), n.type === "value-changed") {
       const e = {}, { ...t } = n.detail.value || {}, i = {
         ...this._config,
         ...t,
         ...e,
-        type: `custom:${$e}`
+        type: `custom:${ke}`
       };
       delete i.show_forecast, Object.keys(i).forEach((r) => {
         (i[r] === "" || i[r] === void 0) && delete i[r];
@@ -8454,32 +8501,19 @@ let Tt = class extends N {
     }
   }
 };
-hi([
+pi([
   m({ attribute: !1 })
-], Tt.prototype, "hass", 2);
-hi([
+], Ot.prototype, "hass", 2);
+pi([
   m({ attribute: !1 })
-], Tt.prototype, "lovelace", 2);
-hi([
+], Ot.prototype, "lovelace", 2);
+pi([
   m({ attribute: !1 })
-], Tt.prototype, "_config", 2);
-Tt = hi([
-  O(zr)
-], Tt);
-const rt = `${ge}-temperature-card`, Lr = `${rt}-editor`, st = `${ge}-precipitation-card`, Er = `${st}-editor`, ot = `${ge}-sunshine-card`, Nr = `${ot}-editor`, at = `${ge}-wind-card`, Tr = `${at}-editor`, pi = [
-  {
-    name: "entity",
-    required: !0,
-    selector: { entity: { domain: "weather" } },
-    description: "hourly_charts.config.descr.entity"
-  },
-  {
-    name: "forecast_hours",
-    required: !1,
-    selector: { number: { min: 6, max: 48, step: 1, mode: "box" } },
-    description: "hourly_charts.config.descr.forecast_hours"
-  }
-], Or = [
+], Ot.prototype, "_config", 2);
+Ot = pi([
+  O(Lr)
+], Ot);
+const st = `${ge}-temperature-card`, Nr = `${st}-editor`, ot = `${ge}-precipitation-card`, Er = `${ot}-editor`, at = `${ge}-sunshine-card`, Tr = `${at}-editor`, lt = `${ge}-wind-card`, Or = `${lt}-editor`, ui = [
   {
     name: "entity",
     required: !0,
@@ -8493,6 +8527,19 @@ const rt = `${ge}-temperature-card`, Lr = `${rt}-editor`, st = `${ge}-precipitat
     description: "hourly_charts.config.descr.forecast_hours"
   }
 ], Hr = [
+  {
+    name: "entity",
+    required: !0,
+    selector: { entity: { domain: "weather" } },
+    description: "hourly_charts.config.descr.entity"
+  },
+  {
+    name: "forecast_hours",
+    required: !1,
+    selector: { number: { min: 6, max: 48, step: 1, mode: "box" } },
+    description: "hourly_charts.config.descr.forecast_hours"
+  }
+], Dr = [
   {
     name: "entity",
     required: !0,
@@ -8518,12 +8565,12 @@ const rt = `${ge}-temperature-card`, Lr = `${rt}-editor`, st = `${ge}-precipitat
     description: "hourly_charts.config.descr.sunshine_entity"
   }
 ];
-var Zl = Object.defineProperty, ui = (n, e, t, i) => {
+var Xl = Object.defineProperty, fi = (n, e, t, i) => {
   for (var r = void 0, s = n.length - 1, o; s >= 0; s--)
     (o = n[s]) && (r = o(e, t, r) || r);
-  return r && Zl(e, t, r), r;
+  return r && Xl(e, t, r), r;
 };
-class Ne extends N {
+class Te extends E {
   constructor() {
     super(...arguments), this._hourlyForecast = [], this._forecastLoading = !1;
   }
@@ -8564,27 +8611,27 @@ class Ne extends N {
     this.style.setProperty("--card-grid-rows", e.toString());
   }
 }
-ui([
+fi([
   m({ attribute: !1 })
-], Ne.prototype, "hass");
-ui([
+], Te.prototype, "hass");
+fi([
   m({ attribute: !1 })
-], Ne.prototype, "config");
-ui([
+], Te.prototype, "config");
+fi([
   Z()
-], Ne.prototype, "_hourlyForecast");
-ui([
+], Te.prototype, "_hourlyForecast");
+fi([
   Z()
-], Ne.prototype, "_forecastLoading");
-var Kl = Object.getOwnPropertyDescriptor, Yl = (n, e, t, i) => {
-  for (var r = i > 1 ? void 0 : i ? Kl(e, t) : e, s = n.length - 1, o; s >= 0; s--)
+], Te.prototype, "_forecastLoading");
+var Jl = Object.getOwnPropertyDescriptor, ec = (n, e, t, i) => {
+  for (var r = i > 1 ? void 0 : i ? Jl(e, t) : e, s = n.length - 1, o; s >= 0; s--)
     (o = n[s]) && (r = o(r) || r);
   return r;
 };
 W({
   loader: (n) => U[n]
 });
-let jn = class extends Ne {
+let qn = class extends Te {
   static get styles() {
     return T`
       :host {
@@ -8627,13 +8674,13 @@ let jn = class extends Ne {
     this.setBaseConfig(n);
   }
   static getStubConfig() {
-    return { type: `custom:${rt}`, entity: "" };
+    return { type: `custom:${st}`, entity: "" };
   }
   static getConfigElement() {
-    return document.createElement(Lr);
+    return document.createElement(Nr);
   }
   static getConfigSchema() {
-    return pi;
+    return ui;
   }
   getCardSize() {
     return this.config?.grid_options?.rows ?? 3;
@@ -8653,7 +8700,7 @@ let jn = class extends Ne {
   }
   render() {
     if (!this.hass || !this.config) return c``;
-    if (this.setCardGridRows(), !Me(this.hass, this.config.entity))
+    if (this.setCardGridRows(), !ze(this.hass, this.config.entity))
       return c`<div class="card-content">Entity not found: ${this.config.entity}</div>`;
     if (this._hourlyForecast.length === 0) return c`<div class="card-content">Loading...</div>`;
     const e = this.config.forecast_hours ?? 12;
@@ -8669,16 +8716,16 @@ let jn = class extends Ne {
     `;
   }
 };
-jn = Yl([
-  O(rt)
-], jn);
-var Ql = Object.defineProperty, Xl = Object.getOwnPropertyDescriptor, Yi = (n, e, t, i) => {
-  for (var r = i > 1 ? void 0 : i ? Xl(e, t) : e, s = n.length - 1, o; s >= 0; s--)
+qn = ec([
+  O(st)
+], qn);
+var tc = Object.defineProperty, ic = Object.getOwnPropertyDescriptor, Xi = (n, e, t, i) => {
+  for (var r = i > 1 ? void 0 : i ? ic(e, t) : e, s = n.length - 1, o; s >= 0; s--)
     (o = n[s]) && (r = (i ? o(e, t, r) : o(r)) || r);
-  return i && r && Ql(e, t, r), r;
+  return i && r && tc(e, t, r), r;
 };
 W({ loader: (n) => U[n] });
-let Xt = class extends N {
+let Jt = class extends E {
   setConfig(n) {
     const e = { ...n };
     e.entity === "" && delete e.entity, this._config = e, this.requestUpdate();
@@ -8718,7 +8765,7 @@ let Xt = class extends N {
         <ha-form
           .hass=${this.hass}
           .data=${n}
-          .schema=${pi}
+          .schema=${ui}
           .computeLabel=${(e) => ({
       entity: u("hourly_charts.config.entity"),
       forecast_hours: u("hourly_charts.config.forecast_hours") ?? "Forecast hours"
@@ -8729,27 +8776,27 @@ let Xt = class extends N {
     `;
   }
   _valueChanged(n) {
-    this._config || (this._config = { type: `custom:${rt}`, entity: "" });
+    this._config || (this._config = { type: `custom:${st}`, entity: "" });
     const e = { ...this._config, ...n.detail.value };
     oe(this, "config-changed", { config: e });
   }
 };
-Yi([
+Xi([
   m({ attribute: !1 })
-], Xt.prototype, "hass", 2);
-Yi([
+], Jt.prototype, "hass", 2);
+Xi([
   m({ attribute: !1 })
-], Xt.prototype, "_config", 2);
-Xt = Yi([
-  O(Lr)
-], Xt);
-var Jl = Object.getOwnPropertyDescriptor, ec = (n, e, t, i) => {
-  for (var r = i > 1 ? void 0 : i ? Jl(e, t) : e, s = n.length - 1, o; s >= 0; s--)
+], Jt.prototype, "_config", 2);
+Jt = Xi([
+  O(Nr)
+], Jt);
+var nc = Object.getOwnPropertyDescriptor, rc = (n, e, t, i) => {
+  for (var r = i > 1 ? void 0 : i ? nc(e, t) : e, s = n.length - 1, o; s >= 0; s--)
     (o = n[s]) && (r = o(r) || r);
   return r;
 };
 W({ loader: (n) => U[n] });
-let qn = class extends Ne {
+let Vn = class extends Te {
   static get styles() {
     return T`
       :host {
@@ -8792,13 +8839,13 @@ let qn = class extends Ne {
     this.setBaseConfig(n);
   }
   static getStubConfig() {
-    return { type: `custom:${st}`, entity: "" };
+    return { type: `custom:${ot}`, entity: "" };
   }
   static getConfigElement() {
     return document.createElement(Er);
   }
   static getConfigSchema() {
-    return pi;
+    return ui;
   }
   getCardSize() {
     return this.config?.grid_options?.rows ?? 3;
@@ -8818,7 +8865,7 @@ let qn = class extends Ne {
   }
   render() {
     if (!this.hass || !this.config) return c``;
-    if (this.setCardGridRows(), !Me(this.hass, this.config.entity))
+    if (this.setCardGridRows(), !ze(this.hass, this.config.entity))
       return c`<div class="card-content">Entity not found: ${this.config.entity}</div>`;
     if (this._hourlyForecast.length === 0) return c`<div class="card-content">Loading...</div>`;
     const e = this.config.forecast_hours ?? 12;
@@ -8834,16 +8881,16 @@ let qn = class extends Ne {
     `;
   }
 };
-qn = ec([
-  O(st)
-], qn);
-var tc = Object.defineProperty, ic = Object.getOwnPropertyDescriptor, Qi = (n, e, t, i) => {
-  for (var r = i > 1 ? void 0 : i ? ic(e, t) : e, s = n.length - 1, o; s >= 0; s--)
+Vn = rc([
+  O(ot)
+], Vn);
+var sc = Object.defineProperty, oc = Object.getOwnPropertyDescriptor, Ji = (n, e, t, i) => {
+  for (var r = i > 1 ? void 0 : i ? oc(e, t) : e, s = n.length - 1, o; s >= 0; s--)
     (o = n[s]) && (r = (i ? o(e, t, r) : o(r)) || r);
-  return i && r && tc(e, t, r), r;
+  return i && r && sc(e, t, r), r;
 };
 W({ loader: (n) => U[n] });
-let Jt = class extends N {
+let ei = class extends E {
   setConfig(n) {
     const e = { ...n };
     e.entity === "" && delete e.entity, this._config = e, this.requestUpdate();
@@ -8883,7 +8930,7 @@ let Jt = class extends N {
         <ha-form
           .hass=${this.hass}
           .data=${n}
-          .schema=${pi}
+          .schema=${ui}
           .computeLabel=${(e) => ({
       entity: u("hourly_charts.config.entity"),
       forecast_hours: u("hourly_charts.config.forecast_hours") ?? "Forecast hours"
@@ -8894,27 +8941,27 @@ let Jt = class extends N {
     `;
   }
   _valueChanged(n) {
-    this._config || (this._config = { type: `custom:${st}`, entity: "" });
+    this._config || (this._config = { type: `custom:${ot}`, entity: "" });
     const e = { ...this._config, ...n.detail.value };
     oe(this, "config-changed", { config: e });
   }
 };
-Qi([
+Ji([
   m({ attribute: !1 })
-], Jt.prototype, "hass", 2);
-Qi([
+], ei.prototype, "hass", 2);
+Ji([
   m({ attribute: !1 })
-], Jt.prototype, "_config", 2);
-Jt = Qi([
+], ei.prototype, "_config", 2);
+ei = Ji([
   O(Er)
-], Jt);
-var nc = Object.getOwnPropertyDescriptor, rc = (n, e, t, i) => {
-  for (var r = i > 1 ? void 0 : i ? nc(e, t) : e, s = n.length - 1, o; s >= 0; s--)
+], ei);
+var ac = Object.getOwnPropertyDescriptor, lc = (n, e, t, i) => {
+  for (var r = i > 1 ? void 0 : i ? ac(e, t) : e, s = n.length - 1, o; s >= 0; s--)
     (o = n[s]) && (r = o(r) || r);
   return r;
 };
 W({ loader: (n) => U[n] });
-let Vn = class extends Ne {
+let Zn = class extends Te {
   static get styles() {
     return T`
       :host {
@@ -8957,13 +9004,13 @@ let Vn = class extends Ne {
     this.setBaseConfig(n);
   }
   static getStubConfig() {
-    return { type: `custom:${ot}`, entity: "" };
+    return { type: `custom:${at}`, entity: "" };
   }
   static getConfigElement() {
-    return document.createElement(Nr);
+    return document.createElement(Tr);
   }
   static getConfigSchema() {
-    return Hr;
+    return Dr;
   }
   getCardSize() {
     return this.config?.grid_options?.rows ?? 3;
@@ -8981,11 +9028,11 @@ let Vn = class extends Ne {
   render() {
     if (!this.hass || !this.config) return c``;
     this.setCardGridRows();
-    const n = Me(this.hass, this.config.entity);
+    const n = ze(this.hass, this.config.entity);
     if (!n)
       return c`<div class="card-content">Entity not found: ${this.config.entity}</div>`;
     if (this._hourlyForecast.length === 0) return c`<div class="card-content">Loading...</div>`;
-    const e = this.config.forecast_hours ?? 12, t = this.config.sun_entity ? Me(this.hass, this.config.sun_entity) : null;
+    const e = this.config.forecast_hours ?? 12, t = this.config.sun_entity ? ze(this.hass, this.config.sun_entity) : null;
     return c`
       <div class="card-content">
         <sunshine-chart
@@ -9000,16 +9047,16 @@ let Vn = class extends Ne {
     `;
   }
 };
-Vn = rc([
-  O(ot)
-], Vn);
-var sc = Object.defineProperty, oc = Object.getOwnPropertyDescriptor, Xi = (n, e, t, i) => {
-  for (var r = i > 1 ? void 0 : i ? oc(e, t) : e, s = n.length - 1, o; s >= 0; s--)
+Zn = lc([
+  O(at)
+], Zn);
+var cc = Object.defineProperty, dc = Object.getOwnPropertyDescriptor, en = (n, e, t, i) => {
+  for (var r = i > 1 ? void 0 : i ? dc(e, t) : e, s = n.length - 1, o; s >= 0; s--)
     (o = n[s]) && (r = (i ? o(e, t, r) : o(r)) || r);
-  return i && r && sc(e, t, r), r;
+  return i && r && cc(e, t, r), r;
 };
 W({ loader: (n) => U[n] });
-let ei = class extends N {
+let ti = class extends E {
   setConfig(n) {
     const e = { ...n };
     e.entity === "" && delete e.entity, e.sun_entity === "" && delete e.sun_entity, e.sunshine_entity === "" && delete e.sunshine_entity, this._config = e, this.requestUpdate();
@@ -9051,7 +9098,7 @@ let ei = class extends N {
         <ha-form
           .hass=${this.hass}
           .data=${n}
-          .schema=${Hr}
+          .schema=${Dr}
           .computeLabel=${(e) => ({
       entity: u("hourly_charts.config.entity"),
       forecast_hours: u("hourly_charts.config.forecast_hours") ?? "Forecast hours",
@@ -9064,27 +9111,27 @@ let ei = class extends N {
     `;
   }
   _valueChanged(n) {
-    this._config || (this._config = { type: `custom:${ot}`, entity: "" });
+    this._config || (this._config = { type: `custom:${at}`, entity: "" });
     const e = { ...this._config, ...n.detail.value };
     oe(this, "config-changed", { config: e });
   }
 };
-Xi([
+en([
   m({ attribute: !1 })
-], ei.prototype, "hass", 2);
-Xi([
+], ti.prototype, "hass", 2);
+en([
   m({ attribute: !1 })
-], ei.prototype, "_config", 2);
-ei = Xi([
-  O(Nr)
-], ei);
-var ac = Object.getOwnPropertyDescriptor, lc = (n, e, t, i) => {
-  for (var r = i > 1 ? void 0 : i ? ac(e, t) : e, s = n.length - 1, o; s >= 0; s--)
+], ti.prototype, "_config", 2);
+ti = en([
+  O(Tr)
+], ti);
+var hc = Object.getOwnPropertyDescriptor, pc = (n, e, t, i) => {
+  for (var r = i > 1 ? void 0 : i ? hc(e, t) : e, s = n.length - 1, o; s >= 0; s--)
     (o = n[s]) && (r = o(r) || r);
   return r;
 };
 W({ loader: (n) => U[n] });
-let Zn = class extends Ne {
+let Kn = class extends Te {
   static get styles() {
     return T`
       :host {
@@ -9127,13 +9174,13 @@ let Zn = class extends Ne {
     this.setBaseConfig(n);
   }
   static getStubConfig() {
-    return { type: `custom:${at}`, entity: "" };
+    return { type: `custom:${lt}`, entity: "" };
   }
   static getConfigElement() {
-    return document.createElement(Tr);
+    return document.createElement(Or);
   }
   static getConfigSchema() {
-    return Or;
+    return Hr;
   }
   getCardSize() {
     return this.config?.grid_options?.rows ?? 3;
@@ -9166,16 +9213,16 @@ let Zn = class extends Ne {
     `;
   }
 };
-Zn = lc([
-  O(at)
-], Zn);
-var cc = Object.defineProperty, dc = Object.getOwnPropertyDescriptor, Ji = (n, e, t, i) => {
-  for (var r = i > 1 ? void 0 : i ? dc(e, t) : e, s = n.length - 1, o; s >= 0; s--)
+Kn = pc([
+  O(lt)
+], Kn);
+var uc = Object.defineProperty, fc = Object.getOwnPropertyDescriptor, tn = (n, e, t, i) => {
+  for (var r = i > 1 ? void 0 : i ? fc(e, t) : e, s = n.length - 1, o; s >= 0; s--)
     (o = n[s]) && (r = (i ? o(e, t, r) : o(r)) || r);
-  return i && r && cc(e, t, r), r;
+  return i && r && uc(e, t, r), r;
 };
 W({ loader: (n) => U[n] });
-let ti = class extends N {
+let ii = class extends E {
   setConfig(n) {
     const e = { ...n };
     e.entity === "" && delete e.entity, this._config = e, this.requestUpdate();
@@ -9215,7 +9262,7 @@ let ti = class extends N {
         <ha-form
           .hass=${this.hass}
           .data=${n}
-          .schema=${Or}
+          .schema=${Hr}
           .computeLabel=${(e) => ({
       entity: u("hourly_charts.config.entity"),
       forecast_hours: u("hourly_charts.config.forecast_hours") ?? "Forecast hours"
@@ -9226,21 +9273,21 @@ let ti = class extends N {
     `;
   }
   _valueChanged(n) {
-    this._config || (this._config = { type: `custom:${at}`, entity: "" });
+    this._config || (this._config = { type: `custom:${lt}`, entity: "" });
     const e = { ...this._config, ...n.detail.value };
     oe(this, "config-changed", { config: e });
   }
 };
-Ji([
+tn([
   m({ attribute: !1 })
-], ti.prototype, "hass", 2);
-Ji([
+], ii.prototype, "hass", 2);
+tn([
   m({ attribute: !1 })
-], ti.prototype, "_config", 2);
-ti = Ji([
-  O(Tr)
-], ti);
-const lt = `${ge}-warning-card`, Dr = `${lt}-editor`, Pr = [
+], ii.prototype, "_config", 2);
+ii = tn([
+  O(Or)
+], ii);
+const ct = `${ge}-warning-card`, Pr = `${ct}-editor`, Fr = [
   {
     name: "primary_warning_entity",
     required: !1,
@@ -9266,13 +9313,13 @@ const lt = `${ge}-warning-card`, Dr = `${lt}-editor`, Pr = [
     description: "warning.config.descr.warning_entity"
   }
 ];
-var hc = Object.defineProperty, pc = Object.getOwnPropertyDescriptor, fi = (n, e, t, i) => {
-  for (var r = i > 1 ? void 0 : i ? pc(e, t) : e, s = n.length - 1, o; s >= 0; s--)
+var gc = Object.defineProperty, mc = Object.getOwnPropertyDescriptor, gi = (n, e, t, i) => {
+  for (var r = i > 1 ? void 0 : i ? mc(e, t) : e, s = n.length - 1, o; s >= 0; s--)
     (o = n[s]) && (r = (i ? o(e, t, r) : o(r)) || r);
-  return i && r && hc(e, t, r), r;
+  return i && r && gc(e, t, r), r;
 };
 W({ loader: (n) => U[n] });
-let Ot = class extends N {
+let Ht = class extends E {
   constructor() {
     super(...arguments), this._openWarnings = {}, this._toggle = (n) => {
       this._openWarnings = { ...this._openWarnings, [n]: !this._openWarnings[n] }, this.requestUpdate();
@@ -9330,17 +9377,17 @@ let Ot = class extends N {
   }
   static getStubConfig() {
     return {
-      type: `custom:${lt}`,
+      type: `custom:${ct}`,
       primary_warning_entity: "",
       secondary_warning_entity: "",
       tertiary_warning_entity: ""
     };
   }
   static getConfigElement() {
-    return document.createElement(Dr);
+    return document.createElement(Pr);
   }
   static getConfigSchema() {
-    return Pr;
+    return Fr;
   }
   _getEntityState(n) {
     return this.hass?.states[n];
@@ -9351,8 +9398,8 @@ let Ot = class extends N {
     n !== this._loadedLang && (this._loadedLang = n, ee(n).then(() => this.requestUpdate()));
     const e = this.config.primary_warning_entity ? this._getEntityState(this.config.primary_warning_entity) : null, t = this.config.secondary_warning_entity ? this._getEntityState(this.config.secondary_warning_entity) : null, i = this.config.tertiary_warning_entity ? this._getEntityState(this.config.tertiary_warning_entity) : null, r = this.config.warning_entity ? this._getEntityState(this.config.warning_entity) : null;
     if (this.config.primary_warning_entity && !e || !this.config.primary_warning_entity && this.config.warning_entity && !r)
-      return nt();
-    const s = Cr(
+      return rt();
+    const s = Ar(
       r,
       e,
       t,
@@ -9364,25 +9411,25 @@ let Ot = class extends N {
     return s || c`<div class="no-warnings">${u("warning.warnings_none")}</div>`;
   }
 };
-fi([
+gi([
   m({ attribute: !1 })
-], Ot.prototype, "hass", 2);
-fi([
+], Ht.prototype, "hass", 2);
+gi([
   m({ attribute: !1 })
-], Ot.prototype, "config", 2);
-fi([
+], Ht.prototype, "config", 2);
+gi([
   Z()
-], Ot.prototype, "_openWarnings", 2);
-Ot = fi([
-  O(lt)
-], Ot);
-var uc = Object.defineProperty, fc = Object.getOwnPropertyDescriptor, en = (n, e, t, i) => {
-  for (var r = i > 1 ? void 0 : i ? fc(e, t) : e, s = n.length - 1, o; s >= 0; s--)
+], Ht.prototype, "_openWarnings", 2);
+Ht = gi([
+  O(ct)
+], Ht);
+var yc = Object.defineProperty, _c = Object.getOwnPropertyDescriptor, nn = (n, e, t, i) => {
+  for (var r = i > 1 ? void 0 : i ? _c(e, t) : e, s = n.length - 1, o; s >= 0; s--)
     (o = n[s]) && (r = (i ? o(e, t, r) : o(r)) || r);
-  return i && r && uc(e, t, r), r;
+  return i && r && yc(e, t, r), r;
 };
 W({ loader: (n) => U[n] });
-let ii = class extends N {
+let ni = class extends E {
   setConfig(n) {
     this._config = { ...n }, this.requestUpdate();
   }
@@ -9431,7 +9478,7 @@ let ii = class extends N {
         <ha-form
           .hass=${this.hass}
           .data=${n}
-          .schema=${Pr}
+          .schema=${Fr}
           .computeLabel=${(e) => ({
       primary_warning_entity: u("warning.config.primary_warning_entity"),
       secondary_warning_entity: u("warning.config.secondary_warning_entity"),
@@ -9450,44 +9497,44 @@ let ii = class extends N {
     `;
   }
   _valueChanged(n) {
-    this._config || (this._config = { type: `custom:${lt}`, entity: "" });
+    this._config || (this._config = { type: `custom:${ct}`, entity: "" });
     const e = { ...this._config, ...n.detail.value };
     oe(this, "config-changed", { config: e });
   }
 };
-en([
+nn([
   m({ attribute: !1 })
-], ii.prototype, "hass", 2);
-en([
+], ni.prototype, "hass", 2);
+nn([
   m({ attribute: !1 })
-], ii.prototype, "_config", 2);
-ii = en([
-  O(Dr)
-], ii);
-const ct = `${ge}-pollen-card`, Rr = `${ct}-editor`, Oi = ["birch", "grasses", "alder", "hazel", "beech", "ash", "oak"], Hi = ["NONE", "LOW", "MEDIUM", "STRONG", "VERY_STRONG"];
-var gc = Object.defineProperty, mc = Object.getOwnPropertyDescriptor, gi = (n, e, t, i) => {
-  for (var r = i > 1 ? void 0 : i ? mc(e, t) : e, s = n.length - 1, o; s >= 0; s--)
+], ni.prototype, "_config", 2);
+ni = nn([
+  O(Pr)
+], ni);
+const dt = `${ge}-pollen-card`, Rr = `${dt}-editor`, Di = ["birch", "grasses", "alder", "hazel", "beech", "ash", "oak"], Pi = ["NONE", "LOW", "MEDIUM", "STRONG", "VERY_STRONG"];
+var bc = Object.defineProperty, wc = Object.getOwnPropertyDescriptor, mi = (n, e, t, i) => {
+  for (var r = i > 1 ? void 0 : i ? wc(e, t) : e, s = n.length - 1, o; s >= 0; s--)
     (o = n[s]) && (r = (i ? o(e, t, r) : o(r)) || r);
-  return i && r && gc(e, t, r), r;
+  return i && r && bc(e, t, r), r;
 };
 W({ loader: (n) => U[n] });
-const Si = {
+const Mi = {
   NONE: "var(--pollen-none-color, #9e9e9e)",
   LOW: "var(--pollen-low-color, #4caf50)",
   MEDIUM: "var(--pollen-medium-color, #ff9800)",
   STRONG: "var(--pollen-strong-color, #f44336)",
   VERY_STRONG: "var(--pollen-very-strong-color, #9c27b0)"
 };
-function yc(n) {
+function xc(n) {
   const e = n.toUpperCase().replace(/ /g, "_");
-  return Hi.includes(e) ? e : "NONE";
+  return Pi.includes(e) ? e : "NONE";
 }
-function _c(n) {
+function vc(n) {
   return n.length === 0 ? "NONE" : n.reduce(
-    (e, t) => Hi.indexOf(t) > Hi.indexOf(e) ? t : e
+    (e, t) => Pi.indexOf(t) > Pi.indexOf(e) ? t : e
   );
 }
-let Ht = class extends N {
+let Dt = class extends E {
   constructor() {
     super(...arguments), this._expanded = !1, this._toggle = () => {
       this._expanded = !this._expanded, this.requestUpdate();
@@ -9617,7 +9664,7 @@ let Ht = class extends N {
   }
   static getStubConfig() {
     return {
-      type: `custom:${ct}`
+      type: `custom:${dt}`
       // all types enabled by default — user configures entities per type
     };
   }
@@ -9635,14 +9682,14 @@ let Ht = class extends N {
     if (!this.hass || !this.config) return c``;
     const n = (this.hass.selectedLanguage || this.hass.language || "en").substring(0, 2);
     n !== this._loadedLang && (this._loadedLang = n, ee(n).then(() => this.requestUpdate()));
-    const e = [], t = Oi.some(
+    const e = [], t = Di.some(
       (s) => !!this.config[`${s}_entity`]
     );
-    for (const s of Oi) {
+    for (const s of Di) {
       if (this.config[`${s}_enabled`] === !1) continue;
       const l = this.config[`${s}_entity`], a = this._getEntityState(l);
       if (!a) continue;
-      const h = yc(a.state), d = this._getEntityState(
+      const h = xc(a.state), d = this._getEntityState(
         this.config[`${s}_raw_entity`]
       );
       e.push({
@@ -9656,7 +9703,7 @@ let Ht = class extends N {
       const s = u(t ? "pollen.no_data" : "pollen.not_configured");
       return c`<div class="no-data">${s}</div>`;
     }
-    const i = _c(e.map((s) => s.level)), r = Si[i];
+    const i = vc(e.map((s) => s.level)), r = Mi[i];
     return c`
       <button class="header" @click=${this._toggle} aria-expanded=${this._expanded}>
         <div class="header-left">
@@ -9676,9 +9723,9 @@ let Ht = class extends N {
                       <div class="pollen-name">${u(`pollen.types.${s}`)}</div>
                       <div
                         class="pollen-level-dot"
-                        style="background: ${Si[o]};"
+                        style="background: ${Mi[o]};"
                       ></div>
-                      <div class="pollen-level-label" style="color: ${Si[o]};">
+                      <div class="pollen-level-label" style="color: ${Mi[o]};">
                         ${u(`pollen.levels.${o.toLowerCase()}`)}
                       </div>
                       ${l !== void 0 ? c`<div class="pollen-raw">${l}${a ? " " + a : ""}</div>` : ""}
@@ -9690,25 +9737,25 @@ let Ht = class extends N {
     `;
   }
 };
-gi([
+mi([
   m({ attribute: !1 })
-], Ht.prototype, "hass", 2);
-gi([
+], Dt.prototype, "hass", 2);
+mi([
   m({ attribute: !1 })
-], Ht.prototype, "config", 2);
-gi([
+], Dt.prototype, "config", 2);
+mi([
   Z()
-], Ht.prototype, "_expanded", 2);
-Ht = gi([
-  O(ct)
-], Ht);
-var bc = Object.defineProperty, wc = Object.getOwnPropertyDescriptor, tn = (n, e, t, i) => {
-  for (var r = i > 1 ? void 0 : i ? wc(e, t) : e, s = n.length - 1, o; s >= 0; s--)
+], Dt.prototype, "_expanded", 2);
+Dt = mi([
+  O(dt)
+], Dt);
+var $c = Object.defineProperty, kc = Object.getOwnPropertyDescriptor, rn = (n, e, t, i) => {
+  for (var r = i > 1 ? void 0 : i ? kc(e, t) : e, s = n.length - 1, o; s >= 0; s--)
     (o = n[s]) && (r = (i ? o(e, t, r) : o(r)) || r);
-  return i && r && bc(e, t, r), r;
+  return i && r && $c(e, t, r), r;
 };
 W({ loader: (n) => U[n] });
-let ni = class extends N {
+let ri = class extends E {
   setConfig(n) {
     this._config = { ...n }, this.requestUpdate();
   }
@@ -9777,7 +9824,7 @@ let ni = class extends N {
         <div class="header">
           <div class="header-title">🌿 MeteoSwiss Pollen Card</div>
         </div>
-        ${Oi.map((n) => this._renderTypeBlock(n))}
+        ${Di.map((n) => this._renderTypeBlock(n))}
       </div>
     `) : c`<div>Loading...</div>`;
   }
@@ -9832,65 +9879,65 @@ let ni = class extends N {
     this._config = t, oe(this, "config-changed", { config: t }), this.requestUpdate();
   }
   _valueChanged(n) {
-    this._config || (this._config = { type: `custom:${ct}` });
+    this._config || (this._config = { type: `custom:${dt}` });
     const e = { ...this._config, ...n.detail.value };
     this._config = e, oe(this, "config-changed", { config: e });
   }
 };
-tn([
+rn([
   m({ attribute: !1 })
-], ni.prototype, "hass", 2);
-tn([
+], ri.prototype, "hass", 2);
+rn([
   m({ attribute: !1 })
-], ni.prototype, "_config", 2);
-ni = tn([
+], ri.prototype, "_config", 2);
+ri = rn([
   O(Rr)
-], ni);
-const qe = (n) => (e, t) => t.split(".")[0] !== "weather" ? null : { config: { type: `custom:${n}`, entity: t } };
-me({
-  type: xe,
-  name: "MeteoSwiss Diagram Card",
-  description: "A comprehensive weather card for Home Assistant with Swiss weather warnings and forecasts",
-  getEntitySuggestion: qe(xe)
-});
+], ri);
+const Ve = (n) => (e, t) => t.split(".")[0] !== "weather" ? null : { config: { type: `custom:${n}`, entity: t } };
 me({
   type: ve,
-  name: "MeteoSwiss Daily Forecast Diagram Card",
-  description: "A card to show daily weather forecast as diagram",
-  getEntitySuggestion: qe(ve)
+  name: "MeteoSwiss Diagram Card",
+  description: "A comprehensive weather card for Home Assistant with Swiss weather warnings and forecasts",
+  getEntitySuggestion: Ve(ve)
 });
 me({
   type: $e,
-  name: "MeteoSwiss Animated Background Card",
-  description: "Animated weather background card with current conditions",
-  getEntitySuggestion: qe($e)
+  name: "MeteoSwiss Daily Forecast Diagram Card",
+  description: "A card to show daily weather forecast as diagram",
+  getEntitySuggestion: Ve($e)
 });
 me({
-  type: rt,
-  name: "MeteoSwiss Temperature Chart Card",
-  description: "Hourly temperature forecast chart as standalone card",
-  getEntitySuggestion: qe(rt)
+  type: ke,
+  name: "MeteoSwiss Animated Background Card",
+  description: "Animated weather background card with current conditions",
+  getEntitySuggestion: Ve(ke)
 });
 me({
   type: st,
-  name: "MeteoSwiss Precipitation Chart Card",
-  description: "Hourly precipitation forecast chart as standalone card",
-  getEntitySuggestion: qe(st)
+  name: "MeteoSwiss Temperature Chart Card",
+  description: "Hourly temperature forecast chart as standalone card",
+  getEntitySuggestion: Ve(st)
 });
 me({
   type: ot,
-  name: "MeteoSwiss Sunshine Chart Card",
-  description: "Hourly sunshine duration chart as standalone card",
-  getEntitySuggestion: qe(ot)
+  name: "MeteoSwiss Precipitation Chart Card",
+  description: "Hourly precipitation forecast chart as standalone card",
+  getEntitySuggestion: Ve(ot)
 });
 me({
   type: at,
-  name: "MeteoSwiss Wind Chart Card",
-  description: "Hourly wind speed & direction chart as standalone card",
-  getEntitySuggestion: qe(at)
+  name: "MeteoSwiss Sunshine Chart Card",
+  description: "Hourly sunshine duration chart as standalone card",
+  getEntitySuggestion: Ve(at)
 });
 me({
   type: lt,
+  name: "MeteoSwiss Wind Chart Card",
+  description: "Hourly wind speed & direction chart as standalone card",
+  getEntitySuggestion: Ve(lt)
+});
+me({
+  type: ct,
   name: "MeteoSwiss Warning Card",
   description: "Standalone weather warning card supporting ranked and legacy warning models",
   getEntitySuggestion: (n, e) => {
@@ -9898,11 +9945,11 @@ me({
     const t = e.toLowerCase();
     if (!t.includes("warning")) return null;
     let i;
-    return t.includes("primary") ? i = "primary_warning_entity" : t.includes("secondary") ? i = "secondary_warning_entity" : t.includes("tertiary") ? i = "tertiary_warning_entity" : i = "warning_entity", { config: { type: `custom:${lt}`, [i]: e } };
+    return t.includes("primary") ? i = "primary_warning_entity" : t.includes("secondary") ? i = "secondary_warning_entity" : t.includes("tertiary") ? i = "tertiary_warning_entity" : i = "warning_entity", { config: { type: `custom:${ct}`, [i]: e } };
   }
 });
 me({
-  type: ct,
+  type: dt,
   name: "MeteoSwiss Pollen Card",
   description: "Displays current pollen levels for up to 7 pollen types from MeteoSwiss integration",
   getEntitySuggestion: (n, e) => {
@@ -9910,38 +9957,38 @@ me({
     const t = e.toLowerCase();
     if (!t.includes("pollen")) return null;
     const r = ["birch", "grasses", "alder", "hazel", "beech", "ash", "oak"].find((s) => t.includes(s));
-    return r ? { config: { type: `custom:${ct}`, [`${r}_entity`]: e } } : null;
+    return r ? { config: { type: `custom:${dt}`, [`${r}_entity`]: e } } : null;
   }
 });
 console.info(
-  `%c MeteoSwiss Weather Card %c v${qr} `,
+  `%c MeteoSwiss Weather Card %c v${Vr} `,
   "background: #0093DD; color: white; font-weight: bold;",
   "background: transparent; color: #0093DD;"
 );
 export {
   Y as DailyForecastChart,
-  Se as DailyForecastDiagram,
-  Ie as ForecastDiagramCard,
-  Nt as ForecastDiagramCardEditor,
-  ke as ForecastTemperatureChart,
-  ze as MeteoSwissBGCard,
-  Tt as MeteoSwissBGCardEditor,
+  Me as DailyForecastDiagram,
+  Be as ForecastDiagramCard,
+  Tt as ForecastDiagramCardEditor,
+  Ce as ForecastTemperatureChart,
+  Le as MeteoSwissBGCard,
+  Ot as MeteoSwissBGCardEditor,
   fe as MeteoSwissCard,
-  Lt as MeteoSwissCardEditor,
-  Ht as PollenCard,
-  ni as PollenCardEditor,
-  qn as PrecipitationCard,
-  Jt as PrecipitationCardEditor,
-  Ce as PrecipitationChart,
-  Vn as SunshineCard,
-  ei as SunshineCardEditor,
+  Nt as MeteoSwissCardEditor,
+  Dt as PollenCard,
+  ri as PollenCardEditor,
+  Vn as PrecipitationCard,
+  ei as PrecipitationCardEditor,
+  Ae as PrecipitationChart,
+  Zn as SunshineCard,
+  ti as SunshineCardEditor,
   le as SunshineChart,
-  jn as TemperatureCard,
-  Xt as TemperatureCardEditor,
-  Ot as WarningCard,
-  ii as WarningCardEditor,
-  Zn as WindCard,
-  ti as WindCardEditor,
-  Ae as WindChart
+  qn as TemperatureCard,
+  Jt as TemperatureCardEditor,
+  Ht as WarningCard,
+  ni as WarningCardEditor,
+  Kn as WindCard,
+  ii as WindCardEditor,
+  Se as WindChart
 };
 //# sourceMappingURL=meteoswiss-weather-card.js.map

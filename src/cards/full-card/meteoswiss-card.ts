@@ -1,6 +1,7 @@
 import { translations } from '../../translations';
 import { showHoursChartLabel } from '../../charts/index';
 import { LitElement, html, css, PropertyValues, TemplateResult } from 'lit';
+import { formatNumber, NumberFormat, TimeFormat } from 'custom-card-helpers';
 import { use, translate as _t, registerTranslateConfig } from 'lit-translate';
 import { customElement, property, state } from 'lit/decorators.js';
 import type {
@@ -411,6 +412,18 @@ export class MeteoSwissCard extends LitElement {
     return dirs[Math.round(degrees / 22.5) % 16];
   }
 
+  private _formatTemperature(value: number): string {
+    const locale = this.hass.locale ?? {
+      language: this.hass.selectedLanguage || this.hass.language || 'en',
+      number_format: NumberFormat.language,
+      time_format: TimeFormat.language,
+    };
+    return formatNumber(Number(value).toFixed(1), locale, {
+      minimumFractionDigits: 1,
+      maximumFractionDigits: 1,
+    });
+  }
+
   // ═══════════════════════════════════════════════════════════════
   // RENDER — iOS Weather Layout
   // ═══════════════════════════════════════════════════════════════
@@ -524,10 +537,10 @@ export class MeteoSwissCard extends LitElement {
             <div class="ms-weather-icon">
               ${getWeatherIcon(condition, this.config.enable_animate_weather_icons !== false ? 'animated' : 'mdi', undefined, condition !== 'clear-night')}
             </div>
-            <div class="ms-temp">${Math.round(temperature)}<span class="ms-temp-unit">°</span></div>
+            <div class="ms-temp">${this._formatTemperature(temperature)}<span class="ms-temp-unit">°</span></div>
           </div>
           <div class="ms-condition">${_t(condition)}</div>
-          <div class="ms-hl">H:${Math.round(todayHigh)}° T:${Math.round(todayLow)}°</div>
+          <div class="ms-hl">H:${this._formatTemperature(todayHigh)}° T:${this._formatTemperature(todayLow)}°</div>
         </div>
       ` : ''}
 
@@ -737,8 +750,8 @@ export class MeteoSwissCard extends LitElement {
                   ${getWeatherIcon(condition, this.config.enable_animate_weather_icons !== false ? 'animated' : 'mdi', '32px', true)}
                 </div>
                 <div class="ms-forecast-temps">
-                  <div class="ms-forecast-high">${Math.round(day.temperature ?? 0)}°</div>
-                  <div class="ms-forecast-low">${Math.round(day.templow ?? 0)}°</div>
+                  <div class="ms-forecast-high">${this._formatTemperature(day.temperature ?? 0)}°</div>
+                  <div class="ms-forecast-low">${this._formatTemperature(day.templow ?? 0)}°</div>
                   ${day.precipitation_probability && day.precipitation_probability > 0
                     ? html`<div class="ms-forecast-precip">${day.precipitation_probability}%</div>`
                     : ''}

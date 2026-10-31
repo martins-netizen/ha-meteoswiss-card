@@ -121,3 +121,48 @@ test('expansion retains original text and Lit escapes markup in the DOM', async 
   assert.equal(button.getAttribute('aria-expanded'), 'true');
   assert.equal(window.injected, undefined);
 });
+
+async function showTemperatures({ current = 5.4, high = 11.2, low = 4.1,
+  language = 'de', locale } = {}) {
+  window.document.body.replaceChildren();
+  const card = window.document.createElement('meteoswiss-card');
+  card.setConfig({ entity: 'weather.precision', auto_resolve_entities: false,
+    show_warnings: false, show_swiss: false, show_heating: false,
+    show_temperature: false, show_precipitation: false, show_sunshine: false,
+    show_wind: false, show_forecast: true });
+  card.hass = { states: { 'weather.precision': { state: 'cloudy', attributes: {
+    temperature: current, humidity: 80, pressure: 1029.8, wind_speed: 11.2 } } },
+    selectedLanguage: language, language: 'en', locale,
+    config: { time_zone: 'Europe/Zurich' }, callWS: async message => ({
+      'weather.precision': { forecast: message.forecast_type === 'daily'
+        ? [{ datetime: '2026-10-31', temperature: high, templow: low, condition: 'cloudy' }] : [] },
+    }) };
+  window.document.body.append(card);
+  await card.updateComplete;
+  await new Promise(resolve => window.requestAnimationFrame(() => window.requestAnimationFrame(resolve)));
+  await card.updateComplete;
+  return card;
+}
+
+for (const spec of [
+  { name: 'German fallback language', expected: ['5,4°', 'H:11,2° T:4,1°', '11,2°', '4,1°'] },
+  { name: 'English fallback language', language: 'en', expected: ['5.4°', 'H:11.2° T:4.1°', '11.2°', '4.1°'] },
+  { name: 'explicit HA decimal-comma preference', language: 'en',
+    locale: { language: 'en', number_format: 'decimal_comma', time_format: '24' },
+    expected: ['5,4°', 'H:11,2° T:4,1°', '11,2°', '4,1°'] },
+  { name: 'explicit HA decimal-point preference', language: 'de',
+    locale: { language: 'de', number_format: 'comma_decimal', time_format: '24' },
+    expected: ['5.4°', 'H:11.2° T:4.1°', '11.2°', '4.1°'] },
+  { name: 'whole and negative values retain one decimal', current: 5, high: 11, low: -4.16,
+    expected: ['5,0°', 'H:11,0° T:-4,2°', '11,0°', '-4,2°'] },
+  { name: 'unformatted HA preference retains trailing zero', current: 5, high: 11, low: 0,
+    locale: { language: 'de', number_format: 'none', time_format: '24' },
+    expected: ['5.0°', 'H:11.0° T:0.0°', '11.0°', '0.0°'] },
+]) {
+  test(`temperature precision: ${spec.name}`, async () => {
+    const card = await showTemperatures(spec);
+    const values = ['.ms-temp', '.ms-hl', '.ms-forecast-high', '.ms-forecast-low']
+      .map(selector => card.shadowRoot.querySelector(selector).textContent.trim());
+    assert.deepEqual(values, spec.expected);
+  });
+}
