@@ -79,7 +79,8 @@ A separate card type with cinematic weather backgrounds:
 ## ⚠️ Requirements
 
 - [Home Assistant](https://www.home-assistant.io/) **2024.7.0** or later
-- [HACS](https://hacs.xyz/) (Home Assistant Community Store)
+- Built-in **Marketplace** on HA **2026.11+**, or [HACS](https://hacs.xyz/) on older HA
+  (neither is required for manual installation)
 - [LNKtwo/ha-meteoswiss](https://github.com/LNKtwo/ha-meteoswiss) integration **(recommended)** — SwissMetNet data, warnings, pollen, UV index, air quality, heating degree days, Foehn index
 - Modern browser with ES2022 support (Edge 90+, Chrome 90+, Firefox 90+, Safari 15+)
 
@@ -87,15 +88,39 @@ A separate card type with cinematic weather backgrounds:
 
 ## 📦 Installation
 
-### Via HACS (recommended)
+<a id="via-hacs-recommended"></a>
 
-1. Open **HACS** → **Frontend**
-2. Click **⋮** → **Custom repositories**
-3. Add:
-   - **URL:** `https://github.com/LNKtwo/ha-meteoswiss-card`
-   - **Category:** Dashboard
-4. Search for **"MeteoSwiss Weather Card"** → **Install**
-5. Reload your dashboard
+### Via Marketplace (HA 2026.11+)
+
+1. Open **Settings → Marketplace** and acknowledge the community-code notice
+   if prompted. Search for **MeteoSwiss Weather Card** and verify the repository.
+2. If the upstream card is absent, use **Add from link** with
+   `https://github.com/LNKtwo/ha-meteoswiss-card`, then **Add**. Custom repositories
+   require a GitHub connection. The type is detected; choose **Dashboard** only
+   if prompted.
+3. Open the card entry and install the intended published release.
+4. Reload the dashboard/browser; a standalone card does not require an HA Core
+   restart. Verify the module resource under **Settings → Dashboards → Resources**
+   if it was not registered automatically (Advanced mode may be needed).
+
+New Marketplace community resources use `/local/community/`; existing
+`/hacsfiles/` URLs remain compatible. Do not replace a manually pinned resource
+or switch repository ownership merely because HA renamed the store. Existing
+HACS repositories migrate automatically on upgrade to HA 2026.11. See the
+[official Marketplace guide](https://www.home-assistant.io/integrations/marketplace/).
+
+These catalogue steps retain the **upstream** source used by this guide. They
+are not an instruction to overwrite a locally patched build from this fork.
+Use one software owner and one resource URL for the intended card build.
+
+### Older HA: via HACS
+
+1. Open **HACS → three-dot menu → Custom repositories**.
+2. Add `https://github.com/LNKtwo/ha-meteoswiss-card`, category **Dashboard**,
+   if it is not already listed.
+3. Search for **MeteoSwiss Weather Card**, verify the repository and install.
+4. Reload the dashboard/browser. Older HACS versions may call this category
+   **Frontend**.
 
 ### Manual
 
